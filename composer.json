@@ -1,0 +1,13 @@
+{
+    "name": "buffalo/framework",
+    "authors": [
+        {
+            "name": "Buffalo Team",
+            "email": "unknow@gmail.com"
+        }
+    ],
+    "require": {
+
+        "php": "^7.3|^8.0"
+    }
+}
