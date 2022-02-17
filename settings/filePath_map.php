@@ -49,4 +49,11 @@ return array(
      */
     "app\\Http\\Controllers\\Controller"        => $baseDir . '/app/Http/Controllers/Controller.php',
     "app\\Http\\Controllers\\Welcome"           => $baseDir . '/app/Http/Controllers/Welcome.php',
+
+ 
+    /**
+     * ---------------------------Authentication
+     */
+    "app\\Http\\Controllers\\Auth\\Login"              => $baseDir . '/app/Http/Controllers/Auth/Login.php',
+    "app\\Http\\Controllers\\Auth\\Register"              => $baseDir . '/app/Http/Controllers/Auth/Register.php',
 );

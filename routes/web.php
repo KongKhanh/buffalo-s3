@@ -17,9 +17,7 @@ $router = new Router();
 
 $router->get('/', [Welcome::class, '__index']);
 
-$router->get('/home', "Welcome@__home");
-
-$router->get('/about', function() {
-
-    echo "Licensed";
-});
+/**
+ * -----------------------------------------------------------Admin Dashboard-----------------------------------------------------------
+ */
+$router->get('/dashboard/login', [Login::class, '__getAdminLogin']);
