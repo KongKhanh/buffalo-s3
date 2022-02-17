@@ -21,3 +21,5 @@ $router->get('/', [Welcome::class, '__index']);
  * -----------------------------------------------------------Admin Dashboard-----------------------------------------------------------
  */
 $router->get('/dashboard/login', [Login::class, '__getAdminLogin']);
+
+$router->get('/dashboard/analytics', [AnalyticsPage::class, '__getAnalyticsPage']);

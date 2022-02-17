@@ -54,6 +54,11 @@ return array(
     /**
      * ---------------------------Authentication
      */
-    "app\\Http\\Controllers\\Auth\\Login"              => $baseDir . '/app/Http/Controllers/Auth/Login.php',
-    "app\\Http\\Controllers\\Auth\\Register"              => $baseDir . '/app/Http/Controllers/Auth/Register.php',
+    "app\\Http\\Controllers\\Auth\\Login"                   => $baseDir . '/app/Http/Controllers/Auth/Login.php',
+    "app\\Http\\Controllers\\Auth\\Register"                => $baseDir . '/app/Http/Controllers/Auth/Register.php',
+
+    /**
+     * ---------------------------Admin Dashboard
+     */
+    "app\\Http\\Controllers\\Dashboard\\AnalyticsPage"                => $baseDir . '/app/Http/Controllers/Dashboard/AnalyticsPage.php',
 );
