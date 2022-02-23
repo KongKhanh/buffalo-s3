@@ -13,14 +13,39 @@
         private $table;
 
         /**
-         * array
+         * The where constraints for the query.
+         *
+         * @var array
          */
-        protected $where;
+        public $where = [];
 
         /**
-         * array
+         * The orderings for the query.
+         *
+         * @var array
          */
-        protected $orderBy;
+        protected $orderBy = [];
+
+        /**
+         * The columns that should be returned.
+         *
+         * @var array
+         */
+        public $columns = [];
+
+        /**
+         * All of the available clause operators.
+         *
+         * @var string[]
+         */
+        public $operators = [
+            '=', '<', '>', '<=', '>=', '<>', '!=', '<=>',
+            'like', 'like binary', 'not like', 'ilike',
+            '&', '|', '^', '<<', '>>',
+            'rlike', 'not rlike', 'regexp', 'not regexp',
+            '~', '~*', '!~', '!~*', 'similar to',
+            'not similar to', 'not ilike', '~~*', '!~~*',
+        ];
 
         function __construct() {
 
@@ -30,10 +55,6 @@
             self::$conn = Connection::connection();
 
             $this->table = null;
-
-            $this->where = array();
-
-            $this->orderBy = array();
         }
 
         /**
@@ -61,13 +82,13 @@
          * @param array $compareKeycl: is a sub-array of array -> condition for query data
          * @return string
          */
-        public function whereDataMultiCondition($cl) {
+        public function whereDataMultiCondition($cl = null) {
 
             try {
 
                 $temp_sql = "WHERE ";
 
-                if(is_array($cl)) {
+                if(is_array($cl) && !is_null($cl)) {
     
                     for ($c = 0; $c < count($cl); $c++) { 
     
@@ -82,8 +103,8 @@
                          * --------------##cl[$c] is sub-array
                          * <$cl[$c][3]> is comparing-operator 
                          */
-                        if(isset($cl[$c][3])) {
-    
+                        if(isset($cl[$c][3]) && $c != (count($cl) - 1)) {
+
                             $tq .= "{$cl[$c][0]} {$cl[$c][1]} {$cl[$c][2]} {$cl[$c][3]} "; 
                         } 
                         else {
@@ -166,27 +187,31 @@
             } 
         }
 
-        public function deleteData($table_Name, $whereData) {
+        /**
+         * Delete records from the database.
+         * @param string $table_Name
+         * @param string $whereData
+         * @return boolean
+         */
+        public function deleteData($table_Name = null, $whereData = null) {
 
             try {
 
-                if(isset($table_Name) && isset($whereData)) {
+                if(is_null($table_Name)) return false; 
 
+                $sql = "DELETE FROM {$table_Name} ";
 
-                    $sql = "DELETE FROM {$table_Name} " . $whereData;
-    
-                    $stmt = self::$conn->prepare($sql);
-    
-                    $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    
-                    $stmt->execute(); 
+                $sql .= !is_null($whereData) ? $whereData : "";
 
-                    return true;
-                }
+                $stmt = self::$conn->prepare($sql);
+    
+                $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+                $stmt->execute(); 
+
+                return true;
             }
             catch(PDOException $err) {
-
-                $es = $err->getMessage();
 
                 return false;
             }
@@ -200,27 +225,31 @@
             try {
 
                 $keyBlockGobal = "";
+
                 $valueBlockGobal = "";
     
                 $numItems = count($add_Block);
+
                 $i = 0;
         
                 foreach($add_Block as $BlockKey => $BlockValue) {
     
                     if(is_string($BlockValue)) {
+
                         $BlockValue = "'$BlockValue'";
                     }
     
                     if($numItems == ++$i) {
     
                         $keyBlockGobal .= $BlockKey;
+
                         $valueBlockGobal .= $BlockValue;
-    
-                    }else {
+                    }
+                    else {
     
                         $keyBlockGobal .= $BlockKey . ", ";
+
                         $valueBlockGobal .= $BlockValue . ", ";
-    
                     }
     
                 }
@@ -243,44 +272,39 @@
          * $joinXS: is a array of join statement
          * $mro: is boolean for geting One (FALSE) or get Many (TRUE) record
          */
-        public function selectData($table_Name, $proField = false, $whereData = false, $joinXS = false, $mro = true) {
+        public function selectData($table_Name, $whereData = false, $joinXS = false, $mro = true) {
 
             try {
-
-                $sql = "SELECT ";
     
-                if($proField && is_array($proField) && count($proField) != 0) {
-    
-                    $m = "";
-    
-                    foreach($proField as $proFKey => $proFieldValue) {
-    
-                        $m .= "$proFieldValue, ";
-                    }
-    
-                    // PHP substr_replace() function to remove the last character from a string in PHP.
-                    $m = substr_replace($m, "", -2);
-    
-                    $sql .= $m;
-    
-                }  
-                else {
-    
-                    $sql .= "*";
-                }
-    
-                $sql .= " FROM " . $table_Name;
-    
+                $sql = "SELECT " . $this->parseSelect($this->columns) . " FROM " . $table_Name;
+  
+                /**
+                 *  -----------INNER JOIN 
+                 */
                 if($joinXS && is_array($joinXS) == 1) {
     
                     foreach($joinXS as $jXSI) {
+
                         $sql .= "{$jXSI}";
                     }
                 }
     
+                /**
+                 *  -----------WHERE
+                 */
                 if($whereData) {
 
                     $sql .= " {$whereData}";
+                }
+
+                /**
+                 *  -----------ORDER BY
+                 */
+                if(count($this->orderBy) != 0) {
+
+                    $orderByStmt = $this->parseOrderBy($this->orderBy);
+
+                    $sql .= " " . $orderByStmt;
                 }
   
                 $stmt =  self::$conn->prepare($sql);
@@ -290,15 +314,15 @@
                 $stmt->execute();
     
                 if($mro) {
+
+                    $result = $stmt->fetchAll();
                     
-                    return $stmt->fetchAll();
+                    return $result;
                 } 
     
                 return $stmt->fetch();
             }
             catch (PDOException $err) {
-
-                $es = $err->getMessage();
 
                 return false;
             }
@@ -350,6 +374,63 @@
             }
         }
 
+        /*-------------------------------------------Parsing Data-----------------------------------------------------------*/
+
+        /**
+         * Task: convert array-OrderBy to string-OrderBy
+         * @param array $values
+         * @return string
+         */
+        public function parseOrderBy(array $values) {
+
+            if(!isset($values) && !is_array($values)) return false;
+
+            $sql = "";
+
+            $c = 0;
+
+            foreach ($values as  $value) {
+
+                /**
+                 * $value is a sub-array in array
+                 */
+                $d = ", ";
+
+                $sql .= intval($c) == (count($values) - 1) ? $value[0] . " " . $value[1] : $value[0] . " " . $value[1] . $d;
+
+                $c++;
+            }
+
+            return "ORDER BY " . $sql;
+        }
+
+        /**
+         * Task: convert array-Columns to string-Select-Columns
+         * @param array $columns
+         * @return string
+         */
+        public function parseSelect(array $columns) {
+
+            if(!isset($columns) && !is_array($columns)) return "";
+
+            if(count($columns) == 0) return " * ";
+
+            $sql = " ";
+
+            $c = 0;
+
+            foreach ($columns as  $column) {
+
+                $d = ", ";
+
+                $sql .= intval($c) == (count($columns) - 1) ? $column . " " : $column . $d;
+
+                $c++;
+            }
+
+            return $sql;
+        }
+
         //--------------------------------------New version--------------------------------------************************
 
         /**
@@ -374,15 +455,79 @@
         public function get() {
 
             if($this->table) {
-
-                return $this->selectData($this->table, false, false, false, true);
+    
+                return $this->selectData($this->table, $this->whereDataMultiCondition($this->where), false, true);
             }
 
             return false;
         }
 
         /**
+         * Set the columns to be selected.
+         *
+         * @param  array|mixed  $columns
+         * @return $this
+         */
+        public function select($columns = ['*']) {
+
+            $columns = is_array($columns) ? $columns : func_get_args();
+
+            foreach ($columns as $as => $column) {
+
+                $this->columns[] = $column;
+            }
+
+            return $this;
+        }
+
+        /**
+         * The query builder also provides an insert method that may be used to insert records into the database table. 
+         * The insert method accepts an array of column names and values
+         *
+         * @param  array  $values
+         * @return bool
+         */
+        public function insert(array $values) {
+
+            if (empty($values) || !is_array($values) || !isset($this->table)) return false;
+            
+            $status = $this->addBlockRunner($values, $this->table);
+
+            if(isset($status)) {
+
+                return true;
+            }
+
+            return false;
+        }
+
+        /**
+         * Insert a new record and get the value of the primary key.
+         * If the table has an auto-incrementing id, use the insertGetId method to insert a record and then retrieve the ID
+         *
+         * @param array $values
+         * @param string|null $sequence
+         * @return int
+         */
+        public function insertGetId(array $values, $sequence = null) {
+
+            if (empty($values) || !is_array($values) || !isset($this->table)) return false;
+            
+            $status = $this->addBlockRunner($values, $this->table);
+
+            if(isset($status)) {
+
+                return intval($status);
+            }
+
+            return 0;
+        }
+
+        /**
+         * Task: Add a basic where clause to the query.
          * 
+         * @param string $col
+         * @param string $value
          * @return $this
          */
         public function where($col = null, $value = null) {
@@ -392,14 +537,6 @@
             $subWhere = [$col, "=", $value, "AND"];
 
             array_push($this->where, $subWhere);
-
-            /**
-             * 
-             */
-            if(count($this->where) > 1) {
-
-                unset($this->where[count($this->where) - 1][3]);
-            }
 
             return $this;
         }
@@ -412,6 +549,10 @@
          *
          */
         public function orderBy($column, $direction = 'asc') {
+
+            $direction = strtolower($direction);
+
+            if(!in_array($direction, ['asc', 'desc'], true)) return false;
 
             array_push($this->orderBy, [
                 $column, 
@@ -426,7 +567,7 @@
          */
         public function first() {
 
-            return $this->selectData($this->table, false, $this->whereDataMultiCondition($this->where), false, false);
+            return $this->selectData($this->table, $this->whereDataMultiCondition($this->where), false, false);
         }
 
         /**
@@ -438,8 +579,10 @@
         public function value($col = null) {
 
             if(is_null($col)) return false;
+
+            $this->select($col);
             
-            return $this->selectData($this->table, [$col], $this->whereDataMultiCondition($this->where), false, false);
+            return $this->selectData($this->table, $this->whereDataMultiCondition($this->where), false, false);
         }
 
         /**
@@ -456,6 +599,28 @@
             if(!is_array($values)) return false;
 
             return $this->updateData($values, $this->table, $this->whereDataMultiCondition($this->where));
+        }
+
+        /**
+         * The query builder's delete method may be used to delete records from the table. 
+         * The delete method returns the number of affected rows. 
+         * You may constrain delete statements by adding "where" clauses before calling the delete method
+         *
+         * @param  mixed  $id
+         * @return int
+         */
+        public function delete($id = null) {
+
+            $where = null;
+
+            if(count($this->where) != 0) {
+
+                $where = $this->whereDataMultiCondition($this->where);
+            }
+
+            $status = $this->deleteData($this->table, $where);
+
+            return $status ? 1 : 0;
         }
         
         // ----------------------------------------------------------------Aggregates----------------------------------------------------------------
