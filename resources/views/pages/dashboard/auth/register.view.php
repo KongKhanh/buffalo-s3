@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>Dashboard-Login</title>
+        <title>Dashboard-Register</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- App favicon -->
         <link rel="shortcut icon" href="/public/dashboard/assets/images/favicon.ico">
@@ -28,20 +28,24 @@
                             <div class="card-body p-4">
                                 
                                 <div class="text-center w-75 m-auto">
-                                    <h4 class="text-dark-50 text-center pb-0 fw-bold text-uppercase">Trang Đăng Nhập</h4>
+                                    <h4 class="text-dark-50 text-center pb-0 fw-bold text-uppercase">Trang Đăng KÝ</h4>
                                     <p class="text-muted mb-4">VMS helps managers manage all activities on the your platform.</p>
                                 </div>
 
                                 <form action="#">
 
                                     <div class="mb-3">
-                                        <label for="emailaddress" class="form-label">Tên tài khoản</label>
-                                        <input class="form-control" type="email" id="emailaddress" required="" placeholder="Nhập tên tài khoản của bạn">
+                                        <label for="emailaddress" class="form-label">Tên tài khoản (*)</label>
+                                        <input class="form-control" type="text" id="" required="" placeholder="Nhập tên tài khoản của bạn">
                                     </div>
 
                                     <div class="mb-3">
-                                        <!-- <a href="pages-recoverpw.html" class="text-muted float-end"><small>Forgot your password?</small></a> -->
-                                        <label for="password" class="form-label">Mật khẩu</label>
+                                        <label for="emailaddress" class="form-label">Số điện thoại (*)</label>
+                                        <input class="form-control" type="text" id="" required="" placeholder="Nhập số điện thoại của bạn của bạn">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="password" class="form-label">Mật khẩu (*)</label>
                                         <div class="input-group input-group-merge">
                                             <input type="password" id="password" class="form-control" placeholder="Nhập mật khẩu của bạn">
                                             <div class="input-group-text" data-password="false">
@@ -50,15 +54,8 @@
                                         </div>
                                     </div>
 
-                                    <div class="mb-3 mb-3">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="checkbox-signin" checked>
-                                            <label class="form-check-label" for="checkbox-signin">Remember me</label>
-                                        </div>
-                                    </div>
-
                                     <div class="mb-3 mb-0 text-center">
-                                        <button class="w-100 btn btn-primary text-uppercase" type="submit"> Đăng Nhập </button>
+                                        <button class="w-100 btn btn-primary text-uppercase" type="submit"> Tạo Mới Tài Khoản</button>
                                     </div>
 
                                 </form>
@@ -68,7 +65,7 @@
 
                         <div class="row mt-3">
                             <div class="col-12 text-center">
-                                <p class="text-muted">Chưa có tài khoản? <a href="/dashboard/register" class="text-muted ms-1"><b>Đăng ký ngay</b></a></p>
+                                <p class="text-muted">Đã có tài khoản?<a href="/dashboard/login" class="text-muted ms-1"><b>Đăng nhập ngay</b></a></p>
                             </div> <!-- end col -->
                         </div>
                         <!-- end row -->

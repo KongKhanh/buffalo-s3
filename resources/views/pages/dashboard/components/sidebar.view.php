@@ -25,32 +25,46 @@
         <!--- Sidemenu -->
         <ul class="side-nav">
 
-            <li class="side-nav-title side-nav-item">Navigation</li>
-
             <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarDashboards" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">
-                    <i class="uil-home-alt"></i>
-                    <span class="badge bg-success float-end">4</span>
-                    <span> Dashboards </span>
+                <a data-bs-toggle="collapse" href="#KQVdHqELu2pzboq" aria-expanded="false" aria-controls="sidebarPages" class="side-nav-link">
+                    <i class="uil-copy-alt"></i>
+                    <span> Quản Trị Đăng Ký </span>
+                    <span class="menu-arrow"></span>
                 </a>
-                <div class="collapse" id="sidebarDashboards">
+                <div class="collapse" id="KQVdHqELu2pzboq">
                     <ul class="side-nav-second-level">
                         <li>
-                            <a href="dashboard-analytics.html">Analytics</a>
-                        </li>
-                        <li>
-                            <a href="dashboard-crm.html">CRM</a>
-                        </li>
-                        <li>
-                            <a href="index.html">Ecommerce</a>
-                        </li>
-                        <li>
-                            <a href="dashboard-projects.html">Projects</a>
+                            <a href="/dashboard/subscribers">Đăng ký online</a>
                         </li>
                     </ul>
                 </div>
             </li>
 
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#prF7T8BxUKCoUxs" aria-expanded="false" aria-controls="sidebarPages" class="side-nav-link">
+                    <i class="uil-copy-alt"></i>
+                    <span> Quản Trị Nội Dung </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="prF7T8BxUKCoUxs">
+                    <ul class="side-nav-second-level">
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#cFrEfPm948SYfuJ" aria-expanded="false" aria-controls="sidebarPagesError">
+                                <span> Quản lý tin tức </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="cFrEfPm948SYfuJ">
+                                <ul class="side-nav-third-level">
+                                    <li>
+                                        <a href="/dashboard/news">Danh sách tin tức</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+<!-- 
             <li class="side-nav-title side-nav-item">Apps</li>
 
             <li class="side-nav-item">
@@ -644,11 +658,11 @@
                         </li>
                     </ul>
                 </div>
-            </li>
+            </li> -->
         </ul>
 
         <!-- Help Box -->
-        <div class="help-box text-white text-center">
+        <!-- <div class="help-box text-white text-center">
             <a href="javascript: void(0);" class="float-end close-btn text-white">
                 <i class="mdi mdi-close"></i>
             </a>
@@ -656,7 +670,7 @@
             <h5 class="mt-3">Unlimited Access</h5>
             <p class="mb-3">Upgrade to plan to get access to unlimited reports</p>
             <a href="javascript: void(0);" class="btn btn-outline-light btn-sm">Upgrade</a>
-        </div>
+        </div> -->
         <!-- end Help Box -->
         <!-- End Sidebar -->
 
