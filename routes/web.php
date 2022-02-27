@@ -21,13 +21,15 @@ $router = new Router();
  * -----------------------------------------------------------Admin Dashboard-----------------------------------------------------------
  */
 $router->get('/dashboard/login', [Login::class, '__getAdminLogin']);
+$router->get('/dashboard/register', [Register::class, '__getAdminRegister']);
 $router->get('/dashboard/analytics', [AnalyticsPage::class, '__getAnalyticsPage']);
 
 
 // POST /dashboard
 
 $router->post('/dashboard/login', [Login::class, '__postAdminLogin']);
-$router->get('/dashboard/register', [Register::class, '__getAdminRegister']);
+$router->post('/dashboard/register', [Register::class, '__postAdminRegister']);
+
 
 $router->get('/dashboard/analytics', [AnalyticsPage::class, '__getAnalyticsPage']);
 $router->get('/dashboard/subscribers', [SubscriberPage::class, '__getSubscriberPage']);

@@ -32,25 +32,46 @@
                                     <p class="text-muted mb-4">VMS helps managers manage all activities on the your platform.</p>
                                 </div>
 
-                                <form action="#">
+                                <form action="/dashboard/register" method="post">
 
                                     <div class="mb-3">
                                         <label for="emailaddress" class="form-label">Tên tài khoản (*)</label>
-                                        <input class="form-control" type="text" id="" required="" placeholder="Nhập tên tài khoản của bạn">
+                                        <input class="form-control" type="text" name="admin_name" id="" required="" placeholder="Nhập tên tài khoản của bạn">
+                                        <?php 
+                                            if($errors['error_admin_name']){
+                                                echo <<<HTML
+                                                    <span class="text-danger">{$errors['error_admin_name']}</span>
+                                                HTML;
+                                            }
+                                        ?>
                                     </div>
 
                                     <div class="mb-3">
                                         <label for="emailaddress" class="form-label">Số điện thoại (*)</label>
-                                        <input class="form-control" type="text" id="" required="" placeholder="Nhập số điện thoại của bạn của bạn">
+                                        <input class="form-control" type="text" id="" name="admin_phone" required="" placeholder="Nhập số điện thoại của bạn của bạn">
+                                        <?php 
+                                            if($errors['error_admin_phone']){
+                                                echo <<<HTML
+                                                    <span class="text-danger">{$errors['error_admin_phone']}</span>
+                                                HTML;
+                                            }
+                                        ?>
                                     </div>
 
                                     <div class="mb-3">
                                         <label for="password" class="form-label">Mật khẩu (*)</label>
                                         <div class="input-group input-group-merge">
-                                            <input type="password" id="password" class="form-control" placeholder="Nhập mật khẩu của bạn">
+                                            <input type="password" id="password" name="admin_password" class="form-control" placeholder="Nhập mật khẩu của bạn">
                                             <div class="input-group-text" data-password="false">
                                                 <span class="password-eye"></span>
                                             </div>
+                                            <?php 
+                                            if($errors['error_admin_password']){
+                                                echo <<<HTML
+                                                    <span class="text-danger">{$errors['error_admin_password']}</span>
+                                                HTML;
+                                            }
+                                        ?>
                                         </div>
                                     </div>
 

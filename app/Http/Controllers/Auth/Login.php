@@ -15,7 +15,7 @@ class Login {
 
         $errors = [];
 
-        if(preg_match('/^[0-9]{10}+$/', $phoneAdmin)){ 
+        if(preg_match('/^(0)(1|3|5|7|8|9)+([0-9]{8})$/', $phoneAdmin)){ 
 
             $adminPhone = $phoneAdmin;
         }
