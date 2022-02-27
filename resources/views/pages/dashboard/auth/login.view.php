@@ -19,11 +19,11 @@
                         <div class="card">
 
                             <!-- Logo -->
-                            <div class="card-header pt-4 pb-4 text-center bg-primary">
+                            <!-- <div class="card-header pt-4 pb-4 text-center bg-primary">
                                 <a href="index.html">
                                     <span><img src="/public/dashboard/assets/images/logo.png" alt="" height="18"></span>
                                 </a>
-                            </div>
+                            </div> -->
 
                             <div class="card-body p-4">
                                 
@@ -32,22 +32,36 @@
                                     <p class="text-muted mb-4">VMS helps managers manage all activities on the your platform.</p>
                                 </div>
 
-                                <form action="#">
+                                <form action="/dashboard/login" method="post">
 
                                     <div class="mb-3">
-                                        <label for="emailaddress" class="form-label">Tên tài khoản</label>
-                                        <input class="form-control" type="email" id="emailaddress" required="" placeholder="Nhập tên tài khoản của bạn">
+                                        <label for="emailaddress" class="form-label">Số điện thoại (*)</label>
+                                        <input class="form-control" name="admin_phone" type="nụmber" id="emailaddress" required="" placeholder="Nhập số điện thoại của bạn">
+                                        <?php 
+                                            if($errors['error_admin_phone']){
+                                                echo <<<HTML
+                                                    <span class="text-danger">{$errors['error_admin_phone']}</span>
+                                                HTML;
+                                            }
+                                        ?>
                                     </div>
 
                                     <div class="mb-3">
                                         <!-- <a href="pages-recoverpw.html" class="text-muted float-end"><small>Forgot your password?</small></a> -->
-                                        <label for="password" class="form-label">Mật khẩu</label>
+                                        <label for="password" class="form-label">Mật khẩu (*)</label>
                                         <div class="input-group input-group-merge">
-                                            <input type="password" id="password" class="form-control" placeholder="Nhập mật khẩu của bạn">
+                                            <input type="password" id="password" name="admin_password" class="form-control" placeholder="Nhập mật khẩu của bạn">
                                             <div class="input-group-text" data-password="false">
                                                 <span class="password-eye"></span>
                                             </div>
                                         </div>
+                                        <?php 
+                                            if($errors['error_admin_password']){
+                                                echo <<<HTML
+                                                    <span class="text-danger">{$errors['error_admin_password']}</span>
+                                                HTML;
+                                            }
+                                        ?>
                                     </div>
 
                                     <div class="mb-3 mb-3">
@@ -55,6 +69,13 @@
                                             <input type="checkbox" class="form-check-input" id="checkbox-signin" checked>
                                             <label class="form-check-label" for="checkbox-signin">Remember me</label>
                                         </div>
+                                        <?php 
+                                            if($errors['error_admin_login']){
+                                                echo <<<HTML
+                                                    <span class="text-danger">{$errors['error_admin_login']}</span>
+                                                HTML;
+                                            }
+                                        ?>
                                     </div>
 
                                     <div class="mb-3 mb-0 text-center">
