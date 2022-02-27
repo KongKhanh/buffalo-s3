@@ -48,9 +48,8 @@ return array(
      * Build file
      */
     "app\\Http\\Controllers\\Controller"        => $baseDir . '/app/Http/Controllers/Controller.php',
-    "app\\Http\\Controllers\\Welcome"           => $baseDir . '/app/Http/Controllers/Welcome.php',
 
- 
+
     /**
      * ---------------------------Authentication
      */
@@ -60,5 +59,7 @@ return array(
     /**
      * ---------------------------Admin Dashboard
      */
-    "app\\Http\\Controllers\\Dashboard\\AnalyticsPage"                => $baseDir . '/app/Http/Controllers/Dashboard/AnalyticsPage.php',
+    "app\\Http\\Controllers\\Dashboard\\AnalyticsPage"                  => $baseDir . '/app/Http/Controllers/Dashboard/AnalyticsPage.php',
+    "app\\Http\\Controllers\\Dashboard\\SubscriberPage"                 => $baseDir . '/app/Http/Controllers/Dashboard/SubscriberPage.php',
+    "app\\Http\\Controllers\\Dashboard\\NewsPage"                       => $baseDir . '/app/Http/Controllers/Dashboard/NewsPage.php',
 );

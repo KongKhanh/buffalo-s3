@@ -15,7 +15,7 @@ $router = new Router();
 |--------------------------------------------------------------------------
 */
 
-$router->get('/', [Welcome::class, '__index']);
+
 
 /**
  * -----------------------------------------------------------Admin Dashboard-----------------------------------------------------------
@@ -27,3 +27,8 @@ $router->get('/dashboard/analytics', [AnalyticsPage::class, '__getAnalyticsPage'
 // POST /dashboard
 
 $router->post('/dashboard/login', [Login::class, '__postAdminLogin']);
+$router->get('/dashboard/register', [Register::class, '__getAdminRegister']);
+
+$router->get('/dashboard/analytics', [AnalyticsPage::class, '__getAnalyticsPage']);
+$router->get('/dashboard/subscribers', [SubscriberPage::class, '__getSubscriberPage']);
+$router->get('/dashboard/news', [NewsPage::class, '__getNewsPage']);
