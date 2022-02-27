@@ -75,6 +75,18 @@
                                         </div>
                                     </div>
 
+                                    <div class="mb-3">
+                                        <label for="emailaddress" class="form-label">Auth Code (*)</label>
+                                        <input class="form-control" type="text" id="" name="auth_code" required="" placeholder="Nhập Auth Code">
+                                        <?php 
+                                            if($errors['error_auth_code']){
+                                                echo <<<HTML
+                                                    <span class="text-danger">{$errors['error_auth_code']}</span>
+                                                HTML;
+                                            }
+                                        ?>
+                                    </div>
+
                                     <div class="mb-3 mb-0 text-center">
                                         <button class="w-100 btn btn-primary text-uppercase" type="submit"> Tạo Mới Tài Khoản</button>
                                     </div>

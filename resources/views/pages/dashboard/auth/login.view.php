@@ -29,7 +29,20 @@
                                 
                                 <div class="text-center w-75 m-auto">
                                     <h4 class="text-dark-50 text-center pb-0 fw-bold text-uppercase">Trang Đăng Nhập</h4>
-                                    <p class="text-muted mb-4">VMS helps managers manage all activities on the your platform.</p>
+                                    <?php
+                                    if($message){
+                                        echo
+                                        <<<HTML
+                                            <p class="text-success mb-4">{$message} </p>
+                                        HTML;  
+                                    } 
+                                    else{
+                                        echo
+                                        <<<HTML
+                                            <p class="text-muted mb-4">VMS helps managers manage all activities on the your platform.</p>
+                                        HTML;
+                                    }
+                                    ?>
                                 </div>
 
                                 <form action="/dashboard/login" method="post">
