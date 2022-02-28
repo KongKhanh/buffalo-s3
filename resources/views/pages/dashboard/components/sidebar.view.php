@@ -64,6 +64,24 @@
                     </ul>
                 </div>
             </li>
+
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#AQVdHqELu2pzboq" aria-expanded="false" aria-controls="sidebarPages" class="side-nav-link">
+                    <i class="uil-copy-alt"></i>
+                    <span> Theo Dõi Hoạt Động </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="AQVdHqELu2pzboq">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="/dashboard/activity-logs/users">Người dùng</a>
+                        </li>
+                        <li>
+                            <a href="/dashboard/activity-logs/admin">Người quản trị</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
 <!-- 
             <li class="side-nav-title side-nav-item">Apps</li>
 

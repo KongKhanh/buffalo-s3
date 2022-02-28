@@ -15,7 +15,23 @@ $router = new Router();
 |--------------------------------------------------------------------------
 */
 
+/**
+ * -----------------------------------------------------------Client Page-----------------------------------------------------------
+ */
+$router->get('/', function() {
 
+    echo "This is home page";
+});
+
+$router->get('/news-detail/{target}', function($target) {
+
+    echo "This is news-detail page -----" . $target;
+});
+
+$router->get('/about-us', function() {
+
+    echo "This is about us page";
+});
 
 /**
  * -----------------------------------------------------------Admin Dashboard-----------------------------------------------------------
@@ -25,8 +41,6 @@ $router->get('/dashboard/register', [Register::class, '__getAdminRegister']);
 $router->get('/dashboard/analytics', [AnalyticsPage::class, '__getAnalyticsPage']);
 
 
-// POST /dashboard
-
 $router->post('/dashboard/login', [Login::class, '__postAdminLogin']);
 $router->post('/dashboard/register', [Register::class, '__postAdminRegister']);
 
@@ -34,3 +48,10 @@ $router->post('/dashboard/register', [Register::class, '__postAdminRegister']);
 $router->get('/dashboard/analytics', [AnalyticsPage::class, '__getAnalyticsPage']);
 $router->get('/dashboard/subscribers', [SubscriberPage::class, '__getSubscriberPage']);
 $router->get('/dashboard/news', [NewsPage::class, '__getNewsPage']);
+$router->get('/dashboard/activity-logs/{target}', [ActivityLogsPage::class, '__getActivityLogsPage']);
+
+
+$router->get('/status/404-error', function() {
+
+    return view("pages/404_error.view.php");
+});

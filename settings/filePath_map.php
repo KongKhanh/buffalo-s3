@@ -62,4 +62,5 @@ return array(
     "app\\Http\\Controllers\\Dashboard\\AnalyticsPage"                  => $baseDir . '/app/Http/Controllers/Dashboard/AnalyticsPage.php',
     "app\\Http\\Controllers\\Dashboard\\SubscriberPage"                 => $baseDir . '/app/Http/Controllers/Dashboard/SubscriberPage.php',
     "app\\Http\\Controllers\\Dashboard\\NewsPage"                       => $baseDir . '/app/Http/Controllers/Dashboard/NewsPage.php',
+    "app\\Http\\Controllers\\Dashboard\\ActivityLogsPage"               => $baseDir . '/app/Http/Controllers/Dashboard/ActivityLogsPage.php',
 );
