@@ -38,7 +38,7 @@
                                         <label for="emailaddress" class="form-label">Tên tài khoản (*)</label>
                                         <input class="form-control" type="text" name="admin_name" id="" required="" placeholder="Nhập tên tài khoản của bạn">
                                         <?php 
-                                            if($errors['error_admin_name']){
+                                            if(isset($errors['error_admin_name'])){
                                                 echo <<<HTML
                                                     <span class="text-danger">{$errors['error_admin_name']}</span>
                                                 HTML;
@@ -50,7 +50,7 @@
                                         <label for="emailaddress" class="form-label">Số điện thoại (*)</label>
                                         <input class="form-control" type="text" id="" name="admin_phone" required="" placeholder="Nhập số điện thoại của bạn của bạn">
                                         <?php 
-                                            if($errors['error_admin_phone']){
+                                            if(isset($errors['error_admin_phone'])){
                                                 echo <<<HTML
                                                     <span class="text-danger">{$errors['error_admin_phone']}</span>
                                                 HTML;
@@ -66,7 +66,7 @@
                                                 <span class="password-eye"></span>
                                             </div>
                                             <?php 
-                                            if($errors['error_admin_password']){
+                                            if(isset($errors['error_admin_password'])){
                                                 echo <<<HTML
                                                     <span class="text-danger">{$errors['error_admin_password']}</span>
                                                 HTML;
@@ -79,7 +79,7 @@
                                         <label for="emailaddress" class="form-label">Auth Code (*)</label>
                                         <input class="form-control" type="text" id="" name="auth_code" required="" placeholder="Nhập Auth Code">
                                         <?php 
-                                            if($errors['error_auth_code']){
+                                            if(isset($errors['error_auth_code'])){
                                                 echo <<<HTML
                                                     <span class="text-danger">{$errors['error_auth_code']}</span>
                                                 HTML;
