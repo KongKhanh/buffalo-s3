@@ -76,6 +76,5 @@ class Register {
                 'errors' => $errors
             ]);
         }
-          return view('pages/dashboard/auth/register.view.php');
     }
 }

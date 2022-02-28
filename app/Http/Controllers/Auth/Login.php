@@ -15,38 +15,29 @@ class Login {
 
         $errors = [];
 
-        if(preg_match('/^(0)(1|3|5|7|8|9)+([0-9]{8})$/', $phoneAdmin)){ 
-
-            $adminPhone = $phoneAdmin;
-        }
-        else{
+        if(!preg_match('/^(0)(1|3|5|7|8|9)+([0-9]{8})$/', $phoneAdmin)){ 
 
             $errors = array_merge($errors, [
                 "error_admin_phone" => "Số điện thoại không đúng định dạng"
             ]);
         }
-        if(preg_match('/^[a-z0-9_-]{4,32}$/', $passwordAdmin) && is_string($passwordAdmin)){ 
 
-            $adminPassword = $passwordAdmin;
-        }
-        else{
+        if(!preg_match('/^[a-z0-9_-]{4,32}$/', $passwordAdmin) && is_string($passwordAdmin)){ 
 
             $errors = array_merge($errors, [
                 "error_admin_password" => "Mật khẩu không đúng định dạng"
             ]);
-
         }
-
-        if(isset($adminPhone) && isset($adminPassword)){
+        if(count($errors) == 0){
 
             $admin =  DB::table('administrator')
-            ->where('admin_phone',$adminPhone)
-            ->where('admin_password',$adminPassword)
+            ->where('admin_phone',$phoneAdmin)
+            ->where('admin_password',$passwordAdmin)
             ->first();
 
             if($admin){
 
-                Cookie::queue('access_token',$admin['admin_id'],(24*60*30));
+                Session::set('access_token',$admin['admin_id']);
                 redirect('/dashboard/analytics');
             }
             else{
@@ -68,6 +59,5 @@ class Login {
                 'errors' => $errors
             ]);
         }
-        return view('pages/dashboard/auth/login.view.php');
     }
 }
