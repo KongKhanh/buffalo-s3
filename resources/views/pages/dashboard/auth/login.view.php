@@ -30,7 +30,7 @@
                                 <div class="text-center w-75 m-auto">
                                     <h4 class="text-dark-50 text-center pb-0 fw-bold text-uppercase">Trang Đăng Nhập</h4>
                                     <?php
-                                    if($message){
+                                    if(isset($message)){
                                         echo
                                         <<<HTML
                                             <p class="text-success mb-4">{$message} </p>
@@ -51,7 +51,7 @@
                                         <label for="emailaddress" class="form-label">Số điện thoại (*)</label>
                                         <input class="form-control" name="admin_phone" type="nụmber" id="emailaddress" required="" placeholder="Nhập số điện thoại của bạn">
                                         <?php 
-                                            if($errors['error_admin_phone']){
+                                            if(isset($errors['error_admin_phone'])){
                                                 echo <<<HTML
                                                     <span class="text-danger">{$errors['error_admin_phone']}</span>
                                                 HTML;
@@ -69,7 +69,7 @@
                                             </div>
                                         </div>
                                         <?php 
-                                            if($errors['error_admin_password']){
+                                            if(isset($errors['error_admin_password'])){
                                                 echo <<<HTML
                                                     <span class="text-danger">{$errors['error_admin_password']}</span>
                                                 HTML;
@@ -79,11 +79,11 @@
 
                                     <div class="mb-3 mb-3">
                                         <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="checkbox-signin" checked>
+                                            <input type="checkbox" class="form-check-input" id="checkbox-signin">
                                             <label class="form-check-label" for="checkbox-signin">Remember me</label>
                                         </div>
                                         <?php 
-                                            if($errors['error_admin_login']){
+                                            if(isset($errors['error_admin_login'])){
                                                 echo <<<HTML
                                                     <span class="text-danger">{$errors['error_admin_login']}</span>
                                                 HTML;
