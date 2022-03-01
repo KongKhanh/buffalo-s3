@@ -18,20 +18,13 @@ $router = new Router();
 /**
  * -----------------------------------------------------------Client Page-----------------------------------------------------------
  */
-$router->get('/', function() {
+$router->get('/', [HomePage::class, '__getHomePage']);
 
-    echo "This is home page";
-});
+$router->get('/news', [NewsPageClient::class, '__getNewsPageClient']);
 
-$router->get('/news-detail/{target}', function($target) {
+$router->get('/news-detail/{target}',[NewsPageClient::class, '__getNewsDetailPageClient']);
 
-    echo "This is news-detail page -----" . $target;
-});
-
-$router->get('/about-us', function() {
-
-    echo "This is about us page";
-});
+$router->get('/about-us', [HomePage::class, '__getAboutPage']);
 
 /**
  * -----------------------------------------------------------Admin Dashboard-----------------------------------------------------------

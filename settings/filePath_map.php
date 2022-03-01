@@ -45,10 +45,15 @@ return array(
     "Support\\Crypt"                            => $baseDir . '/Support/Crypt.php',
 
     /**
-     * Build file
+     * Builder file-----------------------------------------------------------------------------------------
      */
     "app\\Http\\Controllers\\Controller"        => $baseDir . '/app/Http/Controllers/Controller.php',
 
+    /**
+     * Client Page
+     */
+    "app\\Http\\Controllers\\Client\\HomePage"                  => $baseDir . '/app/Http/Controllers/Client/HomePage.php',
+    "app\\Http\\Controllers\\Client\\NewsPageClient"            => $baseDir . '/app/Http/Controllers/Client/NewsPageClient.php',
 
     /**
      * ---------------------------Authentication
