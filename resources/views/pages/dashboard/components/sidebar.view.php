@@ -50,13 +50,26 @@
                     <ul class="side-nav-second-level">
                         <li class="side-nav-item">
                             <a data-bs-toggle="collapse" href="#cFrEfPm948SYfuJ" aria-expanded="false" aria-controls="sidebarPagesError">
-                                <span> Quản lý tin tức </span>
+                                <span> Tin tức </span>
                                 <span class="menu-arrow"></span>
                             </a>
                             <div class="collapse" id="cFrEfPm948SYfuJ">
                                 <ul class="side-nav-third-level">
                                     <li>
                                         <a href="/dashboard/news">Danh sách tin tức</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#MearUPYnQJtQu3e" aria-expanded="false" aria-controls="sidebarPagesError">
+                                <span> Ngành đào tạo </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="MearUPYnQJtQu3e">
+                                <ul class="side-nav-third-level">
+                                    <li>
+                                        <a href="/dashboard/majors">Các ngành đào tạo</a>
                                     </li>
                                 </ul>
                             </div>

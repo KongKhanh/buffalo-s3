@@ -30,7 +30,17 @@
 
         <div class="content-page">
 
-            <?php View::__template()->__yield('content'); ?>
+            <div class="content">
+
+                <!-- Topbar Start -->
+                <?php
+                    includeFile('pages/dashboard/components/navbar.view.php');
+                ?>
+                <!-- end Topbar -->
+
+                <?php View::__template()->__yield('content'); ?>
+
+            </div>
 
             <!-- Footer Start -->
             <footer class="footer">
