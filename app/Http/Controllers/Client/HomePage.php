@@ -11,5 +11,10 @@ class HomePage {
 
         return view('pages/client/about_us.view.php');
     }
+
+    public function __getSubscriberForm() {
+
+        return view('pages/client/components/subscriber_form.view.php'); 
+    }
 }
 

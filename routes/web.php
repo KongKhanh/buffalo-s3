@@ -26,6 +26,8 @@ $router->get('/news-detail/{target}',[NewsPageClient::class, '__getNewsDetailPag
 
 $router->get('/about-us', [HomePage::class, '__getAboutPage']);
 
+$router->get('/subscriber-form', [HomePage::class, '__getSubscriberForm']);
+
 /**
  * -----------------------------------------------------------Admin Dashboard-----------------------------------------------------------
  */
