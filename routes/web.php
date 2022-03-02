@@ -26,6 +26,8 @@ $router->get('/news-detail/{target}',[NewsPageClient::class, '__getNewsDetailPag
 
 $router->get('/about-us', [HomePage::class, '__getAboutPage']);
 
+$router->get('/subscriber-form', [HomePage::class, '__getSubscriberForm']);
+
 /**
  * -----------------------------------------------------------Admin Dashboard-----------------------------------------------------------
  */
@@ -42,6 +44,13 @@ $router->get('/dashboard/analytics', [AnalyticsPage::class, '__getAnalyticsPage'
 $router->get('/dashboard/subscribers', [SubscriberPage::class, '__getSubscriberPage']);
 $router->get('/dashboard/news', [NewsPage::class, '__getNewsPage']);
 $router->get('/dashboard/activity-logs/{target}', [ActivityLogsPage::class, '__getActivityLogsPage']);
+
+
+/**
+ * -----------------------------------------------------------API-----------------------------------------------------------
+ */
+$router->post('/subscriber-form', [SubscriberPage::class, '__postSubscriberPage']);
+
 
 
 $router->get('/status/404-error', function() {

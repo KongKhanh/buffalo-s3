@@ -11,5 +11,14 @@ class HomePage {
 
         return view('pages/client/about_us.view.php');
     }
+
+    public function __getSubscriberForm() {
+
+        $trainingTypeList = DB::table('level_of_training')->get();
+
+        return view('pages/client/components/subscriber_form.view.php', [
+            'trainingTypeList' => $trainingTypeList
+        ]); 
+    }
 }
 
