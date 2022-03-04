@@ -22,7 +22,7 @@ class Login {
             ]);
         }
 
-        if(!preg_match('/^[a-z0-9_-]{4,32}$/', $passwordAdmin) && is_string($passwordAdmin)){ 
+        if(!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/',$passwordAdmin)){ 
 
             $errors = array_merge($errors, [
                 "error_admin_password" => "Mật khẩu không đúng định dạng"
@@ -31,13 +31,13 @@ class Login {
         if(count($errors) == 0){
 
             $admin =  DB::table('administrator')
-            ->where('admin_phone',$phoneAdmin)
-            ->where('admin_password',$passwordAdmin)
+            ->where('admin_phone', $phoneAdmin)
+            ->where('admin_password', Crypt::encryptString($passwordAdmin))
             ->first();
 
             if($admin){
 
-                Session::set('access_token',$admin['admin_id']);
+                Session::set('access_token', Crypt::encryptString($admin['admin_id']));
                 redirect('/dashboard/analytics');
             }
             else{

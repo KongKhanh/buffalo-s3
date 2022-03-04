@@ -4,7 +4,11 @@ class NewsPage {
 
     public function __getNewsPage() {
 
-        return view("pages/dashboard/news.view.php");
+        $newsList = DB::table('news')->get();
+
+        return view("pages/dashboard/news.view.php", [
+            "newsList" => $newsList
+        ]);
     }
 
     public function __getAddForm() {

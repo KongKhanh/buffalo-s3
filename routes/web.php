@@ -72,6 +72,16 @@ $router->get('/dashboard/majors', [MajorsPage::class, '__majorsPage']);
 
 
 /**
+ * -----------------------------------------------------------API-----------------------------------------------------------
+ */
+$router->post('/subscriber-form', [SubscriberPage::class, '__postSubscriberPage']);
+
+
+
+// $router->get('/status/404-error', function(){};
+
+
+/**
  * -------------------ERROR Plugin-------------------
  */
 $router->get('/error-status/404-error', [ERRORPage::class, '__get404Page']);

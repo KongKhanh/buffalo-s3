@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- JQuery -->
     <script src="/public/client/assets/lib/jquery-3.4.1.min.js"></script>
+    <script src="/public/client/assets/js/app.js"></script>
 </head>
 <body>
 
@@ -69,7 +70,7 @@
         <!-- #endregion News -->
         <section class="form-container container">
             <section class="register-block">
-                <form action="" id="registerForm" method="post">
+                <form action="" id="registerForm" method="POST">
                     <article class="base-info">
                         <h4 class="register-title">
                             Thông tin cá nhân
@@ -77,44 +78,79 @@
                         <article class="input-block">
                             <label for="fullName">Họ và tên</label>
                             <div class="input-box">
-                                <input type="text" name="fullName" id="fullName" placeholder="Họ và tên...">
+                                <input type="text" name="subscriber_name" id="fullName" placeholder="Họ và tên...">
                                 <i class="fas fa-exclamation-circle" style="color: red;"></i>
+                                <?php 
+                                    if(isset($errors['error_admin_name'])){
+                                        echo <<<HTML
+                                            <span class="text-danger" style="color: red;">{$errors['error_admin_name']}</span>
+                                        HTML;
+                                    }
+                                ?>
                             </div>
                             <p class="input-error">Vui lòng nhập họ tên</p>
                         </article>
                         <article class="input-block">
                             <label for="dateOfBirth">Ngày sinh</label>
                             <div class="input-box">
-                                <input type="date" name="dateOfBirth" id="dateOfBirth" placeholder="dd/mm/yyyy">
+                                <input type="date" name="subscriber_dob" id="dateOfBirth" placeholder="dd/mm/yyyy">
                                 <i class="fas fa-exclamation-circle" style="color: red;"></i>
+                                <?php 
+                                    if(isset($errors['error_admin_dob'])){
+                                        echo <<<HTML
+                                            <span class="text-danger" style="color: red;">{$errors['error_admin_dob']}</span>
+                                        HTML;
+                                    }
+                                ?>
                             </div>
                             <p class="input-error">Vui lòng nhập lại ngày sinh</p>
                         </article>
                         <article class="input-block">
                             <label for="phoneNumber">Số điện thoại</label>
                             <div class="input-box">
-                                <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Số điện thoại...">
+                                <input type="number" name="subscriber_phone" id="phoneNumber" placeholder="Số điện thoại...">
                                 <i class="fas fa-exclamation-circle" style="color: red;"></i>
+                                <?php 
+                                    if(isset($errors['error_admin_phone'])){
+                                        echo <<<HTML
+                                            <span class="text-danger" style="color: red;">{$errors['error_admin_phone']}</span>
+                                        HTML;
+                                    }
+                                ?>
                             </div>
                             <p class="input-error">Vui lòng nhập lại số điện thoại</p>
                         </article>
                         <article class="input-block">
                             <label for="email">Email</label>
                             <div class="input-box">
-                                <input type="text" name="email" id="email" placeholder="Email...">
+                                <input type="text" name="subscriber_email" id="email" placeholder="Email...">
                                 <i class="fas fa-exclamation-circle" style="color: red;"></i>
+                                <?php 
+                                    if(isset($errors['error_admin_email'])){
+                                        echo <<<HTML
+                                            <span class="text-danger" style="color: red;">{$errors['error_admin_email']}</span>
+                                        HTML;
+                                    }
+                                ?>
                             </div>
                             <p class="input-error">Vui lòng nhập lại Email</p>
                         </article>
                         <article class="input-block">
                             <label for="address">Địa chỉ</label>
                             <div class="input-box">
-                                <input type="text" name="address" id="address" placeholder="Địa chỉ liên hệ...">
+                                <input type="text" name="subscriber_address" id="address" placeholder="Địa chỉ liên hệ...">
                                 <i class="fas fa-exclamation-circle" style="color: red;"></i>
+                                <?php 
+                                    if(isset($errors['error_admin_address'])){
+                                        echo <<<HTML
+                                            <span class="text-danger" style="color: red;">{$errors['error_admin_address']}</span>
+                                        HTML;
+                                    }
+                                ?>
                             </div>
                             <p class="input-error">Vui lòng nhập lại địa chỉ</p>
                         </article>
-                        <article class="input-block">
+                        <!-- <article class="input-block">
                             <label for="education">Trình độ học vấn</label>
                             <div class="input-box">
                                 <select name="education" id="education">
@@ -125,7 +161,7 @@
                                 <i class="fas fa-exclamation-circle" style="color: red;"></i>
                             </div>
                             <p class="input-error">Vui lòng chọn lại trình độ học vấn</p>
-                        </article>
+                        </article> -->
                     </article>
                     <article class="other-info">
                         <h4 class="register-title">
@@ -134,10 +170,18 @@
                         <article class="input-block">
                             <label for="trainingSystem">Hệ đào tạo</label>
                             <div class="input-box">
-                                <select name="trainingSystem" id="trainingSystem">
-                                    <option value="mid" selected>Trung cấp chuyên nghiệp</option>
-                                    <option value="short">Khóa ngắn hạn</option>
-                                    <option value="thematic">Khác</option>
+                                <select name="subscriber_lot_id" id="trainingSystem">
+                                <option value="" disabled selected >Chọn hệ đào tạo</option>
+                                    <?php 
+                                        if($trainingTypeList){
+                                            foreach($trainingTypeList as $typeTraining){
+                                                echo
+                                                <<< HTML
+                                                    <option value="{$typeTraining['lot_id']}">{$typeTraining['lot_name']}</option>
+                                                HTML;
+                                            }
+                                        }
+                                    ?>
                                 </select>
                                 <i class="fas fa-exclamation-circle" style="color: red;"></i>
                             </div>
@@ -146,7 +190,7 @@
                         <article class="input-block">
                             <label for="course">Ngành đào tạo</label>
                             <div class="input-box">
-                                <select name="course" id="course">
+                                <select name="subscriber_mjr_id" id="course">
                                     <option value="1" selected>Quản lý nhà đất</option>
                                     <option value="2">Quản lý đất đai</option>
                                     <option value="3">Chăn nuôi - Thú y</option>
@@ -166,9 +210,10 @@
                         </article>
                     </article>
                     <article class="register--btn">
-                        <button id="registerSubmit" name="registerSubmit">
+                        <!-- <button id="registerSubmit" name="registerSubmit">
                             Đăng ký
-                        </button>
+                        </button> -->
+                        <input id="registerSubmit" name="registerSubmit" value="Đăng ký" type="submit">
                     </article>
                 </form>
             </section>

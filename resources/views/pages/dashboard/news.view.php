@@ -48,6 +48,7 @@
         </div> -->
     </div> 
     <!-- end row-->
+<<<<<<< HEAD
 
     <?php 
     
@@ -335,211 +336,80 @@
     </div>
     <!-- end row-->
 
+=======
+>>>>>>> 136aca39fbe9bad5ccfd20b47b7e507aaf049ffd
     <div class="row">
-        <div class="col-md-6 col-xxl-3">
+    <?php 
+        foreach($newsList as $news){
+            echo <<<HTML
+                <div class="col-lg-6 col-xxl-3">
             <!-- project card -->
-            <div class="card d-block">
-                <!-- project-thumbnail -->
-                <img class="card-img-top" src="/public/dashboard/assets/images/projects/project-1.jpg" alt="project image cap">
-                <div class="card-img-overlay">
-                    <div class="badge bg-secondary text-light p-1">Ongoing</div>
+                    <div class="card d-block">
+                        <div class="card-body">
+                            <div class="dropdown card-widgets">
+                                <a href="#" class="dropdown-toggle arrow-none" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="dripicons-dots-3"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-pencil me-1"></i>Edit</a>
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-delete me-1"></i>Delete</a>
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-email-outline me-1"></i>Invite</a>
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-exit-to-app me-1"></i>Leave</a>
+                                </div>
+                            </div>
+                            <!-- project title-->
+                            <h4 class="mt-0">
+                                <a href="apps-projects-details.html" class="text-title">{$news['news_title']}</a>
+                            </h4>
+                            <div class="badge bg-success mb-3">Finished</div>
+                            <p class="text-muted font-13 mb-3">{$news['news_short_content']}...<a href="javascript:void(0);" class="fw-bold text-muted">view more</a>
+                            </p>
+                            <!-- project detail-->
+                            <p class="mb-1">
+                                <span class="pe-2 text-nowrap mb-2 d-inline-block">
+                                    <i class="mdi mdi-format-list-bulleted-type text-muted"></i>
+                                    <b>21</b> Tasks
+                                </span>
+                                <span class="text-nowrap mb-2 d-inline-block">
+                                    <i class="mdi mdi-comment-multiple-outline text-muted"></i>
+                                    <b>741</b> Comments
+                                </span>
+                            </p>
+                            <div id="tooltip-container">
+                                <a href="javascript:void(0);" data-bs-container="#tooltip-container" data-bs-toggle="tooltip" data-bs-placement="top" title="Mat Helme" class="d-inline-block">
+                                    <img src="/public/dashboard/assets/images/users/avatar-6.jpg" class="rounded-circle avatar-xs" alt="friend">
+                                </a>
+                                <a href="javascript:void(0);" data-bs-container="#tooltip-container" data-bs-toggle="tooltip" data-bs-placement="top" title="Michael Zenaty" class="d-inline-block">
+                                    <img src="/public/dashboard/assets/images/users/avatar-7.jpg" class="rounded-circle avatar-xs" alt="friend">
+                                </a>
+                                <a href="javascript:void(0);" data-bs-container="#tooltip-container" data-bs-toggle="tooltip" data-bs-placement="top" title="James Anderson" class="d-inline-block">
+                                    <img src="/public/dashboard/assets/images/users/avatar-8.jpg" class="rounded-circle avatar-xs" alt="friend">
+                                </a>
+                                <a href="javascript:void(0);" class="d-inline-block text-muted fw-bold ms-2">
+                                    +7 more
+                                </a>
+                            </div>
+                        </div> <!-- end card-body-->
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item p-3">
+                                <!-- project progress-->
+                                <p class="mb-2 fw-bold">Progress <span class="float-end">100%</span></p>
+                                <div class="progress progress-sm">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                                    </div><!-- /.progress-bar -->
+                                </div><!-- /.progress -->
+                            </li>
+                        </ul>
+                    </div> <!-- end card-->
                 </div>
-
-                <div class="card-body position-relative">
-                    <!-- project title-->
-                    <h4 class="mt-0">
-                        <a href="apps-projects-details.html" class="text-title">Company logo design</a>
-                    </h4>
-
-                    <!-- project detail-->
-                    <p class="mb-3">
-                        <span class="pe-2 text-nowrap">
-                            <i class="mdi mdi-format-list-bulleted-type"></i>
-                            <b>3</b> Tasks
-                        </span>
-                        <span class="text-nowrap">
-                            <i class="mdi mdi-comment-multiple-outline"></i>
-                            <b>104</b> Comments
-                        </span>
-                    </p>
-                    <div class="mb-3" id="tooltip-container4">
-                        <a href="javascript:void(0);" data-bs-container="#tooltip-container4" data-bs-toggle="tooltip" data-bs-placement="top" title="Mat Helme" class="d-inline-block">
-                            <img src="/public/dashboard/assets/images/users/avatar-3.jpg" class="rounded-circle avatar-xs" alt="friend">
-                        </a>
-
-                        <a href="javascript:void(0);" data-bs-container="#tooltip-container4" data-bs-toggle="tooltip" data-bs-placement="top" title="Michael Zenaty" class="d-inline-block">
-                            <img src="/public/dashboard/assets/images/users/avatar-5.jpg" class="rounded-circle avatar-xs" alt="friend">
-                        </a>
-
-                        <a href="javascript:void(0);" data-bs-container="#tooltip-container4" data-bs-toggle="tooltip" data-bs-placement="top" title="James Anderson" class="d-inline-block">
-                            <img src="/public/dashboard/assets/images/users/avatar-9.jpg" class="rounded-circle avatar-xs" alt="friend">
-                        </a>
-                    </div>
-
-                    <!-- project progress-->
-                    <p class="mb-2 fw-bold">Progress <span class="float-end">45%</span></p>
-                    <div class="progress progress-sm">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%;">
-                        </div><!-- /.progress-bar -->
-                    </div><!-- /.progress -->
-                </div> <!-- end card-body-->
-            </div> <!-- end card-->
-        </div> <!-- end col -->
-
-        <div class="col-md-6 col-xxl-3">
-            <!-- project card -->
-            <div class="card d-block">
-                <!-- project-thumbnail -->
-                <img class="card-img-top" src="/public/dashboard/assets/images/projects/project-2.jpg" alt="project image cap">
-                <div class="card-img-overlay">
-                    <div class="badge bg-success p-1">Finished</div>
-                </div>
-
-                <div class="card-body position-relative">
-                    <!-- project title-->
-                    <h4 class="mt-0">
-                        <a href="apps-projects-details.html" class="text-title">Landing page design - Home</a>
-                    </h4>
-
-                    <!-- project detail-->
-                    <p class="mb-3">
-                        <span class="pe-2 text-nowrap">
-                            <i class="mdi mdi-format-list-bulleted-type"></i>
-                            <b>11</b> Tasks
-                        </span>
-                        <span class="text-nowrap">
-                            <i class="mdi mdi-comment-multiple-outline"></i>
-                            <b>254</b> Comments
-                        </span>
-                    </p>
-                    <div class="mb-3" id="tooltip-container5">
-                        <a href="javascript:void(0);" data-bs-container="#tooltip-container5" data-bs-toggle="tooltip" data-bs-placement="top" title="Mat Helme" class="d-inline-block">
-                            <img src="/public/dashboard/assets/images/users/avatar-10.jpg" class="rounded-circle avatar-xs" alt="friend">
-                        </a>
-
-                        <a href="javascript:void(0);" data-bs-container="#tooltip-container5" data-bs-toggle="tooltip" data-bs-placement="top" title="Michael Zenaty" class="d-inline-block">
-                            <img src="/public/dashboard/assets/images/users/avatar-5.jpg" class="rounded-circle avatar-xs" alt="friend">
-                        </a>
-
-                        <a href="javascript:void(0);" data-bs-container="#tooltip-container5" data-bs-toggle="tooltip" data-bs-placement="top" title="James Anderson" class="d-inline-block">
-                            <img src="/public/dashboard/assets/images/users/avatar-7.jpg" class="rounded-circle avatar-xs" alt="friend">
-                        </a>
-                        <a href="javascript:void(0);" class="d-inline-block text-muted fw-bold ms-2">
-                            +2 more
-                        </a>
-                    </div>
-
-                    <!-- project progress-->
-                    <p class="mb-2 fw-bold">Progress <span class="float-end">100%</span></p>
-                    <div class="progress progress-sm">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-                        </div><!-- /.progress-bar -->
-                    </div><!-- /.progress -->
-                </div> <!-- end card-body-->
-            </div> <!-- end card-->
-        </div> <!-- end col -->
-
-        <div class="col-md-6 col-xxl-3">
-            <!-- project card -->
-            <div class="card d-block">
-                <!-- project-thumbnail -->
-                <img class="card-img-top" src="/public/dashboard/assets/images/projects/project-3.jpg" alt="project image cap">
-                <div class="card-img-overlay">
-                    <div class="badge bg-secondary text-light p-1">Ongoing</div>
-                </div>
-
-                <div class="card-body position-relative">
-                    <!-- project title-->
-                    <h4 class="mt-0">
-                        <a href="apps-projects-details.html" class="text-title">Product page redesign</a>
-                    </h4>
-
-                    <!-- project detail-->
-                    <p class="mb-3">
-                        <span class="pe-2 text-nowrap">
-                            <i class="mdi mdi-format-list-bulleted-type"></i>
-                            <b>21</b> Tasks
-                        </span>
-                        <span class="text-nowrap">
-                            <i class="mdi mdi-comment-multiple-outline"></i>
-                            <b>668</b> Comments
-                        </span>
-                    </p>
-                    <div class="mb-3" id="tooltip-container6">
-                        <a href="javascript:void(0);" data-bs-container="#tooltip-container6" data-bs-toggle="tooltip" data-bs-placement="top" title="Mat Helme" class="d-inline-block">
-                            <img src="/public/dashboard/assets/images/users/avatar-6.jpg" class="rounded-circle avatar-xs" alt="friend">
-                        </a>
-
-                        <a href="javascript:void(0);" data-bs-container="#tooltip-container6" data-bs-toggle="tooltip" data-bs-placement="top" title="Michael Zenaty" class="d-inline-block">
-                            <img src="/public/dashboard/assets/images/users/avatar-7.jpg" class="rounded-circle avatar-xs" alt="friend">
-                        </a>
-
-                        <a href="javascript:void(0);" data-bs-container="#tooltip-container6" data-bs-toggle="tooltip" data-bs-placement="top" title="James Anderson" class="d-inline-block">
-                            <img src="/public/dashboard/assets/images/users/avatar-8.jpg" class="rounded-circle avatar-xs" alt="friend">
-                        </a>
-                        <a href="javascript:void(0);" class="d-inline-block text-muted fw-bold ms-2">
-                            +5 more
-                        </a>
-                    </div>
-
-                    <!-- project progress-->
-                    <p class="mb-2 fw-bold">Progress <span class="float-end">71%</span></p>
-                    <div class="progress progress-sm">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="71" aria-valuemin="0" aria-valuemax="100" style="width: 71%;">
-                        </div><!-- /.progress-bar -->
-                    </div><!-- /.progress -->
-                </div> <!-- end card-body-->
-            </div> <!-- end card-->
-        </div> <!-- end col -->
-
-        <div class="col-md-6 col-xxl-3">
-            <!-- project card -->
-            <div class="card d-block">
-                <!-- project-thumbnail -->
-                <img class="card-img-top" src="/public/dashboard/assets/images/projects/project-4.jpg" alt="project image cap">
-                <div class="card-img-overlay">
-                    <div class="badge bg-secondary text-light p-1">Ongoing</div>
-                </div>
-
-                <div class="card-body position-relative">
-                    <!-- project title-->
-                    <h4 class="mt-0">
-                        <a href="apps-projects-details.html" class="text-title">Coffee detail page - Main Page</a>
-                    </h4>
-
-                    <!-- project detail-->
-                    <p class="mb-3">
-                        <span class="pe-2 text-nowrap">
-                            <i class="mdi mdi-format-list-bulleted-type"></i>
-                            <b>18</b> Tasks
-                        </span>
-                        <span class="text-nowrap">
-                            <i class="mdi mdi-comment-multiple-outline"></i>
-                            <b>259</b> Comments
-                        </span>
-                    </p>
-                    <div class="mb-3" id="tooltip-container7">
-                        <a href="javascript:void(0);" data-bs-container="#tooltip-container7" data-bs-toggle="tooltip" data-bs-placement="top" title="Mat Helme" class="d-inline-block">
-                            <img src="/public/dashboard/assets/images/users/avatar-2.jpg" class="rounded-circle avatar-xs" alt="friend">
-                        </a>
-
-                        <a href="javascript:void(0);" data-bs-container="#tooltip-container7" data-bs-toggle="tooltip" data-bs-placement="top" title="Michael Zenaty" class="d-inline-block">
-                            <img src="/public/dashboard/assets/images/users/avatar-3.jpg" class="rounded-circle avatar-xs" alt="friend">
-                        </a>
-                    </div>
-
-                    <!-- project progress-->
-                    <p class="mb-2 fw-bold">Progress <span class="float-end">52%</span></p>
-                    <div class="progress progress-sm">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="52" aria-valuemin="0" aria-valuemax="100" style="width: 52%;">
-                        </div><!-- /.progress-bar -->
-                    </div><!-- /.progress -->
-                </div> <!-- end card-body-->
-            </div> <!-- end card-->
-        </div> <!-- end col -->
+            HTML;
+        }
+    ?>
     </div>
-    <!-- end row-->
-    
 </div> 
 <!-- container -->
 

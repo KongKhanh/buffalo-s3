@@ -7,7 +7,7 @@ class NewsPageClient {
      * @return View
      */
     public function __getNewsPageClient() {
-
+        
         return view('pages/client/news.view.php');
     }
 
