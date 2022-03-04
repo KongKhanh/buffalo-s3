@@ -68,7 +68,7 @@ $router->get('/dashboard/activity-logs/{target}', [ActivityLogsPage::class, '__g
 $router->get('/dashboard/majors', [MajorsPage::class, '__majorsPage']);
 
 
-<<<<<<< HEAD
+
 /**
  * -----------------------------------------------------------API-----------------------------------------------------------
  */
@@ -76,9 +76,8 @@ $router->post('/subscriber-form', [SubscriberPage::class, '__postSubscriberPage'
 
 
 
-$router->get('/status/404-error', function() {
-=======
->>>>>>> 77532ec5d3515fa663c1a4a6ff6af630e88a7093
+// $router->get('/status/404-error', function(){};
+
 
 /**
  * -------------------ERROR Plugin-------------------
