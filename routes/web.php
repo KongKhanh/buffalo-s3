@@ -57,6 +57,8 @@ $router->get('/dashboard/subscribers', [SubscriberPage::class, '__getSubscriberP
 $router->get('/dashboard/news', [NewsPage::class, '__getNewsPage']);
 $router->get('/dashboard/news/create',[NewsPage::class, '__getAddForm']);
 
+$router->post('/dashboard/news/create',[NewsPage::class, '__postAddForm']);
+
 /**
  * -------------------Logs Plugin-------------------
  */

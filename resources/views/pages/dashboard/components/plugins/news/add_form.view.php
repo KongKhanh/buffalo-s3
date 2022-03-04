@@ -33,6 +33,7 @@
                             </a>
                         </li>
                     </ul> <!-- end nav-->
+                    
                     <div class="tab-content">
                         <div class="tab-pane show active" id="form-row-preview">
                             <form method="POST" action="">
@@ -42,14 +43,24 @@
                                         <input type="text" class="form-control" name="news_title" id="news_title" placeholder="Nhập tên tiêu đề">
                                     </div>
                                     <div class="mb-3 col-md-6">
-                                        <label for="inputState" class="form-label">Thể loại bài viết</label>
-                                        <select id="inputState" class="form-select">
-                                            <option>Chọn thể loại</option>
-                                            <option>Option 1</option>
-                                            <option>Option 2</option>
-                                            <option>Option 3</option>
+                                        <label for="news_news_cate_id" class="form-label">Thể loại bài viết</label>
+                                        <select id="news_news_cate_id" class="form-select" name="news_news_cate_id">
+                                            <option selected hidden value="0">Chọn thể loại</option>
+                                            <?php 
+                                                foreach($newsCate as $newsCateItem) {
+
+                                                    echo <<<HTML
+                                                        <option value="{$newsCateItem["news_cate_id"]}">{$newsCateItem["news_cate_title"]}</option>
+                                                    HTML;
+                                                }
+                                            ?>
                                         </select>
                                     </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="link_url" class="form-label">Link bài viết (tùy chọn)</label>
+                                    <input type="text" name="link_url" class="form-control" id="link_url" placeholder="Nhập link bài viết">
                                 </div>
 
                                 <div class="row g-2">
@@ -58,13 +69,8 @@
                                         <textarea type="text" name="news_main_content" class="form-control" id="contenteditor"></textarea>
                                     </div>
                                 </div>
-
-                                <!-- <div class="mb-3">
-                                    <label for="inputAddress" class="form-label">Address</label>
-                                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                                </div>
                                 
-                                <div class="mb-3">
+                                <!-- <div class="mb-3">
                                     <label for="inputAddress2" class="form-label">Address 2</label>
                                     <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
                                 </div> -->

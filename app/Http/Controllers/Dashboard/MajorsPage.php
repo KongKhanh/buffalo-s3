@@ -6,11 +6,13 @@ class MajorsPage {
 
         try {
 
-            $majors = DB::table('majors')->get();
+            $majors = DB::table('majors')
+                ->join("level_of_training", "majors.mjr_lot_id", "=", "level_of_training.lot_id")
+                ->get();
 
             if(!$majors || !is_array($majors)) {
 
-                return redirect('error-status/404-error');
+                return redirect('error-status/500-error');
             };
 
             return view('pages/dashboard/majors.view.php', [
@@ -20,7 +22,7 @@ class MajorsPage {
         }
         catch (Exception $error) {
 
-            return redirect('error-status/404-error');
+            return redirect('error-status/500-error');
         }
     }
 }

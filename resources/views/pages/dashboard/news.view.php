@@ -29,7 +29,7 @@
         <div class="col-sm-4">
             <a href="/dashboard/news/create" class="btn btn-danger mb-3"><i class="mdi mdi-plus"></i>THÊM MỚI</a>
         </div>
-        <div class="col-sm-8">
+        <!-- <div class="col-sm-8">
             <div class="text-sm-end">
                 <div class="btn-group mb-3">
                     <button type="button" class="btn btn-primary">All</button>
@@ -45,9 +45,24 @@
                     <button type="button" class="btn btn-link text-muted"><i class="dripicons-checklist"></i></button>
                 </div>
             </div>
-        </div><!-- end col-->
+        </div> -->
     </div> 
     <!-- end row-->
+
+    <?php 
+    
+        if(Session::has("insert_news_info")) {
+
+            $insert_news_info = Session::get("insert_news_info");
+
+            echo <<<HTML
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {$insert_news_info["message"]}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            HTML;
+        }
+    ?>
 
     <div class="row">
         <div class="col-lg-6 col-xxl-3">
