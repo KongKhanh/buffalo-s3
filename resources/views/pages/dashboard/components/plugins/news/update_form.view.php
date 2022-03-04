@@ -40,18 +40,35 @@
                                 <div class="row g-2">
                                     <div class="mb-3 col-md-6">
                                         <label for="news_title" class="form-label">Tiêu đề</label>
-                                        <input type="text" class="form-control" name="news_title" id="news_title" placeholder="Nhập tên tiêu đề">
+                                        <input 
+                                            type="text" 
+                                            class="form-control" 
+                                            name="news_title" 
+                                            id="news_title" 
+                                            placeholder="Nhập tên tiêu đề"
+                                            value="<?php echo $news['news_title'];?>"
+                                        >
                                     </div>
                                     <div class="mb-3 col-md-6">
                                         <label for="news_news_cate_id" class="form-label">Thể loại bài viết</label>
                                         <select id="news_news_cate_id" class="form-select" name="news_news_cate_id">
                                             <option selected hidden value="0">Chọn thể loại</option>
                                             <?php 
+
                                                 foreach($newsCate as $newsCateItem) {
 
-                                                    echo <<<HTML
-                                                        <option value="{$newsCateItem['news_cate_id']}">{$newsCateItem["news_cate_title"]}</option>
-                                                    HTML;
+                                                    if($newsCateItem['news_cate_id'] == $news['news_news_cate_id']) {
+  
+                                                        echo <<<HTML
+                                                            <option value="{$newsCateItem['news_cate_id']}" selected>{$newsCateItem["news_cate_title"]}</option>
+                                                        HTML;
+                                                    }
+                                                    else {
+
+                                                        echo <<<HTML
+                                                            <option value="{$newsCateItem['news_cate_id']}">{$newsCateItem["news_cate_title"]}</option>
+                                                        HTML;
+                                                    }
                                                 }
                                             ?>
                                         </select>
@@ -60,49 +77,32 @@
 
                                 <div class="mb-3">
                                     <label for="link_url" class="form-label">Link bài viết (tùy chọn)</label>
-                                    <input type="text" name="link_url" class="form-control" id="link_url" placeholder="Nhập link bài viết">
+                                    <input 
+                                        type="text" 
+                                        name="link_url" 
+                                        class="form-control" 
+                                        id="link_url" 
+                                        placeholder="Nhập link bài viết"
+                                        value="<?php echo $news['link_url'];?>"
+                                    >
                                 </div>
 
                                 <div class="row g-2">
                                     <div class="mb-3 col-md-12">
                                         <label for="news_main_content" class="form-label">Nội dung bài viết</label>
-                                        <textarea type="text" name="news_main_content" class="form-control" id="contenteditor"></textarea>
+                                        <textarea 
+                                            type="text" 
+                                            name="news_main_content" 
+                                            class="form-control" 
+                                            id="contenteditor"
+                                            value="<?php echo $news['news_main_content'];?>"
+                                        >
+
+                                        </textarea>
                                     </div>
                                 </div>
-                                
-                                <!-- <div class="mb-3">
-                                    <label for="inputAddress2" class="form-label">Address 2</label>
-                                    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                                </div> -->
-
-                                <!-- <div class="row g-2">
-                                    <div class="mb-3 col-md-6">
-                                        <label for="inputCity" class="form-label">City</label>
-                                        <input type="text" class="form-control" id="inputCity">
-                                    </div>
-                                    <div class="mb-3 col-md-4">
-                                        <label for="inputState" class="form-label">State</label>
-                                        <select id="inputState" class="form-select">
-                                            <option>Choose</option>
-                                            <option>Option 1</option>
-                                            <option>Option 2</option>
-                                            <option>Option 3</option>
-                                        </select>
-                                    </div>
-                                    <div class="mb-3 col-md-2">
-                                        <label for="inputZip" class="form-label">Zip</label>
-                                        <input type="text" class="form-control" id="inputZip">
-                                    </div>
-                                </div> -->
-
-                                <!-- <div class="mb-2">
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="customCheck11">
-                                        <label class="form-check-label" for="customCheck11">Check this custom checkbox</label>
-                                    </div>
-                                </div> -->
-
-                                <button type="submit" class="btn btn-primary">THÊM</button>
+                               
+                                <button type="submit" class="btn btn-warning">CẬP NHẬT</button>
                             </form>                      
                         </div> <!-- end preview-->
                     

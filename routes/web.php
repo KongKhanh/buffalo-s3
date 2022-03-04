@@ -56,6 +56,8 @@ $router->get('/dashboard/subscribers', [SubscriberPage::class, '__getSubscriberP
  */
 $router->get('/dashboard/news', [NewsPage::class, '__getNewsPage']);
 $router->get('/dashboard/news/create',[NewsPage::class, '__getAddForm']);
+$router->get('/dashboard/news/update/{id}',[NewsPage::class, '__getUpdateForm']);
+$router->post('/dashboard/news/delete',[NewsPage::class, '__postDelete']);
 
 $router->post('/dashboard/news/create',[NewsPage::class, '__postAddForm']);
 
