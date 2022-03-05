@@ -14,11 +14,18 @@ class HomePage {
 
     public function __getSubscriberForm() {
 
-        $trainingTypeList = DB::table('level_of_training')->get();
+        try {
 
-        return view('pages/client/components/subscriber_form.view.php', [
-            'trainingTypeList' => $trainingTypeList
-        ]); 
+            $trainingTypeList = DB::table('level_of_training')->get();
+
+            return view('pages/client/components/subscriber_form.view.php', [
+                'trainingTypeList' => $trainingTypeList
+            ]); 
+        }
+        catch (Exception $error) {
+
+            return redirect('error-status/404-error');
+        }
     }
 }
 

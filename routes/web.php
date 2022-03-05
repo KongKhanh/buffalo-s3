@@ -33,6 +33,7 @@ $router->get('/news-detail/{target}',[NewsPageClient::class, '__getNewsDetailPag
 $router->get('/about-us', [HomePage::class, '__getAboutPage']);
 
 $router->get('/subscriber-form', [HomePage::class, '__getSubscriberForm']);
+$router->get('/api/majors-by-id/{id}', [MajorsPage::class, '__getMajorsById']);
 
 /**
  * -----------------------------------------------------------Admin Dashboard-----------------------------------------------------------
@@ -52,10 +53,11 @@ $router->get('/dashboard/analytics', [AnalyticsPage::class, '__getAnalyticsPage'
 $router->get('/dashboard/subscribers', [SubscriberPage::class, '__getSubscriberPage']);
 
 /**
- * -------------------News Plugin-------------------
+ * -------------------GET News Plugin-------------------
  */
 $router->get('/dashboard/news', [NewsPage::class, '__getNewsPage']);
 $router->get('/dashboard/news/create',[NewsPage::class, '__getAddForm']);
+
 
 /**
  * -------------------Logs Plugin-------------------
