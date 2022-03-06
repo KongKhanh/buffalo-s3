@@ -298,6 +298,18 @@ class Database {
 
                     $sql .= " $join ";
                 }
+<<<<<<< HEAD
+  
+                // return $sql;
+                $stmt =  self::$conn->prepare($sql);
+    
+                $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    
+                $stmt->execute();
+    
+                if($mro) {
+=======
+>>>>>>> d8d754a86b3762110a441c131f36b30c732f3eb0
 
                 $sql = trim($sql);
             }

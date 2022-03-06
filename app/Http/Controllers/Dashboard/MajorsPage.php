@@ -25,4 +25,26 @@ class MajorsPage {
             return redirect('error-status/500-error');
         }
     }
+
+    public function __getMajorsById($id) {
+
+        try {
+
+            $majors = DB::table('majors')->where("mjr_lot_id",$id)->get();
+
+            if(!$majors || !is_array($majors)) {
+
+                return false;
+            };
+
+          echo json_encode([
+            "majorsById" => $majors
+          ]);
+
+        }
+        catch (Exception $error) {
+
+            return false;
+        }
+    }
 }

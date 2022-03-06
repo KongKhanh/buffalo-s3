@@ -170,7 +170,7 @@
                         <article class="input-block">
                             <label for="trainingSystem">Hệ đào tạo</label>
                             <div class="input-box">
-                                <select name="subscriber_lot_id" id="trainingSystem">
+                                <select name="subscriber_lot_id" id="level_of_training">
                                 <option value="" disabled selected >Chọn hệ đào tạo</option>
                                     <?php 
                                         if($trainingTypeList){
@@ -183,6 +183,13 @@
                                         }
                                     ?>
                                 </select>
+                                <?php 
+                                    if(isset($errors['error_admin_mjr'])){
+                                        echo <<<HTML
+                                            <span class="text-danger" style="color: red;">{$errors['error_admin_mjr']}</span>
+                                        HTML;
+                                    }
+                                ?>
                                 <i class="fas fa-exclamation-circle" style="color: red;"></i>
                             </div>
                             <p class="input-error">Vui lòng chọn lại hệ đào tạo</p>
@@ -191,19 +198,14 @@
                             <label for="course">Ngành đào tạo</label>
                             <div class="input-box">
                                 <select name="subscriber_mjr_id" id="course">
-                                    <option value="1" selected>Quản lý nhà đất</option>
-                                    <option value="2">Quản lý đất đai</option>
-                                    <option value="3">Chăn nuôi - Thú y</option>
-                                    <option value="4">Kế toán doanh nghiệp</option>
-                                    <option value="5">Thuỷ lợi tổng hợp</option>
-                                    <option value="6">Bảo trì & sửa chữa thiết bị nhiệt(cơ điện lạnh)</option>
-                                    <option value="7">Trồng trọt và Bảo vệ thực vật</option>
-                                    <option value="8">Trắc địa - Địa hình - Địa chính</option>
-                                    <option value="9">Điện công nghiệp và Dân dụng</option>
-                                    <option value="10">Quản lý tài nguyên môi trường</option>
-                                    <option value="11">Kinh doanh bất động sản</option>
-                                    <option value="12">Thiết kế cảnh quan viên</option>
                                 </select>
+                                <?php 
+                                    if(isset($errors['error_admin_lot'])){
+                                        echo <<<HTML
+                                            <span class="text-danger" style="color: red;">{$errors['error_admin_lot']}</span>
+                                        HTML;
+                                    }
+                                ?>
                                 <i class="fas fa-exclamation-circle" style="color: red;"></i>
                             </div>
                             <p class="input-error">Vui lòng chọn lại ngành đào tạo</p>

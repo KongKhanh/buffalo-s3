@@ -53,6 +53,20 @@ class SubscriberPage {
             "subscriber_dob"        => $substrDOB
         ];
 
+        if(!isset($input['subscriber_mjr_id'])){
+
+            $errors = array_merge($errors, [
+                "error_admin_mjr" => "Chưa chọn hệ đào tạo"
+            ]);
+        }
+
+        if(!isset($input['subscriber_lot_id'])){
+
+            $errors = array_merge($errors, [
+                "error_admin_lot" => "Chưa chọn ngành đào tạo"
+            ]);
+        }
+
         if(!preg_match('/^[a-zA-Z ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]{10,32}$/',$input['subscriber_name'])){
 
             $errors = array_merge($errors, [
@@ -93,7 +107,7 @@ class SubscriberPage {
 
             $trainingTypeList = DB::table('level_of_training')->get();
 
-            return view('pages/client/components/subscriber_form.view.php',[
+            return view('pages/client/components/subscriber_form.view.php', [
                 "errors" => $errors,
                 'trainingTypeList' => $trainingTypeList
             ]);
