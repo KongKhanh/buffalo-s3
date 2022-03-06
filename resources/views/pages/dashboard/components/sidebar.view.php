@@ -49,7 +49,7 @@
                 <div class="collapse" id="prF7T8BxUKCoUxs">
                     <ul class="side-nav-second-level">
                         <li class="side-nav-item">
-                            <a data-bs-toggle="collapse" href="#cFrEfPm948SYfuJ" aria-expanded="false" aria-controls="sidebarPagesError">
+                            <a data-bs-toggle="collapse" href="#cFrEfPm948SYfuJ" aria-expanded="false">
                                 <span> Tin tức </span>
                                 <span class="menu-arrow"></span>
                             </a>
@@ -62,7 +62,7 @@
                             </div>
                         </li>
                         <li class="side-nav-item">
-                            <a data-bs-toggle="collapse" href="#MearUPYnQJtQu3e" aria-expanded="false" aria-controls="sidebarPagesError">
+                            <a data-bs-toggle="collapse" href="#MearUPYnQJtQu3e" aria-expanded="false">
                                 <span> Ngành đào tạo </span>
                                 <span class="menu-arrow"></span>
                             </a>
@@ -70,6 +70,19 @@
                                 <ul class="side-nav-third-level">
                                     <li>
                                         <a href="/dashboard/majors">Các ngành đào tạo</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#yin9t4cgi9ztqFg" aria-expanded="false">
+                                <span> Danh mục Website </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="yin9t4cgi9ztqFg">
+                                <ul class="side-nav-third-level">
+                                    <li>
+                                        <a href="/dashboard/menu-cate">Các danh mục Website</a>
                                     </li>
                                 </ul>
                             </div>
