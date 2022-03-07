@@ -51,7 +51,7 @@ class NewsPage {
             ];
 
             $link_id = DB::table("links")->insertGetId([
-                "link_lt_id"                => 0, 
+                "link_lt_id"                => 1, 
                 "link_url"                  => $input["link_url"],  
             ]);
     
