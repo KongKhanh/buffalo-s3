@@ -16,7 +16,7 @@ $(document).ready(function(){
                     var getMajor = disabledOption;
 
                     for (let i = 0; i < res.majorsById.length; i++) { 
-                        
+                     
                         getMajor += `<option value="${res.majorsById[i].mjr_id}">${res.majorsById[i].mjr_name}</option>`
                     };
                     

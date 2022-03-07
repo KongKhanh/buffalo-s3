@@ -29,11 +29,15 @@ class SubscriberPage {
         $substrDOB = input("subscriber_dob");
         $errors = [];
 
-        if(preg_match('/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/',$substrDOB)){
+        if(preg_match('/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/((19|20)\d\d)/',$substrDOB)){
            
             $date=date_create();
             date_date_set($date,substr($substrDOB,6,4),substr($substrDOB,3,2),substr($substrDOB,0,2));
             $substrDOB = date_format($date,"Y-m-d");
+        }
+        else if(preg_match('/^(19|20)\d\d([-])(0[1-9]|1[012])\2(0[1-9]|[12][0-9]|3[01])/',$substrDOB)){
+            
+            $substrDOB = $substrDOB;
         }
         else{
 
@@ -77,7 +81,7 @@ class SubscriberPage {
         if(!preg_match('/^(0)(1|3|5|7|8|9)+([0-9]{8})$/', $input['subscriber_phone'])){
 
             $errors = array_merge($errors, [
-                "error_admin_phone" => "Số điện thoại không hợp lệ"
+"error_admin_phone" => "Số điện thoại không hợp lệ"
             ]);
         }
 

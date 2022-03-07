@@ -319,7 +319,7 @@
 
                     $sql .= " " . $orderByStmt;
                 }
-
+  
                 $stmt =  self::$conn->prepare($sql);
     
                 $stmt->setFetchMode(PDO::FETCH_ASSOC);
