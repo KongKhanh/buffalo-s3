@@ -119,4 +119,34 @@ class SubscriberPage {
         
         return view('pages/dashboard/subscribers.view.php');
     }
+
+    public function __updateSubscriberById($id) {
+
+        try {
+
+            $subscriber_status = [
+                "subscriber_status" => input('subscriber_status')
+            ];
+
+            $subscriberUpdate = DB::table('subscriber')->where("subscriber_id", $id)->update($subscriber_status);
+
+            if(!$subscriberUpdate || !is_array($subscriberUpdate)) {
+
+                return false;
+            };
+
+            Session::flash("res_subscriber_infor", [
+                "status"        => "200",
+                "message"       => "Cập nhật dữ liệu thành công"
+            ]);
+
+
+             redirect('dashboard/subscribers');
+
+        }
+        catch (Exception $error) {
+
+            return false;
+        }
+    }
 }

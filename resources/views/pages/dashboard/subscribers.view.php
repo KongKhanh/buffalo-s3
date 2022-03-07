@@ -1,8 +1,8 @@
 <?php
 
-    View::__template()->__extends("layouts/dashboard/app.dashboard.view.php");
+View::__template()->__extends("layouts/dashboard/app.dashboard.view.php");
 
-    View::__template()->__startSection("content");
+View::__template()->__startSection("content");
 ?>
 
 <!------------------------------------------------------------------------------ Script CSS -->
@@ -15,7 +15,7 @@
 
 <!-- Start Content-->
 <div class="container-fluid">
-    
+
     <!-- start page title -->
     <div class="row">
         <div class="col-12">
@@ -30,13 +30,26 @@
                 <h4 class="page-title">Sinh Viên Đăng Ký Online</h4>
             </div>
         </div>
-    </div>     
-    <!-- end page title --> 
+    </div>
+    <!-- end page title -->
 
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
+                    <?php
+                        if (Session::has("res_subscriber_infor")) {
+
+                            $res_subscriber_infor = Session::get("res_subscriber_infor");
+
+                            echo <<<HTML
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {$res_subscriber_infor["message"]}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            HTML;
+                        }
+                    ?>
                     <!-- <div class="row mb-2">
                         <div class="col-sm-4">
                             <a href="javascript:void(0);" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i> Add Customers</a>
@@ -70,17 +83,18 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php 
+                                <?php
 
-                                    foreach($subscribers as $subscriber) {
+                                foreach ($subscribers as $subscriber) {
 
-                                        $subscriber_address     = Str::limit($subscriber["subscriber_address"], 15, "...");
-                                        $subscriber_status      = [
-                                            'message'       => $subscriber["subscriber_status"] == "new" ? "Chờ duyệt" : "Đã duyệt",
-                                            'badge_type'    => $subscriber["subscriber_status"] == "new" ? "danger" : "success",
-                                        ];
+                                    $subscriber_address     = Str::limit($subscriber["subscriber_address"], 15, "...");
+                                    $subscriber_status = $subscriber["subscriber_status"] == "new" ? "checked" : "";
+                                    // $subscriber_status      = [
+                                    //     'message'       => $subscriber["subscriber_status"] == "new" ? "Chờ duyệt" : "Đã duyệt",
+                                    //     'badge_type'    => $subscriber["subscriber_status"] == "new" ? "danger" : "success",
+                                    // ];
 
-                                        echo <<<HTML
+                                    echo <<<HTML
                                             <tr>
                                                 <td>
                                                     <div class="form-check">
@@ -105,9 +119,9 @@
                                                     {$subscriber["subscriber_created_at"]}
                                                 </td>
                                                 <td>
-                                                    <span class="badge badge-{$subscriber_status['badge_type']}-lighten">
-                                                        {$subscriber_status['message']}
-                                                    </span>
+                                                    <div class="form-check form-switch">
+                                                            <input type="checkbox" class="form-check-input subscriber_status" data-id="{$subscriber['subscriber_id']}" id="customSwitch_{$subscriber['subscriber_id']}" {$subscriber_status}>
+                                                    </div>
                                                 </td>
                                                 <td>
                                                     <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
@@ -115,7 +129,7 @@
                                                 </td>
                                             </tr>
                                         HTML;
-                                    }
+                                }
                                 ?>
                             </tbody>
                         </table>
@@ -125,15 +139,13 @@
         </div> <!-- end col -->
     </div>
     <!-- end row -->
-    
-</div> 
+
+</div>
 <!-- container -->
 
-
-
 <!------------------------------------------------------------------------------ Script JS -->
- <!-- bundle -->
- <script src="/public/dashboard/assets/js/vendor.min.js"></script>
+<!-- bundle -->
+<script src="/public/dashboard/assets/js/vendor.min.js"></script>
 <script src="/public/dashboard/assets/js/app.min.js"></script>
 
 <!-- third party js -->
@@ -147,6 +159,50 @@
 <!-- demo app -->
 <script src="/public/dashboard/assets/js/pages/demo.customers.js"></script>
 <!-- end demo js-->
+<script>
+    /**
+     * Task: update status of majors
+     */
+    $('.subscriber_status').change(function() {
+
+        var endPoint = `/dashboard/subscribers/update/${$(this).attr("data-id")}`;
+
+        function __requestUpdate(subscriber_status) {
+
+            $.ajax({
+                    method: 'POST',
+                    url: endPoint,
+                    data: {
+                        "subscriber_status": subscriber_status
+                    }
+                })
+                .done(function(res) {
+
+                    if (res) {
+
+                        cuteAlert({
+                            type: "success",
+                            title: "Thông báo",
+                            message: "Cập nhật dữ liệu thành công",
+                            buttonText: "Okay"
+                        });
+                    }
+                })
+                .fail(function(res) {
+
+                    console.log(res);
+                });
+        }
+
+        if (this.checked) {
+
+            __requestUpdate("new");
+        } else {
+
+            __requestUpdate("approved");
+        }
+    });
+</script>
 
 
 <?php View::__template()->__endSection(); ?>

@@ -130,7 +130,7 @@
                                                     </td>
                                                      <td>
                                                         <div class="form-check form-switch">
-                                                            <input type="checkbox" class="form-check-input mjr_status" data-id="{$majors_item['mjr_id']}" id="customSwitch_{$majors_item['mjr_id']}}" {$statusActive}>
+                                                            <input type="checkbox" class="form-check-input mjr_status" data-id="{$majors_item['mjr_id']}" id="customSwitch_{$majors_item['mjr_id']}" {$statusActive}>
                                                         </div>
                                                     </td>
                                                     <td>
