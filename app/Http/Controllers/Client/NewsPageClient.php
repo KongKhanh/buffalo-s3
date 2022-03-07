@@ -20,6 +20,4 @@ class NewsPageClient {
 
         return view('pages/client/news_detail.view.php');
     }
-
-    
 }

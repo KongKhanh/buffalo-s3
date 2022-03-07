@@ -70,7 +70,6 @@
 
     <div class="row">
         <?php 
-
             foreach($newsList as $news){
                 echo <<<HTML
                     <div class="col-lg-6 col-xxl-3">
@@ -84,7 +83,7 @@
                                         <!-- item-->
                                         <a href="/dashboard/news/update/{$news['news_id']}" class="dropdown-item"><i class="mdi mdi-pencil me-1"></i>Chỉnh sửa</a>
                                         <!-- item-->
-                                        <a href="javascript:void(0);" class="dropdown-item btnDeleteNews" id="{$news['news_id']}"><i class="mdi mdi-delete me-1"></i>Xóa</a>
+                                        <a href="javascript:void(0);" class="dropdown-item btnDeleteNews" data-id="{$news['news_id']}"><i class="mdi mdi-delete me-1"></i>Xóa</a>
                                         <!-- item-->
                                         <!-- <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-email-outline me-1"></i>Invite</a> -->
                                         <!-- item -->
@@ -147,7 +146,7 @@
 
             if(e) {
 
-                $('#news_id').attr('value', $(this).attr('id'));
+                $('#news_id').attr('value', $(this).attr('data-id'));
                 $('#formDelete').attr('action', '/dashboard/news/delete');
                 
                 $('#formDelete').submit();
