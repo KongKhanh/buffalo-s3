@@ -4,7 +4,19 @@ class HomePage {
 
     public function __getHomePage() {
 
-        return view('pages/client/home.view.php');
+        try {
+            
+            $newsCategoryList = DB::table('news_category')->get();
+
+            return view('pages/client/home.view.php', [
+
+                'newsCategoryList' => $newsCategoryList
+            ]); 
+        }
+        catch (Exception $error){
+
+            return redirect('error-status/404-error');
+        }
     }
 
     public function __getAboutPage() {
