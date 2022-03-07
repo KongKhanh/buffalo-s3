@@ -50,6 +50,31 @@
                         </div>
                     </div> -->
 
+                    <form method="POST" id="formDelete">
+                        <input type="hidden" name="mjr_id" id="mjr_id">
+                    </form>
+
+                    <?php 
+    
+                        if(Session::has("res_majors_cate_info")) {
+
+                            $res_majors_cate_info = Session::get("res_majors_cate_info");
+
+                            echo <<<HTML
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {$res_majors_cate_info["message"]}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            HTML;
+                        }
+                    ?>
+
+                    <div class="row mb-2">
+                        <div class="col-sm-4">
+                            <a href="/dashboard/majors/create" class="btn btn-danger mb-3"><i class="mdi mdi-plus"></i>THÊM MỚI</a>
+                        </div>
+                    </div>
+
                     <div class="table-responsive">
                         <table class="table table-centered table-striped dt-responsive nowrap w-100" id="products-datatable">
                             <thead>
@@ -62,10 +87,10 @@
                                     </th>
                                     <th>Tên ngành</th>
                                     <th>Mã ngành</th>
-                                    <th>Email</th>
+                                    <th>Hệ đào tạo</th>
                                     <th>Địa chỉ</th>
-                                    <th>Trạng thái</th>
                                     <th>Ngày tạo</th>
+                                    <th>Trạng thái</th>
                                     <th style="width: 75px;">Thao tác</th>
                                 </tr>
                             </thead>
@@ -73,7 +98,13 @@
                                 
                                 <?php 
                                     if(isset($majors) && is_array($majors)) {
+
                                         foreach($majors as $majors_item) {
+
+                                            $statusActive = $majors_item["mjr_status"] == "published" ? "checked" : "";
+
+                                            $majors_item["mjr_created_at"] = date_format(date_create($majors_item["mjr_created_at"]), "d-m-Y");
+
                                             echo <<<HTML
                                                 <tr>
                                                     <td>
@@ -89,20 +120,22 @@
                                                         {$majors_item["mjr_code"]}
                                                     </td>
                                                     <td>
-                                                        pauljfrnd@jourrapide.com
+                                                        {$majors_item["lot_name"]}
                                                     </td>
                                                     <td>
                                                         New York
                                                     </td>
                                                     <td>
-                                                        07/07/2018
+                                                        {$majors_item["mjr_created_at"]}
+                                                    </td>
+                                                     <td>
+                                                        <div class="form-check form-switch">
+                                                            <input type="checkbox" class="form-check-input mjr_status" data-id="{$majors_item['mjr_id']}" id="customSwitch_{$majors_item['mjr_id']}}" {$statusActive}>
+                                                        </div>
                                                     </td>
                                                     <td>
-                                                        <span class="badge badge-success-lighten">Active</span>
-                                                    </td>
-                                                    <td>
-                                                        <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                                                        <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                                        <a href="/dashboard/majors/update/{$majors_item['mjr_id']}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                                        <a href="javascript:void(0);" class="action-icon btnDeleteMajors" data-id="{$majors_item['mjr_id']}"> <i class="mdi mdi-delete"></i></a>
                                                     </td>
                                                 </tr>
                                             HTML;
@@ -140,5 +173,74 @@
 <script src="/public/dashboard/assets/js/pages/demo.customers.js"></script>
 <!-- end demo js-->
 
+<script>
+
+    /**
+     * Task: update status of majors
+     */
+    $('.mjr_status').change(function() {
+
+        var endPoint = `/dashboard/majors/update/${$(this).attr("data-id")}`;
+
+        function __requestUpdate(mjr_status) { 
+
+            $.ajax({
+                method: 'POST',
+                url: endPoint,
+                data: {
+                    "mjr_status": mjr_status
+                }
+            })
+            .done(function(res) {
+
+                if(res) {
+
+                    cuteAlert({
+                        type: "success",
+                        title: "Thông báo",
+                        message: "Cập nhật dữ liệu thành công",
+                        buttonText: "Okay"
+                    });
+                }
+            })
+            .fail(function(res) {
+
+                console.log(res);
+            });
+        }
+
+        if(this.checked) {
+
+            __requestUpdate("published");
+        }
+        else {
+
+            __requestUpdate("hidden");
+        }
+    });
+
+    /**
+     * Task: delete majors by ID
+     */
+    $('.btnDeleteMajors').click(function() {
+        cuteAlert({
+            type: "question",
+            title: "Bạn có muốn xóa không",
+            message: "",
+            confirmText: "Đồng ý",
+            cancelText: "Hủy"
+        })
+        .then((e) => {
+
+            if(e) {
+
+                $('#mjr_id').attr('value', $(this).attr('data-id'));
+                $('#formDelete').attr('action', '/dashboard/majors/delete');
+                
+                $('#formDelete').submit();
+            }
+        });
+    });
+</script>
 
 <?php View::__template()->__endSection(); ?>

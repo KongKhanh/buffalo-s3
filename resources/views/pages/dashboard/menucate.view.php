@@ -37,18 +37,12 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <!-- <div class="row mb-2">
+                    
+                    <div class="row mb-2">
                         <div class="col-sm-4">
-                            <a href="javascript:void(0);" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i> Add Customers</a>
+                            <a href="/dashboard/menu-cate/create" class="btn btn-danger mb-3"><i class="mdi mdi-plus"></i>THÊM MỚI</a>
                         </div>
-                        <div class="col-sm-8">
-                            <div class="text-sm-end">
-                                <button type="button" class="btn btn-success mb-2 me-1"><i class="mdi mdi-cog"></i></button>
-                                <button type="button" class="btn btn-light mb-2 me-1">Import</button>
-                                <button type="button" class="btn btn-light mb-2">Export</button>
-                            </div>
-                        </div>
-                    </div> -->
+                    </div> 
 
                     <form method="POST" id="formDelete">
                         <input type="hidden" name="mc_id" id="mc_id">

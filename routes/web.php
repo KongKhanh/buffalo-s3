@@ -28,18 +28,19 @@ $router->get('/news', [NewsPageClient::class, '__getNewsPageClient']);
 $router->get('/news-detail/{target}',[NewsPageClient::class, '__getNewsDetailPageClient']);
 
 /**
- * 
+ *  Intro Plugins
  */
 $router->get('/about-us', [HomePage::class, '__getAboutPage']);
 
+/**
+ * Subscriber Plugins
+ */
 $router->get('/subscriber-form', [HomePage::class, '__getSubscriberForm']);
-$router->get('/api/majors-by-id/{id}', [MajorsPage::class, '__getMajorsById']);
+$router->post('/subscriber-form', [SubscriberPage::class, '__postSubscriberPage']);
 
 /**
- * -----------------------------------------------------------Admin Dashboard-----------------------------------------------------------
+ * -----------------------------------------------------------Admin Dashboard-------------------------------------------------------------------------------------
  */
-$router->get('/dashboard/analytics', [AnalyticsPage::class, '__getAnalyticsPage']);
-
 /**
  * -------------------Auth Plugin-------------------
  */
@@ -60,7 +61,7 @@ $router->get('/dashboard/analytics', [AnalyticsPage::class, '__getAnalyticsPage'
 $router->get('/dashboard/subscribers', [SubscriberPage::class, '__getSubscriberPage']);
 
 /**
- * -------------------GET News Plugin-------------------
+ * -------------------News Plugin-------------------
  */
 $router->get('/dashboard/news', [NewsPage::class, '__getNewsPage']);
 $router->get('/dashboard/news/create',[NewsPage::class, '__getAddForm']);
@@ -79,20 +80,28 @@ $router->get('/dashboard/activity-logs/{target}', [ActivityLogsPage::class, '__g
  * -------------------Major Plugin-------------------
  */
 $router->get('/dashboard/majors', [MajorsPage::class, '__majorsPage']);
+$router->get('/dashboard/majors/create', [MajorsPage::class, '__getAddForm']);
+$router->get('/dashboard/majors/update/{id}', [MajorsPage::class, '__getUpdateForm']);
 
+$router->post('/dashboard/majors/create', [MajorsPage::class, '__postAdd']);
+$router->post('/dashboard/majors/update/{id}', [MajorsPage::class, '__postUpdate']);
+$router->post('/dashboard/majors/delete', [MajorsPage::class, '__postDelete']);
 
 /**
  * -------------------Menu Categories Plugin-------------------
  */
 $router->get('/dashboard/menu-cate', [MenuCatePage::class, '__getMenuCatePage']);
+$router->get('/dashboard/menu-cate/create', [MenuCatePage::class, '__getAddForm']);
 $router->get('/dashboard/menu-cate/update/{id}', [MenuCatePage::class, '__getUpdateForm']);
 
+$router->post('/dashboard/menu-cate/create', [MenuCatePage::class, '__postAdd']);
 $router->post('/dashboard/menu-cate/update/{id}', [MenuCatePage::class, '__postUpdate']);
 $router->post('/dashboard/menu-cate/delete', [MenuCatePage::class, '__postDelete']);
+
 /**
  * -----------------------------------------------------------API-----------------------------------------------------------
  */
-$router->post('/subscriber-form', [SubscriberPage::class, '__postSubscriberPage']);
+$router->get('/api/majors-by-id/{id}', [MajorsPage::class, '__getMajorsById']);
 
 /**
  * -------------------ERROR Plugin-------------------

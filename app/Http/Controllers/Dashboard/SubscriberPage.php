@@ -81,7 +81,7 @@ class SubscriberPage {
         if(!preg_match('/^(0)(1|3|5|7|8|9)+([0-9]{8})$/', $input['subscriber_phone'])){
 
             $errors = array_merge($errors, [
-                "error_admin_phone" => "Số điện thoại không hợp lệ"
+"error_admin_phone" => "Số điện thoại không hợp lệ"
             ]);
         }
 

@@ -16,13 +16,67 @@ class MenuCatePage {
                     ->join("links", "mc_link_id", "=", "link_id")
                     ->get();
                 }
-                
+
                 return view("pages/dashboard/menucate.view.php", [
                     "menu_cate"         => $menu_cate
                 ]);
             }
 
             return redirect('error-status/500-error');
+        }
+
+        catch(Exception $error) {
+
+            return redirect('error-status/500-error');
+        }
+    }
+
+    public function __getAddForm() {
+
+        try {
+    
+            return view("pages/dashboard/components/plugins/menu_cate/add_form.view.php", [
+ 
+            ]);
+        }
+        catch(Exception $error) {
+
+            return redirect('error-status/500-error');
+        }
+    }
+
+    
+    public function __postAdd() {
+
+        try {
+
+            $input = [
+                "mc_title"                  => !is_null(input("mc_title")) ? input("mc_title") : false, 
+                "link_url"                  => !is_null(input("link_url")) ? input("link_url") : false, 
+            ];
+
+            $link_id = DB::table("links")->insertGetId([
+                "link_lt_id"        => 2,
+                "link_url"          => $input["link_url"],
+            ]);
+    
+            $insert_status = $link_id ? DB::table("menu_cate")->insert([
+                "mc_link_id"            => $link_id,
+                "mc_title"              => $input["mc_title"],
+                "mc_parent_id"          => 0,
+                "mc_uncle_id"           => 0,
+                "mc_friend_id"          => 0,
+            ]) : false;
+
+            if($insert_status) {
+
+                Session::flash("res_menu_cate_info", [
+                    "status"        => "200",
+                    "message"       => "Thêm dữ liệu thành công"
+                ]);
+
+                redirect('/dashboard/menu-cate');
+            }
         }
 
         catch(Exception $error) {
@@ -132,7 +186,7 @@ class MenuCatePage {
                 redirect('/dashboard/menu-cate');
             }
 
-            // return redirect('error-status/500-error');
+            return redirect('error-status/500-error');
         }
         catch(Exeption $error) {
 
