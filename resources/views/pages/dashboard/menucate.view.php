@@ -40,7 +40,7 @@
                     
                     <div class="row mb-2">
                         <div class="col-sm-4">
-                            <a href="/dashboard/menu-cate/create" class="btn btn-danger mb-3"><i class="mdi mdi-plus"></i>THÊM MỚI</a>
+                            <a href="/dashboard/menu-cate/create/type/A001" class="btn btn-danger mb-3"><i class="mdi mdi-plus"></i>THÊM MỚI</a>
                         </div>
                     </div> 
 
@@ -125,6 +125,11 @@
                                                             {$renderSubACate}
                                                         </tbody>
                                                     </table>
+                                                    <div class="mb-2">
+                                                        <div class="col-sm-4">
+                                                            <a href="/dashboard/menu-cate/create/type/A002-{$menu_cate_item['mc_id']}" class="btn btn-danger mb-3"><i class="mdi mdi-plus"></i>THÊM MỚI</a>
+                                                        </div>
+                                                    </div> 
                                                 </div>
                                             </div>
                                         </div>

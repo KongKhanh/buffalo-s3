@@ -20,11 +20,13 @@
                     <p class="text-muted font-14"></p>
                     <div class="tab-content">
                         <div class="tab-pane show active" id="form-row-preview">
-                            <form method="POST" action="">
+                            <form method="POST" action="/dashboard/menu-cate/create">
+                                <input type="hidden" name="type_cate_menu" value="<?= $type_cate_menu ?>">
+                                <input type="hidden" name="mc_parent_id" value="<?= $parentID; ?>">
                                 <div class="row g-2">
                                     <div class="mb-3 col-md-6">
-                                        <label for="mjr_name" class="form-label">Tên danh mục</label>
-                                        <input type="text" class="form-control" name="mjr_name" id="mjr_name" placeholder="Nhập tên danh mục">
+                                        <label for="mc_title" class="form-label">Tên danh mục</label>
+                                        <input type="text" class="form-control" name="mc_title" id="mc_title" placeholder="Nhập tên danh mục">
                                     </div>
                                     <div class="mb-3 col-md-6">
                                         <label for="link_url" class="form-label">Link URL (tùy chọn)</label>

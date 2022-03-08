@@ -2,6 +2,8 @@
 
 class MenuCatePage {
 
+    protected $type_cate_menu = ["A001", "A002"];
+
     public function __getMenuCatePage() {
 
         try {
@@ -31,13 +33,38 @@ class MenuCatePage {
         }
     }
 
-    public function __getAddForm() {
+    public function __getAddForm($type = null) {
 
         try {
+
+            if(!is_null($type)) {
+
+                $typeCate   = isset(explode("-", $type)[0]) ? explode("-", $type)[0] : null;
+
+                $parentID   = isset(explode("-", $type)[1]) ? explode("-", $type)[1] : 0;
+
+                switch($typeCate) {
+
+                    case "A001":
+                        return view("pages/dashboard/components/plugins/menu_cate/add_form.view.php", [
+                            "type_cate_menu"        => "A001",
+                            "parentID"              => $parentID
+                        ]);
+                        break;
+
+                    case "A002":
+
+                        return view("pages/dashboard/components/plugins/menu_cate/add_form.view.php", [
+                            "type_cate_menu"        => "A002",
+                            "parentID"              => $parentID
+                        ]);
+                        break;
+
+                    default: return redirect('error-status/404-error');
+                }
+            }
     
-            return view("pages/dashboard/components/plugins/menu_cate/add_form.view.php", [
- 
-            ]);
+            return redirect('error-status/500-error');
         }
         catch(Exception $error) {
 
@@ -53,7 +80,29 @@ class MenuCatePage {
             $input = [
                 "mc_title"                  => !is_null(input("mc_title")) ? input("mc_title") : false, 
                 "link_url"                  => !is_null(input("link_url")) ? input("link_url") : false, 
+                "type_cate_menu"            => !is_null(input("type_cate_menu")) ? input("type_cate_menu") : false, 
             ];
+
+            $existTCM = array_search($input["type_cate_menu"], $this->type_cate_menu, true);
+
+            if(!$input["type_cate_menu"] || !$existTCM)  return redirect('error-status/404-error');
+
+            $rootTCM = 0;
+
+            switch($input["type_cate_menu"]) {
+
+                case "A001": 
+                    $rootTCM = 1;
+                    $mc_parent_id = 0; 
+                    break;
+
+                case "A002": 
+                    $rootTCM = 2;
+                    $mc_parent_id = input('mc_parent_id') ? input('mc_parent_id') : -1; 
+                    break;
+
+                default: return redirect('error-status/404-error');
+            }
 
             $link_id = DB::table("links")->insertGetId([
                 "link_lt_id"        => 2,
@@ -63,9 +112,9 @@ class MenuCatePage {
             $insert_status = $link_id ? DB::table("menu_cate")->insert([
                 "mc_link_id"            => $link_id,
                 "mc_title"              => $input["mc_title"],
-                "mc_parent_id"          => 0,
-                "mc_uncle_id"           => 0,
-                "mc_friend_id"          => 0,
+                "mc_parent_id"          => $mc_parent_id, // Dynamic 
+                "mc_uncle_id"           => ($rootTCM - 1),
+                "mc_friend_id"          => $rootTCM,
             ]) : false;
 
             if($insert_status) {

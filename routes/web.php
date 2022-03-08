@@ -91,7 +91,7 @@ $router->post('/dashboard/majors/delete', [MajorsPage::class, '__postDelete']);
  * -------------------Menu Categories Plugin-------------------
  */
 $router->get('/dashboard/menu-cate', [MenuCatePage::class, '__getMenuCatePage']);
-$router->get('/dashboard/menu-cate/create', [MenuCatePage::class, '__getAddForm']);
+$router->get('/dashboard/menu-cate/create/type/{type}', [MenuCatePage::class, '__getAddForm']);
 $router->get('/dashboard/menu-cate/update/{id}', [MenuCatePage::class, '__getUpdateForm']);
 
 $router->post('/dashboard/menu-cate/create', [MenuCatePage::class, '__postAdd']);
