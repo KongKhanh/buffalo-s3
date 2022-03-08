@@ -120,27 +120,91 @@ class SubscriberPage {
         return view('pages/dashboard/subscribers.view.php');
     }
 
-    public function __updateSubscriberById($id) {
+
+    public function __getUpdateForm($id) {
 
         try {
 
-            $subscriber_status = [
-                "subscriber_status" => input('subscriber_status')
-            ];
+            if(isset($id)) {
 
-            $subscriberUpdate = DB::table('subscriber')->where("subscriber_id", $id)->update($subscriber_status);
+                $subscriberItem = DB::table("subscriber")->where("subscriber_id", $id)
+                ->first();
 
-            if(!$subscriberUpdate || !is_array($subscriberUpdate)) {
-
-                return false;
-            };
-
-            Session::flash("res_subscriber_infor", [
-                "status"        => "200",
-                "message"       => "Cập nhật dữ liệu thành công"
-            ]);
+                $mjrItems = DB::table("majors")->get();
+                $lotItems = DB::table("level_of_training")->get();
 
 
+                if($subscriberItem) {
+
+                    return view("pages/dashboard/components/plugins/subscriber/update_form.view.php", [
+
+                        "subscriberItem"        => $subscriberItem,
+                        "mjrItems"               => $mjrItems,
+                        "lotItems"               => $lotItems
+                    ]);
+                }
+
+                return redirect('error-status/404-error'); 
+            }
+            else {
+
+                return redirect('error-status/500-error'); 
+            }
+        }
+        catch(Exception $error) {
+
+            return redirect('error-status/500-error'); 
+        }
+    }
+    public function __postUpdate($id) {
+
+        try {
+
+            if($id){
+
+                $subscriber_status = [
+                    "subscriber_status" => input('subscriber_status')
+                ];
+
+                $subscriber_item = [
+                    "subscriber_name"       => input('subscriber_name'),
+                    "subscriber_phone"      => input('subscriber_phone'),
+                    "subscriber_address"    => input('subscriber_address'),
+                    "subscriber_email"      => input('subscriber_email'),
+                    "subscriber_lot_id"     => input('subscriber_lot_id'),
+                    "subscriber_mjr_id"     => input('subscriber_mjr_id')
+                ];
+
+                if($subscriber_status || is_array($subscriber_status)){
+
+                    $subscriberStatusUpdate = DB::table('subscriber')->where("subscriber_id", $id)->update($subscriber_status);
+
+                    if($subscriberStatusUpdate && $subscriberStatusUpdate != 0) {
+        
+                        Session::flash("res_subscriber_infor", [
+                            "status"        => "200",
+                            "message"       => "Cập nhật dữ liệu thành công"
+                        ]);
+
+                        redirect('dashboard/subscribers');
+                    };
+                }
+
+                if($subscriber_item || is_array($subscriber_item)){
+
+                    $subscriberItemUpdate = DB::table('subscriber')->where("subscriber_id", $id)->update($subscriber_item);
+
+                    if($subscriberItemUpdate && $subscriberItemUpdate != 0){
+        
+                        Session::flash("res_subscriber_infor", [
+                            "status"        => "200",
+                            "message"       => "Cập nhật dữ liệu thành công"
+                        ]);
+
+                        redirect('dashboard/subscribers');
+                        };
+                }
+            }
              redirect('dashboard/subscribers');
 
         }

@@ -59,7 +59,8 @@ $router->get('/dashboard/analytics', [AnalyticsPage::class, '__getAnalyticsPage'
  * -------------------Subscribers Plugin-------------------
  */
 $router->get('/dashboard/subscribers', [SubscriberPage::class, '__getSubscriberPage']);
-$router->post('/dashboard/subscribers/update/{id}', [SubscriberPage::class, '__updateSubscriberById']);
+$router->post('/dashboard/subscribers/update/{id}', [SubscriberPage::class, '__postUpdate']);
+$router->get('/dashboard/subscribers/update/{id}', [SubscriberPage::class, '__getUpdateForm']);
 
 
 /**

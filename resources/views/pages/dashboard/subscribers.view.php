@@ -79,7 +79,7 @@ View::__template()->__startSection("content");
                                     <th>Địa chỉ</th>
                                     <th>Ngày đăng ký</th>
                                     <th>Trạng thái</th>
-                                    <th style="width: 75px;">Thao tác</th>
+                                    <th style="width: 75px">Thao tác</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -124,7 +124,7 @@ View::__template()->__startSection("content");
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                                    <a href="/dashboard/subscribers/update/{$subscriber['subscriber_id']}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
                                                     <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
                                                 </td>
                                             </tr>

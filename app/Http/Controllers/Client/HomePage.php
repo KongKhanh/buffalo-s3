@@ -6,11 +6,11 @@ class HomePage {
 
         try {
             
-            $newsCategoryList = DB::table('news_category')->get();
+            $menuCaties = DB::table('menu_cate')->where("mc_parent_id","0")->get();
 
             return view('pages/client/home.view.php', [
 
-                'newsCategoryList' => $newsCategoryList
+                'menuCaties' => $menuCaties
             ]); 
         }
         catch (Exception $error){
