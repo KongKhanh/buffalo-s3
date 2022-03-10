@@ -25,6 +25,8 @@ $router->get('/', [HomePage::class, '__getHomePage']);
  */
 $router->get('/news', [NewsPageClient::class, '__getNewsPageClient']);
 
+$router->get('/news/category/{target}', [NewsPageClient::class, '__getNewsByCate']);
+
 $router->get('/news-detail/{target}',[NewsPageClient::class, '__getNewsDetailPageClient']);
 
 /**

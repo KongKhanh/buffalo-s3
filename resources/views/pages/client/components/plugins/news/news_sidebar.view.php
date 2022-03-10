@@ -1,3 +1,10 @@
+<?php 
+
+    $newsCate       = DB::table("news_category")->get();
+
+    $latestNews     = (new NewsPageClient())->__getLatestNewsList(3); 
+?>
+
 <aside class="sidebar">
     <section class="searchbar">
         <h4 class="sidebar__title">
@@ -17,16 +24,16 @@
                 foreach ($newsCate as $newsCateItem) {
                     echo <<<HTML
                         <li class="category-item">
-                            <button onclick="showCategoryMenu(this.parentNode)">
+                            <!-- <button onclick="showCategoryMenu(this.parentNode)">
                                 {$newsCateItem["news_cate_title"]}
-                            </button>
+                            </button> -->
+                            <a href="/news/category/{$newsCateItem['news_cate_id']}" style="color: #FFFFFF;">
+                                {$newsCateItem["news_cate_title"]}
+                            </a>
                             <ul class="subcategory-list">
-                                <li class="subcategory-item">
+                                <!-- <li class="subcategory-item">
                                         Tin đào tạo
-                                </li>
-                                <li class="subcategory-item">
-                                    Tin hành chính
-                                </li>
+                                </li> -->
                             </ul>
                         </li>
                     HTML;
@@ -40,48 +47,33 @@
             Bài viết mới nhất
         </h4>
         <section class="relate-posts__container">
-            <article class="relate-post">
-                <div class="relate-post__thumbnail">
-                    <img src="/public/client/assets/images/image-3.jpeg" alt="">
-                </div>
-                <div class="relate-post__detail">
-                    <h4 class="relate-post__title">
-                        Thông báo tuyển sinh trung cấp 2020
-                    </h4>
-                    <p class="relate-post__author">
-                        <i class="fas fa-user-edit"></i>
-                        <span class="relate-post__date">ngày 01/07/2020</span>
-                    </p>
-                </div>
-            </article>
-            <article class="relate-post">
-                <div class="relate-post__thumbnail">
-                    <img src="/public/client/assets/images/image-1.jpeg" alt="">
-                </div>
-                <div class="relate-post__detail">
-                    <h4 class="relate-post__title">
-                        Trường tham gia ngầy hội tư vấn tuyển sinh tại Nhà ...
-                    </h4>
-                    <p class="relate-post__author">
-                        <i class="fas fa-user-edit"></i>
-                        <span class="relate-post__date">ngày 30/06/2020</span>
-                    </p>
-                </div>
-            </article>
-            <article class="relate-post">
-                <div class="relate-post__thumbnail">
-                    <img src="/public/client/assets/images/image-2.jpeg" alt="">
-                </div>
-                <div class="relate-post__detail">
-                    <h4 class="relate-post__title">
-                        Đoàn viên thanh niên hãy là tuyên truyền bảo
-                    </h4>
-                    <p class="relate-post__author">
-                        <i class="fas fa-user-edit"></i>
-                        <span class="relate-post__date">ngày 29/06/2020</span>
-                    </p>
-                </div>
-            </article>
+            <?php       
+                foreach ($latestNews as $latestNews_Item) {
+
+                    $date_created_at                    = date_format(date_create($latestNews_Item['news_created_at']), "d/m/Y");
+                    $news_representative_image_format   = !is_null($latestNews_Item['news_representative_image']) ? $latestNews_Item['news_representative_image'] : '/public/storage/images/default-news-image.jpg';
+
+                    echo <<<HTML
+                        <a href="{$latestNews_Item['link_url']}">
+                            <article class="relate-post">
+                                    <div class="relate-post__thumbnail">
+                                        <img src="{$news_representative_image_format}" alt="news_representative_image">
+                                    </div>
+                                    <div class="relate-post__detail">
+                                        <h4 class="relate-post__title">
+                                            {$latestNews_Item["news_title"]}
+                                        </h4>
+                                        <p class="relate-post__author">
+                                            <i class="fas fa-user-edit"></i>Admin
+                                            <span class="relate-post__date">Ngày đăng: {$date_created_at}</span>
+                                        </p>
+                                    </div>
+                                
+                            </article>
+                        </a>
+                    HTML;
+                }
+            ?>
         </section>
     </section>
     <section class="relate-tags">
