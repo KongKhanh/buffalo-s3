@@ -50,74 +50,44 @@
             </section>
         </header>
         <section class="news-container container">
-            <section class="news-block">
-                <article class="news-box">
-                    <a class="news-box__thumbnail" href="news-detail.html">
-                        <img src="/public/client/assets/images/image-3.jpeg" alt="">
-                    </a>
-                    <a class="news-box__title" href="news-detail.html">
-                        Thông báo tuyển sinh trung cấp 2020
-                        <span class="news-box__views">99 <i class="far fa-grin"></i></span>
-                    </a>
-                    <div class="news-box__author">
-                        <h4>admin, <span class="news-box__author--date">
-                            ngày 01/06/2020
-                        </span></h4>
-                    </div>
-                    <div class="news-box__desc">
-                        <p>Căn cứ kế hoạch đà tạo năm học 2020 - 2021 do Uỷ ban nhân dân Thành phố Hồ Chí Minh giao.<br>Trường Trung cấp Kỹ thuật Nông nghiệp Thành phố. Mã trường: TCD0216 - Website: www.ats.edu.vn thông báo tuyển sinh đào tạo trình độ Trung cấp.<br>Hình thức đào tạo: Chính quy năm học 2020 - 2021 với nội dung sau:
-                        </p>
-                        <a href="#" class="news-box__detail">
-                            Xem thêm
-                        </a>
-                    </div>
-                </article>
-                <article class="news-box">
-                    <a class="news-box__thumbnail" href="news-detail.html">
-                        <img src="/public/client/assets/images/image-3.jpeg" alt="">
-                    </a>
-                    <a class="news-box__title" href="news-detail.html">
-                        Thông báo tuyển sinh trung cấp 2020
-                        <span class="news-box__views">99 <i class="far fa-grin"></i></span>
-                    </a>
-                    <div class="news-box__author">
-                        <h4>admin, <span class="news-box__author--date">
-                            ngày 01/06/2020
-                        </span></h4>
-                    </div>
-                    <div class="news-box__desc">
-                        <p>Căn cứ kế hoạch đà tạo năm học 2020 - 2021 do Uỷ ban nhân dân Thành phố Hồ Chí Minh giao.<br>Trường Trung cấp Kỹ thuật Nông nghiệp Thành phố. Mã trường: TCD0216 - Website: www.ats.edu.vn thông báo tuyển sinh đào tạo trình độ Trung cấp.<br>Hình thức đào tạo: Chính quy năm học 2020 - 2021 với nội dung sau:
-                        </p>
-                        <a href="#" class="news-box__detail">
-                            Xem thêm
-                        </a>
-                    </div>
-                </article>
 
-                <article class="news-box">
-                    <a class="news-box__thumbnail" href="news-detail.html">
-                        <img src="/public/client/assets/images/image-3.jpeg" alt="">
-                    </a>
-                    <a class="news-box__title" href="news-detail.html">
-                        Thông báo tuyển sinh trung cấp 2020
-                        <span class="news-box__views">99 <i class="far fa-grin"></i></span>
-                    </a>
-                    <div class="news-box__author">
-                        <h4>admin, <span class="news-box__author--date">
-                            ngày 01/06/2020
-                        </span></h4>
-                    </div>
-                    <div class="news-box__desc">
-                        <p>Căn cứ kế hoạch đà tạo năm học 2020 - 2021 do Uỷ ban nhân dân Thành phố Hồ Chí Minh giao.<br>Trường Trung cấp Kỹ thuật Nông nghiệp Thành phố. Mã trường: TCD0216 - Website: www.ats.edu.vn thông báo tuyển sinh đào tạo trình độ Trung cấp.<br>Hình thức đào tạo: Chính quy năm học 2020 - 2021 với nội dung sau:
-                        </p>
-                        <a href="#" class="news-box__detail">
-                            Xem thêm
-                        </a>
-                    </div>
-                </article>
+            <section class="news-block">
+                <?php 
+                    foreach ($newsList as $news) {
+
+                        $date_created_at                    = date_format(date_create($news['news_created_at']), "d/m/Y");
+                        $news_representative_image_format   = !is_null($news['news_representative_image']) ? $news['news_representative_image'] : '/public/storage/images/default-news-image.jpg';
+
+                        echo <<<HTML
+                            <article class="news-box">
+                                <a class="news-box__thumbnail" href="{$news['link_url']}">
+                                    <img src="{$news_representative_image_format}" alt="news_representative_image">
+                                </a>
+                                <a class="news-box__title" href="news-detail.html">
+                                    {$news["news_title"]}
+                                    <span class="news-box__views">{$news['news_num_of_view']} <i class="far fa-eye"></i>
+                                </a>
+                                <div class="news-box__author">
+                                    <h4>Admin <span class="news-box__author--date">
+                                        - {$date_created_at}
+                                    </span></h4>
+                                </div>
+                                <div class="news-box__desc">
+                                    <p>Căn cứ kế hoạch đà tạo năm học 2020 - 2021 do Uỷ ban nhân dân Thành phố Hồ Chí Minh giao.<br>Trường Trung cấp Kỹ thuật Nông nghiệp Thành phố. Mã trường: TCD0216 - Website: www.ats.edu.vn thông báo tuyển sinh đào tạo trình độ Trung cấp.<br>Hình thức đào tạo: Chính quy năm học 2020 - 2021 với nội dung sau:
+                                    </p>
+                                    <a href="{$news['link_url']}" class="news-box__detail">
+                                        Xem thêm
+                                    </a>
+                                </div>
+                            </article>
+                        HTML;
+                    }
+                ?>
             </section>
+
+            <!--------------News sidebar-------------->
             <aside class="sidebar">
-                <sectio class="searchbar">
+                <section class="searchbar">
                     <h4 class="sidebar__title">
                         Chức năng tra cứu thông tin
                     </h4>
@@ -125,67 +95,31 @@
                         <i class="fas fa-search"></i>
                         <input type="text" name="search" id="search" placeholder="Từ khoá tìm kiếm...">
                     </form>
-                </sect>
+                </section>
                 <section class="category">
                     <h4 class="sidebar__title">
                         Danh mục:
                     </h4>
                     <ul class="category-list">
-                        <li class="category-item">
-                            Tin tức chung
-                            <ul class="subcategory-list">
-                                <li class="subcategory-item">
-                                    Tin đào tạo
-                                </li>
-                                <li class="subcategory-item">
-                                    Tin hành chính
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="category-item">
-                            Tin đào tạo - Hành chính
-                            <ul class="subcategory-list">
-                                <li class="subcategory-item">
-                                    Tin đào tạo
-                                </li>
-                                <li class="subcategory-item">
-                                    Tin hành chính
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="category-item">
-                            Tin Học tập
-                            <ul class="subcategory-list">
-                                <li class="subcategory-item">
-                                    Tin đào tạo
-                                </li>
-                                <li class="subcategory-item">
-                                    Tin hành chính
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="category-item">
-                            Tin Hoạt động - thể thao
-                            <ul class="subcategory-list">
-                                <li class="subcategory-item">
-                                    Tin đào tạo
-                                </li>
-                                <li class="subcategory-item">
-                                    Tin hành chính
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="category-item">
-                            Thông báo chung
-                            <ul class="subcategory-list">
-                                <li class="subcategory-item">
-                                    Tin đào tạo
-                                </li>
-                                <li class="subcategory-item">
-                                    Tin hành chính
-                                </li>
-                            </ul>
-                        </li>
+                        <?php 
+                            foreach ($newsCate as $newsCateItem) {
+                                echo <<<HTML
+                                    <li class="category-item">
+                                        <button onclick="showCategoryMenu(this.parentNode)">
+                                            {$newsCateItem["news_cate_title"]}
+                                        </button>
+                                        <ul class="subcategory-list">
+                                            <!-- <li class="subcategory-item">
+                                                    Tin đào tạo
+                                            </li>
+                                            <li class="subcategory-item">
+                                                Tin hành chính
+                                            </li> -->
+                                        </ul>
+                                    </li>
+                                HTML;
+                            }
+                        ?>
                     </ul>
                 </section>
                 <section class="relate-posts">
@@ -193,48 +127,33 @@
                         Bài viết mới nhất
                     </h4>
                     <section class="relate-posts__container">
-                        <article class="relate-post">
-                            <div class="relate-post__thumbnail">
-                                <img src="/public/client/assets/images/image-3.jpeg" alt="">
-                            </div>
-                            <div class="relate-post__detail">
-                                <h4 class="relate-post__title">
-                                    Thông báo tuyển sinh trung cấp 2020
-                                </h4>
-                                <p class="relate-post__author">
-                                    <i class="fas fa-user-edit"></i>
-                                    <span class="relate-post__date">ngày 01/07/2020</span>
-                                </p>
-                            </div>
-                        </article>
-                        <article class="relate-post">
-                            <div class="relate-post__thumbnail">
-                                <img src="/public/client/assets/images/image-1.jpeg" alt="">
-                            </div>
-                            <div class="relate-post__detail">
-                                <h4 class="relate-post__title">
-                                    Trường tham gia ngầy hội tư vấn tuyển sinh tại Nhà ...
-                                </h4>
-                                <p class="relate-post__author">
-                                    <i class="fas fa-user-edit"></i>
-                                    <span class="relate-post__date">ngày 30/06/2020</span>
-                                </p>
-                            </div>
-                        </article>
-                        <article class="relate-post">
-                            <div class="relate-post__thumbnail">
-                                <img src="/public/client/assets/images/image-2.jpeg" alt="">
-                            </div>
-                            <div class="relate-post__detail">
-                                <h4 class="relate-post__title">
-                                    Đoàn viên thanh niên hãy là tuyên truyền bảo
-                                </h4>
-                                <p class="relate-post__author">
-                                    <i class="fas fa-user-edit"></i>
-                                    <span class="relate-post__date">ngày 29/06/2020</span>
-                                </p>
-                            </div>
-                        </article>
+                        <?php 
+                            foreach ($latestNews as $latestNews_Item) {
+
+                                $date_created_at                    = date_format(date_create($latestNews_Item['news_created_at']), "d/m/Y");
+                                $news_representative_image_format   = !is_null($latestNews_Item['news_representative_image']) ? $latestNews_Item['news_representative_image'] : '/public/storage/images/default-news-image.jpg';
+
+                                echo <<<HTML
+                                    <a href="{$latestNews_Item['link_url']}">
+                                        <article class="relate-post">
+                                                <div class="relate-post__thumbnail">
+                                                    <img src="{$news_representative_image_format}" alt="news_representative_image">
+                                                </div>
+                                                <div class="relate-post__detail">
+                                                    <h4 class="relate-post__title">
+                                                        {$latestNews_Item["news_title"]}
+                                                    </h4>
+                                                    <p class="relate-post__author">
+                                                        <i class="fas fa-user-edit"></i>Admin
+                                                        <span class="relate-post__date">Ngày đăng: {$date_created_at}</span>
+                                                    </p>
+                                                </div>
+                                            
+                                        </article>
+                                    </a>
+                                HTML;
+                            }
+                        ?>
                     </section>
                 </section>
                 <section class="relate-tags">
@@ -261,6 +180,7 @@
                     </article>
                 </section>
             </aside>
+
         </section>
         <footer class="main-footer--outter">
             <section class="container">

@@ -47,13 +47,14 @@ return array(
     /**
      * Builder file-----------------------------------------------------------------------------------------
      */
-    "app\\Http\\Controllers\\Controller"        => $baseDir . '/app/Http/Controllers/Controller.php',
-
+    "app\\Http\\Controllers\\Controller"                        => $baseDir . '/app/Http/Controllers/Controller.php',
+    "app\\Http\\Controllers\\Helpers\\SingleHelper"             => $baseDir . '/app/Http/Controllers/Helpers/SingleHelper.php',
     /**
-     * Client Page
+     * ---------------------------Client Page
      */
     "app\\Http\\Controllers\\Client\\HomePage"                  => $baseDir . '/app/Http/Controllers/Client/HomePage.php',
     "app\\Http\\Controllers\\Client\\NewsPageClient"            => $baseDir . '/app/Http/Controllers/Client/NewsPageClient.php',
+    "app\\Http\\Controllers\\Client\\SiteInfoAPI"               => $baseDir . '/app/Http/Controllers/Client/SiteInfoAPI.php',
 
     /**
      * ---------------------------Authentication

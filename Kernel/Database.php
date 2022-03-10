@@ -455,11 +455,13 @@
 
             if(is_null($table) || !is_string($table)) return false;
 
-            $this->table = $table;
+            $this->table        = $table;
 
-            $this->where = array();
+            $this->where        = array();
 
-            $this->joins = array();
+            $this->joins        = array();
+
+            $this->columns      = array();
             
             return $this;
         }
@@ -597,7 +599,7 @@
 
             $this->select($col);
             
-            return $this->selectData($this->whereDataMultiCondition($this->where), false);
+            return $this->selectData($this->whereDataMultiCondition($this->where), false)[$col];
         }
 
         /**

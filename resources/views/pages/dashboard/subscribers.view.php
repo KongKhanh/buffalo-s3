@@ -178,6 +178,8 @@ View::__template()->__startSection("content");
                 })
                 .done(function(res) {
 
+                    console.log(res);
+
                     if (res) {
 
                         cuteAlert({

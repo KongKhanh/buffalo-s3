@@ -140,9 +140,7 @@ class SubscriberPage {
                 "message"       => "Cập nhật dữ liệu thành công"
             ]);
 
-
              redirect('dashboard/subscribers');
-
         }
         catch (Exception $error) {
 

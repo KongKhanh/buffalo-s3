@@ -71,6 +71,12 @@
     <div class="row">
         <?php 
             foreach($newsList as $news){
+
+                $news_status_wrapper = [
+                    "news_status_mesage"    => $news["news_status"] == "published" ? "Hiện" : "Ẩn",
+                    "news_status_badge"     => $news["news_status"] == "published" ? "bg-success" : "bg-danger",
+                ];
+
                 echo <<<HTML
                     <div class="col-lg-6 col-xxl-3">
                         <div class="card d-block">
@@ -92,9 +98,8 @@
                                 </div>
                                 <!-- project title-->
                                 <h4 class="mt-0">
-                                    <a href="apps-projects-details.html" class="text-title">{$news['news_title']}</a>
+                                    <a href="{$news['link_url']}" class="text-title" target="_blank">{$news['news_title']}</a>
                                 </h4>
-                                <div class="badge bg-success mb-3">Finished</div>
                                 <p class="text-muted font-13 mb-3">
                                     <!-- {$news['news_main_content']}...<a href="javascript:void(0);" class="fw-bold text-muted">view more</a> -->
                                 </p>
@@ -110,6 +115,14 @@
                                         <b>741</b> Comments
                                     </span> -->
                                 </p>
+                                <div>
+                                    <span>
+                                        Trạng thái: 
+                                    </span>
+                                    <div class="badge {$news_status_wrapper['news_status_badge']} mb-3">
+                                        {$news_status_wrapper['news_status_mesage']}
+                                    </div>
+                                </div>
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item p-3">    

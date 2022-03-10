@@ -4,36 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News Detail</title>
-    
-    <link rel="stylesheet" href="/public/client/assets/css/style.css">
-    
+    <title>Đăng ký</title>
+    <link rel="stylesheet" href="css/style.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-    <!-- Google Font -->
+    <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
-    
     <!-- JQuery -->
-    <script src="/public/client/assets/lib/jquery-3.4.1.min.js"></script>
-
+    <script src="lib/jquery-3.4.1.min.js"></script>
 </head>
 <body>
     <main class="main-wrapper">
         <header class="main-header--outter">
             <section class="main-header--inner">
                 <a class="main-header__logo" href="index.html">
-                    <img src="/public/client/assets/images/ats-logo-2.png" alt="">
+                    <img src="images/ats-logo-2.png" alt="">
                     <p class="logo-text">Trường Trung cấp
                         <br> Kỹ thuật Nông nghiệp</p>
                 </a>
                 <nav class="main-header__menubar">
                     <ul class="menubar__list nav__pc">
-                        <li class="menubar__list-item"><a href="#">Giới thiệu</a></li>
+                        <li class="menubar__list-item"><a href="about.html">Giới thiệu</a></li>
                         <li class="menubar__list-item"><a href="#">Phòng ban</a></li>
-                        <li class="menubar__list-item"><a href="#">Tin tức</a></li>
+                        <li class="menubar__list-item"><a href="news.html">Tin tức</a></li>
                         <li class="menubar__list-item"><a href="#">Liên hệ</a></li>
                         <li class="menubar__list-item"><a href="#">Tuyển dụng</a></li>
                         <li class="menubar__list-item" style="animation: none;">
@@ -46,27 +41,15 @@
                 </nav>
             </section>
             <section class="container main-header__desc">
-                <h1 class="desc__title" style="text-align: center; text-transform: uppercase;" id="news-title">
-                    <?= $newsItem['news_title']; ?>
+                <h1 class="desc__title" style="text-align: center; text-transform: uppercase;" id="page-title">
+                    Đăng ký học viên mới
                 </h1>
-                <!-- <nav class="history-bar">
+                <nav class="history-bar">
                     <p>
-                        <a href="#" class="previous-page">Trang chủ</a>
-                        <a href="#" class="previous-page">thông báo</a>
-                        <a href="#" class="present-page">Thông báo tuyển sinh trung cấp 2020</a>
+                        <!-- <a href="#" class="previous-page">Trang chủ</a> -->
+                        <!-- <a href="#" class="present-page">Giới thiệu trường</a> -->
                     </p>
-                </nav> -->
-                <div class="post-detail">
-                    <p>
-                        Người viết<span>Admin</span>
-                    </p>
-                    <p>
-                        Ngày đăng<span><?= date_format(date_create($newsItem['news_created_at']), "d/m/Y"); ?></span>
-                    </p>
-                    <p>
-                        Lượt xem<span><?= $newsItem['news_num_of_view']; ?></span>
-                    </p>
-                </div>
+                </nav>
             </section>
         </header>
         <!-- #region News -->
@@ -78,11 +61,11 @@
             <label for="nav-mobile-input" class="nav-overlay"></label>
             <ul class="menubar__list nav__mobile">
                 <label for="nav-mobile-input"  class="nav__mobile-close"><i class="fas fa-times"></i></label>
-                <li class="menubar__mobile-list-item"><img src="/public/client/assets/images/ats-logo-2.png" alt=""></li>
+                <li class="menubar__mobile-list-item"><img src="images/ats-logo-2.png" alt=""></li>
                 <li class="menubar__mobile-list-item" id="visited"><a href="#">Trang chủ</a></li>
-                <li class="menubar__mobile-list-item"><a href="about.html">Giới thiệu</a></li>
+                <li class="menubar__mobile-list-item"><a href="#">Giới thiệu</a></li>
                 <li class="menubar__mobile-list-item"><a href="#">Phòng ban</a></li>
-                <li class="menubar__mobile-list-item"><a href="news.html">Tin tức</a></li>
+                <li class="menubar__mobile-list-item"><a href="#">Tin tức</a></li>
                 <li class="menubar__mobile-list-item"><a href="#">Liên hệ</a></li>
                 <li class="menubar__mobile-list-item"><a href="#">Tuyển dụng</a></li>
                 <li class="menubar__list-item">
@@ -99,23 +82,118 @@
             </ul>
         </nav>
         <!-- #endregion News -->
-        <section class="news-container container">
-
-            <section class="news-block">
-                <article class="news-box no-flex">
-                    <div class="news-box__thumbnail">
-                        <img src="<?= !is_null($newsItem['news_representative_image']) ? $newsItem['news_representative_image'] : '/public/storage/images/default-news-image.jpg'; ?>" alt="news_representative_image">
-                    </div>
-                    <h4 class="news-box__title">
-                        <?= $newsItem['news_title']; ?>
-                    </h4>
-                    <div class="news-box__desc">
-                        <?= $newsItem['news_main_content']; ?>
-                    </div>
-                </article>
+        <section class="form-container container">
+            <section class="register-block">
+                <form action="" id="registerForm" method="post">
+                    <article class="base-info">
+                        <h4 class="register-title">
+                            Thông tin cá nhân
+                        </h4>
+                        <section class="base-value">
+                            <article class="input-block">
+                                <div class="input-box">
+                                    <input type="text" name="fullName" id="fullName" placeholder="Họ và tên...">
+                                    <i class="fas fa-exclamation-circle error-tag" style="color: red;"></i>
+                                    <i class="fas fa-user input-tag"></i>
+                                </div>
+                                <p class="input-error">Vui lòng nhập họ tên</p>
+                            </article>
+                            <article class="input-block">
+                                <div class="input-box">
+                                    <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Số điện thoại...">
+                                    <i class="fas fa-exclamation-circle error-tag" style="color: red;"></i>
+                                    <i class="fas fa-phone input-tag"></i>
+                                </div>
+                                <p class="input-error">Vui lòng nhập lại số điện thoại</p>
+                            </article>
+                        </section>
+                        <article class="input-block">
+                            <div class="input-box">
+                                <input type="text" name="dateOfBirth" id="dateOfBirth" placeholder="Ngày sinh" onfocus="(this.type = 'date')" onblur="(this.type = 'text')">
+                                <i class="fas fa-exclamation-circle error-tag" style="color: red;"></i>
+                                <i class="fas fa-calendar input-tag"></i>
+                            </div>
+                            <p class="input-error">Vui lòng nhập lại ngày sinh</p>
+                        </article>
+                        <article class="input-block">
+                            <div class="input-box">
+                                <input type="text" name="email" id="email" placeholder="Email...">
+                                <i class="fas fa-exclamation-circle error-tag" style="color: red;"></i>
+                                <i class="fas fa-envelope input-tag"></i>
+                            </div>
+                            <p class="input-error">Vui lòng nhập lại Email</p>
+                        </article>
+                        <article class="input-block">
+                            <div class="input-box">
+                                <input type="text" name="address" id="address" placeholder="Địa chỉ liên hệ...">
+                                <i class="fas fa-exclamation-circle error-tag" style="color: red;"></i>
+                                <i class="fas fa-map input-tag"></i>
+                            </div>
+                            <p class="input-error">Vui lòng nhập lại địa chỉ</p>
+                        </article>
+                        <article class="input-block">
+                            <div class="input-box">
+                                <select name="education" id="education">
+                                    <option value="-1" selected>Trình độ học vấn</option>
+                                    <option value="junior">Trung học cơ sở</option>
+                                    <option value="high">Trung học phổ thông</option>
+                                    <option value="other">Khác</option>
+                                </select>
+                                <i class="fas fa-exclamation-circle error-tag" style="color: red;"></i>
+                            </div>
+                            <p class="input-error">Vui lòng chọn lại trình độ học vấn</p>
+                        </article>
+                    </article>
+                    <article class="other-info">
+                        <h4 class="register-title">
+                            Thông tin đăng ký xét tuyển
+                        </h4>
+                        <article class="input-block">
+                            <div class="input-box">
+                                <select name="trainingSystem" id="trainingSystem">
+                                    <option value="-1" selected>Hệ đào tạo</option>
+                                    <option value="mid">Trung cấp chuyên nghiệp</option>
+                                    <option value="short">Khóa ngắn hạn</option>
+                                    <option value="thematic">Khác</option>
+                                </select>
+                                <i class="fas fa-exclamation-circle error-tag" style="color: red;"></i>
+                            </div>
+                            <p class="input-error">Vui lòng chọn lại hệ đào tạo</p>
+                        </article>
+                        <article class="input-block">
+                            <div class="input-box">
+                                <select name="course" id="course">
+                                    <option value="-1" selected>Ngành đào tạo</option>
+                                    <option value="1">Quản lý nhà đất</option>
+                                    <option value="2">Quản lý đất đai</option>
+                                    <option value="3">Chăn nuôi - Thú y</option>
+                                    <option value="4">Kế toán doanh nghiệp</option>
+                                    <option value="5">Thuỷ lợi tổng hợp</option>
+                                    <option value="6">Bảo trì & sửa chữa thiết bị nhiệt(cơ điện lạnh)</option>
+                                    <option value="7">Trồng trọt và Bảo vệ thực vật</option>
+                                    <option value="8">Trắc địa - Địa hình - Địa chính</option>
+                                    <option value="9">Điện công nghiệp và Dân dụng</option>
+                                    <option value="10">Quản lý tài nguyên môi trường</option>
+                                    <option value="11">Kinh doanh bất động sản</option>
+                                    <option value="12">Thiết kế cảnh quan viên</option>
+                                </select>
+                                <i class="fas fa-exclamation-circle error-tag" style="color: red;"></i>
+                            </div>
+                            <p class="input-error">Vui lòng chọn lại ngành đào tạo</p>
+                        </article>
+                        <article class="input-block">
+                            <div class="input-box">
+                                <textarea name="note" id="note" placeholder="Ghi chú"></textarea>
+                            </div>
+                        </article>
+                    </article>
+                    <article class="register--btn">
+                        <button id="registerSubmit" name="registerSubmit">
+                            Đăng ký
+                        </button>
+                    </article>
+                </form>
             </section>
-
-            <!--------------News sidebar-------------->
             <aside class="sidebar">
                 <section class="searchbar">
                     <h4 class="sidebar__title">
@@ -131,25 +209,71 @@
                         Danh mục:
                     </h4>
                     <ul class="category-list">
-                        <?php 
-                            foreach ($newsCate as $newsCateItem) {
-                                echo <<<HTML
-                                    <li class="category-item">
-                                        <button onclick="showCategoryMenu(this.parentNode)">
-                                            {$newsCateItem["news_cate_title"]}
-                                        </button>
-                                        <ul class="subcategory-list">
-                                            <!-- <li class="subcategory-item">
-                                                    Tin đào tạo
-                                            </li>
-                                            <li class="subcategory-item">
-                                                Tin hành chính
-                                            </li> -->
-                                        </ul>
-                                    </li>
-                                HTML;
-                            }
-                        ?>
+                        <li class="category-item">
+                            <button onclick="showCategoryMenu(this.parentNode)">
+                                Tin tức chung
+                            </button>
+                            <ul class="subcategory-list">
+                                <li class="subcategory-item">
+                                        Tin đào tạo
+                                </li>
+                                <li class="subcategory-item">
+                                    Tin hành chính
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="category-item">
+                            <button onclick="showCategoryMenu(this.parentNode)">
+                                Tin đào tạo - Hành chính
+                            </button>
+                            <ul class="subcategory-list">
+                                <li class="subcategory-item">
+                                    Tin đào tạo
+                                </li>
+                                <li class="subcategory-item">
+                                    Tin hành chính
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="category-item">
+                            <button onclick="showCategoryMenu(this.parentNode)">
+                                Tin Học tập
+                            </button>
+                            <ul class="subcategory-list">
+                                <li class="subcategory-item">
+                                    Tin đào tạo
+                                </li>
+                                <li class="subcategory-item">
+                                    Tin hành chính
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="category-item">
+                            <button onclick="showCategoryMenu(this.parentNode)">
+                                Tin Hoạt động - thể thao
+                            </button>
+                            <ul class="subcategory-list">
+                                <li class="subcategory-item">
+                                    Tin đào tạo
+                                </li>
+                                <li class="subcategory-item">
+                                    Tin hành chính
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="category-item">
+                            <button onclick="showCategoryMenu(this.parentNode)">
+                                Thông báo chung
+                            </button>
+                            <ul class="subcategory-list">
+                                <li class="subcategory-item">
+                                    Tin đào tạo
+                                </li>
+                                <li class="subcategory-item">
+                                    Tin hành chính
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </section>
                 <section class="relate-posts">
@@ -157,33 +281,48 @@
                         Bài viết mới nhất
                     </h4>
                     <section class="relate-posts__container">
-                        <?php 
-                            foreach ($latestNews as $latestNews_Item) {
-
-                                $date_created_at                    = date_format(date_create($latestNews_Item['news_created_at']), "d/m/Y");
-                                $news_representative_image_format   = !is_null($latestNews_Item['news_representative_image']) ? $latestNews_Item['news_representative_image'] : '/public/storage/images/default-news-image.jpg';
-
-                                echo <<<HTML
-                                    <a href="{$latestNews_Item['link_url']}">
-                                        <article class="relate-post">
-                                                <div class="relate-post__thumbnail">
-                                                    <img src="{$news_representative_image_format}" alt="news_representative_image">
-                                                </div>
-                                                <div class="relate-post__detail">
-                                                    <h4 class="relate-post__title">
-                                                        {$latestNews_Item["news_title"]}
-                                                    </h4>
-                                                    <p class="relate-post__author">
-                                                        <i class="fas fa-user-edit"></i>Admin
-                                                        <span class="relate-post__date">Ngày đăng: {$date_created_at}</span>
-                                                    </p>
-                                                </div>
-                                            
-                                        </article>
-                                    </a>
-                                HTML;
-                            }
-                        ?>
+                        <article class="relate-post">
+                            <div class="relate-post__thumbnail">
+                                <img src="images/image-3.jpeg" alt="">
+                            </div>
+                            <div class="relate-post__detail">
+                                <h4 class="relate-post__title">
+                                    Thông báo tuyển sinh trung cấp 2020
+                                </h4>
+                                <p class="relate-post__author">
+                                    <i class="fas fa-user-edit"></i>
+                                    <span class="relate-post__date">ngày 01/07/2020</span>
+                                </p>
+                            </div>
+                        </article>
+                        <article class="relate-post">
+                            <div class="relate-post__thumbnail">
+                                <img src="images/image-1.jpeg" alt="">
+                            </div>
+                            <div class="relate-post__detail">
+                                <h4 class="relate-post__title">
+                                    Trường tham gia ngầy hội tư vấn tuyển sinh tại Nhà ...
+                                </h4>
+                                <p class="relate-post__author">
+                                    <i class="fas fa-user-edit"></i>
+                                    <span class="relate-post__date">ngày 30/06/2020</span>
+                                </p>
+                            </div>
+                        </article>
+                        <article class="relate-post">
+                            <div class="relate-post__thumbnail">
+                                <img src="images/image-2.jpeg" alt="">
+                            </div>
+                            <div class="relate-post__detail">
+                                <h4 class="relate-post__title">
+                                    Đoàn viên thanh niên hãy là tuyên truyền bảo
+                                </h4>
+                                <p class="relate-post__author">
+                                    <i class="fas fa-user-edit"></i>
+                                    <span class="relate-post__date">ngày 29/06/2020</span>
+                                </p>
+                            </div>
+                        </article>
                     </section>
                 </section>
                 <section class="relate-tags">
@@ -210,7 +349,6 @@
                     </article>
                 </section>
             </aside>
-
         </section>
         <footer class="main-footer--outter inside-box">
             <section class="container">
@@ -274,7 +412,7 @@
             <section class="main-footer--inner inside-box__main">
                 <article class="main-footer__content">
                     <section class="main-footer__logo">
-                        <img src="/public/client/assets/images/ats-logo-2.png" alt="">
+                        <img src="images/ats-logo-2.png" alt="">
                     </section>
                     <section class="main-footer__track">
                         <article class="main-footer__track-item">
@@ -412,12 +550,44 @@
             </form>
         </section>
     </section>
-
-    <?php 
-        includeFile('pages/client/components/footer_landing_box.view.php');
-    ?>
+    <section class="landing-box">
+        <section class="landing-box-container">
+            <article class="landing-btn">
+                <a href="about.html">
+                    Quy chế tuyển sinh
+                </a>
+                <article class="popup-box">
+                    Quy chế tuyển sinh
+                </article>
+            </article>
+            <article class="landing-btn" id="register-btn">
+                <a style="cursor: pointer;">
+                    Đăng ký xét tuyển
+                </a>
+                <article class="popup-box">
+                    Đăng ký xét tuyển
+                </article>
+            </article>
+            <article class="landing-btn" id="">
+                <a href="register.html">
+                    Đăng ký tư vấn
+                </a>
+                <article class="popup-box">
+                    Đăng ký để được tư vấn
+                </article>
+            </article>
+            <article class="landing-btn">
+                <a href="register.html">
+                    Inbox tư vấn
+                </a>
+                <article class="popup-box">
+                    Inbox ngay để được tư vấn, đăng ký tuyển sinh
+                </article>
+            </article>
+        </section>
+    </section>
 </body>
-
-<script src="/public/client/assets/js/app.js"></script>
-
+<script src="./js/registerFormValidation.js"></script>
+<script src="./js/registerModal.js"></script>
+<script src="./js/app.js"></script>
 </html>

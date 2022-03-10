@@ -2,6 +2,13 @@
 
 class HomePage {
 
+    protected $siteInfo;
+
+    function __construct() {
+
+        $this->siteInfo = (new SiteInfoAPI())->__getSiteInfomation();
+    }
+
     public function __getHomePage() {
 
         try {
@@ -9,8 +16,8 @@ class HomePage {
             $newsCategoryList = DB::table('news_category')->get();
 
             return view('pages/client/home.view.php', [
-
-                'newsCategoryList' => $newsCategoryList
+                'siteInfo'              => $this->siteInfo,
+                'newsCategoryList'      => $newsCategoryList
             ]); 
         }
         catch (Exception $error){
