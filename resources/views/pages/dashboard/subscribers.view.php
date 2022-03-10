@@ -94,10 +94,6 @@ View::__template()->__startSection("content");
 
                                     $subscriber_address     = Str::limit($subscriber["subscriber_address"], 15, "...");
                                     $subscriber_status = $subscriber["subscriber_status"] == "new" ? "checked" : "";
-                                    // $subscriber_status      = [
-                                    //     'message'       => $subscriber["subscriber_status"] == "new" ? "Chờ duyệt" : "Đã duyệt",
-                                    //     'badge_type'    => $subscriber["subscriber_status"] == "new" ? "danger" : "success",
-                                    // ];
 
                                     echo <<<HTML
                                             <tr>
@@ -170,7 +166,7 @@ View::__template()->__startSection("content");
      */
     $('.subscriber_status').change(function() {
 
-        var endPoint = `/dashboard/subscribers/update/${$(this).attr("data-id")}`;
+        var endPoint = `/dashboard/subscriber/update/${$(this).attr("data-id")}`;
 
         function __requestUpdate(subscriber_status) {
 
@@ -182,7 +178,6 @@ View::__template()->__startSection("content");
                     }
                 })
                 .done(function(res) {
-
                     if (res) {
 
                         cuteAlert({

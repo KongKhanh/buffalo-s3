@@ -16,6 +16,23 @@
         
     <!-- JQuery -->
     <script src="/public/client/assets/lib/jquery-3.4.1.min.js"></script>
+    <style>
+      .menuParentList{
+            color:white;
+            position:absolute;
+            top:50px;
+            text-decoration: none;
+            /* display:none; */
+        } 
+        .menuParentList a{
+            display:block;
+            text-align:left;
+            text-decoration: none;
+        }
+        .menu_category:hover .menuParentList{ 
+            /* display:block; */
+        }  
+    </style>
 </head>
 
 <body>
@@ -30,10 +47,11 @@
                 <nav class="main-header__menubar">
                     <ul class="menubar__list">
                         <?php 
-                            foreach($menuCaties as $menuCate){
+                            foreach($menuCategories as $menuCategory){
                                 echo 
                                 <<<HTML
-                                    <li class="menubar__list-item"><a href="#">{$menuCate['mc_title']}</a></li>
+                                    <li class="menubar__list-item menu_category" value="{$menuCategory['mc_id']}"><a href="javascript:void(0);">{$menuCategory['mc_title']}</a>
+                                    </li>
                                 HTML;
                             }
                         ?>
@@ -295,5 +313,33 @@
         </footer>
     </main>
 </body>
+<script>
+    $(document).ready(function(){
+    $(".menu_category").hover(function(){
+        var idMc = $(this).val();
+        if(idMc){
+            $.ajax({
+                method: "GET",
+                url: `/menu-cate/parent/${idMc}`,
+                headers: {
+                    'Content-Type':'application/json'
+                },
+                }).done(function( res ) {
+                    res = JSON.parse(res);
 
+                    var getMenuCategory = " ";
+
+                    for (let i = 0; i < res.matches.length; i++) { 
+
+                            getMenuCategory += `<ul class="menuParentList"><a value= "${res.matches[i].mc_id}">${res.matches[i].mc_title}</a></ul>`
+                    };
+                    // $(".menuParentList")+=getMenuCategory;
+                    console.log(getMenuCategory);
+                    $(".menu_category").show();
+                });
+            }
+        });
+    });
+
+</script>
 </html>

@@ -39,6 +39,11 @@ $router->get('/subscriber-form', [HomePage::class, '__getSubscriberForm']);
 $router->post('/subscriber-form', [SubscriberPage::class, '__postSubscriberPage']);
 
 /**
+ * Menucate Plugins
+ */
+$router->get('/menu-cate/parent/{id}',[MenuCatePage::class, '__getMCParentById']);
+
+/**
  * -----------------------------------------------------------Admin Dashboard-------------------------------------------------------------------------------------
  */
 /**
@@ -112,3 +117,6 @@ $router->get('/api/majors-by-id/{id}', [MajorsPage::class, '__getMajorsById']);
  */
 $router->get('/error-status/404-error', [ERRORPage::class, '__get404Page']);
 $router->get('/error-status/500-error', [ERRORPage::class, '__get500Page']);
+
+
+// 
