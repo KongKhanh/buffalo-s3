@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News</title>
 
+    <!-- <link rel="stylesheet" href="/public/client/assets/lib/bootstrap_v5/css/bootstrap.min.css"> -->
+
     <link rel="stylesheet" href="/public/client/assets/css/style.css">
 
     <!-- Font Awesome -->
@@ -54,34 +56,41 @@
             <!--------------News container-------------->
             <section class="news-block">
                 <?php 
-                    foreach ($newsList as $news) {
 
-                        $date_created_at                    = date_format(date_create($news['news_created_at']), "d/m/Y");
-                        $news_representative_image_format   = !is_null($news['news_representative_image']) ? $news['news_representative_image'] : '/public/storage/images/default-news-image.jpg';
+                    if(count($newsByCate) <= 0) {
 
-                        echo <<<HTML
-                            <article class="news-box">
-                                <a class="news-box__thumbnail" href="{$news['link_url']}">
-                                    <img src="{$news_representative_image_format}" alt="news_representative_image">
-                                </a>
-                                <a class="news-box__title" href="{$news['link_url']}">
-                                    {$news["news_title"]}
-                                    <span class="news-box__views">{$news['news_num_of_view']} <i class="far fa-eye"></i>
-                                </a>
-                                <div class="news-box__author">
-                                    <h4>Admin <span class="news-box__author--date">
-                                        - {$date_created_at}
-                                    </span></h4>
-                                </div>
-                                <div class="news-box__desc">
-                                    <p>Căn cứ kế hoạch đà tạo năm học 2020 - 2021 do Uỷ ban nhân dân Thành phố Hồ Chí Minh giao.<br>Trường Trung cấp Kỹ thuật Nông nghiệp Thành phố. Mã trường: TCD0216 - Website: www.ats.edu.vn thông báo tuyển sinh đào tạo trình độ Trung cấp.<br>Hình thức đào tạo: Chính quy năm học 2020 - 2021 với nội dung sau:
-                                    </p>
-                                    <a href="{$news['link_url']}" class="news-box__detail">
-                                        Xem thêm
+                        echo "***Hiện tại chưa có bài viết nào cho danh mục này !";
+                    } 
+                    else {
+                        foreach ($newsByCate as $news) {
+
+                            $date_created_at                    = date_format(date_create($news['news_created_at']), "d/m/Y");
+                            $news_representative_image_format   = !is_null($news['news_representative_image']) ? $news['news_representative_image'] : '/public/storage/images/default-news-image.jpg';
+
+                            echo <<<HTML
+                                <article class="news-box">
+                                    <a class="news-box__thumbnail" href="{$news['link_url']}">
+                                        <img src="{$news_representative_image_format}" alt="news_representative_image">
                                     </a>
-                                </div>
-                            </article>
-                        HTML;
+                                    <a class="news-box__title" href="{$news['link_url']}">
+                                        {$news["news_title"]}
+                                        <span class="news-box__views">{$news['news_num_of_view']} <i class="far fa-eye"></i>
+                                    </a>
+                                    <div class="news-box__author">
+                                        <h4>Admin <span class="news-box__author--date">
+                                            - {$date_created_at}
+                                        </span></h4>
+                                    </div>
+                                    <div class="news-box__desc">
+                                        <p>Căn cứ kế hoạch đà tạo năm học 2020 - 2021 do Uỷ ban nhân dân Thành phố Hồ Chí Minh giao.<br>Trường Trung cấp Kỹ thuật Nông nghiệp Thành phố. Mã trường: TCD0216 - Website: www.ats.edu.vn thông báo tuyển sinh đào tạo trình độ Trung cấp.<br>Hình thức đào tạo: Chính quy năm học 2020 - 2021 với nội dung sau:
+                                        </p>
+                                        <a href="{$news['link_url']}" class="news-box__detail">
+                                            Xem thêm
+                                        </a>
+                                    </div>
+                                </article>
+                            HTML;
+                        }                    
                     }
                 ?>
             </section>
@@ -90,13 +99,12 @@
             <?php includeFile('pages/client/components/plugins/news/news_sidebar.view.php');?>
 
         </section>
-
-         <!--------------Footer page-------------->
-         <?php includeFile('pages/client/components/footer_page.view.php');?>
-
+        <!--------------Footer page-------------->
+        <?php includeFile('pages/client/components/footer_page.view.php');?>
     </main>
-
-    <?php includeFile('pages/client/components/footer_landing_box.view.php');?>
-
+    
+    <?php 
+        includeFile('pages/client/components/footer_landing_box.view.php');
+    ?>
 </body>
 </html>

@@ -202,11 +202,10 @@ class SubscriberPage {
                         ]);
 
                         redirect('dashboard/subscribers');
-                        };
+                    };
                 }
             }
              redirect('dashboard/subscribers');
-
         }
         catch (Exception $error) {
 

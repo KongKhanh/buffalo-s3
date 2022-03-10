@@ -11,7 +11,9 @@ class NewsPage {
 
     public function __getNewsPage() {
 
-        $newsList = DB::table('news')->get();
+        $newsList = DB::table('news')
+        ->join("links", "news_link_id", "=", "link_id")
+        ->get();
 
         return view("pages/dashboard/news.view.php", [
             "newsList" => $newsList
@@ -43,24 +45,33 @@ class NewsPage {
         try {
 
             $input = [
-                "news_title"                => !is_null(input("news_title")) ? input("news_title") : false, 
-                "news_news_cate_id"         => !is_null(input("news_news_cate_id")) ? input("news_news_cate_id") : false, 
-                "link_url"                  => !is_null(input("link_url")) ? input("link_url") : false, 
-                "news_main_content"         => !is_null(input("news_main_content")) ? input("news_main_content") : false, 
-                "news_created_by"           => "0"
+                "news_title"                        => !is_null(input("news_title")) ? input("news_title") : false, 
+                "news_news_cate_id"                 => !is_null(input("news_news_cate_id")) ? input("news_news_cate_id") : false, 
+                "link_url"                          => !is_null(input("link_url")) ? input("link_url") : false, 
+                "news_main_content"                 => !is_null(input("news_main_content")) ? input("news_main_content") : false, 
+                "news_created_by"                   => "0",
+                "news_representative_image"         => !is_null(input("news_representative_image")) ? input("news_representative_image") : false, 
             ];
 
             $link_id = DB::table("links")->insertGetId([
                 "link_lt_id"                => 1, 
                 "link_url"                  => $input["link_url"],  
             ]);
+
+            
+            $input["news_representative_image"] = array_merge($input["news_representative_image"], [
+                'target_dir'        =>      'public/storage/images/'
+            ]);
+
+            $statusMove = SingleHelper::moveFile($input["news_representative_image"]);
     
             $link_id ? $news_insert_status = DB::table("news")->insert([
-                "news_title"                => $input["news_title"], 
-                "news_news_cate_id"         => $input["news_news_cate_id"],  
-                "news_link_id"              => $link_id,
-                "news_main_content"         => $input["news_main_content"], 
-                "news_created_by"           => "0"
+                "news_title"                            => $input["news_title"], 
+                "news_news_cate_id"                     => $input["news_news_cate_id"],  
+                "news_link_id"                          => $link_id,
+                "news_main_content"                     => $input["news_main_content"], 
+                "news_created_by"                       => "0",
+                "news_representative_image"             => $statusMove ? "/" . $input["news_representative_image"]["target_dir"] . $input["news_representative_image"]["name"] : null,
             ]) : false;
 
             if($news_insert_status) {

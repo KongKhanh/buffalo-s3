@@ -191,11 +191,11 @@
         <li class="dropdown notification-list">
             <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                 <span class="account-user-avatar"> 
-                    <img src="/public/dashboard/assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
+                    <img src="/public/dashboard/assets/images/users/user-default.png" alt="user-image" class="rounded-circle">
                 </span>
                 <span>
                     <span class="account-user-name">Soeng Souy</span>
-                    <span class="account-position">Founder</span>
+                    <span class="account-position">ADMIN</span>
                 </span>
             </a>
             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">

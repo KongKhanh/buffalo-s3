@@ -9,7 +9,8 @@ class HomePage {
             $menuCategories = DB::table('menu_cate')->where("mc_parent_id","0")->get();
             
             return view('pages/client/home.view.php', [
-
+                
+                'siteInfo'              => $this->siteInfo,
                 'menuCategories' => $menuCategories
             ]); 
         }
