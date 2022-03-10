@@ -31,15 +31,18 @@
                         <br> Kỹ thuật Nông nghiệp</p>
                 </a>
                 <nav class="main-header__menubar">
-                    <ul class="menubar__list nav__pc">
-                        <li class="menubar__list-item"><a href="about.html">Giới thiệu</a></li>
-                        <li class="menubar__list-item"><a href="#">Phòng ban</a></li>
-                        <li class="menubar__list-item"><a href="news.html">Tin tức</a></li>
-                        <li class="menubar__list-item"><a href="#">Liên hệ</a></li>
-                        <li class="menubar__list-item"><a href="#">Tuyển dụng</a></li>
-                        <li class="menubar__list-item" style="animation: none;">
-                            <input type="text" name="headSearh" id="headSearch" placeholder="Tìm kiếm">
-                            <button name="header-search--btn" class="btn" id="headSearchBtn">
+
+                    <ul class="menubar__list">
+                        <?php 
+                            foreach($menuCaties as $menuCate){
+                                echo 
+                                <<<HTML
+                                    <li class="menubar__list-item"><a href="#">{$menuCate['mc_title']}</a></li>
+                                HTML;
+                            }
+                        ?>
+                        <li class="menubar__list-item">
+                            <button name="header-search--btn" class="btn">
                                 <i class="fas fa-search"></i>
                             </button>
                         </li>

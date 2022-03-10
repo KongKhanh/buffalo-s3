@@ -37,6 +37,11 @@ View::__template()->__startSection("content");
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
+
+                <form method="POST" id="formDelete">
+                        <input type="hidden" name="scb_id" id="scb_id">
+                </form>
+
                     <?php
                         if (Session::has("res_subscriber_infor")) {
 
@@ -79,7 +84,7 @@ View::__template()->__startSection("content");
                                     <th>Địa chỉ</th>
                                     <th>Ngày đăng ký</th>
                                     <th>Trạng thái</th>
-                                    <th style="width: 75px;">Thao tác</th>
+                                    <th style="width: 75px">Thao tác</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -124,8 +129,8 @@ View::__template()->__startSection("content");
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                                                    <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                                    <a href="/dashboard/subscriber/update/{$subscriber['subscriber_id']}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                                    <a href="javascript:void(0);" data-id="{$subscriber['subscriber_id']}" class="action-icon btnDeleteSubscriber"> <i class="mdi mdi-delete"></i></a>
                                                 </td>
                                             </tr>
                                         HTML;
@@ -204,6 +209,25 @@ View::__template()->__startSection("content");
             __requestUpdate("approved");
         }
     });
+    $('.btnDeleteSubscriber').click(function() {
+        cuteAlert({
+            type: "question",
+            title: "Bạn có muốn xóa không",
+            message: "",
+            confirmText: "Đồng ý",
+            cancelText: "Hủy"
+        })
+        .then((e) => {
+
+            if(e) {
+
+                $('#scb_id').attr('value', $(this).attr('data-id'));
+                $('#formDelete').attr('action', '/dashboard/subscriber/delete');
+                $('#formDelete').submit();
+            }
+        });
+    });
+
 </script>
 
 
