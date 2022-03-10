@@ -213,4 +213,31 @@ class SubscriberPage {
             return false;
         }
     }
+
+    public function __deleteSubscriber(){
+
+        try {
+
+            $input = [
+                "scb_id"    => input("scb_id")
+            ];
+
+            if($input){
+
+               $status = DB::table('subscriber')->where('subscriber_id',$input['scb_id'])->delete();
+    
+                Session::flash("res_subscriber_infor", [
+                    "status"        => "200",
+                    "message"       => "Cập nhật dữ liệu thành công"
+                ]);
+
+                redirect('dashboard/subscribers');
+            }
+            return redirect('error-status/500-error');
+        }
+        catch(Exception $error) {
+
+            return redirect('error-status/500-error');
+        }
+    }
 }

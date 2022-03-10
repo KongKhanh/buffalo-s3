@@ -194,7 +194,7 @@ class MajorsPage {
 
             return redirect('error-status/500-error');
         }
-        catch(Exeption $error) {
+        catch(Exception $error) {
 
             return redirect('error-status/500-error');
         }

@@ -23,7 +23,7 @@
 
                     <div class="tab-content">
                         <div class="tab-pane show active" id="form-row-preview">
-                            <form method="POST" action="/dashboard/subscribers/update/<?php echo $subscriberItem['subscriber_id'];?>">
+                            <form method="POST" action="/dashboard/subscriber/update/<?php echo $subscriberItem['subscriber_id'];?>">
                                 <div class="row g-2">
                                     <div class="mb-3 col-md-6">
                                         <label for="mc_title" class="form-label">Tên người đăng ký</label>
