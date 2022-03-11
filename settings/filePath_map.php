@@ -71,5 +71,6 @@ return array(
     "app\\Http\\Controllers\\Dashboard\\ActivityLogsPage"               => $baseDir . '/app/Http/Controllers/Dashboard/ActivityLogsPage.php',
     "app\\Http\\Controllers\\Dashboard\\MajorsPage"                     => $baseDir . '/app/Http/Controllers/Dashboard/MajorsPage.php',
     "app\\Http\\Controllers\\Dashboard\\MenuCatePage"                   => $baseDir . '/app/Http/Controllers/Dashboard/MenuCatePage.php',
+    "app\\Http\\Controllers\\Dashboard\\LevelOfTraining"                => $baseDir . '/app/Http/Controllers/Dashboard/LevelOfTraining.php',
     "app\\Http\\Controllers\\Base\\ERRORPage"                           => $baseDir . '/app/Http/Controllers/Base/ERRORPage.php',
 );

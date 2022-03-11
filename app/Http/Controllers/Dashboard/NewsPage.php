@@ -11,13 +11,20 @@ class NewsPage {
 
     public function __getNewsPage() {
 
-        $newsList = DB::table('news')
-        ->join("links", "news_link_id", "=", "link_id")
-        ->get();
+        try {
 
-        return view("pages/dashboard/news.view.php", [
-            "newsList" => $newsList
-        ]);
+            $newsList = DB::table('news')
+            ->join("links", "news_link_id", "=", "link_id")
+            ->get();
+    
+            return view("pages/dashboard/news.view.php", [
+                "newsList" => $newsList
+            ]);
+        }
+        catch(Exception $error) {
+
+            return redirect('error-status/500-error');
+        }
     }
 
     public function __getAddForm() {
@@ -139,6 +146,29 @@ class NewsPage {
             return redirect('error-status/500-error');
         }
         catch(Exeption $error) {
+
+            return redirect('error-status/500-error');
+        }
+    }
+
+    /**
+     * ----------------------------------------------News Categories --------------------------------
+     */
+    public function __getNewsCategoryPage() {
+
+        try {
+
+            if(!isset($this->newsCate) && !is_array($this->newsCate)) {
+    
+                return redirect('error-status/500-error');
+            }
+    
+            return view("pages/dashboard/news_cate.view.php", [
+
+                "newsCate"              => $this->newsCate
+            ]);
+        }
+        catch(Exception $error) {
 
             return redirect('error-status/500-error');
         }

@@ -72,6 +72,7 @@ $router->post('/dashboard/subscriber/delete', [SubscriberPage::class, '__deleteS
 $router->get('/dashboard/news', [NewsPage::class, '__getNewsPage']);
 $router->get('/dashboard/news/create',[NewsPage::class, '__getAddForm']);
 $router->get('/dashboard/news/update/{id}',[NewsPage::class, '__getUpdateForm']);
+$router->get('/dashboard/news/categories', [NewsPage::class, '__getNewsCategoryPage']);
 
 $router->post('/dashboard/news/delete',[NewsPage::class, '__postDelete']);
 $router->post('/dashboard/news/create',[NewsPage::class, '__postAddForm']);
@@ -92,6 +93,11 @@ $router->get('/dashboard/majors/update/{id}', [MajorsPage::class, '__getUpdateFo
 $router->post('/dashboard/majors/create', [MajorsPage::class, '__postAdd']);
 $router->post('/dashboard/majors/update/{id}', [MajorsPage::class, '__postUpdate']);
 $router->post('/dashboard/majors/delete', [MajorsPage::class, '__postDelete']);
+
+/**
+ * -------------------Level Of Training Plugin-------------------
+ */
+$router->get('/dashboard/level-of-training', [LevelOfTraining::class, '__getLevelOfTrainingPage']);
 
 /**
  * -------------------Menu Categories Plugin-------------------

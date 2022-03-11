@@ -58,6 +58,9 @@
                                     <li>
                                         <a href="/dashboard/news">Danh sách tin tức</a>
                                     </li>
+                                    <li>
+                                        <a href="/dashboard/news/categories">Danh sách thể loại</a>
+                                    </li>
                                 </ul>
                             </div>
                         </li>
@@ -68,6 +71,9 @@
                             </a>
                             <div class="collapse" id="MearUPYnQJtQu3e">
                                 <ul class="side-nav-third-level">
+                                    <li>
+                                        <a href="/dashboard/level-of-training">Các hệ đào tạo</a>
+                                    </li>
                                     <li>
                                         <a href="/dashboard/majors">Các ngành đào tạo</a>
                                     </li>
@@ -83,6 +89,22 @@
                                 <ul class="side-nav-third-level">
                                     <li>
                                         <a href="/dashboard/menu-cate">Các danh mục Website</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#jkVwDkNvP6LdYd8" aria-expanded="false">
+                                <span> Giới thiệu chung </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="jkVwDkNvP6LdYd8">
+                                <ul class="side-nav-third-level">
+                                    <li>
+                                        <a href="/">Trang giới thiệu</a>
+                                    </li>
+                                    <li>
+                                        <a href="/">Trang liên hệ</a>
                                     </li>
                                 </ul>
                             </div>
