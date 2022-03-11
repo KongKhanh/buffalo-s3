@@ -242,4 +242,32 @@ class MenuCatePage {
             return redirect('error-status/500-error');
         }
     }
+
+    public function __getMCParentById($id){
+
+        try {
+
+            $matches = array ();
+
+            $menuCaties = DB::table('menu_cate')->get();
+
+            for($i = 0; $i < count($menuCaties); $i++){
+
+                if($menuCaties[$i]['mc_parent_id'] == $id){
+
+                   array_push($matches,$menuCaties[$i]);
+                }
+            }
+
+            echo json_encode([
+              
+                "matches" => $matches
+              ]);
+        }
+        catch(Exception $error) {
+
+            return false;
+        }
+
+    }
 }
