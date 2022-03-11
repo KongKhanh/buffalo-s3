@@ -40,9 +40,14 @@
 
                     <div class="row mb-2">
                         <div class="col-sm-4">
-                            <a href="/dashboard/majors/create" class="btn btn-danger mb-3"><i class="mdi mdi-plus"></i>THÊM MỚI</a>
+                            <a href="/dashboard/news/categories/create" class="btn btn-danger mb-3"><i class="mdi mdi-plus"></i>THÊM MỚI</a>
                         </div>
                     </div>
+
+                    <form method="POST" id="formDelete">
+                        <input type="hidden" name="news_cate_id" id="news_cate_id">
+                    </form>
+
 
                     <div class="table-responsive">
                         <table class="table table-centered table-striped dt-responsive nowrap w-100" id="products-datatable">
@@ -139,6 +144,74 @@
 <!-- demo app -->
 <script src="/public/dashboard/assets/js/pages/demo.customers.js"></script>
 <!-- end demo js-->
+<script>
 
+    /**
+     * Task: update status of menu categories
+     */
+    $('.news_cate_status').change(function() {
+
+        var endPoint = `/dashboard/news/categories/update/${$(this).attr("data-id")}`;
+
+        function __requestUpdate(news_cate_status) { 
+
+            $.ajax({
+                method: 'POST',
+                url: endPoint,
+                data: {
+                    "news_cate_status": news_cate_status
+                }
+            })
+            .done(function(res) {
+
+                if(res) {
+
+                    cuteAlert({
+                        type: "success",
+                        title: "Thông báo",
+                        message: "Cập nhật dữ liệu thành công",
+                        buttonText: "Okay"
+                    });
+                }
+            })
+            .fail(function(res) {
+
+                console.log(res);
+            });
+        }
+
+        if(this.checked) {
+
+            __requestUpdate("published");
+        }
+        else {
+
+            __requestUpdate("hidden");
+        }
+    });
+
+    /**
+     * Task: delete menu categories by ID
+     */
+    $('.btnDeleteNewsCate').click(function() {
+        cuteAlert({
+            type: "question",
+            title: "Bạn có muốn xóa không",
+            message: "",
+            confirmText: "Đồng ý",
+            cancelText: "Hủy"
+        })
+        .then((e) => {
+
+            if(e) {
+
+                $('#news_cate_id').attr('value', $(this).attr('data-id'));
+                $('#formDelete').attr('action', '/dashboard/news/categories/delete');
+                $('#formDelete').submit();
+            }
+        });
+    });
+
+</script>
 
 <?php View::__template()->__endSection(); ?>
