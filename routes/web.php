@@ -41,11 +41,6 @@ $router->get('/subscriber-form', [HomePage::class, '__getSubscriberForm']);
 $router->post('/subscriber-form', [SubscriberPage::class, '__postSubscriberPage']);
 
 /**
- * Menucate Plugins
- */
-$router->get('/menu-cate/parent/{id}',[MenuCatePage::class, '__getMCParentById']);
-
-/**
  * -----------------------------------------------------------Admin Dashboard-------------------------------------------------------------------------------------
  */
 /**

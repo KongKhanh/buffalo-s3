@@ -23,7 +23,7 @@
       .menuParentList{
             color:white;
             position:absolute;
-            top:50px;
+            top:100px;
             text-decoration: none;
             /* display:none; */
         } 
@@ -33,7 +33,7 @@
             text-decoration: none;
         }
         .menu_category:hover .menuParentList{ 
-            /* display:block; */
+            display:block;
         }  
     </style>
 </head>
@@ -52,12 +52,18 @@
 
                     <ul class="menubar__list">
                         <?php 
-                            foreach($menuCategories as $menuCategory){
+                            for($i=0; $i<count($menuCategories); $i++){
                                 echo 
                                 <<<HTML
-                                    <li class="menubar__list-item menu_category" value="{$menuCategory['mc_id']}"><a href="javascript:void(0);">{$menuCategory['mc_title']}</a>
+                                    <li class="menubar__list-item menu_category" value="{$menuCategories[$i]['mc_id']}"><a href="javascript:void(0);">{$menuCategories[$i]['mc_title']}</a>
                                     </li>
                                 HTML;
+                                foreach($menuCategories[$i]['childrenList'] as $childrens){
+                                    echo
+                                    <<<HTML
+                                       <ul class="menuParentList"><a>{$childrens['mc_title']}</a></ul>
+                                    HTML;                                   
+                                }
                             }
                         ?>
                         <li class="menubar__list-item">
@@ -391,35 +397,6 @@
     <?php includeFile('pages/client/components/footer_landing_box.view.php');?>
     
 </body>
-<script>
-    $(document).ready(function(){
-    $(".menu_category").hover(function(){
-        var idMc = $(this).val();
-        if(idMc){
-            $.ajax({
-                method: "GET",
-                url: `/menu-cate/parent/${idMc}`,
-                headers: {
-                    'Content-Type':'application/json'
-                },
-                }).done(function( res ) {
-                    res = JSON.parse(res);
-
-                    var getMenuCategory = " ";
-
-                    for (let i = 0; i < res.matches.length; i++) { 
-
-                            getMenuCategory += `<ul class="menuParentList"><a value= "${res.matches[i].mc_id}">${res.matches[i].mc_title}</a></ul>`
-                    };
-                    // $(".menuParentList")+=getMenuCategory;
-                    console.log(getMenuCategory);
-                    $(".menu_category").show();
-                });
-            }
-        });
-    });
-
-</script>
 </html>
 <script src="/public/client/assets/js/app.js"></script>
 
