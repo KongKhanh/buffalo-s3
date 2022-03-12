@@ -23,28 +23,10 @@
 <body>
     <main class="main-wrapper">
         <header class="main-header--outter">
-            <section class="main-header--inner">
-                <a class="main-header__logo" href="index.html">
-                    <img src="/public/client/assets/images/ats-logo-2.png" alt="">
-                    <p class="logo-text">Trường Trung cấp
-                        <br> Kỹ thuật Nông nghiệp</p>
-                </a>
-                <nav class="main-header__menubar">
-                    <ul class="menubar__list nav__pc">
-                        <li class="menubar__list-item"><a href="#">Giới thiệu</a></li>
-                        <li class="menubar__list-item"><a href="#">Phòng ban</a></li>
-                        <li class="menubar__list-item"><a href="#">Tin tức</a></li>
-                        <li class="menubar__list-item"><a href="#">Liên hệ</a></li>
-                        <li class="menubar__list-item"><a href="#">Tuyển dụng</a></li>
-                        <li class="menubar__list-item" style="animation: none;">
-                            <input type="text" name="headSearh" id="headSearch" placeholder="Tìm kiếm">
-                            <button name="header-search--btn" class="btn" id="headSearchBtn">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </li>
-                    </ul>
-                </nav>
-            </section>
+
+            <!--Navbar Header-->
+            <?php includeFile('pages/client/components/navbar_header.view.php');?>
+            
             <section class="container main-header__desc">
                 <h1 class="desc__title" style="text-align: center; text-transform: uppercase;" id="news-title">
                     <?= $newsItem['news_title']; ?>

@@ -8,7 +8,7 @@ class MenuCatePage {
 
         try {
 
-            $menu_cate = DB::table("menu_cate")->where("mc_parent_id", 0)->get();
+            $menu_cate = DB::table("menu_cate")->join("links", "mc_link_id", "=", "link_id")->where("mc_parent_id", 0)->get();
 
             if(isset($menu_cate) && is_array($menu_cate)) {
 
@@ -243,31 +243,32 @@ class MenuCatePage {
         }
     }
 
-    public function __getMCParentById($id){
+    /**
+     * @return array
+     */
+    public function __getMenuCateAPI() {
 
         try {
 
-            $matches = array ();
+            $menu_cate = DB::table("menu_cate")
+            ->join("links", "mc_link_id", "=", "link_id")
+            ->where("mc_parent_id", 0)->get();
 
-            $menuCaties = DB::table('menu_cate')->get();
-
-            for($i = 0; $i < count($menuCaties); $i++){
-
-                if($menuCaties[$i]['mc_parent_id'] == $id){
-
-                   array_push($matches,$menuCaties[$i]);
+            if(isset($menu_cate) && is_array($menu_cate)) {
+    
+                for($i = 0; $i < count($menu_cate); $i++) {
+    
+                    $menu_cate[$i]["subCate"] = DB::table("menu_cate")->where("mc_parent_id",  $menu_cate[$i]["mc_id"])
+                    ->join("links", "mc_link_id", "=", "link_id")
+                    ->get();
                 }
             }
 
-            echo json_encode([
-              
-                "matches" => $matches
-              ]);
+            return $menu_cate;
         }
         catch(Exception $error) {
 
-            return false;
+            return array();
         }
-
     }
 }

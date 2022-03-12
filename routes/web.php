@@ -43,11 +43,6 @@ $router->get('/subscriber-form', [HomePage::class, '__getSubscriberForm']);
 $router->post('/subscriber-form', [SubscriberPage::class, '__postSubscriberPage']);
 
 /**
- * Menucate Plugins
- */
-$router->get('/menu-cate/parent/{id}',[MenuCatePage::class, '__getMCParentById']);
-
-/**
  * -----------------------------------------------------------Admin Dashboard-------------------------------------------------------------------------------------
  */
 /**
@@ -80,9 +75,20 @@ $router->get('/dashboard/news', [NewsPage::class, '__getNewsPage']);
 $router->get('/dashboard/news/create',[NewsPage::class, '__getAddForm']);
 $router->get('/dashboard/news/update/{id}',[NewsPage::class, '__getUpdateForm']);
 $router->get('/dashboard/news/categories', [NewsPage::class, '__getNewsCategoryPage']);
+$router->get('/dashboard/news/categories/update/{id}', [NewsPage::class, '__getNewsCategoryForm']);
+$router->get('/dashboard/news/categories/create',[NewsPage::class, '__getAddMenuCateForm']);
 
+
+
+
+$router->post('/dashboard/news/update/{id}',[NewsPage::class, '__getUpdateForm']);
 $router->post('/dashboard/news/delete',[NewsPage::class, '__postDelete']);
 $router->post('/dashboard/news/create',[NewsPage::class, '__postAddForm']);
+$router->post('/dashboard/news/categories/update/{id}', [NewsPage::class, '__postNewsCategoryForm']);
+$router->post('/dashboard/news/categories/delete', [NewsPage::class, '__postNewsCategoryDelete']);
+$router->post('/dashboard/news/categories/create',[NewsPage::class, '__postAddNewsCateForm']);
+
+
 
 
 /**

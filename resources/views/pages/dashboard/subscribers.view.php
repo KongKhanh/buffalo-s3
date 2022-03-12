@@ -94,11 +94,6 @@ View::__template()->__startSection("content");
 
                                     $subscriber_address     = Str::limit($subscriber["subscriber_address"], 15, "...");
                                     $subscriber_status = $subscriber["subscriber_status"] == "new" ? "checked" : "";
-<<<<<<< HEAD
-
-=======
-                    
->>>>>>> dafc22625cd63478617510c6f0f3eb73f6b0fdcb
                                     echo <<<HTML
                                             <tr>
                                                 <td>
@@ -182,12 +177,6 @@ View::__template()->__startSection("content");
                     }
                 })
                 .done(function(res) {
-<<<<<<< HEAD
-=======
-
-                    console.log(res);
-
->>>>>>> dafc22625cd63478617510c6f0f3eb73f6b0fdcb
                     if (res) {
 
                         cuteAlert({

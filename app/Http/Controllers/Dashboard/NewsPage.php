@@ -122,7 +122,6 @@ class NewsPage {
             return redirect('error-status/500-error');
         }
     }
-
     public function __postDelete() {
 
         try {
@@ -145,11 +144,13 @@ class NewsPage {
 
             return redirect('error-status/500-error');
         }
-        catch(Exeption $error) {
+        catch(Exception $error) {
 
             return redirect('error-status/500-error');
         }
     }
+    
+    
 
     /**
      * ----------------------------------------------News Categories --------------------------------
@@ -166,6 +167,158 @@ class NewsPage {
             return view("pages/dashboard/news_cate.view.php", [
 
                 "newsCate"              => $this->newsCate
+            ]);
+        }
+        catch(Exception $error) {
+
+            return redirect('error-status/500-error');
+        }
+    }
+
+    public function __getNewsCategoryForm($id){
+
+        try {
+
+            if($id) {
+
+                $formCategory = DB::table("news_category")->where("news_cate_id", $id)->first();
+
+                if(isset($formCategory)) {
+
+                    return view("pages/dashboard/components/plugins/news_category/update_form.view.php", [
+
+                        "formCategory"              => $formCategory
+                    ]);
+                }
+            }
+
+            return redirect('error-status/500-error');
+        }
+        catch(Exception $error) {
+
+            return redirect('error-status/500-error');
+        }
+    }
+
+    public function __postNewsCategoryForm($id){
+
+        try {
+
+            $dataToUpDate = [];
+
+            if(input("news_cate_title")) {
+
+                $dataToUpDate = array_merge($dataToUpDate, [
+
+                    "news_cate_title"      => trim(input("news_cate_title"))
+                ]);
+
+            }
+
+            if(input("news_cate_status")) {
+
+                $dataToUpDate = array_merge($dataToUpDate, [
+
+                    "news_cate_status"      => trim(input("news_cate_status"))
+                ]);
+            }
+
+            if(isset($id) && count($dataToUpDate) > 0) {
+
+                $statusUpdate = DB::table("news_category")->where("news_cate_id", $id)->update($dataToUpDate);
+
+                if($statusUpdate && $statusUpdate != 0) {
+
+                    Session::flash("res_menu_cate_info", [
+                        "status"        => "200",
+                        "message"       => "Cập nhật dữ liệu thành công"
+                    ]);
+
+                    redirect('/dashboard/news/categories');
+                }
+
+                return redirect('error-status/500-error'); 
+            }
+            else {
+
+                return redirect('error-status/500-error'); 
+            }
+        }
+        catch(Exception $error) {
+
+            return redirect('error-status/500-error'); 
+        }
+    }
+
+    public function __postNewsCategoryDelete(){
+
+        try {
+
+            $input = [
+                "news_cate_id"        => input("news_cate_id")
+            ];
+
+            if($input["news_cate_id"]) {
+
+                $status = DB::table("news_category")->where("news_cate_id", $input["news_cate_id"])->delete();
+
+                Session::flash("res_news_info", [
+                    "status"        => "200",
+                    "message"       => "Xóa dữ liệu thành công"
+                ]);
+
+                redirect('/dashboard/news/categories');
+            }
+
+            return redirect('error-status/500-error');
+        }
+        catch(Exception $error) {
+
+            return redirect('error-status/500-error');
+        }
+    }
+
+    public function __postAddNewsCateForm() {
+
+        try {
+
+            $input = [
+                "news_cate_title"                        => !is_null(input("news_cate_title")) ? input("news_cate_title") : false, 
+            ];
+    
+           $news_category_insert_status = DB::table("news_category")->insert([
+                "news_cate_title"                        => $input["news_cate_title"]
+            ]);
+
+            if($news_category_insert_status) {
+
+                Session::flash("res_news_info", [
+                    "status"        => "200",
+                    "message"       => "Thêm dữ liệu thành công"
+                ]);
+
+                redirect('/dashboard/news/categories');
+            }
+        }
+
+        catch(Exception $error) {
+
+            return redirect('error-status/500-error');
+        }
+    }
+
+    public function __getAddMenuCateForm() {
+
+        try {
+
+            if(!isset($this->newsCate) && !is_array($this->newsCate)) {
+    
+                return redirect('error-status/500-error');
+            }
+    
+            return view("pages/dashboard/components/plugins/news_category/add_form.view.php", [
+
+                "newsCateItem"       => $this->newsCate
             ]);
         }
         catch(Exception $error) {

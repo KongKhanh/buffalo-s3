@@ -9,7 +9,7 @@
             </article>
         </article>
         <article class="landing-btn" id="register-btn">
-            <a style="cursor: pointer;">
+            <a style="cursor: pointer;" href="javascript:void();">
                 Đăng ký xét tuyển
             </a>
             <article class="popup-box">
@@ -34,3 +34,5 @@
         </article>
     </section>
 </section>
+
+<script src="/public/client/assets/js/registerModal.js"></script>

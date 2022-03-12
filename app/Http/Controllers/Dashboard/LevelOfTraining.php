@@ -20,4 +20,25 @@ class LevelOfTraining {
             return redirect('error-status/500-error');
         }
     }
+
+    public function __getAllLevelOfTraining() {
+
+        try {
+
+            $levelOfTraining = DB::table("level_of_training")->get();
+
+            for($i = 0; $i < count($levelOfTraining); $i++) {
+
+                $levelOfTraining[$i]["majors"] = DB::table("majors")->where("mjr_lot_id",  $levelOfTraining[$i]["lot_id"])->get();
+            }
+
+            if(!is_array($levelOfTraining)) return array();
+
+            return $levelOfTraining;
+        }
+        catch(Exception $error) {
+
+            return array();
+        }
+    }
 }

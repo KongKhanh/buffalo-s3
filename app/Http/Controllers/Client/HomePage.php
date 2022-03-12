@@ -12,14 +12,24 @@ class HomePage {
     public function __getHomePage() {
 
         try {
-            
-            $menuCategories = DB::table('menu_cate')->where("mc_parent_id","0")->get();
-            
+
+            $menuCategories = DB::table('menu_cate')->where('mc_parent_id',0)->get();
+
+
+            for($i = 0; $i < count($menuCategories); $i++){
+
+                $childrenCategories = DB::table('menu_cate')->where('mc_parent_id',$menuCategories[$i]['mc_id'])->get();
+
+                $menuCategories[$i]["childrenList"] = $childrenCategories;
+            }
+                
             return view('pages/client/home.view.php', [
-                'allMajors'            => (new MajorPageClient())->__getAllMajors(),
+                'allMajors'             => (new MajorPageClient())->__getAllMajors(),
                 'siteInfo'              => $this->siteInfo,
-                'menuCategories'        => $menuCategories
+                'menuCategories'        => $menuCategories,
+                "LevelOfTraining"       => (new LevelOfTraining())->__getAllLevelOfTraining(),
             ]); 
+        
         }
         catch (Exception $error){
 
