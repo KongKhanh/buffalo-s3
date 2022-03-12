@@ -46,6 +46,13 @@
                                         <input type="text" class="form-control" name="mjr_code" id="mjr_code" placeholder="Nhập mã ngành">
                                     </div>
                                 </div>
+                                
+                                <div class="row g-2">
+                                    <div class="mb-3 col-md-12">
+                                        <label for="mjr_main_description" class="form-label">Mô tả chi tiết</label>
+                                        <textarea type="text" name="mjr_main_description" class="form-control" id="contenteditor"></textarea>
+                                    </div>
+                                </div>
                                 <button type="submit" class="btn btn-primary">THÊM</button>
                             </form>                      
                         </div> <!-- end preview-->

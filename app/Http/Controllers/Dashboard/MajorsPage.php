@@ -61,6 +61,7 @@ class MajorsPage {
                 "mjr_name"                  => !is_null(input("mjr_name")) ? input("mjr_name") : false, 
                 "mjr_lot_id"                => !is_null(input("mjr_lot_id")) ? input("mjr_lot_id") : false, 
                 "mjr_code"                  => !is_null(input("mjr_code")) ? input("mjr_code") : false, 
+                "mjr_main_description"      => !is_null(input("mjr_main_description")) ? input("mjr_main_description") : false,
             ];
     
             $majors_insert_status = DB::table("majors")->insert($input);
@@ -134,6 +135,14 @@ class MajorsPage {
                 $dataToUpDate = array_merge($dataToUpDate, [
 
                     "mjr_lot_id"      => input("mjr_lot_id")
+                ]);
+            }
+
+            if(input("mjr_code")) {
+
+                $dataToUpDate = array_merge($dataToUpDate, [
+
+                    "mjr_code"      => input("mjr_code")
                 ]);
             }
 

@@ -2,6 +2,13 @@
 
 class HomePage {
 
+    private $siteInfo;
+
+    function __construct() {
+
+        $this->siteInfo = (new SiteInfoAPI())->__getSiteInfomation();
+    }
+
     public function __getHomePage() {
 
         try {
@@ -9,9 +16,9 @@ class HomePage {
             $menuCategories = DB::table('menu_cate')->where("mc_parent_id","0")->get();
             
             return view('pages/client/home.view.php', [
-                
+                'allMajors'            => (new MajorPageClient())->__getAllMajors(),
                 'siteInfo'              => $this->siteInfo,
-                'menuCategories' => $menuCategories
+                'menuCategories'        => $menuCategories
             ]); 
         }
         catch (Exception $error){
@@ -22,7 +29,21 @@ class HomePage {
 
     public function __getAboutPage() {
 
-        return view('pages/client/about_us.view.php');
+        try {
+
+            if($this->siteInfo["siteIntro"]) {
+
+                return view('pages/client/about_us.view.php', [
+                    'siteInfo'                  => $this->siteInfo,
+                ]);
+            }
+
+            return redirect('error-status/404-error');
+        }
+        catch (Exception $error) {
+
+            return redirect('error-status/404-error');
+        }
     }
 
     public function __getSubscriberForm() {

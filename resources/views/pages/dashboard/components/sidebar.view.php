@@ -101,7 +101,7 @@
                             <div class="collapse" id="jkVwDkNvP6LdYd8">
                                 <ul class="side-nav-third-level">
                                     <li>
-                                        <a href="/">Trang giới thiệu</a>
+                                        <a href="/dashboard/about-us/introduce/edit">Trang giới thiệu</a>
                                     </li>
                                     <li>
                                         <a href="/">Trang liên hệ</a>

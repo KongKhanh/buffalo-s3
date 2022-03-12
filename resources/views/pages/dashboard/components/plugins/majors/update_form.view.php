@@ -26,7 +26,7 @@
                             <form method="POST" action="/dashboard/majors/update/<?php echo $majorsItem['mjr_id'];?>">
                                 <div class="row g-2">
                                     <div class="mb-3 col-md-6">
-                                        <label for="mc_title" class="form-label">Tên ngành đào tạo</label>
+                                        <label for="mjr_name" class="form-label">Tên ngành đào tạo</label>
                                         <input 
                                             type="text" 
                                             class="form-control" 
@@ -37,7 +37,7 @@
                                         >
                                     </div>
                                     <div class="mb-0 col-md-6" data-select2-id="5">
-                                        <label for="project-overview" class="form-label">Hệ đào tạo</label>
+                                        <label for="mjr_lot_id" class="form-label">Hệ đào tạo</label>
                                         <select class="form-select" name="mjr_lot_id">
                                             <option selected hidden value="0">Chọn hệ đào tạo</option>
                                             <?php 
@@ -51,6 +51,17 @@
                                                 }
                                             ?>
                                         </select>
+                                    </div>
+                                    <div class="mb-3 col-md-6">
+                                        <label for="mjr_code" class="form-label">Mã ngành đào tạo</label>
+                                        <input 
+                                            type="text" 
+                                            class="form-control" 
+                                            name="mjr_code" 
+                                            id="mjr_code" 
+                                            placeholder="Nhập mã ngành đào tạo"
+                                            value="<?= $majorsItem['mjr_code'] ?>"
+                                        >
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-warning">CẬP NHẬT</button>

@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giới thiệu về trường</title>
-
-    <link rel="stylesheet" href="/public/client/assets/css/style.css">
+    <title>Review</title>
     
+    <link rel="stylesheet" href="/public/client/assets/css/style.css">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-    <!-- Google Font -->
+    <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
@@ -46,12 +45,13 @@
             </section>
             <section class="container main-header__desc">
                 <h1 class="desc__title" style="text-align: center; text-transform: uppercase;" id="page-title">
-                    Giới thiệu trường
+                    Giới thiệu ngành <?= $MajorItem['mjr_name']; ?>
                 </h1>
                 <nav class="history-bar">
                     <p>
-                        <a href="#" class="previous-page">Trang chủ</a>
-                        <a href="#" class="present-page">Giới thiệu trường</a>
+                        <a href="index.html" class="previous-page">Trang chủ</a>
+                        <a href="#" class="previous-page">Đào tạo</a>
+                        <a href="#" class="present-page">Trung tâm quản lý nhà đất</a>
                     </p>
                 </nav>
             </section>
@@ -89,26 +89,30 @@
         <section class="news-container container">
             <section class="news-block">
                 <article class="news-box no-flex">
-                    <!-- <div class="news-box__thumbnail">
+                    <div class="news-box__thumbnail">
                         <img src="/public/client/assets/images/image-3.jpeg" alt="">
-                    </div> -->
-                    <h4 class="news-box__title">
-                        <?= $siteInfo['site_info_name']; ?> 
+                    </div>
+                    <h4 class="news-box__title" style="text-transform: uppercase;">
+                        CHƯƠNG TRÌNH ĐÀO TẠO <?= $MajorItem['mjr_name']; ?>
                     </h4>
                     <div class="news-box__desc">
-                        <?= $siteInfo['siteIntro']['sii_intro']; ?> 
+
+                        <!-----------------------------------Main Description----------------------------------->
+                        <?= $MajorItem['mjr_main_description']; ?>
+
                     </div>
                 </article>
             </section>
+            
             <!--------------News sidebar-------------->
             <?php includeFile('pages/client/components/plugins/news/news_sidebar.view.php');?>
 
         </section>
 
+        <!--------------Footer page-------------->
         <?php includeFile('pages/client/components/footer_page.view.php');?>
-        
-    </main>
 
+    </main>
     <section class="register-modal" id="registerModal">
         <section class="register-block register-modal--block">
             <i class="fas fa-times-circle" style="font-size: 1.5em;
@@ -230,8 +234,8 @@
 
     <?php includeFile('pages/client/components/footer_landing_box.view.php');?>
 
-    <script src="/public/client/assets/js/app.js"></script>
-
 </body>
+
+<script src="/public/client/assets/js/app.js"></script>
 
 </html>

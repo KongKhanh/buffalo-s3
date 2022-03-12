@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -157,12 +156,16 @@
                 <section class="majors-box__content">
                     <ol class="majors-box__list">
                         <div>
-                            <li class="majors-box__list--item">Quản lý nhà đất</li>
-                            <li class="majors-box__list--item">Quản lý đất đai</li>
-                            <li class="majors-box__list--item">Chăn nuôi - Thú y</li>
-                            <li class="majors-box__list--item">Kế toán doanh nghiệp</li>
-                            <li class="majors-box__list--item">Thuỷ lợi tổng hợp</li>
-                            <li class="majors-box__list--item">Kinh doanh bất động sản</li>
+                            <?php 
+                                foreach($allMajors as $majorsItem) {
+                                    
+                                    $majorsItemNameSlug = Str::slug($majorsItem['mjr_name']);
+
+                                    echo <<<HTML
+                                        <li class="majors-box__list--item"><a href="/majors/review/{$majorsItemNameSlug}-{$majorsItem['mjr_id']}">{$majorsItem['mjr_name']}</a></li>
+                                    HTML;
+                                }
+                            ?>
                         </div>
                         <div class="img-box">
                             <img src="/public/client/assets/images/image-4.jpeg" alt="" class="majors-box_thumbnail-1">
@@ -391,6 +394,7 @@
     <?php includeFile('pages/client/components/footer_landing_box.view.php');?>
     
 </body>
+
 <script>
     $(document).ready(function(){
     $(".menu_category").hover(function(){
@@ -420,7 +424,7 @@
     });
 
 </script>
-</html>
+
 <script src="/public/client/assets/js/app.js"></script>
 
 </html>

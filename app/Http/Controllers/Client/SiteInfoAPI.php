@@ -16,6 +16,7 @@ class SiteInfoAPI {
                     "sitePhone"         =>   $this->__getSitePhone($siteInfo["site_info_id"]),
                     "siteEmail"         =>   $this->__getSiteEmail($siteInfo["site_info_id"]),
                     "siteAddress"       =>   $this->__getSiteAddress($siteInfo["site_info_id"]),
+                    "siteIntro"         =>   $this->__getSiteIntro($siteInfo["site_info_id"]),
                 ]);
 
                 return $siteInfo;
@@ -64,6 +65,20 @@ class SiteInfoAPI {
             if(is_null($siteID)) return [];
 
             return DB::table("site_info_address")->where('sia_si_id', $siteID)->get();
+        }
+        catch(Exception $error) {
+
+            return false;
+        }
+    }
+
+    public function __getSiteIntro($siteID = null) {
+
+        try {
+
+            if(is_null($siteID)) return [];
+
+            return DB::table("site_info_intro")->where('sii_si_id', $siteID)->first();
         }
         catch(Exception $error) {
 

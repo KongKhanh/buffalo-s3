@@ -55,6 +55,7 @@ return array(
     "app\\Http\\Controllers\\Client\\HomePage"                  => $baseDir . '/app/Http/Controllers/Client/HomePage.php',
     "app\\Http\\Controllers\\Client\\NewsPageClient"            => $baseDir . '/app/Http/Controllers/Client/NewsPageClient.php',
     "app\\Http\\Controllers\\Client\\SiteInfoAPI"               => $baseDir . '/app/Http/Controllers/Client/SiteInfoAPI.php',
+    "app\\Http\\Controllers\\Client\\MajorsPageClient"          => $baseDir . '/app/Http/Controllers/Client/MajorsPageClient.php',
 
     /**
      * ---------------------------Authentication
@@ -72,5 +73,6 @@ return array(
     "app\\Http\\Controllers\\Dashboard\\MajorsPage"                     => $baseDir . '/app/Http/Controllers/Dashboard/MajorsPage.php',
     "app\\Http\\Controllers\\Dashboard\\MenuCatePage"                   => $baseDir . '/app/Http/Controllers/Dashboard/MenuCatePage.php',
     "app\\Http\\Controllers\\Dashboard\\LevelOfTraining"                => $baseDir . '/app/Http/Controllers/Dashboard/LevelOfTraining.php',
+    "app\\Http\\Controllers\\Dashboard\\AboutUs"                        => $baseDir . '/app/Http/Controllers/Dashboard/AboutUs.php',
     "app\\Http\\Controllers\\Base\\ERRORPage"                           => $baseDir . '/app/Http/Controllers/Base/ERRORPage.php',
 );

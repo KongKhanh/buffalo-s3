@@ -29,6 +29,8 @@ $router->get('/news/category/{target}', [NewsPageClient::class, '__getNewsByCate
 
 $router->get('/news-detail/{target}',[NewsPageClient::class, '__getNewsDetailPageClient']);
 
+$router->get('/majors/review/{target}', [MajorPageClient::class, '__getReviewMajorsByID']);
+
 /**
  *  Intro Plugins
  */
@@ -116,6 +118,13 @@ $router->post('/dashboard/menu-cate/update/{id}', [MenuCatePage::class, '__postU
 $router->post('/dashboard/menu-cate/delete', [MenuCatePage::class, '__postDelete']);
 
 /**
+ * -------------------Intro Page Plugin-------------------
+ */
+$router->get('/dashboard/about-us/introduce/edit', [AboutUs::class, '__getUpdateIntro']);
+
+$router->post('/dashboard/about-us/introduce/edit', [AboutUs::class, '__postUpdateIntro']);
+
+/**
  * -----------------------------------------------------------API-----------------------------------------------------------
  */
 $router->get('/api/majors-by-id/{id}', [MajorsPage::class, '__getMajorsById']);
@@ -126,5 +135,3 @@ $router->get('/api/majors-by-id/{id}', [MajorsPage::class, '__getMajorsById']);
 $router->get('/error-status/404-error', [ERRORPage::class, '__get404Page']);
 $router->get('/error-status/500-error', [ERRORPage::class, '__get500Page']);
 
-
-// 

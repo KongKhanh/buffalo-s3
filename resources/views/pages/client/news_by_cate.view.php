@@ -101,10 +101,9 @@
         </section>
         <!--------------Footer page-------------->
         <?php includeFile('pages/client/components/footer_page.view.php');?>
+        
     </main>
     
-    <?php 
-        includeFile('pages/client/components/footer_landing_box.view.php');
-    ?>
+    <?php includeFile('pages/client/components/footer_landing_box.view.php');?>
 </body>
 </html>
