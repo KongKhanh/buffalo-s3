@@ -17,9 +17,8 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="header-title">FORM NỘI DUNG</h4>
-                    <p class="text-muted font-14">
-                        <!-- By adding <code>.row</code> & <code>.g-2</code>, you can have control over the gutter width in as well the inline as block direction. -->
-                    </p>
+                    <p class="text-muted font-14"></p>
+                    <ul class="nav nav-tabs nav-bordered mb-3"></ul> <!-- end nav-->
                     <div class="tab-content">
                         <div class="tab-pane show active" id="form-row-preview">
                             <form method="POST" action="" enctype="multipart/form-data">

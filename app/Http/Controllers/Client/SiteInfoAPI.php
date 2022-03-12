@@ -4,6 +4,11 @@ class SiteInfoAPI {
 
     private $version = 1;
 
+    public function __getVersionInfo() {
+
+        return $this->version;
+    }
+
     public function __getSiteInfomation() {
 
         try {

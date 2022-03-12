@@ -122,6 +122,64 @@ class NewsPage {
             return redirect('error-status/500-error');
         }
     }
+
+    public function __postUpdate($id) {
+
+        try {
+
+            $dataToUpDate = [];
+
+            if(input("news_title")) {
+
+                $dataToUpDate = array_merge($dataToUpDate, [
+
+                    "news_title"      => trim(input("news_title"))
+                ]);
+            }
+
+            if(input("news_news_cate_id")) {
+
+                $dataToUpDate = array_merge($dataToUpDate, [
+
+                    "news_news_cate_id"      => input("news_news_cate_id")
+                ]);
+            }
+
+            if(input("news_main_content")) {
+
+                $dataToUpDate = array_merge($dataToUpDate, [
+
+                    "news_main_content"      => input("news_main_content")
+                ]);
+            }
+
+            if(isset($id) && count($dataToUpDate) > 0) {
+
+                $statusUpdate = DB::table("news")->where("news_id", $id)->update($dataToUpDate);
+
+                if($statusUpdate && $statusUpdate != 0) {
+
+                    Session::flash("res_news_info", [
+                        "status"        => "200",
+                        "message"       => "Cập nhật dữ liệu thành công"
+                    ]);
+
+                    redirect('dashboard/news');
+                }
+
+                return redirect('error-status/500-error'); 
+            }
+            else {
+
+                return redirect('error-status/500-error'); 
+            }
+        }
+        catch(Exception $error) {
+
+            return redirect('error-status/500-error'); 
+        }
+    }
+
     public function __postDelete() {
 
         try {
@@ -149,8 +207,6 @@ class NewsPage {
             return redirect('error-status/500-error');
         }
     }
-    
-    
 
     /**
      * ----------------------------------------------News Categories --------------------------------
