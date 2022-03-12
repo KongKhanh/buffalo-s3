@@ -109,6 +109,14 @@ $router->post('/dashboard/majors/delete', [MajorsPage::class, '__postDelete']);
  * -------------------Level Of Training Plugin-------------------
  */
 $router->get('/dashboard/level-of-training', [LevelOfTraining::class, '__getLevelOfTrainingPage']);
+$router->get('/dashboard/level-of-training/update/{id}', [LevelOfTraining::class, '__getUpdateForm']);
+$router->get('/dashboard/level-of-training/create', [LevelOfTraining::class, '__getAddForm']);
+
+$router->post('/dashboard/level-of-training/update/{id}', [LevelOfTraining::class, '__postUpdateForm']);
+$router->post('/dashboard/level-of-training/delete', [LevelOfTraining::class, '__postDelete']);
+$router->post('/dashboard/level-of-training/create', [LevelOfTraining::class, '__postAdd']);
+
+
 
 /**
  * -------------------Menu Categories Plugin-------------------
