@@ -38,9 +38,28 @@
             <div class="card">
                 <div class="card-body">
 
+                <form method="POST" id="formDelete">
+                        <input type="hidden" name="lot_id" id="lot_id">
+                    </form>
+
+                    <?php 
+    
+                        if(Session::has("res_level_of_training_infor")) {
+
+                            $res_level_of_training_infor = Session::get("res_level_of_training_infor");
+
+                            echo <<<HTML
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {$res_level_of_training_infor["message"]}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            HTML;
+                        }
+                    ?>
+                    
                     <div class="row mb-2">
                         <div class="col-sm-4">
-                            <a href="/dashboard/majors/create" class="btn btn-danger mb-3"><i class="mdi mdi-plus"></i>THÊM MỚI</a>
+                            <a href="/dashboard/level-of-training/create" class="btn btn-danger mb-3"><i class="mdi mdi-plus"></i>THÊM MỚI</a>
                         </div>
                     </div>
 
@@ -97,12 +116,12 @@
                                                     </td>
                                                      <td>
                                                         <div class="form-check form-switch">
-                                                            <input type="checkbox" class="form-check-input news_cate_status" data-id="" id="customSwitch_" {$statusActive}>
+                                                            <input type="checkbox" class="form-check-input lot_status" data-id="{$levelOfTrainingItem['lot_id']}" id="customSwitch_" {$statusActive}>
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <a href="" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                                                        <a href="javascript:void(0);" class="action-icon" data-id=""> <i class="mdi mdi-delete"></i></a>
+                                                        <a href="/dashboard/level-of-training/update/{$levelOfTrainingItem['lot_id']}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                                        <a href="javascript:void(0);" class="action-icon btnDeleteLeveOfTraining" data-id="{$levelOfTrainingItem['lot_id']}"> <i class="mdi mdi-delete"></i></a>
                                                     </td>
                                                 </tr>
                                             HTML;
@@ -139,6 +158,74 @@
 <!-- demo app -->
 <script src="/public/dashboard/assets/js/pages/demo.customers.js"></script>
 <!-- end demo js-->
+<script>
 
+    /**
+     * Task: update status of majors
+     */
+    $('.lot_status').change(function() {
+
+        var endPoint = `/dashboard/level-of-training/update/${$(this).attr("data-id")}`;
+
+        function __requestUpdate(lot_status) { 
+
+            $.ajax({
+                method: 'POST',
+                url: endPoint,
+                data: {
+                    "lot_status": lot_status
+                }
+            })
+            .done(function(res) {
+
+                if(res) {
+
+                    cuteAlert({
+                        type: "success",
+                        title: "Thông báo",
+                        message: "Cập nhật dữ liệu thành công",
+                        buttonText: "Okay"
+                    });
+                }
+            })
+            .fail(function(res) {
+
+                console.log(res);
+            });
+        }
+
+        if(this.checked) {
+
+            __requestUpdate("published");
+        }
+        else {
+
+            __requestUpdate("hidden");
+        }
+    });
+
+    /**
+     * Task: delete majors by ID
+     */
+    $('.btnDeleteLeveOfTraining').click(function() {
+        cuteAlert({
+            type: "question",
+            title: "Bạn có muốn xóa không",
+            message: "",
+            confirmText: "Đồng ý",
+            cancelText: "Hủy"
+        })
+        .then((e) => {
+
+            if(e) {
+
+                $('#lot_id').attr('value', $(this).attr('data-id'));
+                $('#formDelete').attr('action', '/dashboard/level-of-training/delete');
+                
+                $('#formDelete').submit();
+            }
+        });
+    });
+</script>
 
 <?php View::__template()->__endSection(); ?>
