@@ -171,6 +171,22 @@ class NewsPage {
                 ]);
             }
 
+            if(input("news_representative_image")) {
+
+                $input["news_representative_image"] = array_merge(input("news_representative_image"), [
+                    'target_dir'        =>      'public/storage/images/'
+                ]);
+
+                $statusMove = SingleHelper::moveFile($input["news_representative_image"]);
+
+                $dataToUpDate = array_merge($dataToUpDate, [
+
+                    "news_representative_image"      => $statusMove ? "/" . $input["news_representative_image"]["target_dir"] . $input["news_representative_image"]["name"] : null,
+                ]);
+            }
+
+            var_dump();
+
             if(isset($id)) {
 
                 $statusUpdate = DB::table("news")->where("news_id", $id)->update($dataToUpDate);  

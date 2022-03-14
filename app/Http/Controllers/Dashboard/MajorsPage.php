@@ -163,21 +163,30 @@ class MajorsPage {
                 ]);
             }
 
-            if(isset($id) && count($dataToUpDate) > 0) {
+            if(input("mjr_main_profile")) {
+
+                $input["mjr_main_profile"] = array_merge(input("mjr_main_profile"), [
+                    'target_dir'        =>      'public/storage/images/'
+                ]);
+
+                $statusMove = SingleHelper::moveFile($input["mjr_main_profile"]);
+
+                $dataToUpDate = array_merge($dataToUpDate, [
+
+                    "mjr_main_profile"      => $statusMove ? "/" . $input["mjr_main_profile"]["target_dir"] . $input["mjr_main_profile"]["name"] : null,
+                ]);
+            }
+
+            if($id) {
 
                 $statusUpdate = DB::table("majors")->where("mjr_id", $id)->update($dataToUpDate);
 
-                if($statusUpdate && $statusUpdate != 0) {
+                Session::flash("res_majors_cate_info", [
+                    "status"        => "200",
+                    "message"       => "Cập nhật dữ liệu thành công"
+                ]);
 
-                    Session::flash("res_majors_cate_info", [
-                        "status"        => "200",
-                        "message"       => "Cập nhật dữ liệu thành công"
-                    ]);
-
-                    redirect('dashboard/majors');
-                }
-
-                return redirect('error-status/500-error'); 
+                return redirect('dashboard/majors');
             }
             else {
 

@@ -23,7 +23,7 @@
 
                     <div class="tab-content">
                         <div class="tab-pane show active" id="form-row-preview">
-                            <form method="POST" action="/dashboard/majors/update/<?php echo $majorsItem['mjr_id'];?>">
+                            <form method="POST" action="/dashboard/majors/update/<?php echo $majorsItem['mjr_id'];?>" enctype="multipart/form-data">
                                 <div class="row g-2">
                                     <div class="mb-3 col-md-6">
                                         <label for="mjr_name" class="form-label">Tên ngành đào tạo</label>
@@ -53,7 +53,7 @@
                                         </select>
                                     </div>
                                     <div class="mb-3 col-md-6">
-                                        <label for="mjr_code" class="form-label">Mã ngành đào tạo</label>
+                                        <label for="mjr_code" class="form-label">Mã ngành</label>
                                         <input 
                                             type="text" 
                                             class="form-control" 
@@ -62,6 +62,10 @@
                                             placeholder="Nhập mã ngành đào tạo"
                                             value="<?= $majorsItem['mjr_code'] ?>"
                                         >
+                                    </div>
+                                    <div class="col-sm-6 mb-3">
+                                        <label class="form-label">Ảnh đại diện cho ngành học</label>
+                                        <input class="form-control" type="file" id="mjr_main_profile" name="mjr_main_profile">
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-warning">CẬP NHẬT</button>

@@ -120,4 +120,54 @@ class AboutUs {
             return redirect('error-status/500-error');
         }
     }
+    
+    public function __getUpdateInformation() {
+
+        try {
+
+            return view("pages/dashboard/components/plugins/aboutus/update_information.view.php", [
+
+                "siteInfo"       => (new SiteInfoAPI())->__getSiteInfomation()
+            ]);
+        }
+        catch(Exception $error) {
+
+            return redirect('error-status/500-error');
+        }
+    }
+
+    public function __postUpdateInformation() {
+
+        try {
+
+            $dataToUpdate = [];
+
+            if(input('site_info_name')) {
+
+                $dataToUpdate = array_merge($dataToUpdate, [
+                    'site_info_name'        => trim(input('site_info_name')),
+                ]);
+            }
+
+            if(input('site_info_short_description')) {
+
+                $dataToUpdate = array_merge($dataToUpdate, [
+                    'site_info_short_description'        => trim(input('site_info_short_description')),
+                ]);
+            }
+
+            $statusUpdate = DB::table("site_info")->where("site_info_id", (new SiteInfoAPI())->__getVersionInfo())->update($dataToUpdate);
+
+            Session::flash("res_status", [
+                "status"        => "200",
+                "message"       => "Cập nhật dữ liệu thành công"
+            ]);
+
+            return redirect('dashboard/about-us/information-getting/edit');
+        }
+        catch(Exception $error) {
+
+            return redirect('error-status/500-error');
+        }
+    }
 }

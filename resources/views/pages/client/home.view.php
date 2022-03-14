@@ -34,6 +34,11 @@
         .menu_category:hover .menuParentList{ 
             display:block;
         }  
+
+        .map-box > iframe {
+            height: 100%;
+            width: 100%;
+        }
     </style>
 </head>
 
@@ -56,12 +61,10 @@
                     <br> Thành phố Hồ Chí Minh
                 </h1>
                 <p class="desc__detail">
-                    Trường Trung cấp Kỹ thuật Nông nghiệp thuộc Sở Nông nghiệp và Phát triển Nông thôn Thành phố Hồ Chí
-                    Minh được thành lập trên cơ sở sáp nhập hai trường là Trường Trung học Nông nghiệp và Trường Công
-                    nhân Kỹ thuật Thuỷ sản.
+                    <?= $siteInfo['site_info_short_description']; ?>
                 </p>
                 <div class="desc__research--btn">
-                    <a class="btn" href="#">Tìm hiểu</a>
+                    <a class="btn" href="/about-us">Tìm hiểu</a>
                 </div>
             </section>
         </header>
@@ -242,8 +245,10 @@
             </section>
             <!-- #endregion News -->
         </section>
+
         <section class="map-box">
-            <img src="/public/client/assets/images/map.png" alt="">
+            <?= $GoogleMapAddressEmbed['tt_code']; ?>
+            <!-- <img src="/public/client/assets/images/map.png" alt=""> -->
         </section>
 
         <!--------------Footer page-------------->

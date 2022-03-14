@@ -5,9 +5,6 @@
     View::__template()->__startSection("content");
 ?>
 
-<script src="/public/dashboard/plugins/ckeditor/ckeditor.js"></script>
-
-
 <!-- Start Content-->
 <div class="container-fluid">
 
@@ -59,9 +56,5 @@
 <!-- bundle -->
 <script src="/public/dashboard/assets/js/vendor.min.js"></script>
 <script src="/public/dashboard/assets/js/app.min.js"></script>
-
-<script>
-    CKEDITOR.replace('contenteditor');
-</script>
 
 <?php View::__template()->__endSection(); ?>

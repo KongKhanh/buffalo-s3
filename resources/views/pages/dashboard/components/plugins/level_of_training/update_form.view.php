@@ -23,7 +23,7 @@
 
                     <div class="tab-content">
                         <div class="tab-pane show active" id="form-row-preview">
-                            <form method="POST" action="/dashboard/level-of-training/update/<?php echo $levelOfTrainingItem['lot_id'];?>">
+                            <form method="POST" action="/dashboard/level-of-training/update/<?php echo $levelOfTrainingItem['lot_id'];?>" enctype="multipart/form-data">
                                 <div class="row g-2">
                                     <div class="mb-3 col-md-6">
                                         <label for="mc_title" class="form-label">Tên hệ đào tạo</label>
@@ -47,6 +47,10 @@
                                             value="<?= $levelOfTrainingItem['lot_code'] ?>"
                                         >
                                         </select>
+                                    </div>
+                                    <div class="col-sm-6 mb-3">
+                                        <label class="form-label">Ảnh đại diện</label>
+                                        <input class="form-control" type="file" id="lot_main_profile" name="lot_main_profile">
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-warning">CẬP NHẬT</button>

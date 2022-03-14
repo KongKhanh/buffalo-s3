@@ -29,10 +29,11 @@ class HomePage {
             (new SiteInfoAPI())->__updateNumberOfAccessToSite();
                 
             return view('pages/client/home.view.php', [
-                'allMajors'             => (new MajorPageClient())->__getAllMajors(),
-                'siteInfo'              => $this->siteInfo,
-                'menuCategories'        => $menuCategories,
-                "LevelOfTraining"       => (new LevelOfTraining())->__getAllLevelOfTraining(),
+                'allMajors'                 => (new MajorPageClient())->__getAllMajors(),
+                'siteInfo'                  => $this->siteInfo,
+                'menuCategories'            => $menuCategories,
+                "LevelOfTraining"           => (new LevelOfTraining())->__getAllLevelOfTraining(),
+                "GoogleMapAddressEmbed"     => (new ThirdToolPage())->__getCodeByType("GMA001"),
             ]); 
         
         }

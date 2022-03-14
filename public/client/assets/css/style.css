@@ -747,7 +747,8 @@ strong {
   top: 0;
   left: 0;
   background-color: rgba(0,0,0, .5);
-  display: none;
+  overflow: scroll;
+  /* display: none; */
 }
 .register-block {
   font-size: .9em;
@@ -763,7 +764,7 @@ strong {
 }
 .register-modal--block {
   width: 50% !important;
-  margin: 5em auto;
+  margin: 2em auto;
   z-index: 100;
   background-color: white;
   padding: 1.2em;
@@ -787,10 +788,8 @@ strong {
   display: none;
 }
 .input-box {
-  padding: .2em 1em .2em;
+  /* padding: .2em 1em .2em; */
   /* width: 75%; */
-  border: 1px solid var(--blackColor);
-  border-radius: .5em;
   position: relative;
 }
 .input-box--error {
@@ -800,8 +799,13 @@ strong {
 }
 .input-box input, select, textarea {
   width: 100%;
-  border: none;
   background-color: transparent;
+  padding: 8px;
+  border: 1px solid #bdc3c7;
+  border-radius: 4px;
+}
+.input-box input, select, textarea:focus {
+  outline: none;
 }
 
 .input-box .error-tag {

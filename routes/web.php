@@ -152,6 +152,19 @@ $router->get('/dashboard/about-us/contact/edit', [AboutUs::class, '__getUpdateCo
 
 $router->post('/dashboard/about-us/contact/edit', [AboutUs::class, '__postUpdateContact']);
 
+$router->get('/dashboard/about-us/information-getting/edit', [AboutUs::class, '__getUpdateInformation']);
+
+$router->post('/dashboard/about-us/information-getting/edit', [AboutUs::class, '__postUpdateInformation']);
+
+/**
+ * Tool Third Plugins
+ */
+$router->get('/dashboard/tool-third/google-map', [ThirdToolPage::class, '__getGoogleMapAddress']);
+
+$router->get('/dashboard/tool-third/facebook-chat-messenger', [ThirdToolPage::class, '__getFacebookChatMessenger']);
+
+$router->post('/dashboard/tool-third/update/by-switch-case', [ThirdToolPage::class, '__postUpdateThirdToolPlugins']);
+
 /**
  * -----------------------------------------------------------API-----------------------------------------------------------
  */
