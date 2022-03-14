@@ -60,14 +60,34 @@
                                             name="mjr_code" 
                                             id="mjr_code" 
                                             placeholder="Nhập mã ngành đào tạo"
-                                            value="<?= $majorsItem['mjr_code'] ?>"
+                                            value="<?= $majorsItem['mjr_code']; ?>"
                                         >
                                     </div>
                                     <div class="col-sm-6 mb-3">
                                         <label class="form-label">Ảnh đại diện cho ngành học</label>
-                                        <input class="form-control" type="file" id="mjr_main_profile" name="mjr_main_profile">
+                                        <input 
+                                            class="form-control" 
+                                            type="file" 
+                                            id="mjr_main_profile" 
+                                            name="mjr_main_profile"
+                                        >
                                     </div>
                                 </div>
+
+                                <div class="row g-2">
+                                    <div class="mb-3 col-md-12">
+                                        <label for="mjr_main_description" class="form-label">Mô tả chi tiết</label>
+                                        <textarea 
+                                            type="text" 
+                                            name="mjr_main_description" 
+                                            class="form-control" 
+                                            id="contenteditor"
+                                        >
+                                            <?= $majorsItem['mjr_main_description']; ?>
+                                        </textarea>
+                                    </div>
+                                </div>
+
                                 <button type="submit" class="btn btn-warning">CẬP NHẬT</button>
                             </form>                      
                         </div>
@@ -86,5 +106,9 @@
 <!-- bundle -->
 <script src="/public/dashboard/assets/js/vendor.min.js"></script>
 <script src="/public/dashboard/assets/js/app.min.js"></script>
+
+<script>
+    CKEDITOR.replace('contenteditor');
+</script>
 
 <?php View::__template()->__endSection(); ?>

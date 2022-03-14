@@ -748,7 +748,7 @@ strong {
   left: 0;
   background-color: rgba(0,0,0, .5);
   overflow: scroll;
-  /* display: none; */
+  display: none;
 }
 .register-block {
   font-size: .9em;
@@ -859,7 +859,7 @@ strong {
 }
 .landing-btn a {
   color: white;
-  font-size: 1.1em;
+  font-size: 16px;
   text-transform: uppercase;
 }
 .landing-btn:hover {

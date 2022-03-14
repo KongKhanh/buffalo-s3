@@ -57,6 +57,7 @@
                                         <textarea type="text" name="mjr_main_description" class="form-control" id="contenteditor"></textarea>
                                     </div>
                                 </div>
+                                
                                 <button type="submit" class="btn btn-primary">THÊM</button>
                             </form>                      
                         </div> <!-- end preview-->

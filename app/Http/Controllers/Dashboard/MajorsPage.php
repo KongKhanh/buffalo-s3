@@ -155,6 +155,14 @@ class MajorsPage {
                 ]);
             }
 
+            if(input("mjr_main_description")) {
+
+                $dataToUpDate = array_merge($dataToUpDate, [
+
+                    "mjr_main_description"      => input("mjr_main_description")
+                ]);
+            }
+
             if(input("mjr_status")) {
 
                 $dataToUpDate = array_merge($dataToUpDate, [

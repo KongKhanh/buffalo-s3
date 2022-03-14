@@ -83,6 +83,9 @@
             <?php includeFile('pages/client/components/plugins/news/news_sidebar.view.php');?>
 
         </section>
+
+        <?php includeFile('pages/client/components/subscriber_box.view.php');?>
+
         <!--------------Footer page-------------->
         <?php includeFile('pages/client/components/footer_page.view.php');?>
         
