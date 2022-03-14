@@ -75,9 +75,9 @@
                                     </th>
                                     <th>Tên hệ đào tạo</th>
                                     <th>Mã hệ đào tạo</th>
-                                    <th>Hệ đào tạo</th>
-                                    <th>Địa chỉ</th>
-                                    <th>Ngày tạo</th>
+                                    <th>|</th>
+                                    <th>|</th>
+                                    <th>|</th>
                                     <th>Trạng thái</th>
                                     <th style="width: 75px;">Thao tác</th>
                                 </tr>
@@ -106,13 +106,13 @@
                                                         {$levelOfTrainingItem["lot_code"]}
                                                     </td>
                                                     <td>
-                                                        AAAA0001
+                                                        |
                                                     </td>
                                                     <td>
-                                                        New York
+                                                        |
                                                     </td>
                                                     <td>
-                                                        01/01/1985
+                                                        |
                                                     </td>
                                                      <td>
                                                         <div class="form-check form-switch">

@@ -76,6 +76,21 @@
 
                                 <div class="row g-2">
                                     <div class="mb-3 col-md-12">
+                                        <label for="news_short_content" class="form-label">Nội dung ngắn</label>
+                                        <textarea 
+                                            type="text" 
+                                            name="news_short_content" 
+                                            class="form-control" 
+                                            rows="5"
+                                            value="<?php echo $news['news_short_content'];?>"
+                                        >
+                                            <?= $news['news_short_content'];?>
+                                        </textarea>
+                                    </div>
+                                </div>
+
+                                <div class="row g-2">
+                                    <div class="mb-3 col-md-12">
                                         <label for="news_main_content" class="form-label">Nội dung bài viết</label>
                                         <textarea 
                                             type="text" 

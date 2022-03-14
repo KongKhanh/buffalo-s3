@@ -22,6 +22,7 @@ class SiteInfoAPI {
                     "siteEmail"         =>   $this->__getSiteEmail($siteInfo["site_info_id"]),
                     "siteAddress"       =>   $this->__getSiteAddress($siteInfo["site_info_id"]),
                     "siteIntro"         =>   $this->__getSiteIntro($siteInfo["site_info_id"]),
+                    "siteContact"       =>   $this->__getSiteContact($siteInfo["site_info_id"]),
                 ]);
 
                 return $siteInfo;
@@ -83,7 +84,46 @@ class SiteInfoAPI {
 
             if(is_null($siteID)) return [];
 
-            return DB::table("site_info_intro")->where('sii_si_id', $siteID)->first();
+            return DB::table("site_info_intro")
+            ->where('sii_si_id', $siteID)
+            ->first();
+        }
+        catch(Exception $error) {
+
+            return false;
+        }
+    }
+
+    public function __getSiteContact($siteID = null) {
+
+        try {
+
+            if(is_null($siteID)) return [];
+
+            return DB::table("site_info_contact")
+            ->where('sic_si_id', $siteID)
+            ->first();
+        }
+        catch(Exception $error) {
+
+            return false;
+        }
+    }
+
+    /**
+     * @return number 
+     */
+    public function __updateNumberOfAccessToSite() {
+
+        try {
+
+            $rowsAffect = DB::table("site_info")
+                ->where('site_info_id', $this->version)
+                ->update([
+                    'site_info_noa' => (intval(DB::table("site_info")->where('site_info_id', $this->version)->first()['site_info_noa']) + 1)
+                ]);
+
+            return $rowsAffect;
         }
         catch(Exception $error) {
 

@@ -20,15 +20,15 @@
                     <p class="text-muted font-14"></p>
                     <ul class="nav nav-tabs nav-bordered mb-3"></ul> <!-- end nav-->
                     <?php 
-                        if(Session::has("res_site_intro_info")) {
+                        if(Session::has("res_site_contact_info")) {
 
-                            $res_site_intro_info = Session::get("res_site_intro_info");
+                            $res_site_contact_info = Session::get("res_site_contact_info");
 
-                            $badgeStatus = $res_site_intro_info["status"] == 200 ? 'success' : 'danger';
+                            $badgeStatus = $res_site_contact_info["status"] == 200 ? 'success' : 'danger';
 
                             echo <<<HTML
                                 <div class="alert alert-{$badgeStatus} alert-dismissible fade show" role="alert">
-                                    {$res_site_intro_info["message"]}
+                                    {$res_site_contact_info["message"]}
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
                             HTML;
@@ -39,9 +39,11 @@
                             <form method="POST" action="">
                                 <div class="row g-2">
                                     <div class="mb-3 col-md-12">
-                                        <label for="sii_intro" class="form-label">Giới thiệu chi tiết</label>
-                                        <textarea type="text" name="sii_intro" class="form-control" id="contenteditor">
-                                            <?= $siteIntro['sii_intro']?>
+                                        <label for="sic_contact" class="form-label">Nội dung liên hệ</label>
+                                        <textarea type="text" name="sic_contact" class="form-control" id="contenteditor">
+                                            <?= 
+                                                $siteContact['sic_contact'];
+                                            ?>
                                         </textarea>
                                     </div>
                                 </div>
@@ -53,10 +55,10 @@
 
                                         <?php 
                                         
-                                            $statusActive = $siteIntro["sii_status"] == "published" ? "checked" : "";
+                                            $statusActive = $siteContact["sic_status"] == "published" ? "checked" : "";
                                         ?>
 
-                                        <input type="checkbox" class="form-check-input news_status" data-id="" id="customSwitch_" <?= $statusActive; ?>>
+                                        <input type="checkbox" class="form-check-input sic_status" data-id="" id="customSwitch_" <?= $statusActive; ?>>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">CẬP NHẬT</button>
@@ -86,17 +88,17 @@
         /**
      * Task: update status of intro
      */
-    $('.news_status').change(function() {
+    $('.sic_status').change(function() {
 
-        var endPoint = `/dashboard/about-us/introduce/edit`;
+        var endPoint = `/dashboard/about-us/contact/edit`;
 
-        function __requestUpdate(sii_status) { 
+        function __requestUpdate(sic_status) { 
 
             $.ajax({
                 method: 'POST',
                 url: endPoint,
                 data: {
-                    "sii_status": sii_status
+                    "sic_status": sic_status
                 }
             })
             .done(function(res) {

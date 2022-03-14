@@ -55,6 +55,7 @@ class NewsPage {
                 "news_title"                        => !is_null(input("news_title")) ? input("news_title") : false, 
                 "news_news_cate_id"                 => !is_null(input("news_news_cate_id")) ? input("news_news_cate_id") : false, 
                 "link_url"                          => !is_null(input("link_url")) ? input("link_url") : false, 
+                "news_short_content"                => !is_null(input("news_short_content")) ? input("news_short_content") : false, 
                 "news_main_content"                 => !is_null(input("news_main_content")) ? input("news_main_content") : false, 
                 "news_created_by"                   => "0",
                 "news_representative_image"         => !is_null(input("news_representative_image")) ? input("news_representative_image") : false, 
@@ -76,6 +77,7 @@ class NewsPage {
                 "news_title"                            => $input["news_title"], 
                 "news_news_cate_id"                     => $input["news_news_cate_id"],  
                 "news_link_id"                          => $link_id,
+                "news_short_content"                    => $input["news_short_content"],
                 "news_main_content"                     => $input["news_main_content"], 
                 "news_created_by"                       => "0",
                 "news_representative_image"             => $statusMove ? "/" . $input["news_representative_image"]["target_dir"] . $input["news_representative_image"]["name"] : null,
@@ -145,6 +147,14 @@ class NewsPage {
                 ]);
             }
 
+            if(input("news_short_content")) {
+
+                $dataToUpDate = array_merge($dataToUpDate, [
+
+                    "news_short_content"      => input("news_short_content")
+                ]);
+            }
+
             if(input("news_main_content")) {
 
                 $dataToUpDate = array_merge($dataToUpDate, [
@@ -153,9 +163,17 @@ class NewsPage {
                 ]);
             }
 
-            if(isset($id) && count($dataToUpDate) > 0) {
+            if(input("news_status")) {
 
-                $statusUpdate = DB::table("news")->where("news_id", $id)->update($dataToUpDate);
+                $dataToUpDate = array_merge($dataToUpDate, [
+
+                    "news_status"      => input("news_status")
+                ]);
+            }
+
+            if(isset($id)) {
+
+                $statusUpdate = DB::table("news")->where("news_id", $id)->update($dataToUpDate);  
 
                 if($statusUpdate && $statusUpdate != 0) {
 
@@ -163,11 +181,9 @@ class NewsPage {
                         "status"        => "200",
                         "message"       => "Cập nhật dữ liệu thành công"
                     ]);
-
-                    redirect('dashboard/news');
                 }
 
-                return redirect('error-status/500-error'); 
+                redirect('dashboard/news');
             }
             else {
 

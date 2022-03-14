@@ -4,7 +4,7 @@
 ?>
 
 <section class="main-header--inner">
-    <a class="main-header__logo" href="index.html">
+    <a class="main-header__logo" href="/">
         <img src="/public/client/assets/images/ats-logo-2.png" alt="">
         <p class="logo-text">Trường Trung cấp
             <br> Kỹ thuật Nông nghiệp</p>

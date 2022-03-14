@@ -36,6 +36,8 @@ $router->get('/majors/review/{target}', [MajorPageClient::class, '__getReviewMaj
  */
 $router->get('/about-us', [HomePage::class, '__getAboutPage']);
 
+$router->get('/contact-us', [HomePage::class, '__getContactPage']);
+
 /**
  * Subscriber Plugins
  */
@@ -136,11 +138,15 @@ $router->get('/dashboard/about-us/introduce/edit', [AboutUs::class, '__getUpdate
 
 $router->post('/dashboard/about-us/introduce/edit', [AboutUs::class, '__postUpdateIntro']);
 
+$router->get('/dashboard/about-us/contact/edit', [AboutUs::class, '__getUpdateContact']);
+
+$router->post('/dashboard/about-us/contact/edit', [AboutUs::class, '__postUpdateContact']);
+
 /**
  * -----------------------------------------------------------API-----------------------------------------------------------
  */
 $router->get('/api/majors-by-id/{id}', [MajorsPage::class, '__getMajorsById']);
-
+ 
 /**
  * -------------------ERROR Plugin-------------------
  */

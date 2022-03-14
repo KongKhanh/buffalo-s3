@@ -42,6 +42,8 @@
                         $date_created_at                    = date_format(date_create($news['news_created_at']), "d/m/Y");
                         $news_representative_image_format   = !is_null($news['news_representative_image']) ? $news['news_representative_image'] : '/public/storage/images/default-news-image.jpg';
 
+                        $news['link_url'] = '/news-detail/' . trim(Str::slug($news["news_title"])) . "-" . $news["news_id"];
+
                         echo <<<HTML
                             <article class="news-box">
                                 <a class="news-box__thumbnail" href="{$news['link_url']}">
@@ -80,6 +82,7 @@
     </main>
 
     <?php includeFile('pages/client/components/subscriber_box.view.php');?>
+
     <?php includeFile('pages/client/components/footer_landing_box.view.php');?>
 
 </body>

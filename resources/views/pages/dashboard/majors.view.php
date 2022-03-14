@@ -88,7 +88,7 @@
                                     <th>Tên ngành</th>
                                     <th>Mã ngành</th>
                                     <th>Hệ đào tạo</th>
-                                    <th>Địa chỉ</th>
+                                    <th>|</th>
                                     <th>Ngày tạo</th>
                                     <th>Trạng thái</th>
                                     <th style="width: 75px;">Thao tác</th>
@@ -123,7 +123,7 @@
                                                         {$majors_item["lot_name"]}
                                                     </td>
                                                     <td>
-                                                        New York
+                                                        |
                                                     </td>
                                                     <td>
                                                         {$majors_item["mjr_created_at"]}

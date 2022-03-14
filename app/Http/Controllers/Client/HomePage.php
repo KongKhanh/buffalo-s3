@@ -22,6 +22,11 @@ class HomePage {
 
                 $menuCategories[$i]["childrenList"] = $childrenCategories;
             }
+
+            /**
+             * Task: update number of access to page
+             */
+            (new SiteInfoAPI())->__updateNumberOfAccessToSite();
                 
             return view('pages/client/home.view.php', [
                 'allMajors'             => (new MajorPageClient())->__getAllMajors(),
@@ -41,9 +46,28 @@ class HomePage {
 
         try {
 
-            if($this->siteInfo["siteIntro"]) {
+            if($this->siteInfo["siteIntro"]["sii_status"] == "published") {
 
                 return view('pages/client/about_us.view.php', [
+                    'siteInfo'                  => $this->siteInfo,
+                ]);
+            }
+
+            return redirect('error-status/404-error');
+        }
+        catch (Exception $error) {
+
+            return redirect('error-status/404-error');
+        }
+    }
+
+    public function __getContactPage() {
+
+        try {
+
+            if($this->siteInfo["siteContact"]["sic_status"] == "published") {
+
+                return view('pages/client/contact_us.view.php', [
                     'siteInfo'                  => $this->siteInfo,
                 ]);
             }

@@ -104,7 +104,7 @@
                                         <a href="/dashboard/about-us/introduce/edit">Trang giới thiệu</a>
                                     </li>
                                     <li>
-                                        <a href="/">Trang liên hệ</a>
+                                        <a href="/dashboard/about-us/contact/edit">Trang liên hệ</a>
                                     </li>
                                 </ul>
                             </div>

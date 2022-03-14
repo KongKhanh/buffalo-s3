@@ -55,10 +55,18 @@
 
                                 <div class="row g-2">
                                     <div class="mb-3 col-md-12">
+                                        <label for="news_short_content" class="form-label">Nội dung ngắn</label>
+                                        <textarea type="text" name="news_short_content" class="form-control" rows="5"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="row g-2">
+                                    <div class="mb-3 col-md-12">
                                         <label for="news_main_content" class="form-label">Nội dung bài viết</label>
                                         <textarea type="text" name="news_main_content" class="form-control" id="contenteditor"></textarea>
                                     </div>
                                 </div>
+
                                 <button type="submit" class="btn btn-primary">THÊM</button>
                             </form>                      
                         </div> <!-- end preview-->

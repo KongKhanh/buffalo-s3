@@ -62,7 +62,16 @@ class MajorsPage {
                 "mjr_lot_id"                => !is_null(input("mjr_lot_id")) ? input("mjr_lot_id") : false, 
                 "mjr_code"                  => !is_null(input("mjr_code")) ? input("mjr_code") : false, 
                 "mjr_main_description"      => !is_null(input("mjr_main_description")) ? input("mjr_main_description") : false,
+                "mjr_main_profile"          => !is_null(input("mjr_main_profile")) ? input("mjr_main_profile") : false,
             ];
+
+            $input["mjr_main_profile"] = array_merge($input["mjr_main_profile"], [
+                'target_dir'        =>      'public/storage/images/'
+            ]);
+
+            $statusMove = SingleHelper::moveFile($input["mjr_main_profile"]);
+
+            $input["mjr_main_profile"] = $statusMove ? "/" . $input["mjr_main_profile"]["target_dir"] . $input["mjr_main_profile"]["name"] : null;
     
             $majors_insert_status = DB::table("majors")->insert($input);
 

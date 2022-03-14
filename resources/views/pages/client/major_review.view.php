@@ -32,9 +32,9 @@
                 </h1>
                 <nav class="history-bar">
                     <p>
-                        <a href="index.html" class="previous-page">Trang chủ</a>
-                        <a href="#" class="previous-page">Đào tạo</a>
-                        <a href="#" class="present-page">Trung tâm quản lý nhà đất</a>
+                        <a href="index.html" class="previous-page">Trang chủ </a>
+                        <a href="#" class="previous-page">Đào tạo </a>
+                        <a href="#" class="present-page"> <?= $MajorItem['mjr_name']; ?></a>
                     </p>
                 </nav>
             </section>
@@ -73,7 +73,15 @@
             <section class="news-block">
                 <article class="news-box no-flex">
                     <div class="news-box__thumbnail">
-                        <img src="/public/client/assets/images/image-3.jpeg" alt="">
+                        
+                        <?php 
+                            if(!is_null($MajorItem['mjr_main_profile'])) {
+                                echo<<<HTML
+                                    <img src="{$MajorItem['mjr_main_profile']}" alt="">
+                                HTML;
+                            }
+                        ?>
+
                     </div>
                     <h4 class="news-box__title" style="text-transform: uppercase;">
                         CHƯƠNG TRÌNH ĐÀO TẠO <?= $MajorItem['mjr_name']; ?>

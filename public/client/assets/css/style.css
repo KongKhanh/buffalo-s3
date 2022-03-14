@@ -570,12 +570,12 @@ strong {
   font-weight: 200;
 }
 .news-box__desc {
-  font-weight: 200;
-  font-size: .9em;
-  font-style: italic;
-  color: var(--grayColor);
-  line-height: 1.25em;
-  word-spacing: .2em;
+  /* font-weight: 200; */
+  /* font-size: .9em; */
+  /* font-style: italic; */
+  /* color: var(--grayColor); */
+  /* line-height: 1.25em; */
+  /* word-spacing: .2em; */
   margin-top: 2em;
 }
 .news-box__detail {

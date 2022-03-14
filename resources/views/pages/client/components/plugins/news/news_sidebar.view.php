@@ -1,6 +1,8 @@
 <?php 
 
-    $newsCate       = DB::table("news_category")->get();
+    $newsCate       = DB::table("news_category")
+    ->where("news_cate_status", "published")
+    ->get();
 
     $latestNews     = (new NewsPageClient())->__getLatestNewsList(3); 
 ?>
@@ -22,12 +24,15 @@
         <ul class="category-list">
             <?php 
                 foreach ($newsCate as $newsCateItem) {
+
+                    $cateParsingID = Str::slug(trim($newsCateItem['news_cate_title']), "-") . "-" . $newsCateItem['news_cate_id'];
+
                     echo <<<HTML
                         <li class="category-item">
                             <!-- <button onclick="showCategoryMenu(this.parentNode)">
                                 {$newsCateItem["news_cate_title"]}
                             </button> -->
-                            <a href="/news/category/{$newsCateItem['news_cate_id']}" style="color: #FFFFFF;">
+                            <a href="/news/category/{$cateParsingID}" style="color: #FFFFFF;">
                                 {$newsCateItem["news_cate_title"]}
                             </a>
                             <ul class="subcategory-list">
@@ -52,6 +57,8 @@
 
                     $date_created_at                    = date_format(date_create($latestNews_Item['news_created_at']), "d/m/Y");
                     $news_representative_image_format   = !is_null($latestNews_Item['news_representative_image']) ? $latestNews_Item['news_representative_image'] : '/public/storage/images/default-news-image.jpg';
+
+                    $latestNews_Item['link_url'] = '/news-detail/' . trim(Str::slug($latestNews_Item["news_title"])) . "-" . $latestNews_Item["news_id"];
 
                     echo <<<HTML
                         <a href="{$latestNews_Item['link_url']}">

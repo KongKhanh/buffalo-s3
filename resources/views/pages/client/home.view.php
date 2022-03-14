@@ -135,7 +135,33 @@
                     <ol class="majors-box__list">
                         <div>
                             <?php 
-                                foreach($allMajors as $majorsItem) {
+
+                                $majorsLeft = [];
+                                $majorsRight = [];
+                                $startRightIndex = [
+                                    "status"    => true,
+                                    "value"     => 1,
+                                ];
+
+                                for($i = 0; $i < count($allMajors); $i++) {
+
+                                    if($i < ceil(count($allMajors) / 2)) {
+
+                                        array_push($majorsLeft, $allMajors[$i]);
+                                    }
+                                    else {
+
+                                        if($startRightIndex['status']) {
+
+                                            $startRightIndex['status'] = false;
+                                            $startRightIndex['value'] = $i + 1;
+                                        }
+
+                                        array_push($majorsRight, $allMajors[$i]);
+                                    }
+                                }
+
+                                foreach($majorsLeft as $majorsItem) {
                                     
                                     $majorsItemNameSlug = Str::slug($majorsItem['mjr_name']);
 
@@ -150,21 +176,26 @@
                             <img src="/public/client/assets/images/image-5.jpeg" alt="" class="majors-box_thumbnail-2">
                         </div>
                     </ol>
-                    <ol class="majors-box__list" start="7">
+                    <ol class="majors-box__list" start="<?= $startRightIndex['value']; ?>">
                         <div>
-                            <li class="majors-box__list--item">Bảo trì và sửa chữa thiết bị điện (cơ điện lạnh)</li>
-                            <li class="majors-box__list--item">Điện công nghiệp và Dân dụng</li>
-                            <li class="majors-box__list--item">Quản lý tài nguyên môi trường</li>
-                        </div>
-                        <div>
-                            <li class="majors-box__list--item">Trắc địa - Đại hình - Địa chính</li>
-                            <li class="majors-box__list--item">Thiết kế cảnh quan hoa viên</li>
-                            <li class="majors-box__list--item">Trồng trọt và Bảo vệ thực vật</li>
+                            <?php 
+                                foreach($majorsRight as $majorsItem) {
+                                    
+                                    $majorsItemNameSlug = Str::slug($majorsItem['mjr_name']);
+
+                                    echo <<<HTML
+                                        <li class="majors-box__list--item"><a href="/majors/review/{$majorsItemNameSlug}-{$majorsItem['mjr_id']}">{$majorsItem['mjr_name']}</a></li>
+                                    HTML;
+                                }
+                            ?>
                         </div>
                     </ol>
                 </section>
                 <h2 class="majors-box__title">
-                    các ngành đào tạo <br><span>2022</span>
+                    các ngành đào tạo <br>
+                    <span>
+                        <?= date("Y");?>
+                    </span>
                 </h2>
             </section>
             <section class="courses-box content">

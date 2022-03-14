@@ -48,7 +48,6 @@
                         <input type="hidden" name="news_cate_id" id="news_cate_id">
                     </form>
 
-
                     <div class="table-responsive">
                         <table class="table table-centered table-striped dt-responsive nowrap w-100" id="products-datatable">
                             <thead>
@@ -60,10 +59,10 @@
                                         </div>
                                     </th>
                                     <th>Tên thể loại</th>
-                                    <th>Mã ngành</th>
-                                    <th>Hệ đào tạo</th>
-                                    <th>Địa chỉ</th>
-                                    <th>Ngày tạo</th>
+                                    <th>|</th>
+                                    <th>|</th>
+                                    <th>|</th>
+                                    <th>|</th>
                                     <th>Trạng thái</th>
                                     <th style="width: 75px;">Thao tác</th>
                                 </tr>
@@ -89,16 +88,16 @@
                                                         <a href="javascript:void(0);" class="text-body fw-semibold">{$newsCateItem["news_cate_title"]}</a>
                                                     </td>
                                                     <td>
-                                                        AAAA0001
+                                                        |
                                                     </td>
                                                     <td>
-                                                        AAAA0001
+                                                        |
                                                     </td>
                                                     <td>
-                                                        New York
+                                                        |
                                                     </td>
                                                     <td>
-                                                        01/01/1985
+                                                        |
                                                     </td>
                                                      <td>
                                                         <div class="form-check form-switch">
