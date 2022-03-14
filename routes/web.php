@@ -51,7 +51,7 @@ $router->get('/contact-us', [HomePage::class, '__getContactPage']);
 /**
  * Subscriber Plugins
  */
-$router->get('/subscriber-form', [HomePage::class, '__getSubscriberForm']);
+// $router->get('/subscriber-form', [HomePage::class, '__getSubscriberForm']);
 $router->post('/subscriber-form', [SubscriberPage::class, '__postSubscriberPage']);
 
 /**

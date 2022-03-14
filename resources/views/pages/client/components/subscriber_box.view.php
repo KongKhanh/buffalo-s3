@@ -1,4 +1,13 @@
-<section class="register-modal" id="registerModal">
+<?php  
+
+    $trainingTypeList = DB::table('level_of_training')->get(); 
+
+    if(Session::has("res_subscriber")) {
+
+        $res_subscriber = Session::get("res_subscriber");
+    }
+?>
+ <section class="register-modal" id="registerModal">
     <section class="register-block register-modal--block">
         <i 
             class="fas fa-times-circle" 
@@ -10,64 +19,87 @@
             id="registerModalHidden"
         >
         </i>
-        <form action="" id="registerForm" method="POST">
+        <form action="/subscriber-form" id="registerForm" method="POST">
             <article class="base-info">
                 <h4 class="register-title">
                     Thông tin cá nhân
                 </h4>
                 <section class="base-value">
                     <article class="input-block">
-                        <div class="input-box">
-                            <input type="text" name="fullName" id="fullName" placeholder="Họ và tên...">
-                            <i class="fas fa-exclamation-circle error-tag" style="color: red;"></i>
-                            <i class="fas fa-user input-tag"></i>
-                        </div>
+                                <label for="fullName">Họ và tên</label>
+                                <div class="input-box">
+                                    <input type="text" name="subscriber_name" id="fullName" placeholder="Họ và tên...">
+                                    <!-- <i class="fas fa-exclamation-circle" style="color: red;"></i> -->
+                                    <?php 
+                                        if(isset($res_subscriber['errors']['error_admin_name'])){
+                                            echo <<<HTML
+                                                <span class="text-danger" style="color: red;">{$res_subscriber['errors']['error_admin_name']}</span>
+                                            HTML;
+                                        }
+                                    ?>
+                                </div>
                         <p class="input-error">Vui lòng nhập họ tên</p>
                     </article>
                     <article class="input-block">
+                        <label for="phoneNumber">Số điện thoại</label>
                         <div class="input-box">
-                            <input type="text" name="phoneNumber" id="phoneNumber" placeholder="Số điện thoại...">
-                            <i class="fas fa-exclamation-circle error-tag" style="color: red;"></i>
-                            <i class="fas fa-phone input-tag"></i>
+                            <input type="number" name="subscriber_phone" id="phoneNumber" placeholder="Số điện thoại...">
+                            <!-- <i class="fas fa-exclamation-circle" style="color: red;"></i> -->
+                            <?php 
+                                if(isset($res_subscriber['errors']['error_admin_phone'])){
+                                    echo <<<HTML
+                                        <span class="text-danger" style="color: red;">{$res_subscriber['errors']['error_admin_phone']}</span>
+                                    HTML;
+                                }
+                            ?>
                         </div>
                         <p class="input-error">Vui lòng nhập lại số điện thoại</p>
                     </article>
                 </section>
                 <article class="input-block">
+                    <label for="dateOfBirth">Ngày sinh</label>
                     <div class="input-box">
-                        <input type="text" name="dateOfBirth" id="dateOfBirth" placeholder="Ngày sinh" onfocus="(this.type = 'date')" onblur="(this.type = 'text')">
-                        <i class="fas fa-exclamation-circle error-tag" style="color: red;"></i>
-                        <i class="fas fa-calendar input-tag"></i>
+                        <input type="date" name="subscriber_dob" id="dateOfBirth" placeholder="dd/mm/yyyy">
+                        <!-- <i class="fas fa-exclamation-circle" style="color: red;"></i> -->
+                        <?php 
+                            if(isset($res_subscriber['errors']['error_admin_dob'])){
+                                echo <<<HTML
+                                    <span class="text-danger" style="color: red;">{$res_subscriber['errors']['error_admin_dob']}</span>
+                                HTML;
+                            }
+                        ?>
                     </div>
                     <p class="input-error">Vui lòng nhập lại ngày sinh</p>
                 </article>
                 <article class="input-block">
+                    <label for="email">Email</label>
                     <div class="input-box">
-                        <input type="text" name="email" id="email" placeholder="Email...">
-                        <i class="fas fa-exclamation-circle error-tag" style="color: red;"></i>
-                        <i class="fas fa-envelope input-tag"></i>
+                        <input type="text" name="subscriber_email" id="email" placeholder="Email...">
+                        <!-- <i class="fas fa-exclamation-circle" style="color: red;"></i> -->
+                        <?php 
+                            if(isset($res_subscriber['errors']['error_admin_email'])){
+                                echo <<<HTML
+                                    <span class="text-danger" style="color: red;">{$res_subscriber['errors']['error_admin_email']}</span>
+                                HTML;
+                            }
+                        ?>
                     </div>
                     <p class="input-error">Vui lòng nhập lại Email</p>
                 </article>
                 <article class="input-block">
+                    <label for="address">Địa chỉ</label>
                     <div class="input-box">
-                        <input type="text" name="address" id="address" placeholder="Địa chỉ liên hệ...">
-                        <i class="fas fa-exclamation-circle error-tag" style="color: red;"></i>
-                        <i class="fas fa-map input-tag"></i>
+                        <input type="text" name="subscriber_address" id="address" placeholder="Địa chỉ liên hệ...">
+                        <!-- <i class="fas fa-exclamation-circle" style="color: red;"></i> -->
+                        <?php 
+                            if(isset($res_subscriber['errors']['error_admin_address'])){
+                                echo <<<HTML
+                                    <span class="text-danger" style="color: red;">{$res_subscriber['errors']['error_admin_address']}</span>
+                                HTML;
+                            }
+                        ?>
                     </div>
                     <p class="input-error">Vui lòng nhập lại địa chỉ</p>
-                </article>
-                <article class="input-block">
-                    <div class="input-box">
-                        <select name="education" id="education">
-                            <option value="-1" selected>Trình độ học vấn</option>
-                            <option value="junior">Trung học cơ sở</option>
-                            <option value="high">Trung học phổ thông</option>
-                            <option value="other">Khác</option>
-                        </select>
-                        <i class="fas fa-exclamation-circle error-tag" style="color: red;"></i>
-                    </div>
-                    <p class="input-error">Vui lòng chọn lại trình độ học vấn</p>
                 </article>
             </article>
             <article class="other-info">
@@ -75,35 +107,45 @@
                     Thông tin đăng ký xét tuyển
                 </h4>
                 <article class="input-block">
+                    <label for="trainingSystem">Hệ đào tạo</label>
                     <div class="input-box">
-                        <select name="trainingSystem" id="trainingSystem">
-                            <option value="-1" selected>Hệ đào tạo</option>
-                            <option value="mid">Trung cấp chuyên nghiệp</option>
-                            <option value="short">Khóa ngắn hạn</option>
-                            <option value="thematic">Khác</option>
+                        <select name="subscriber_lot_id" id="level_of_training">
+                        <option value="" disabled selected >Chọn hệ đào tạo</option>
+                            <?php 
+                                if($trainingTypeList){
+                                    foreach($trainingTypeList as $typeTraining){
+                                        echo
+                                        <<< HTML
+                                            <option value="{$typeTraining['lot_id']}">{$typeTraining['lot_name']}</option>
+                                        HTML;
+                                    }
+                                }
+                            ?>
                         </select>
-                        <i class="fas fa-exclamation-circle error-tag" style="color: red;"></i>
+                        <?php 
+                            if(isset($res_subscriber['errors']['error_admin_mjr'])){
+                                echo <<<HTML
+                                    <span class="text-danger" style="color: red;">{$res_subscriber['errors']['error_admin_mjr']}</span>
+                                HTML;
+                            }
+                        ?>
+                        <!-- <i class="fas fa-exclamation-circle" style="color: red;"></i> -->
                     </div>
                     <p class="input-error">Vui lòng chọn lại hệ đào tạo</p>
                 </article>
                 <article class="input-block">
+                    <label for="course">Ngành đào tạo</label>
                     <div class="input-box">
-                        <select name="course" id="course">
-                            <option value="-1" selected>Ngành đào tạo</option>
-                            <option value="1">Quản lý nhà đất</option>
-                            <option value="2">Quản lý đất đai</option>
-                            <option value="3">Chăn nuôi - Thú y</option>
-                            <option value="4">Kế toán doanh nghiệp</option>
-                            <option value="5">Thuỷ lợi tổng hợp</option>
-                            <option value="6">Bảo trì & sửa chữa thiết bị nhiệt(cơ điện lạnh)</option>
-                            <option value="7">Trồng trọt và Bảo vệ thực vật</option>
-                            <option value="8">Trắc địa - Địa hình - Địa chính</option>
-                            <option value="9">Điện công nghiệp và Dân dụng</option>
-                            <option value="10">Quản lý tài nguyên môi trường</option>
-                            <option value="11">Kinh doanh bất động sản</option>
-                            <option value="12">Thiết kế cảnh quan viên</option>
+                        <select name="subscriber_mjr_id" id="course">
                         </select>
-                        <i class="fas fa-exclamation-circle error-tag" style="color: red;"></i>
+                        <?php 
+                            if(isset($res_subscriber['errors']['error_admin_lot'])){
+                                echo <<<HTML
+                                    <span class="text-danger" style="color: red;">{$res_subscriber['errors']['error_admin_lot']}</span>
+                                HTML;
+                            }
+                        ?>
+                        <!-- <i class="fas fa-exclamation-circle" style="color: red;"></i> -->
                     </div>
                     <p class="input-error">Vui lòng chọn lại ngành đào tạo</p>
                 </article>
@@ -114,9 +156,7 @@
                 </article>
             </article>
             <article class="register--btn">
-                <button id="registerSubmit" name="registerSubmit">
-                    Đăng ký
-                </button>
+                <input id="registerSubmit" name="registerSubmit" value="Đăng ký" type="submit">
             </article>
         </form>
     </section>
