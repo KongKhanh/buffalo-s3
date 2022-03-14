@@ -106,6 +106,8 @@
                                                     aria-expanded="true" aria-controls="collapse_{$menu_cate_item['mc_id']}">
                                                     {$menu_cate_item["mc_title"]}
                                                     <i class="mdi mdi-chevron-down accordion-arrow"></i>
+                                                    <a href="/dashboard/menu-cate/update/{$menu_cate_item['mc_id']}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                                    <a href="javascript:void(0);" class="action-icon btnDeleteMenuCate" data-id="{$menu_cate_item['mc_id']}"> <i class="mdi mdi-delete"></i></a>
                                                 </a>
                                             </h5>
                                         </div>

@@ -39,7 +39,7 @@ $router->get('/about-us', [HomePage::class, '__getAboutPage']);
 /**
  * Subscriber Plugins
  */
-$router->get('/subscriber-form', [HomePage::class, '__getSubscriberForm']);
+// $router->get('/subscriber-form', [HomePage::class, '__getSubscriberForm']);
 $router->post('/subscriber-form', [SubscriberPage::class, '__postSubscriberPage']);
 
 /**

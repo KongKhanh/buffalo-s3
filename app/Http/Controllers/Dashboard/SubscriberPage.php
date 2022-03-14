@@ -71,10 +71,10 @@ class SubscriberPage {
             ]);
         }
 
-        if(!preg_match('/^[a-zA-Z ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]{10,32}$/',$input['subscriber_name'])){
+        if(!preg_match('/^[a-zA-Z ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]{4,32}$/',$input['subscriber_name'])){
 
             $errors = array_merge($errors, [
-                "error_admin_name" => "Tên tài khoản không đúng định dạng"
+                "error_admin_name" => "Họ và tên đúng định dạng"
             ]);
         }
 
@@ -109,15 +109,13 @@ class SubscriberPage {
                 "error_admin_subscriber" => "Đăng ký không thành công"
             ]);
 
-            $trainingTypeList = DB::table('level_of_training')->get();
-
-            return view('pages/client/components/subscriber_form.view.php', [
+            Session::flash("res_subscriber", [
                 "errors" => $errors,
-                'trainingTypeList' => $trainingTypeList
             ]);
+    
         }
         
-        return view('pages/dashboard/subscribers.view.php');
+        return redirect('/'); 
     }
 
 
