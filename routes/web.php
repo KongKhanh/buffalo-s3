@@ -29,7 +29,17 @@ $router->get('/news/category/{target}', [NewsPageClient::class, '__getNewsByCate
 
 $router->get('/news-detail/{target}',[NewsPageClient::class, '__getNewsDetailPageClient']);
 
+
+/**
+ * Majors Plugins
+ */
+$router->get('/majors', [MajorPageClient::class, '__getAllMajorsPage']);
 $router->get('/majors/review/{target}', [MajorPageClient::class, '__getReviewMajorsByID']);
+
+/**
+ * Level-Of-Traning Plugins
+ */
+$router->get('/level-of-traning/get-majors/{id}', [MajorPageClient::class, '__getMajorsByLOT']);
 
 /**
  *  Intro Plugins

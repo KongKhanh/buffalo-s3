@@ -70,10 +70,6 @@
                                         <a href="/dashboard/news/update/{$news['news_id']}" class="dropdown-item"><i class="mdi mdi-pencil me-1"></i>Chỉnh sửa</a>
                                         <!-- item-->
                                         <a href="javascript:void(0);" class="dropdown-item btnDeleteNews" data-id="{$news['news_id']}"><i class="mdi mdi-delete me-1"></i>Xóa</a>
-                                        <!-- item-->
-                                        <!-- <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-email-outline me-1"></i>Invite</a> -->
-                                        <!-- item -->
-                                        <!-- <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-exit-to-app me-1"></i>Leave</a> -->
                                     </div>
                                 </div>
                                 <!-- project title-->
@@ -105,13 +101,13 @@
                                 </div>
                             </div>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item p-3">    
+                                <!-- <li class="list-group-item p-3">    
                                     <p class="mb-2 fw-bold">Progress <span class="float-end">100%</span></p>
                                     <div class="progress progress-sm">
                                         <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
                                         </div>
                                     </div>
-                                </li>
+                                </li> -->
                             </ul>
                         </div> 
                     </div>

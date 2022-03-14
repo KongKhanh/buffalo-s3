@@ -28,6 +28,15 @@
                     // }
                 }
             ?>
+            <li class="menubar__list-item menu_category">
+                <a href="/news">Tin tức</a>
+            </li>
+            <li class="menubar__list-item menu_category">
+                <a href="/contact-us">Liên hệ</a>
+            </li>
+            <li class="menubar__list-item menu_category">
+                <a href="/about-us">Giới thiệu</a>
+            </li>
             <li class="menubar__list-item">
                 <button name="header-search--btn" class="btn">
                     <i class="fas fa-search"></i>

@@ -38,7 +38,8 @@ class NewsPage {
     
             return view("pages/dashboard/components/plugins/news/add_form.view.php", [
 
-                "newsCate"       => $this->newsCate
+                "newsCate"          => $this->newsCate,
+                "lastNewsID"         => $this->__getLastRecordID()
             ]);
         }
         catch(Exception $error) {
@@ -65,7 +66,6 @@ class NewsPage {
                 "link_lt_id"                => 1, 
                 "link_url"                  => $input["link_url"],  
             ]);
-
             
             $input["news_representative_image"] = array_merge($input["news_representative_image"], [
                 'target_dir'        =>      'public/storage/images/'
@@ -397,5 +397,14 @@ class NewsPage {
 
             return redirect('error-status/500-error');
         }
+    }
+
+    public function __getLastRecordID() {
+
+        $ID = DB::table("news")->max('news_id');
+
+        if($ID) return $ID;
+
+        return 0;
     }
 }

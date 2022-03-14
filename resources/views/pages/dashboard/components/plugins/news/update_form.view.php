@@ -71,6 +71,7 @@
                                         id="link_url" 
                                         placeholder="Nhập link bài viết"
                                         value="<?php echo $news['link_url'];?>"
+                                        disabled
                                     >
                                 </div>
 

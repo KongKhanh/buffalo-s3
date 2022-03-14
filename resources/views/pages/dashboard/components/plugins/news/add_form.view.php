@@ -25,7 +25,7 @@
                                 <div class="row g-2">
                                     <div class="mb-3 col-md-6">
                                         <label for="news_title" class="form-label">Tiêu đề</label>
-                                        <input type="text" class="form-control" name="news_title" id="news_title" placeholder="Nhập tên tiêu đề">
+                                        <input type="text" class="form-control" name="news_title" id="news_title" placeholder="Nhập tên tiêu đề" data-last-news-id="<?= $lastNewsID; ?>">
                                     </div>
                                     <div class="mb-3 col-md-6">
                                         <label for="news_news_cate_id" class="form-label">Thể loại bài viết</label>
@@ -45,7 +45,7 @@
 
                                 <div class="mb-3">
                                     <label for="link_url" class="form-label">Link bài viết (tùy chọn)</label>
-                                    <input type="text" name="link_url" class="form-control" id="link_url" placeholder="Nhập link bài viết">
+                                    <input type="text" name="link_url" class="form-control" id="link_url" placeholder="Nhập link bài viết" disabled>
                                 </div>
 
                                 <div class="col-sm-6 mb-3">
@@ -89,6 +89,25 @@
 
 <script>
     CKEDITOR.replace('contenteditor');
+</script>
+
+<script>
+
+    document.querySelector('#news_title').addEventListener('keyup', function() {
+
+        if(this) {
+
+            if(document.querySelector('#link_url')) {
+
+                let start = '/news-detail/', 
+                    middle = this.value.trim(), 
+                    end = ('-' + (parseInt(this.getAttribute('data-last-news-id')) + 1)), 
+                    seperate = '-';
+
+                document.querySelector('#link_url').value = generateURL(start, middle, end, seperate);
+            }
+        }
+    });
 </script>
 
 <?php View::__template()->__endSection(); ?>

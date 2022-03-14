@@ -207,22 +207,23 @@
                         foreach($LevelOfTraining as $levelOfTrainingItem) {
 
                             $majorsHTML = "";
-
-                            
+                            $levelOfTrainingItem['link_url'] = '/level-of-traning/get-majors/' . trim(Str::slug($levelOfTrainingItem["lot_name"])) . "-" . $levelOfTrainingItem["lot_id"];
 
                             foreach($levelOfTrainingItem["majors"] as $majorsItem) {
 
                                 $majorsURL = "/majors/review/" . Str::slug($majorsItem["mjr_name"]) . "-" . $majorsItem["mjr_id"];
 
                                 $majorsHTML .= <<<HTML
-                                    <a href="{$majorsURL}"><p>{$majorsItem["mjr_name"]}</p><a>
+                                    <a href="{$majorsURL}">
+                                        <p style="margin: 4px 0;">{$majorsItem["mjr_name"]}</p>
+                                    <a>
                                 HTML;
                             }
 
                             echo <<<HTML
                                 <article class="course-box">
                                     <div class="course-box__thumbnal">
-                                        <img src="/public/client/assets/images/image-6.jpeg" alt="">
+                                        <img src="{$levelOfTrainingItem['lot_main_profile']}" alt="...">
                                     </div>
                                     <div>
                                         <h4 class="course-box__title">
@@ -231,7 +232,7 @@
                                         <div class="course-box__body">
                                             {$majorsHTML}
                                         </div>
-                                        <a href="#" class="course-box__footer">Xem thêm</a>
+                                        <a href="{$levelOfTrainingItem['link_url']}" class="course-box__footer">Xem thêm</a>
                                     </div>
                                 </article>
                             HTML;

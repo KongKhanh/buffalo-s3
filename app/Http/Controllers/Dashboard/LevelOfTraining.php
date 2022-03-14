@@ -21,7 +21,9 @@ class LevelOfTraining {
         }
     }
 
-
+    /**
+     * @return array
+     */
     public function __getAllLevelOfTraining() {
 
         try {
@@ -166,7 +168,17 @@ class LevelOfTraining {
                 "lot_name"                  => !is_null(input("lot_name")) ? input("lot_name") : false, 
                 "lot_code"                  => !is_null(input("lot_code")) ? input("lot_code") : false, 
             ];
-    
+
+            $input["lot_main_profile"] = input("lot_main_profile") ? input("lot_main_profile") : false;
+
+            $input["lot_main_profile"] = array_merge($input["lot_main_profile"], [
+                'target_dir'        =>      'public/storage/images/'
+            ]);
+
+            $statusMove = SingleHelper::moveFile($input["lot_main_profile"]);
+
+            $input["lot_main_profile"] = $statusMove ? "/" . $input["lot_main_profile"]["target_dir"] . $input["lot_main_profile"]["name"] : null;
+
             $res_level_of_training_infor = DB::table("level_of_training")->insert($input);
 
             if($res_level_of_training_infor) {

@@ -409,7 +409,6 @@ strong {
 }
 .course-box__footer {
   color: var(--redColor);
-  font-size: .7em;
 }
 .course-box__footer::after {
   content: '...';
@@ -538,7 +537,7 @@ strong {
   width: 60%;
 }
 .news-box {
-  margin: 1em 0;
+  margin-bottom: 1em;
 }
 .news-box__thumbnail img {
   width: 100%;
@@ -939,7 +938,7 @@ strong {
     color: var(--blackColor) !important;
   }
   .container{
-    padding: 1em;
+    padding: 1em !important;
   }
   .main-header__desc .desc__detail,
   .main-header__desc .main-header__logo .logo-text{
