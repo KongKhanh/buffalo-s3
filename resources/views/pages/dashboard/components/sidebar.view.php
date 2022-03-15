@@ -50,7 +50,7 @@
                     <ul class="side-nav-second-level">
                         <li class="side-nav-item">
                             <a data-bs-toggle="collapse" href="#cFrEfPm948SYfuJ" aria-expanded="false">
-                                <span> Tin tức </span>
+                                <span> Tin tức & Sự kiện</span>
                                 <span class="menu-arrow"></span>
                             </a>
                             <div class="collapse" id="cFrEfPm948SYfuJ">
@@ -60,6 +60,9 @@
                                     </li>
                                     <li>
                                         <a href="/dashboard/news/categories">Danh sách thể loại</a>
+                                    </li>
+                                    <li>
+                                        <a href="/dashboard/video-iframe">Danh sách video</a>
                                     </li>
                                 </ul>
                             </div>

@@ -171,7 +171,7 @@ class MajorsPage {
                 ]);
             }
 
-            if(input("mjr_main_profile")) {
+            if(input("mjr_main_profile") && !empty(input("mjr_main_profile")["name"])) {
 
                 $input["mjr_main_profile"] = array_merge(input("mjr_main_profile"), [
                     'target_dir'        =>      'public/storage/images/'

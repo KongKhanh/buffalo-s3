@@ -141,7 +141,7 @@
 <!-- third party js ends -->
 
 <!-- demo app -->
-<script src="/public/dashboard/assets/js/pages/demo.customers.js"></script>
+<script src="/public/dashboard/assets/js/dataTable/demo.customers.js"></script>
 <!-- end demo js-->
 <script>
 

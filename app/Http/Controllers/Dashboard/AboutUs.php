@@ -158,6 +158,57 @@ class AboutUs {
 
             $statusUpdate = DB::table("site_info")->where("site_info_id", (new SiteInfoAPI())->__getVersionInfo())->update($dataToUpdate);
 
+            /**
+             * Phone area
+             */
+            if(input('sip_phone_1')) {
+
+                DB::table("site_info_phone")->where("sip_id", 1)->update([
+                    'sip_phone'         => trim(input('sip_phone_1')),
+                ]);
+            }
+
+            if(input('sip_phone_2')) {
+
+                DB::table("site_info_phone")->where("sip_id", 2)->update([
+                    'sip_phone'         => trim(input('sip_phone_2')),
+                ]);
+            }
+
+            /**
+             * Email area
+             */
+            if(input('sie_email_1')) {
+
+                DB::table("site_info_email")->where("sie_id", 1)->update([
+                    'sie_email'         => trim(input('sie_email_1')),
+                ]);
+            }
+
+            if(input('sie_email_2')) {
+
+                DB::table("site_info_email")->where("sie_id", 2)->update([
+                    'sie_email'         => trim(input('sie_email_2')),
+                ]);
+            }
+
+            /**
+             * Address area
+             */
+            if(input('sia_address_1')) {
+
+                DB::table("site_info_address")->where("sia_id", 1)->update([
+                    'sia_address'         => trim(input('sia_address_1')),
+                ]);
+            }
+
+            if(input('sia_address_2')) {
+
+                DB::table("site_info_address")->where("sia_id", 2)->update([
+                    'sia_address'         => trim(input('sia_address_2')),
+                ]);
+            }
+
             Session::flash("res_status", [
                 "status"        => "200",
                 "message"       => "Cập nhật dữ liệu thành công"

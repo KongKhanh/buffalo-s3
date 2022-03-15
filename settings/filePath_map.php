@@ -75,5 +75,6 @@ return array(
     "app\\Http\\Controllers\\Dashboard\\LevelOfTraining"                => $baseDir . '/app/Http/Controllers/Dashboard/LevelOfTraining.php',
     "app\\Http\\Controllers\\Dashboard\\AboutUs"                        => $baseDir . '/app/Http/Controllers/Dashboard/AboutUs.php',
     "app\\Http\\Controllers\\Dashboard\\ThirdToolPage"                  => $baseDir . '/app/Http/Controllers/Dashboard/ThirdToolPage.php',
+    "app\\Http\\Controllers\\Dashboard\\VideoIFramePage"                => $baseDir . '/app/Http/Controllers/Dashboard/VideoIFramePage.php',
     "app\\Http\\Controllers\\Base\\ERRORPage"                           => $baseDir . '/app/Http/Controllers/Base/ERRORPage.php',
 );

@@ -27,7 +27,7 @@
                         <li class="breadcrumb-item active">Danh Sách Đăng Ký</li>
                     </ol>
                 </div>
-                <h4 class="page-title">Danh Sách Thể Loại Tin Tức</h4>
+                <h4 class="page-title">Danh Sách Hệ Đào Tạo</h4>
             </div>
         </div>
     </div>     
@@ -156,7 +156,7 @@
 <!-- third party js ends -->
 
 <!-- demo app -->
-<script src="/public/dashboard/assets/js/pages/demo.customers.js"></script>
+<script src="/public/dashboard/assets/js/dataTable/demo.customers.js"></script>
 <!-- end demo js-->
 <script>
 

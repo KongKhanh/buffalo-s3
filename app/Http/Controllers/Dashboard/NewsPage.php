@@ -171,7 +171,7 @@ class NewsPage {
                 ]);
             }
 
-            if(input("news_representative_image")) {
+            if(input("news_representative_image") && !empty(input("news_representative_image")["name"])) {
 
                 $input["news_representative_image"] = array_merge(input("news_representative_image"), [
                     'target_dir'        =>      'public/storage/images/'

@@ -65,7 +65,7 @@
                                                         name="sip_phone_{$sitePhone['sip_id']}" 
                                                         id="sip_phone_{$sitePhone['sip_id']}" 
                                                         placeholder="Nhập số điện thoại"
-                                                        value=""
+                                                        value="{$sitePhone['sip_phone']}"
                                                     >
                                                 </div>
                                             HTML;
@@ -85,7 +85,7 @@
                                                         name="sie_email_{$siteEmail['sie_id']}" 
                                                         id="sie_email_{$siteEmail['sie_id']}" 
                                                         placeholder="Nhập địa chỉ Email"
-                                                        value=""
+                                                        value="{$siteEmail['sie_email']}"
                                                     >
                                                 </div>
                                             HTML;
@@ -105,7 +105,7 @@
                                                         name="sia_address_{$siteAddress['sia_id']}" 
                                                         id="sia_address_{$siteAddress['sia_id']}" 
                                                         placeholder="Nhập địa chỉ cơ sở"
-                                                        value=""
+                                                        value="{$siteAddress['sia_address']}"
                                                     >
                                                 </div>
                                             HTML;

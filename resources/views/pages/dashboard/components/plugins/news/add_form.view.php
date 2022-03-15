@@ -45,7 +45,7 @@
 
                                 <div class="mb-3">
                                     <label for="link_url" class="form-label">Link bài viết (tùy chọn)</label>
-                                    <input type="text" name="link_url" class="form-control" id="link_url" placeholder="Nhập link bài viết" disabled>
+                                    <input type="text" name="link_url" class="form-control" id="link_url" placeholder="Nhập link bài viết">
                                 </div>
 
                                 <div class="col-sm-6 mb-3">

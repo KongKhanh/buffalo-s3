@@ -27,7 +27,7 @@
                         <li class="breadcrumb-item active">Danh Sách Đăng Ký</li>
                     </ol>
                 </div>
-                <h4 class="page-title">Danh Sách Các Ngành Đạo Tạo</h4>
+                <h4 class="page-title">Danh Sách Danh Mục</h4>
             </div>
         </div>
     </div>     

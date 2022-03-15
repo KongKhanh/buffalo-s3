@@ -93,7 +93,7 @@ class LevelOfTraining {
                 ]);
             }
 
-            if(input("lot_main_profile")) {
+            if(input("lot_main_profile") && !empty(input("lot_main_profile")["name"])) {
 
                 $input["lot_main_profile"] = array_merge(input("lot_main_profile"), [
                     'target_dir'        =>      'public/storage/images/'
