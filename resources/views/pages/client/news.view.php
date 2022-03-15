@@ -42,6 +42,10 @@
                         $date_created_at                    = date_format(date_create($news['news_created_at']), "d/m/Y");
                         $news_representative_image_format   = !is_null($news['news_representative_image']) ? $news['news_representative_image'] : '/public/storage/images/default-news-image.jpg';
 
+                        $news['link_url'] = '/news-detail/' . trim(Str::slug($news["news_title"])) . "-" . $news["news_id"];
+
+                        $shortReadMore = Str::limit(trim($news["news_short_content"]), 255, '...'); 
+
                         echo <<<HTML
                             <article class="news-box">
                                 <a class="news-box__thumbnail" href="{$news['link_url']}">
@@ -57,8 +61,7 @@
                                     </span></h4>
                                 </div>
                                 <div class="news-box__desc">
-                                    <p>Căn cứ kế hoạch đà tạo năm học 2020 - 2021 do Uỷ ban nhân dân Thành phố Hồ Chí Minh giao.<br>Trường Trung cấp Kỹ thuật Nông nghiệp Thành phố. Mã trường: TCD0216 - Website: www.ats.edu.vn thông báo tuyển sinh đào tạo trình độ Trung cấp.<br>Hình thức đào tạo: Chính quy năm học 2020 - 2021 với nội dung sau:
-                                    </p>
+                                    {$shortReadMore}
                                     <a href="{$news['link_url']}" class="news-box__detail">
                                         Xem thêm
                                     </a>
@@ -80,6 +83,7 @@
     </main>
 
     <?php includeFile('pages/client/components/subscriber_box.view.php');?>
+
     <?php includeFile('pages/client/components/footer_landing_box.view.php');?>
 
 </body>

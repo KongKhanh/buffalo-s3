@@ -29,23 +29,6 @@
         <div class="col-sm-4">
             <a href="/dashboard/news/create" class="btn btn-danger mb-3"><i class="mdi mdi-plus"></i>THÊM MỚI</a>
         </div>
-        <!-- <div class="col-sm-8">
-            <div class="text-sm-end">
-                <div class="btn-group mb-3">
-                    <button type="button" class="btn btn-primary">All</button>
-                </div>
-                <div class="btn-group mb-3 ms-1">
-                    <button type="button" class="btn btn-light">Ongoing</button>
-                    <button type="button" class="btn btn-light">Finished</button>
-                </div>
-                <div class="btn-group mb-3 ms-2 d-none d-sm-inline-block">
-                    <button type="button" class="btn btn-secondary"><i class="dripicons-view-apps"></i></button>
-                </div>
-                <div class="btn-group mb-3 d-none d-sm-inline-block">
-                    <button type="button" class="btn btn-link text-muted"><i class="dripicons-checklist"></i></button>
-                </div>
-            </div>
-        </div> -->
     </div> 
     <!-- end row-->
 
@@ -72,10 +55,7 @@
         <?php 
             foreach($newsList as $news){
 
-                $news_status_wrapper = [
-                    "news_status_mesage"    => $news["news_status"] == "published" ? "Hiện" : "Ẩn",
-                    "news_status_badge"     => $news["news_status"] == "published" ? "bg-success" : "bg-danger",
-                ];
+                $statusActive = $news["news_status"] == "published" ? "checked" : "";
 
                 echo <<<HTML
                     <div class="col-lg-6 col-xxl-3">
@@ -90,10 +70,6 @@
                                         <a href="/dashboard/news/update/{$news['news_id']}" class="dropdown-item"><i class="mdi mdi-pencil me-1"></i>Chỉnh sửa</a>
                                         <!-- item-->
                                         <a href="javascript:void(0);" class="dropdown-item btnDeleteNews" data-id="{$news['news_id']}"><i class="mdi mdi-delete me-1"></i>Xóa</a>
-                                        <!-- item-->
-                                        <!-- <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-email-outline me-1"></i>Invite</a> -->
-                                        <!-- item -->
-                                        <!-- <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-exit-to-app me-1"></i>Leave</a> -->
                                     </div>
                                 </div>
                                 <!-- project title-->
@@ -115,23 +91,23 @@
                                         <b>741</b> Comments
                                     </span> -->
                                 </p>
-                                <div>
-                                    <span>
+                                <div class="d-flex">
+                                    <span class="me-2">
                                         Trạng thái: 
                                     </span>
-                                    <div class="badge {$news_status_wrapper['news_status_badge']} mb-3">
-                                        {$news_status_wrapper['news_status_mesage']}
+                                    <div class="form-check form-switch">
+                                        <input type="checkbox" class="form-check-input news_status" data-id="{$news['news_id']}" id="customSwitch_{$news['news_id']}" {$statusActive}>
                                     </div>
                                 </div>
                             </div>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item p-3">    
+                                <!-- <li class="list-group-item p-3">    
                                     <p class="mb-2 fw-bold">Progress <span class="float-end">100%</span></p>
                                     <div class="progress progress-sm">
                                         <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
                                         </div>
                                     </div>
-                                </li>
+                                </li> -->
                             </ul>
                         </div> 
                     </div>
@@ -147,6 +123,54 @@
 <script src="/public/dashboard/assets/js/app.min.js"></script>
 
 <script>
+
+    /**
+     * Task: update status of news
+     */
+    $('.news_status').change(function() {
+
+        var endPoint = `/dashboard/news/update/${$(this).attr("data-id")}`;
+
+        function __requestUpdate(news_status) { 
+
+            $.ajax({
+                method: 'POST',
+                url: endPoint,
+                data: {
+                    "news_status": news_status
+                }
+            })
+            .done(function(res) {
+
+                if(res) {
+
+                    cuteAlert({
+                        type: "success",
+                        title: "Thông báo",
+                        message: "Cập nhật dữ liệu thành công",
+                        buttonText: "Okay"
+                    });
+                }
+            })
+            .fail(function(res) {
+
+                console.log(res);
+            });
+        }
+
+        if(this.checked) {
+
+            __requestUpdate("published");
+        }
+        else {
+
+            __requestUpdate("hidden");
+        }
+    });        
+
+    /**
+     * Task: delete a news
+     */
     $('.btnDeleteNews').click(function() {
         cuteAlert({
             type: "question",
@@ -166,6 +190,7 @@
             }
         });
     });
+
 </script>
 
 <?php View::__template()->__endSection(); ?>

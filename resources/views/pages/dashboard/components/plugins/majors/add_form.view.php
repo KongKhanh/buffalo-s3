@@ -17,12 +17,11 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="header-title">FORM NỘI DUNG</h4>
-                    <p class="text-muted font-14">
-                        <!-- By adding <code>.row</code> & <code>.g-2</code>, you can have control over the gutter width in as well the inline as block direction. -->
-                    </p>
+                    <p class="text-muted font-14"></p>
+                    <ul class="nav nav-tabs nav-bordered mb-3"></ul> <!-- end nav-->
                     <div class="tab-content">
                         <div class="tab-pane show active" id="form-row-preview">
-                            <form method="POST" action="">
+                            <form method="POST" action="" enctype="multipart/form-data">
                                 <div class="row g-2">
                                     <div class="mb-3 col-md-6">
                                         <label for="mjr_name" class="form-label">Tên ngành</label>
@@ -45,6 +44,11 @@
                                         <label for="mjr_code" class="form-label">Mã ngành</label>
                                         <input type="text" class="form-control" name="mjr_code" id="mjr_code" placeholder="Nhập mã ngành">
                                     </div>
+
+                                    <div class="col-sm-6 mb-3">
+                                        <label class="form-label">Ảnh đại diện cho ngành học</label>
+                                        <input class="form-control" type="file" id="mjr_main_profile" name="mjr_main_profile">
+                                    </div>
                                 </div>
                                 
                                 <div class="row g-2">
@@ -53,6 +57,7 @@
                                         <textarea type="text" name="mjr_main_description" class="form-control" id="contenteditor"></textarea>
                                     </div>
                                 </div>
+                                
                                 <button type="submit" class="btn btn-primary">THÊM</button>
                             </form>                      
                         </div> <!-- end preview-->

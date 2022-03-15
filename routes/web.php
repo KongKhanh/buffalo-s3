@@ -29,12 +29,24 @@ $router->get('/news/category/{target}', [NewsPageClient::class, '__getNewsByCate
 
 $router->get('/news-detail/{target}',[NewsPageClient::class, '__getNewsDetailPageClient']);
 
+
+/**
+ * Majors Plugins
+ */
+$router->get('/majors', [MajorPageClient::class, '__getAllMajorsPage']);
 $router->get('/majors/review/{target}', [MajorPageClient::class, '__getReviewMajorsByID']);
+
+/**
+ * Level-Of-Traning Plugins
+ */
+$router->get('/level-of-traning/get-majors/{id}', [MajorPageClient::class, '__getMajorsByLOT']);
 
 /**
  *  Intro Plugins
  */
 $router->get('/about-us', [HomePage::class, '__getAboutPage']);
+
+$router->get('/contact-us', [HomePage::class, '__getContactPage']);
 
 /**
  * Subscriber Plugins
@@ -106,6 +118,12 @@ $router->post('/dashboard/majors/update/{id}', [MajorsPage::class, '__postUpdate
 $router->post('/dashboard/majors/delete', [MajorsPage::class, '__postDelete']);
 
 /**
+ * -------------------VideoIframe Plugin-------------------
+ */
+$router->get('/dashboard/video-iframe', [VideoIFramePage::class, '__getVideoPage']);
+$router->get('/a', [VideoIFramePage::class, '__getUpdateForm']);
+
+/**
  * -------------------Level Of Training Plugin-------------------
  */
 $router->get('/dashboard/level-of-training', [LevelOfTraining::class, '__getLevelOfTrainingPage']);
@@ -115,7 +133,6 @@ $router->get('/dashboard/level-of-training/create', [LevelOfTraining::class, '__
 $router->post('/dashboard/level-of-training/update/{id}', [LevelOfTraining::class, '__postUpdateForm']);
 $router->post('/dashboard/level-of-training/delete', [LevelOfTraining::class, '__postDelete']);
 $router->post('/dashboard/level-of-training/create', [LevelOfTraining::class, '__postAdd']);
-
 
 
 /**
@@ -136,11 +153,28 @@ $router->get('/dashboard/about-us/introduce/edit', [AboutUs::class, '__getUpdate
 
 $router->post('/dashboard/about-us/introduce/edit', [AboutUs::class, '__postUpdateIntro']);
 
+$router->get('/dashboard/about-us/contact/edit', [AboutUs::class, '__getUpdateContact']);
+
+$router->post('/dashboard/about-us/contact/edit', [AboutUs::class, '__postUpdateContact']);
+
+$router->get('/dashboard/about-us/information-getting/edit', [AboutUs::class, '__getUpdateInformation']);
+
+$router->post('/dashboard/about-us/information-getting/edit', [AboutUs::class, '__postUpdateInformation']);
+
+/**
+ * Tool Third Plugins
+ */
+$router->get('/dashboard/tool-third/google-map', [ThirdToolPage::class, '__getGoogleMapAddress']);
+
+$router->get('/dashboard/tool-third/facebook-chat-messenger', [ThirdToolPage::class, '__getFacebookChatMessenger']);
+
+$router->post('/dashboard/tool-third/update/by-switch-case', [ThirdToolPage::class, '__postUpdateThirdToolPlugins']);
+
 /**
  * -----------------------------------------------------------API-----------------------------------------------------------
  */
 $router->get('/api/majors-by-id/{id}', [MajorsPage::class, '__getMajorsById']);
-
+ 
 /**
  * -------------------ERROR Plugin-------------------
  */

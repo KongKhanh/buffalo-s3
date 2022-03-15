@@ -19,7 +19,9 @@ class NewsPageClient {
 
             if(is_array($this->newsCate)) {
 
-                $newsList = DB::table("news")->join("links", "news_link_id", "=", "link_id")->get();
+                $newsList = DB::table("news")->join("links", "news_link_id", "=", "link_id")
+                ->where('news_status', 'published')
+                ->get();
 
                 if($newsList && is_array($newsList)) {
 
@@ -54,6 +56,10 @@ class NewsPageClient {
 
             if(isset($target) && is_array($this->newsCate)) {
 
+                $ID_parsing = (explode("-", $target));
+
+                $target = trim($ID_parsing[(count($ID_parsing) - 1)]);
+
                 DB::table("news")->update([
                     "news_num_of_view" => DB::table("news")->where("news_id", $target)->value("news_num_of_view") + 1,
                 ]);
@@ -85,6 +91,7 @@ class NewsPageClient {
     public function __getLatestNewsList($quantity) {
 
         return DB::table("news")
+        ->where('news_status', 'published')
         ->join("links", "news_link_id", "=", "link_id")
         ->get();
     }
@@ -97,9 +104,14 @@ class NewsPageClient {
 
             if(is_array($this->newsCate)) {
 
+                $ID_parsing = (explode("-", $ID));
+
+                $ID = trim($ID_parsing[(count($ID_parsing) - 1)]);
+
                 $newsByCate = DB::table("news")
                     ->join("links", "news_link_id", "=", "link_id")
                     ->where("news_news_cate_id", $ID)
+                    ->where('news_status', 'published')
                     ->get();
 
                 if(is_array($newsByCate)) {

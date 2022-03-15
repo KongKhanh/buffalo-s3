@@ -14,26 +14,39 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="header-title">FORM NỘI DUNG</h4>
-                    <p class="text-muted font-14">
-                        <!-- By adding <code>.row</code> & <code>.g-2</code>, you can have control over the gutter width in as well the inline as block direction. -->
-                    </p>
+                    <p class="text-muted font-14"></p>
 
                     <ul class="nav nav-tabs nav-bordered mb-3"></ul> <!-- end nav-->
                     
                     <div class="tab-content">
                         <div class="tab-pane show active" id="form-row-preview">
-                            <form method="POST" action="/dashboard/news/categories/update/<?php echo $formCategory['news_cate_id'];?>">
+                            <form method="POST" action="">
                                 <div class="row g-2">
                                     <div class="mb-3 col-md-6">
                                         <label for="news_title" class="form-label">Tiêu đề</label>
                                         <input 
                                             type="text" 
                                             class="form-control" 
-                                            name="news_cate_title" 
+                                            name="news_title" 
                                             id="news_title" 
                                             placeholder="Nhập tên tiêu đề"
-                                            value="<?php echo $formCategory['news_cate_title'];?>"
+                                            value="<?php echo $news['news_title'];?>"
                                         >
+                                    </div>
+                                </div>
+
+                                <div class="row g-2">
+                                    <div class="mb-3 col-md-12">
+                                        <label for="news_short_content" class="form-label">Code embed</label>
+                                        <textarea 
+                                            type="text" 
+                                            name="news_short_content" 
+                                            class="form-control" 
+                                            rows="5"
+                                            value="<?= $video['vi_content']; ?>"
+                                        >
+                                            <?= $video['vi_content']; ?>
+                                        </textarea>
                                     </div>
                                 </div>
                                

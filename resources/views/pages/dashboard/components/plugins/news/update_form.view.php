@@ -23,7 +23,7 @@
                     
                     <div class="tab-content">
                         <div class="tab-pane show active" id="form-row-preview">
-                            <form method="POST" action="">
+                            <form method="POST" action="" enctype="multipart/form-data">
                                 <div class="row g-2">
                                     <div class="mb-3 col-md-6">
                                         <label for="news_title" class="form-label">Tiêu đề</label>
@@ -71,7 +71,28 @@
                                         id="link_url" 
                                         placeholder="Nhập link bài viết"
                                         value="<?php echo $news['link_url'];?>"
+                                        disabled
                                     >
+                                </div>
+
+                                <div class="col-sm-6 mb-3">
+                                    <label class="form-label">Ảnh đại diện bài viết</label>
+                                    <input class="form-control" type="file" id="news_representative_image" name="news_representative_image">
+                                </div>
+
+                                <div class="row g-2">
+                                    <div class="mb-3 col-md-12">
+                                        <label for="news_short_content" class="form-label">Nội dung ngắn</label>
+                                        <textarea 
+                                            type="text" 
+                                            name="news_short_content" 
+                                            class="form-control" 
+                                            rows="5"
+                                            value="<?php echo $news['news_short_content'];?>"
+                                        >
+                                            <?= $news['news_short_content'];?>
+                                        </textarea>
+                                    </div>
                                 </div>
 
                                 <div class="row g-2">

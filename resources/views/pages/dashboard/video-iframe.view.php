@@ -27,7 +27,7 @@
                         <li class="breadcrumb-item active">Danh Sách Đăng Ký</li>
                     </ol>
                 </div>
-                <h4 class="page-title">Danh Sách Các Ngành Đạo Tạo</h4>
+                <h4 class="page-title">Danh Sách VideoIframe</h4>
             </div>
         </div>
     </div>     
@@ -37,43 +37,16 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <!-- <div class="row mb-2">
-                        <div class="col-sm-4">
-                            <a href="javascript:void(0);" class="btn btn-danger mb-2"><i class="mdi mdi-plus-circle me-2"></i> Add Customers</a>
-                        </div>
-                        <div class="col-sm-8">
-                            <div class="text-sm-end">
-                                <button type="button" class="btn btn-success mb-2 me-1"><i class="mdi mdi-cog"></i></button>
-                                <button type="button" class="btn btn-light mb-2 me-1">Import</button>
-                                <button type="button" class="btn btn-light mb-2">Export</button>
-                            </div>
-                        </div>
-                    </div> -->
-
-                    <form method="POST" id="formDelete">
-                        <input type="hidden" name="mjr_id" id="mjr_id">
-                    </form>
-
-                    <?php 
-    
-                        if(Session::has("res_majors_cate_info")) {
-
-                            $res_majors_cate_info = Session::get("res_majors_cate_info");
-
-                            echo <<<HTML
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    {$res_majors_cate_info["message"]}
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                </div>
-                            HTML;
-                        }
-                    ?>
 
                     <div class="row mb-2">
                         <div class="col-sm-4">
-                            <a href="/dashboard/majors/create" class="btn btn-danger mb-3"><i class="mdi mdi-plus"></i>THÊM MỚI</a>
+                            <a href="/dashboard/news/categories/create" class="btn btn-danger mb-3"><i class="mdi mdi-plus"></i>THÊM MỚI</a>
                         </div>
                     </div>
+
+                    <form method="POST" id="formDelete">
+                        <input type="hidden" name="news_cate_id" id="news_cate_id">
+                    </form>
 
                     <div class="table-responsive">
                         <table class="table table-centered table-striped dt-responsive nowrap w-100" id="products-datatable">
@@ -85,11 +58,11 @@
                                             <label class="form-check-label" for="customCheck1">&nbsp;</label>
                                         </div>
                                     </th>
-                                    <th>Tên ngành</th>
-                                    <th>Mã ngành</th>
-                                    <th>Hệ đào tạo</th>
+                                    <th>Tiêu đề</th>
                                     <th>|</th>
-                                    <th>Ngày tạo</th>
+                                    <th>|</th>
+                                    <th>|</th>
+                                    <th>|</th>
                                     <th>Trạng thái</th>
                                     <th style="width: 75px;">Thao tác</th>
                                 </tr>
@@ -97,13 +70,11 @@
                             <tbody>
                                 
                                 <?php 
-                                    if(isset($majors) && is_array($majors)) {
+                                    if(isset($videoList) && is_array($videoList)) {
 
-                                        foreach($majors as $majors_item) {
+                                        foreach($videoList as $video) {
 
-                                            $statusActive = $majors_item["mjr_status"] == "published" ? "checked" : "";
-
-                                            $majors_item["mjr_created_at"] = date_format(date_create($majors_item["mjr_created_at"]), "d-m-Y");
+                                            $statusActive = $video["vi_status"] == "published" ? "checked" : "";
 
                                             echo <<<HTML
                                                 <tr>
@@ -114,28 +85,28 @@
                                                         </div>
                                                     </td>
                                                     <td class="table-user">
-                                                        <a href="javascript:void(0);" class="text-body fw-semibold">{$majors_item["mjr_name"]}</a>
-                                                    </td>
-                                                    <td>
-                                                        {$majors_item["mjr_code"]}
-                                                    </td>
-                                                    <td>
-                                                        {$majors_item["lot_name"]}
+                                                        <a href="javascript:void(0);" class="text-body fw-semibold">{$video["vi_title"]}</a>
                                                     </td>
                                                     <td>
                                                         |
                                                     </td>
                                                     <td>
-                                                        {$majors_item["mjr_created_at"]}
+                                                        |
+                                                    </td>
+                                                    <td>
+                                                        |
+                                                    </td>
+                                                    <td>
+                                                        |
                                                     </td>
                                                      <td>
                                                         <div class="form-check form-switch">
-                                                            <input type="checkbox" class="form-check-input mjr_status" data-id="{$majors_item['mjr_id']}" id="customSwitch_{$majors_item['mjr_id']}" {$statusActive}>
+                                                            <input type="checkbox" class="form-check-input news_cate_status" data-id="{$video['vi_id']}" id="customSwitch_{$video['vi_id']}" {$statusActive}>
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <a href="/dashboard/majors/update/{$majors_item['mjr_id']}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                                                        <a href="javascript:void(0);" class="action-icon btnDeleteMajors" data-id="{$majors_item['mjr_id']}"> <i class="mdi mdi-delete"></i></a>
+                                                        <a href="/dashboard/video-iframe/update/{$video['vi_id']}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                                        <a href="javascript:void(0);" class="action-icon btnDeleteVideoIframe" data-id="{$video['vi_id']}"> <i class="mdi mdi-delete"></i></a>
                                                     </td>
                                                 </tr>
                                             HTML;
@@ -172,23 +143,22 @@
 <!-- demo app -->
 <script src="/public/dashboard/assets/js/dataTable/demo.customers.js"></script>
 <!-- end demo js-->
-
 <script>
 
     /**
-     * Task: update status of majors
+     * Task: update status of menu categories
      */
-    $('.mjr_status').change(function() {
+    $('.news_cate_status').change(function() {
 
-        var endPoint = `/dashboard/majors/update/${$(this).attr("data-id")}`;
+        var endPoint = `/dashboard/news/categories/update/${$(this).attr("data-id")}`;
 
-        function __requestUpdate(mjr_status) { 
+        function __requestUpdate(news_cate_status) { 
 
             $.ajax({
                 method: 'POST',
                 url: endPoint,
                 data: {
-                    "mjr_status": mjr_status
+                    "news_cate_status": news_cate_status
                 }
             })
             .done(function(res) {
@@ -220,9 +190,9 @@
     });
 
     /**
-     * Task: delete majors by ID
+     * Task: delete menu categories by ID
      */
-    $('.btnDeleteMajors').click(function() {
+    $('.btnDeleteNewsCate').click(function() {
         cuteAlert({
             type: "question",
             title: "Bạn có muốn xóa không",
@@ -234,13 +204,13 @@
 
             if(e) {
 
-                $('#mjr_id').attr('value', $(this).attr('data-id'));
-                $('#formDelete').attr('action', '/dashboard/majors/delete');
-                
+                $('#news_cate_id').attr('value', $(this).attr('data-id'));
+                $('#formDelete').attr('action', '/dashboard/news/categories/delete');
                 $('#formDelete').submit();
             }
         });
     });
+
 </script>
 
 <?php View::__template()->__endSection(); ?>

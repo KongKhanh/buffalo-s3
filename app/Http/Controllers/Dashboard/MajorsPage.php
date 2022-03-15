@@ -62,7 +62,16 @@ class MajorsPage {
                 "mjr_lot_id"                => !is_null(input("mjr_lot_id")) ? input("mjr_lot_id") : false, 
                 "mjr_code"                  => !is_null(input("mjr_code")) ? input("mjr_code") : false, 
                 "mjr_main_description"      => !is_null(input("mjr_main_description")) ? input("mjr_main_description") : false,
+                "mjr_main_profile"          => !is_null(input("mjr_main_profile")) ? input("mjr_main_profile") : false,
             ];
+
+            $input["mjr_main_profile"] = array_merge($input["mjr_main_profile"], [
+                'target_dir'        =>      'public/storage/images/'
+            ]);
+
+            $statusMove = SingleHelper::moveFile($input["mjr_main_profile"]);
+
+            $input["mjr_main_profile"] = $statusMove ? "/" . $input["mjr_main_profile"]["target_dir"] . $input["mjr_main_profile"]["name"] : null;
     
             $majors_insert_status = DB::table("majors")->insert($input);
 
@@ -146,6 +155,14 @@ class MajorsPage {
                 ]);
             }
 
+            if(input("mjr_main_description")) {
+
+                $dataToUpDate = array_merge($dataToUpDate, [
+
+                    "mjr_main_description"      => input("mjr_main_description")
+                ]);
+            }
+
             if(input("mjr_status")) {
 
                 $dataToUpDate = array_merge($dataToUpDate, [
@@ -154,21 +171,30 @@ class MajorsPage {
                 ]);
             }
 
-            if(isset($id) && count($dataToUpDate) > 0) {
+            if(input("mjr_main_profile") && !empty(input("mjr_main_profile")["name"])) {
+
+                $input["mjr_main_profile"] = array_merge(input("mjr_main_profile"), [
+                    'target_dir'        =>      'public/storage/images/'
+                ]);
+
+                $statusMove = SingleHelper::moveFile($input["mjr_main_profile"]);
+
+                $dataToUpDate = array_merge($dataToUpDate, [
+
+                    "mjr_main_profile"      => $statusMove ? "/" . $input["mjr_main_profile"]["target_dir"] . $input["mjr_main_profile"]["name"] : null,
+                ]);
+            }
+
+            if($id) {
 
                 $statusUpdate = DB::table("majors")->where("mjr_id", $id)->update($dataToUpDate);
 
-                if($statusUpdate && $statusUpdate != 0) {
+                Session::flash("res_majors_cate_info", [
+                    "status"        => "200",
+                    "message"       => "Cập nhật dữ liệu thành công"
+                ]);
 
-                    Session::flash("res_majors_cate_info", [
-                        "status"        => "200",
-                        "message"       => "Cập nhật dữ liệu thành công"
-                    ]);
-
-                    redirect('dashboard/majors');
-                }
-
-                return redirect('error-status/500-error'); 
+                return redirect('dashboard/majors');
             }
             else {
 

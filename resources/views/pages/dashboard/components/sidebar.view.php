@@ -50,7 +50,7 @@
                     <ul class="side-nav-second-level">
                         <li class="side-nav-item">
                             <a data-bs-toggle="collapse" href="#cFrEfPm948SYfuJ" aria-expanded="false">
-                                <span> Tin tức </span>
+                                <span> Tin tức & Sự kiện</span>
                                 <span class="menu-arrow"></span>
                             </a>
                             <div class="collapse" id="cFrEfPm948SYfuJ">
@@ -60,6 +60,9 @@
                                     </li>
                                     <li>
                                         <a href="/dashboard/news/categories">Danh sách thể loại</a>
+                                    </li>
+                                    <li>
+                                        <a href="/dashboard/video-iframe">Danh sách video</a>
                                     </li>
                                 </ul>
                             </div>
@@ -104,7 +107,24 @@
                                         <a href="/dashboard/about-us/introduce/edit">Trang giới thiệu</a>
                                     </li>
                                     <li>
-                                        <a href="/">Trang liên hệ</a>
+                                        <a href="/dashboard/about-us/contact/edit">Trang liên hệ</a>
+                                    </li>
+                                    <li>
+                                        <a href="/dashboard/about-us/information-getting/edit">Thông tin chung</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#CxygY7Gw2BHTEdf" aria-expanded="false">
+                                <span> Công cụ tiện ích </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="CxygY7Gw2BHTEdf">
+                                <ul class="side-nav-third-level">
+                                    <li>
+                                        <a href="/dashboard/tool-third/google-map">Địa chỉ Google Map</a>
+                                        <a href="/dashboard/tool-third/facebook-chat-messenger">Facebook Chat</a>
                                     </li>
                                 </ul>
                             </div>

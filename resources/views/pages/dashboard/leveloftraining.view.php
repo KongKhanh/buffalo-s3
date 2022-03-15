@@ -27,7 +27,7 @@
                         <li class="breadcrumb-item active">Danh Sách Đăng Ký</li>
                     </ol>
                 </div>
-                <h4 class="page-title">Danh Sách Thể Loại Tin Tức</h4>
+                <h4 class="page-title">Danh Sách Hệ Đào Tạo</h4>
             </div>
         </div>
     </div>     
@@ -75,9 +75,9 @@
                                     </th>
                                     <th>Tên hệ đào tạo</th>
                                     <th>Mã hệ đào tạo</th>
-                                    <th>Hệ đào tạo</th>
-                                    <th>Địa chỉ</th>
-                                    <th>Ngày tạo</th>
+                                    <th>|</th>
+                                    <th>|</th>
+                                    <th>|</th>
                                     <th>Trạng thái</th>
                                     <th style="width: 75px;">Thao tác</th>
                                 </tr>
@@ -106,13 +106,13 @@
                                                         {$levelOfTrainingItem["lot_code"]}
                                                     </td>
                                                     <td>
-                                                        AAAA0001
+                                                        |
                                                     </td>
                                                     <td>
-                                                        New York
+                                                        |
                                                     </td>
                                                     <td>
-                                                        01/01/1985
+                                                        |
                                                     </td>
                                                      <td>
                                                         <div class="form-check form-switch">
@@ -156,7 +156,7 @@
 <!-- third party js ends -->
 
 <!-- demo app -->
-<script src="/public/dashboard/assets/js/pages/demo.customers.js"></script>
+<script src="/public/dashboard/assets/js/dataTable/demo.customers.js"></script>
 <!-- end demo js-->
 <script>
 

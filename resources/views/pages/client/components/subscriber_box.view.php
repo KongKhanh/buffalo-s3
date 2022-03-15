@@ -7,6 +7,26 @@
         $res_subscriber = Session::get("res_subscriber");
     }
 ?>
+
+<style>
+
+    #registerSubmit {
+        width: 100%;
+        border-radius: 4px;
+        padding: 10px 0;
+        background-color: #065FD4;
+        color: #FFFFFF;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+    #registerSubmit:hover {
+        background-color: #3498db;
+    }
+    #registerModalHidden:hover {
+        cursor: pointer;
+    }
+</style>
+
  <section class="register-modal" id="registerModal">
     <section class="register-block register-modal--block">
         <i 
@@ -151,12 +171,16 @@
                 </article>
                 <article class="input-block">
                     <div class="input-box">
-                        <textarea name="note" id="note" placeholder="Ghi chú"></textarea>
+                        <textarea name="note" id="note" placeholder="Ghi chú" rows="6"></textarea>
                     </div>
                 </article>
             </article>
             <article class="register--btn">
-                <input id="registerSubmit" name="registerSubmit" value="Đăng ký" type="submit">
+                <article class="input-block">
+                    <div class="input-box">
+                        <input id="registerSubmit" name="registerSubmit" value="Đăng ký" type="submit">
+                    </div>
+                </article>
             </article>
         </form>
     </section>

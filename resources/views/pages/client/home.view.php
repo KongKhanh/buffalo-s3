@@ -19,57 +19,9 @@
     <!-- JQuery -->
     <script src="/public/client/assets/lib/jquery-3.4.1.min.js"></script>
     <style>
-        .main-header__menubar ul{
-            position:relative;
-            left:-30px; 
-            top:30px;
-        }
-       .main-header__menubar>ul>li{
-            display: inline-block;
-            /* background-color:red; */
-            height:50px;
-        }
-
-        .sub-menu {
-            display: none;
-        }
-        .main-header__menubar li {
-            position: relative;
-        }
-        .main-header__menubar li:hover .sub-menu{
-            display: block;
-        }
-        .main-header__menubar li .sub-menu{
-            position: absolute;
-            top: 30px;
-            background: #ffff;
-            text-decoration: none;
-            left: 0;
-        }
-        .main-header__menubar .sub-menu li {
-            position:relative;
-            border-bottom: 0.5px solid #C0C0C0;
-            padding: 5px 18px;
-            display: block;
-            text-align:left;
-            width:250px;
-        }
-        .main-header__menubar .sub-menu li:hover{
-            background-color:#FFFAFA;
-            transition:0.5s;
-        }
-        .main-header__menubar .sub-menu li:hover a{
-            color:#FF6347;
-            transition:0.5s;
-            text-decoration: none;
-        }
-        .main-header__menubar .sub-menu>li>a{
-            text-transform:none;
-            color:black;
-            width:250px;
-            text-align:left;
-            word-wrap: break-word;
-            text-decoration: none;
+        .map-box > iframe {
+            height: 100%;
+            width: 100%;
         }
     </style>
 </head>
@@ -93,12 +45,10 @@
                     <br> Thành phố Hồ Chí Minh
                 </h1>
                 <p class="desc__detail">
-                    Trường Trung cấp Kỹ thuật Nông nghiệp thuộc Sở Nông nghiệp và Phát triển Nông thôn Thành phố Hồ Chí
-                    Minh được thành lập trên cơ sở sáp nhập hai trường là Trường Trung học Nông nghiệp và Trường Công
-                    nhân Kỹ thuật Thuỷ sản.
+                    <?= $siteInfo['site_info_short_description']; ?>
                 </p>
                 <div class="desc__research--btn">
-                    <a class="btn" href="#">Tìm hiểu</a>
+                    <a class="btn" href="/about-us">Tìm hiểu</a>
                 </div>
             </section>
         </header>
@@ -172,7 +122,33 @@
                     <ol class="majors-box__list">
                         <div>
                             <?php 
-                                foreach($allMajors as $majorsItem) {
+
+                                $majorsLeft = [];
+                                $majorsRight = [];
+                                $startRightIndex = [
+                                    "status"    => true,
+                                    "value"     => 1,
+                                ];
+
+                                for($i = 0; $i < count($allMajors); $i++) {
+
+                                    if($i < ceil(count($allMajors) / 2)) {
+
+                                        array_push($majorsLeft, $allMajors[$i]);
+                                    }
+                                    else {
+
+                                        if($startRightIndex['status']) {
+
+                                            $startRightIndex['status'] = false;
+                                            $startRightIndex['value'] = $i + 1;
+                                        }
+
+                                        array_push($majorsRight, $allMajors[$i]);
+                                    }
+                                }
+
+                                foreach($majorsLeft as $majorsItem) {
                                     
                                     $majorsItemNameSlug = Str::slug($majorsItem['mjr_name']);
 
@@ -187,21 +163,26 @@
                             <img src="/public/client/assets/images/image-5.jpeg" alt="" class="majors-box_thumbnail-2">
                         </div>
                     </ol>
-                    <ol class="majors-box__list" start="7">
+                    <ol class="majors-box__list" start="<?= $startRightIndex['value']; ?>">
                         <div>
-                            <li class="majors-box__list--item">Bảo trì và sửa chữa thiết bị điện (cơ điện lạnh)</li>
-                            <li class="majors-box__list--item">Điện công nghiệp và Dân dụng</li>
-                            <li class="majors-box__list--item">Quản lý tài nguyên môi trường</li>
-                        </div>
-                        <div>
-                            <li class="majors-box__list--item">Trắc địa - Đại hình - Địa chính</li>
-                            <li class="majors-box__list--item">Thiết kế cảnh quan hoa viên</li>
-                            <li class="majors-box__list--item">Trồng trọt và Bảo vệ thực vật</li>
+                            <?php 
+                                foreach($majorsRight as $majorsItem) {
+                                    
+                                    $majorsItemNameSlug = Str::slug($majorsItem['mjr_name']);
+
+                                    echo <<<HTML
+                                        <li class="majors-box__list--item"><a href="/majors/review/{$majorsItemNameSlug}-{$majorsItem['mjr_id']}">{$majorsItem['mjr_name']}</a></li>
+                                    HTML;
+                                }
+                            ?>
                         </div>
                     </ol>
                 </section>
                 <h2 class="majors-box__title">
-                    các ngành đào tạo <br><span>2022</span>
+                    các ngành đào tạo <br>
+                    <span>
+                        <?= date("Y");?>
+                    </span>
                 </h2>
             </section>
             <section class="courses-box content">
@@ -213,22 +194,23 @@
                         foreach($LevelOfTraining as $levelOfTrainingItem) {
 
                             $majorsHTML = "";
-
-                            
+                            $levelOfTrainingItem['link_url'] = '/level-of-traning/get-majors/' . trim(Str::slug($levelOfTrainingItem["lot_name"])) . "-" . $levelOfTrainingItem["lot_id"];
 
                             foreach($levelOfTrainingItem["majors"] as $majorsItem) {
 
                                 $majorsURL = "/majors/review/" . Str::slug($majorsItem["mjr_name"]) . "-" . $majorsItem["mjr_id"];
 
                                 $majorsHTML .= <<<HTML
-                                    <a href="{$majorsURL}"><p>{$majorsItem["mjr_name"]}</p><a>
+                                    <a href="{$majorsURL}">
+                                        <p style="margin: 4px 0;">{$majorsItem["mjr_name"]}</p>
+                                    <a>
                                 HTML;
                             }
 
                             echo <<<HTML
                                 <article class="course-box">
                                     <div class="course-box__thumbnal">
-                                        <img src="/public/client/assets/images/image-6.jpeg" alt="">
+                                        <img src="{$levelOfTrainingItem['lot_main_profile']}" alt="...">
                                     </div>
                                     <div>
                                         <h4 class="course-box__title">
@@ -237,7 +219,7 @@
                                         <div class="course-box__body">
                                             {$majorsHTML}
                                         </div>
-                                        <a href="#" class="course-box__footer">Xem thêm</a>
+                                        <a href="{$levelOfTrainingItem['link_url']}" class="course-box__footer">Xem thêm</a>
                                     </div>
                                 </article>
                             HTML;
@@ -247,8 +229,10 @@
             </section>
             <!-- #endregion News -->
         </section>
+
         <section class="map-box">
-            <img src="/public/client/assets/images/map.png" alt="">
+            <?= $GoogleMapAddressEmbed['tt_code']; ?>
+            <!-- <img src="/public/client/assets/images/map.png" alt=""> -->
         </section>
 
         <!--------------Footer page-------------->

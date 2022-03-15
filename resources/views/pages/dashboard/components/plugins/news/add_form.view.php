@@ -25,7 +25,7 @@
                                 <div class="row g-2">
                                     <div class="mb-3 col-md-6">
                                         <label for="news_title" class="form-label">Tiêu đề</label>
-                                        <input type="text" class="form-control" name="news_title" id="news_title" placeholder="Nhập tên tiêu đề">
+                                        <input type="text" class="form-control" name="news_title" id="news_title" placeholder="Nhập tên tiêu đề" data-last-news-id="<?= $lastNewsID; ?>">
                                     </div>
                                     <div class="mb-3 col-md-6">
                                         <label for="news_news_cate_id" class="form-label">Thể loại bài viết</label>
@@ -55,10 +55,18 @@
 
                                 <div class="row g-2">
                                     <div class="mb-3 col-md-12">
+                                        <label for="news_short_content" class="form-label">Nội dung ngắn</label>
+                                        <textarea type="text" name="news_short_content" class="form-control" rows="5"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="row g-2">
+                                    <div class="mb-3 col-md-12">
                                         <label for="news_main_content" class="form-label">Nội dung bài viết</label>
                                         <textarea type="text" name="news_main_content" class="form-control" id="contenteditor"></textarea>
                                     </div>
                                 </div>
+
                                 <button type="submit" class="btn btn-primary">THÊM</button>
                             </form>                      
                         </div> <!-- end preview-->
@@ -81,6 +89,25 @@
 
 <script>
     CKEDITOR.replace('contenteditor');
+</script>
+
+<script>
+
+    document.querySelector('#news_title').addEventListener('keyup', function() {
+
+        if(this) {
+
+            if(document.querySelector('#link_url')) {
+
+                let start = '/news-detail/', 
+                    middle = this.value.trim(), 
+                    end = ('-' + (parseInt(this.getAttribute('data-last-news-id')) + 1)), 
+                    seperate = '-';
+
+                document.querySelector('#link_url').value = generateURL(start, middle, end, seperate);
+            }
+        }
+    });
 </script>
 
 <?php View::__template()->__endSection(); ?>

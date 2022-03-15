@@ -22,7 +22,7 @@
                     </p>
                     <div class="tab-content">
                         <div class="tab-pane show active" id="form-row-preview">
-                            <form method="POST" action="/dashboard/level-of-training/create">
+                            <form method="POST" action="/dashboard/level-of-training/create" enctype="multipart/form-data">
                                 <div class="row g-2">
                                     <div class="mb-3 col-md-6">
                                         <label for="lot_name" class="form-label">Tên hệ đào tạo</label>
@@ -31,6 +31,10 @@
                                     <div class="mb-3 col-md-6">
                                         <label for="lot_code" class="form-label">Mã hệ đào tạo</label>
                                         <input type="text" class="form-control" name="lot_code" id="lot_code" placeholder="Nhập mã hệ đào tạo">
+                                    </div>
+                                    <div class="col-sm-6 mb-3">
+                                        <label class="form-label">Ảnh đại diện</label>
+                                        <input class="form-control" type="file" id="lot_main_profile" name="lot_main_profile">
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">THÊM</button>
