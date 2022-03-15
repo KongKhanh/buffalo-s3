@@ -22,7 +22,7 @@ class HomePage {
 
                 $menuCategories[$i]["childrenList"] = $childrenCategories;
             }
-                
+
             return view('pages/client/home.view.php', [
                 'allMajors'             => (new MajorPageClient())->__getAllMajors(),
                 'siteInfo'              => $this->siteInfo,

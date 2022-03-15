@@ -18,14 +18,13 @@
                     <<<HTML
                         <li class="menubar__list-item menu_category" value="{$menuCategories[$i]['mc_id']}">
                             <a href="{$menuCategories[$i]['link_url']}">{$menuCategories[$i]['mc_title']}</a>
-                        </li>
+                            <ul class="sub-menu">
+                                <li><a href="default.asp">Home dahjwojjdioaw </a></li>
+                                <li><a href="default.asp">Homedjalwjdlkjwalkjkladwjdlkawjd </a></li>
+                                <li><a href="default.asp">Home </a></li>
+                            </ul>
+                        </li>   
                     HTML;
-                    // foreach($menuCategories[$i]['childrenList'] as $childrens){
-                    //     echo
-                    //     <<<HTML
-                    //        <ul class="menuParentList"><a>{$childrens['mc_title']}</a></ul>
-                    //     HTML;                                   
-                    // }
                 }
             ?>
             <li class="menubar__list-item">

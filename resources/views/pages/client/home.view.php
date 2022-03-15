@@ -19,21 +19,58 @@
     <!-- JQuery -->
     <script src="/public/client/assets/lib/jquery-3.4.1.min.js"></script>
     <style>
-      .menuParentList{
-            color:white;
-            position:absolute;
-            top:100px;
+        .main-header__menubar ul{
+            position:relative;
+            left:-30px; 
+            top:30px;
+        }
+       .main-header__menubar>ul>li{
+            display: inline-block;
+            /* background-color:red; */
+            height:50px;
+        }
+
+        .sub-menu {
+            display: none;
+        }
+        .main-header__menubar li {
+            position: relative;
+        }
+        .main-header__menubar li:hover .sub-menu{
+            display: block;
+        }
+        .main-header__menubar li .sub-menu{
+            position: absolute;
+            top: 30px;
+            background: #ffff;
             text-decoration: none;
-            /* display:none; */
-        } 
-        .menuParentList a{
-            display:block;
+            left: 0;
+        }
+        .main-header__menubar .sub-menu li {
+            position:relative;
+            border-bottom: 0.5px solid #C0C0C0;
+            padding: 5px 18px;
+            display: block;
             text-align:left;
+            width:250px;
+        }
+        .main-header__menubar .sub-menu li:hover{
+            background-color:#FFFAFA;
+            transition:0.5s;
+        }
+        .main-header__menubar .sub-menu li:hover a{
+            color:#FF6347;
+            transition:0.5s;
             text-decoration: none;
         }
-        .menu_category:hover .menuParentList{ 
-            display:block;
-        }  
+        .main-header__menubar .sub-menu>li>a{
+            text-transform:none;
+            color:black;
+            width:250px;
+            text-align:left;
+            word-wrap: break-word;
+            text-decoration: none;
+        }
     </style>
 </head>
 
