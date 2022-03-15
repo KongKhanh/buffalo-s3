@@ -88,6 +88,9 @@ class NewsPageClient {
         }
     }
 
+    /**
+     * @return array
+     */
     public function __getLatestNewsList($quantity) {
 
         return DB::table("news")
@@ -130,6 +133,26 @@ class NewsPageClient {
                 return redirect('error-status/404-error'); 
             }
         }
+        catch(Exception $error) {
+
+            return redirect('error-status/404-error');
+        }
+    }
+
+    public function __getVideoIframePage() {
+
+        try {
+
+            $videoiframe = DB::table("video_iframe")->where("vi_status", "published")->get();
+
+            if(!$videoiframe) return redirect('error-status/404-error');
+
+            return view("pages/client/video-iframe.view.php", [
+
+                'videoiframe'                    => $videoiframe,
+            ]);
+        }
+
         catch(Exception $error) {
 
             return redirect('error-status/404-error');

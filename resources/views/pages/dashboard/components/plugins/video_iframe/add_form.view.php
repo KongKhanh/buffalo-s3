@@ -20,7 +20,7 @@
                     
                     <div class="tab-content">
                         <div class="tab-pane show active" id="form-row-preview">
-                            <form method="POST" action="/dashboard/video-iframe/update/<?= $video['vi_id'];?>">
+                            <form method="POST" action="">
                                 <div class="row g-2">
                                     <div class="mb-3 col-md-6">
                                         <label for="vi_title" class="form-label">Tiêu đề</label>
@@ -29,9 +29,7 @@
                                             class="form-control" 
                                             name="vi_title" 
                                             id="vi_title" 
-                                            placeholder="Nhập tên tiêu đề"
-                                            value="<?= $video['vi_title'];?>"
-                                        >
+                                            placeholder="Nhập tên tiêu đề">
                                     </div>
                                 </div>
 
@@ -43,9 +41,7 @@
                                             name="vi_content" 
                                             class="form-control" 
                                             rows="5"
-                                        >
-                                            <?= $video['vi_content']; ?>
-                                        </textarea>
+                                        ></textarea>
                                     </div>
                                 </div>
                                

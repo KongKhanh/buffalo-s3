@@ -40,13 +40,28 @@
 
                     <div class="row mb-2">
                         <div class="col-sm-4">
-                            <a href="/dashboard/news/categories/create" class="btn btn-danger mb-3"><i class="mdi mdi-plus"></i>THÊM MỚI</a>
+                            <a href="/dashboard/video-iframe/create" class="btn btn-danger mb-3"><i class="mdi mdi-plus"></i>THÊM MỚI</a>
                         </div>
                     </div>
 
                     <form method="POST" id="formDelete">
-                        <input type="hidden" name="news_cate_id" id="news_cate_id">
+                        <input type="hidden" name="vi_id" id="vi_id">
                     </form>
+
+                    <?php 
+    
+                        if(Session::has("res_status_info")) {
+
+                            $res_status_info = Session::get("res_status_info");
+
+                            echo <<<HTML
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {$res_status_info["message"]}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            HTML;
+                        }
+                    ?>
 
                     <div class="table-responsive">
                         <table class="table table-centered table-striped dt-responsive nowrap w-100" id="products-datatable">
@@ -101,7 +116,7 @@
                                                     </td>
                                                      <td>
                                                         <div class="form-check form-switch">
-                                                            <input type="checkbox" class="form-check-input news_cate_status" data-id="{$video['vi_id']}" id="customSwitch_{$video['vi_id']}" {$statusActive}>
+                                                            <input type="checkbox" class="form-check-input vi_status" data-id="{$video['vi_id']}" id="customSwitch_{$video['vi_id']}" {$statusActive}>
                                                         </div>
                                                     </td>
                                                     <td>
@@ -148,17 +163,17 @@
     /**
      * Task: update status of menu categories
      */
-    $('.news_cate_status').change(function() {
+    $('.vi_status').change(function() {
 
-        var endPoint = `/dashboard/news/categories/update/${$(this).attr("data-id")}`;
+        var endPoint = `/dashboard/video-iframe/update/${$(this).attr("data-id")}`;
 
-        function __requestUpdate(news_cate_status) { 
+        function __requestUpdate(vi_status) { 
 
             $.ajax({
                 method: 'POST',
                 url: endPoint,
                 data: {
-                    "news_cate_status": news_cate_status
+                    "vi_status": vi_status
                 }
             })
             .done(function(res) {
@@ -192,7 +207,7 @@
     /**
      * Task: delete menu categories by ID
      */
-    $('.btnDeleteNewsCate').click(function() {
+    $('.btnDeleteVideoIframe').click(function() {
         cuteAlert({
             type: "question",
             title: "Bạn có muốn xóa không",
@@ -204,8 +219,8 @@
 
             if(e) {
 
-                $('#news_cate_id').attr('value', $(this).attr('data-id'));
-                $('#formDelete').attr('action', '/dashboard/news/categories/delete');
+                $('#vi_id ').attr('value', $(this).attr('data-id'));
+                $('#formDelete').attr('action', '/dashboard/video-iframe/delete');
                 $('#formDelete').submit();
             }
         });

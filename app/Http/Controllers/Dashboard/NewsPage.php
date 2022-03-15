@@ -185,8 +185,6 @@ class NewsPage {
                 ]);
             }
 
-            var_dump();
-
             if(isset($id)) {
 
                 $statusUpdate = DB::table("news")->where("news_id", $id)->update($dataToUpDate);  

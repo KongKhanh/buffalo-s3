@@ -29,6 +29,7 @@ $router->get('/news/category/{target}', [NewsPageClient::class, '__getNewsByCate
 
 $router->get('/news-detail/{target}',[NewsPageClient::class, '__getNewsDetailPageClient']);
 
+$router->get('/news/video-iframe', [NewsPageClient::class, '__getVideoIframePage']);
 
 /**
  * Majors Plugins
@@ -121,7 +122,12 @@ $router->post('/dashboard/majors/delete', [MajorsPage::class, '__postDelete']);
  * -------------------VideoIframe Plugin-------------------
  */
 $router->get('/dashboard/video-iframe', [VideoIFramePage::class, '__getVideoPage']);
-$router->get('/a', [VideoIFramePage::class, '__getUpdateForm']);
+$router->get('/dashboard/video-iframe/create', [VideoIFramePage::class, '__getAddForm']);
+$router->get('/dashboard/video-iframe/update/{id}', [VideoIFramePage::class, '__getUpdateForm']);
+
+$router->post('/dashboard/video-iframe/create', [VideoIFramePage::class, '__postAdd']);
+$router->post('/dashboard/video-iframe/update/{id}', [VideoIFramePage::class, '__postUpdate']);
+$router->post('/dashboard/video-iframe/delete', [VideoIFramePage::class, '__postDelete']);
 
 /**
  * -------------------Level Of Training Plugin-------------------

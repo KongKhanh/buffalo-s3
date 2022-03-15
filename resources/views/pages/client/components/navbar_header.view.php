@@ -3,6 +3,9 @@
     $menuCategories = (new MenuCatePage())->__getMenuCateAPI();
 ?>
 <style>
+        a {
+            text-decoration: none !important;
+        }
        .main-header__menubar ul{
             position:relative;
             left:-30px; 
@@ -48,11 +51,13 @@
             text-decoration: none;
         }
         .main-header__menubar .sub-menu>li>a{
-            text-transform:none;
             color:black;
             width:250px;
             text-align:left;
             word-wrap: break-word;
+            text-decoration: none;
+        }
+        .main-header__menubar .sub-menu>li>a:hover {
             text-decoration: none;
         }
         .menu_category:hover .menuParentList{ 
@@ -69,15 +74,23 @@
 
         <ul class="menubar__list">
             <?php 
-                for($i=0; $i<count($menuCategories); $i++){
+                for($i = 0; $i < count($menuCategories); $i++){
+
+                    $subCateA = "";
+                    
+                    foreach($menuCategories[$i]['subCate'] as $subCate) {
+
+                        $subCateA .= <<<HTML
+                            <li><a href="{$subCate['link_url']}">{$subCate['mc_title']}</a></li>
+                        HTML;
+                    }
+
                     echo 
                     <<<HTML
                         <li class="menubar__list-item menu_category" value="{$menuCategories[$i]['mc_id']}">
                             <a href="{$menuCategories[$i]['link_url']}">{$menuCategories[$i]['mc_title']}</a>
                             <ul class="sub-menu">
-                                <li><a href="default.asp">Home dahjwojjdioaw </a></li>
-                                <li><a href="default.asp">Homedjalwjdlkjwalkjkladwjdlkawjd </a></li>
-                                <li><a href="default.asp">Home </a></li>
+                                {$subCateA}
                             </ul>
                         </li>   
                     HTML;

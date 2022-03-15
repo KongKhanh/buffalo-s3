@@ -15,7 +15,6 @@ class HomePage {
 
             $menuCategories = DB::table('menu_cate')->where('mc_parent_id',0)->get();
 
-
             for($i = 0; $i < count($menuCategories); $i++){
 
                 $childrenCategories = DB::table('menu_cate')->where('mc_parent_id',$menuCategories[$i]['mc_id'])->get();
