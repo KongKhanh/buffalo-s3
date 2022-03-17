@@ -51,6 +51,7 @@ $(document).ready(function(){
                 },
                 }).done(function( res ) {
                     res = JSON.parse(res);
+                    console.log(res);
                     var getMajor = disabledOption;
 
                     for (let i = 0; i < res.majorsById.length; i++) { 
