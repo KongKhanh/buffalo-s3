@@ -78,10 +78,10 @@
                                     </div>
 
                                     <div class="mb-3 mb-3">
-                                        <div class="form-check">
+                                        <!-- <div class="form-check">
                                             <input type="checkbox" class="form-check-input" id="checkbox-signin">
                                             <label class="form-check-label" for="checkbox-signin">Remember me</label>
-                                        </div>
+                                        </div> -->
                                         <?php 
                                             if(isset($errors['error_admin_login'])){
                                                 echo <<<HTML

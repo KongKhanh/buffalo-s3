@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Các ngành đào tạo</title>
+    <title>Các video sự kiện</title>
 
     <link rel="stylesheet" href="/public/client/assets/css/style.css">
     
@@ -53,12 +53,12 @@
 
             <section class="container main-header__desc">
                 <h1 class="desc__title" style="text-align: center; text-transform: uppercase;" id="page-title">
-                    Các ngành đào tạo
+                    Các video sự kiện
                 </h1>
                 <nav class="history-bar">
                     <p>
                         <a href="#" class="previous-page">Trang chủ</a>
-                        <a href="#" class="present-page">Ngành đào tạo</a>
+                        <a href="#" class="present-page">Video sự kiện</a>
                     </p>
                 </nav>
             </section>

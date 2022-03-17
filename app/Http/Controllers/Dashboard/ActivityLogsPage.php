@@ -2,6 +2,11 @@
 
 class ActivityLogsPage {
 
+    public function __construct() {
+
+        
+    }
+
     public function __getActivityLogsPage($target) {
 
         if($target == "admin") {

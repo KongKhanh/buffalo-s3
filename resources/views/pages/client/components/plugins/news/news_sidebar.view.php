@@ -71,7 +71,7 @@
                                             {$latestNews_Item["news_title"]}
                                         </h4>
                                         <p class="relate-post__author">
-                                            <i class="fas fa-user-edit"></i>Admin
+                                            <i class="fas fa-user-edit">Admin</i>
                                             <span class="relate-post__date">Ngày đăng: {$date_created_at}</span>
                                         </p>
                                     </div>

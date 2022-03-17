@@ -3,7 +3,7 @@
 class MajorsPage {
 
     protected $level_of_training = [];
-    
+
     function __construct() {
 
         $this->level_of_training = DB::table("level_of_training")->get();
@@ -242,6 +242,8 @@ class MajorsPage {
 
         try {
 
+            header("Content-Type: application/json");
+
             $majors = DB::table('majors')->where("mjr_lot_id", $id)->get();
 
             if(!$majors || !is_array($majors)) {
@@ -249,10 +251,10 @@ class MajorsPage {
                 return false;
             };
 
-          echo json_encode([
-              
-            "majorsById" => $majors
-          ]);
+            echo json_encode([
+                
+                "majorsById" => $majors
+            ]);
 
         }
         catch (Exception $error) {

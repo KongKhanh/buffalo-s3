@@ -1,0 +1,126 @@
+.map-box > iframe {
+  height: 100%;
+  width: 100%;
+}
+
+.header-wrapper_desc {
+  width: 50%;
+}
+
+.open-register_area {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  width: 100%;
+  background-color: #dfe4ea;
+  padding: 0.75em;
+  justify-content: center;
+}
+.open-register_area .support-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.open-register_area .support-wrapper .btn_get_support {
+  border: none;
+  padding: 0.4em 0.8em;
+  margin-left: 1em;
+  margin-right: 1em;
+  background-color: #0a52a0;
+  color: #FFFFFF;
+  font-size: 0.875em;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.open-register_area .support-wrapper .btn_get_support i {
+  margin-right: 3px;
+}
+.open-register_area .support-wrapper .btn_get_support:hover {
+  background-color: #0a52a0;
+}
+.open-register_area .support-wrapper .btn_get_support:focus {
+  outline: none;
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .main-header--inner {
+    display: none;
+  }
+
+  .header-wrapper_desc {
+    width: 100%;
+  }
+
+  .open-register_area {
+    padding-top: 0.75em;
+    padding-bottom: 0.75em;
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+  }
+  .open-register_area .support-wrapper {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .open-register_area .support-wrapper .btn_get_support {
+    padding: 0.3em 0.6em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    font-size: 0.875em;
+  }
+  .open-register_area .support-wrapper .btn_get_support:first-child {
+    margin-left: 0;
+  }
+  .open-register_area .support-wrapper .btn_get_support:last-child {
+    margin-right: 0;
+  }
+  .open-register_area .support-wrapper .btn_get_support i {
+    margin-right: 3px;
+    display: none;
+  }
+}
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .open-register_area {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    width: 100%;
+    background-color: #f1f2f6;
+    padding: 0.75em;
+  }
+  .open-register_area .support-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .open-register_area .support-wrapper .btn_get_support {
+    border: none;
+    padding: 0.5em 1em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    background-color: #0a52a0;
+    color: #FFFFFF;
+    font-size: 0.875em;
+  }
+  .open-register_area .support-wrapper .btn_get_support i {
+    margin-right: 3px;
+    display: none;
+  }
+  .open-register_area .support-wrapper .btn_get_support:hover {
+    background-color: #0a52a0;
+  }
+  .open-register_area .support-wrapper .btn_get_support:focus {
+    outline: none;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .open-register_area {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+  }
+}
+
+/*# sourceMappingURL=override-convert-app.css.map */

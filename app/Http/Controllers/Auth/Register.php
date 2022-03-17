@@ -15,7 +15,7 @@ class Register {
         $passwordAdmin = input('admin_password');
         $adminAuthCode = input('auth_code');
 
-        if($adminAuthCode != "khanh"){
+        if($adminAuthCode != "ats123456"){
             $errors = array_merge($errors, [
                 "error_auth_code" => "Auth Code không hợp lệ"
             ]);

@@ -30,6 +30,22 @@
             padding: 16px;
             width: 50%;
         }
+        .card-majors>a{
+            display:flex;
+            flex-direction: column;
+        }
+        .card-majors .card-image{
+            flex:0;
+            width:100%;
+            height:100%;
+        }
+        .card-majors .card-image img{
+            width:322px;
+            height:180px;
+        }
+        .card-majors .card-body{
+            flex:1;
+        }
         .card-majors:hover {
             background-color: #f1f2f6;
             border-radius: 8px;
@@ -44,6 +60,217 @@
             color: #a4b0be;
         }
     </style>
+
+<!-- // Reponsive -->
+<style>
+    @media screen and (min-width: 320px) and (max-width: 480px){
+        .card-majors .card-image img{
+            width:300px;
+            height:180px;
+        }
+        .container{
+            padding: 2em 1em !important;
+        }
+        .main-footer--outter>.container{
+            padding: 0em 1em!important;
+            height:100%;
+        }
+        .container .contacts-box{
+            padding: 0;
+            height: 100%;
+        }
+        .container .contacts-box .contacts-box__body{
+            font-size: 0.8em;
+        }
+        .main-footer--inner{
+            padding-top:20px;
+        }
+        .contacts-box__list{
+            padding:0;
+            font-size: 0.8em;
+        }
+        .main-footer--inner .main-footer__desc{
+            font-size: 0.8em;
+        }
+        .sidebar{
+            padding: 0.5em 1.5em;
+        }
+        .relate-posts__container{
+            margin-bottom: 0.5em;
+        }
+        .wrapper-majors-box{
+            display: flex;
+            flex-direction: column;
+        }
+        .wrapper-majors-box .card-majors{ 
+            width:100%;
+            margin: 0.5em 0em;
+            padding: 0;
+        }
+        .wrapper-majors-box .card-majors:last-child{ 
+            width:100%;
+            margin: 0.5em 0em 1em 0em;
+            padding: 0;
+        }
+        .relate-posts{
+            display:flex;
+            flex-direction: column;
+            margin-top: 0em;
+        }
+        .relate-posts .relate-post__author{
+            display:flex;
+            flex-direction:space-between;
+        }
+        .relate-posts .sidebar__title{
+            margin: 0.5em 0em 0em 0em;
+        }
+        .relate-posts .relate-post__author .relate-post__date{
+            padding:0px 10px;
+        }
+    }
+        @media screen and (min-width: 481px) and (max-width: 768px){
+            .card-majors .card-image img{
+            width:100%;
+            height:100%;
+        }
+        .container{
+            padding: 1em 1em !important;
+        }
+
+        .relate-posts__container .relate-post{
+            width:100%;
+            display:flex;
+            flex-direction: row;
+        }
+        .realte-header__container .relate-post .relate-post__thumbnail{
+            flex: 1;
+        }
+        .relate-post__detail{
+            padding: 0em 0.5em;
+            display:flex;
+            flex-direction: column;
+            gap: 3em;
+        }
+        .relate-post__detail .relate-post__author{
+            display: flex;
+            flex-direction: column;
+            width:100%;
+        }
+        .main-footer--outter>.container{
+            padding: 0em 1em!important;
+            position: relative;
+        }
+        .main-footer--outter{
+            padding-bottom: 0em;
+        }
+        .main-footer--outter .container .contacts-box{
+            position: relative;
+            top: 40px;
+            height: 100%;
+            padding: 0.5em 2em;
+        }
+        .container .contacts-box .contacts-box__body{
+            font-size: 0.8em;
+        } 
+        .main-footer--inner{
+            position: relative;
+        }
+        .main-footer--inner .main-footer__content{
+            display: none;
+        }
+        .main-footer--inner .main-footer__desc{
+            position: absolute;
+            top: 100px;
+        }
+        .contacts-box__list{
+            padding: 0;
+            font-size: 0.8em;
+        }
+        .main-footer--inner .main-footer__desc{
+            font-size: 0.8em;
+        }
+        .sidebar{
+            padding: 0.5em 1.5em;
+        }
+        .relate-posts__container{
+            display: flex;
+            flex-direction: column;
+        }
+        .relate-posts{
+            display: flex;
+            flex-direction: column;
+            margin-top: 0em;
+        }
+        .wrapper-majors-box{
+            display: flex;
+            flex-direction: column;
+            width:100%;
+        }
+        .wrapper-majors-box .card-majors{ 
+            width:100%;
+            margin: 0.5em 0em;
+            padding: 0;
+        }
+        .wrapper-majors-box .card-majors:last-child{ 
+            margin: 0.5em 0em 1em 0em;
+        }
+        .relate-posts__container{
+            margin-bottom: 0em;
+        }
+        .relate-post__author {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8em;
+            color: white;
+            font-weight: 200;
+            padding: 5px 0px;
+        }
+    }
+
+    @media screen and (min-width: 769px) and (max-width: 1024px){
+        .card-majors .card-image img{
+            width:200px;
+            height:130px;
+        }
+        .news-box__title{
+            padding: 0;
+            font-size: 3em;
+            margin-top: 20px;
+        }
+        .news-container{
+            margin: 0.5em 0em;
+        }
+        .container{
+            padding: 0em 2em;
+        }
+        .news-block{
+            width:65%;
+        }
+        .relate-posts{
+            display: flex;
+            flex-direction: column;
+        }
+        .relate-posts .relate-posts__container .relate-post{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin-top: 1.5em;
+        }
+        .relate-posts .relate-posts__container .relate-post .relate-post__thumbnail{
+            width: 100%;
+        }
+        .relate-posts .relate-posts__container .relate-post .relate-post__detail{
+            width: 100%;
+        }
+        .main-footer--outter .main-footer__desc{
+            padding-left:2em;
+        }
+        .contacts-box__header{
+            justify-content: center;
+            padding-bottom: 0.5em;
+        }
+    }
+</style>
 </head>
 <body>
     <main class="main-wrapper">
@@ -107,7 +334,9 @@
                                 echo <<<HTML
                                     <div class="card-majors"> 
                                       <a href="{$majors_Item['link_url']}">
-                                        <img src="{$majors_Item['mjr_main_profile']}" class="card-img-top" alt="...">
+                                        <div class = "card-image">
+                                            <img src="{$majors_Item['mjr_main_profile']}" class="card-img-top" alt="...">
+                                        </div>
                                         <div class="card-body">
                                             <h5 class="majors-title">{$majors_Item['mjr_name']}</h5>
                                             <span class="btnMajorViewMore">Xem chi tiết</span>

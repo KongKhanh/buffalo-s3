@@ -37,7 +37,8 @@ class Login {
 
             if($admin){
 
-                Session::set('access_token', Crypt::encryptString($admin['admin_id']));
+                Session::set('access_token', Crypt::encryptString($admin['admin_phone']));
+                
                 redirect('/dashboard/analytics');
             }
             else{

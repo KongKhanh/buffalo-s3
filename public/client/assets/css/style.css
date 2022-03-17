@@ -13,10 +13,14 @@
   box-sizing: border-box;
 }
 
+html {
+  width: 100%;
+}
+
 body {
   font-size: 16px;
   font-family: 'Open Sans', sans-serif !important;
-  /* width: 1920px;  */
+  width: 100%;
 }
 button, input, div, select{
   font-family: 'Open Sans', sans-serif !important;
@@ -99,7 +103,7 @@ strong {
   background-color: transparent;
 }
 .container {
-  padding: 0 15em;
+  padding: 0 8em;
 }
 .content {
   margin: 5em 0;
@@ -109,7 +113,7 @@ strong {
 .main-header--outter {
   /* height: 90vh; */
   /* #region News */
-  background-image: linear-gradient(rgba(121, 134, 150, 0.7), rgba(121, 134, 150, 0.7)), url("../images/header.jpeg");
+  background-image: linear-gradient(rgba(121, 134, 150, 0.7), rgba(121, 134, 150, 0.7)), url("../images/z3261505668713_154917af4784fde6c1b883b0ab5f6cc1.jpg");
   /* #endregion News */
   background-position: center;
   background-repeat: no-repeat;
@@ -118,10 +122,22 @@ strong {
 }
 .main-header--inner {
   padding: 0 1.5em;
-  display: flex;
+  /* display: flex; */
   flex-wrap: nowrap;
   justify-content: space-between;
-  border-bottom: 0.2em solid var(--grayColor);
+}
+.main-header__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2em 2.2em;
+}
+.main-header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 8em;
+  margin: 4em 0;
 }
 .main-header__logo {
   padding: 0.5em 0;
@@ -129,7 +145,8 @@ strong {
   align-items: center;
 }
 .main-header__logo img {
-  width: 15%;
+  /* width: 15%; */
+  max-height: 90px;
 }
 .main-header__logo p {
   margin-left: 0.5em;
@@ -137,9 +154,20 @@ strong {
   font-weight: 700;
   font-size: 0.9em;
 }
+.main-header__contact {
+  display: flex;
+}
+.main-header__contact p {
+  margin: 0 .8em;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  font-size: .8em;
+}
 .main-header__menubar {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 .main-header__menubar .menubar__list {
   display: inline-table;
@@ -246,7 +274,8 @@ strong {
 }
 /* #endregion News */
 .main-header__desc {
-  margin: 4em 0;
+  /* margin: 4em 0; */
+  width: 50%;
 }
 .main-header__desc .main-header__logo img {
   width: 15%;
@@ -262,6 +291,7 @@ strong {
   font-size: 2em;
   word-spacing: 0.1em;
   color: var(--yellowColor);
+  text-transform: uppercase;
 }
 .main-header__desc .desc__detail {
   color: white;
@@ -270,6 +300,44 @@ strong {
   font-size: 1.2em;
   font-weight: 200;
   margin: 1em 0;
+}
+.desc-slider {
+  margin: 0 1.2em;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.desc-slide__btn {
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  padding: 0 .9em;
+  font-size: 1.2em;
+  cursor: pointer;
+  z-index: 10;
+}
+#desc-slide__btn-right {
+  right: 0;
+}
+.desc-slide__item {
+  position: relative;
+  width: 100%;
+  display: block;
+}
+.desc-slide__item-thumbnail {
+  /* position: relative; */
+  width: 100%;
+  display: block;
+}
+.desc-slide__item-title {
+  position: absolute;
+  background: rgba(0, 0, 0, .5);
+  width: 100%;
+  bottom: 0;
+  color: white;
+  padding: .25em 0;
+  padding-left: .9em;
+  display: block;
 }
 .desc__research--btn a {
   margin-left: 1em;
@@ -299,7 +367,7 @@ strong {
 /* #region Content box */
 .content-box {
   position: relative;
-  background-color: var(--grayColor);
+  background-color: var(--greenColor);
   padding: 1.5em 2em;
   border-radius: 1em;
   /* margin-bottom: 2em; */
@@ -475,11 +543,11 @@ strong {
 .contact-box:last-child {
   width: 75%;
 }
-.contact-box:last-child .contact-box--icon {
+.contact-box .contact-box--icon {
   height: 2.25em;
   margin-right: 1.25em;
 }
-.contact-box:last-child .contact-box--desc p {
+.contact-box .contact-box--desc p {
   margin: .5em 0;
 }
 .main-footer--inner  {
@@ -942,7 +1010,8 @@ strong {
     color: var(--blackColor) !important;
   }
   .container{
-    padding: 1em !important;
+    
+    padding: 3em 1em !important
   }
   .main-header__desc .desc__detail,
   .main-header__desc .main-header__logo .logo-text{

@@ -1,0 +1,142 @@
+$mainColorBlue: rgb(10, 82, 160);
+$mainColorGreen: rgb(80, 185, 70);
+$mainColorOrange: rgb(240, 110, 40); 
+ 
+$navbar_LinkColor: #283054;
+
+.map-box > iframe {
+    height: 100%;
+    width: 100%;
+}
+
+.header-wrapper_desc {
+    width: 50%;
+}
+
+.open-register_area {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    width: 100%;
+    background-color: #dfe4ea;
+    padding: 0.75em;
+    justify-content: center;
+    .support-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        .btn_get_support {
+            border: none;
+            padding: 0.4em 0.8em;
+            margin-left: 1em;
+            margin-right: 1em;
+            background-color: $mainColorBlue;
+            color: #FFFFFF;
+            font-size: 0.875em;
+            border-radius: 3px;
+            cursor: pointer;
+            i {
+                margin-right: 3px;
+            }
+            &:hover {
+                background-color: $mainColorBlue;
+            }
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px){ 
+
+    .main-header--inner {
+
+        display: none;
+    }
+
+    .header-wrapper_desc {
+
+        width: 100%;
+    }
+
+    .open-register_area {
+        padding-top: 0.75em;
+        padding-bottom: 0.75em;
+        padding-left: 0.25em;
+        padding-right: 0.25em;
+        .support-wrapper {
+            width: 100%;
+            justify-content: space-between;
+            .btn_get_support {
+                padding: 0.3em 0.6em;
+                margin-left: 0.5em;
+                margin-right: 0.5em;
+                font-size: 0.875em;
+                &:first-child {
+                    margin-left: 0;
+                }
+                &:last-child {
+                    margin-right: 0;
+                }
+                i {
+                    margin-right: 3px;
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px){
+
+    .open-register_area {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        z-index: 99;
+        width: 100%;
+        background-color: #f1f2f6;
+        padding: 0.75em;
+        .support-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            .btn_get_support {
+                border: none;
+                padding: 0.5em 1em;
+                margin-left: 0.5em;
+                margin-right: 0.5em;
+                background-color: $mainColorBlue;
+                color: #FFFFFF;
+                font-size: 0.875em;
+                i {
+                    margin-right: 3px;
+                    display: none;
+                }
+                &:hover {
+                    background-color: $mainColorBlue;
+                }
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px){
+
+    .open-register_area {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        z-index: 99;
+    }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1200px){
+
+
+}
