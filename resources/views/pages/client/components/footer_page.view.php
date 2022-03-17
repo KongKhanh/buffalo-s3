@@ -25,35 +25,7 @@
                         <i class="fas fa-phone"></i>
                     </div>
                     <div class="contact-box-desc">
-                        <p>
-                            <?php 
-                                $stopPoint = 0;
-
-                                $breakLine = "-";
-
-                                foreach ($siteInfo["sitePhone"] as $phone) {
-
-                                    $stopPoint++;
-
-                                    if($stopPoint >= (count($siteInfo["sitePhone"]))){
-
-                                        $breakLine = "";
-                                    };
-
-                                    echo <<<HTML
-                                        {$phone['sip_phone']} {$breakLine}
-                                    HTML;
-                                }
-                            ?>
-                        </p>
-                    </div>
-                </article>
-                <article class="contact-box">
-                    <div class="contact-box--icon">
-                        <i class="fas fa-fax"></i>
-                    </div>
-                    <div class="contact-box-desc">
-                        <p>
+                        <p style="margin: 0;">
                             <?php 
                                 $stopPoint = 0;
 
@@ -81,7 +53,7 @@
                         <i class="fas fa-envelope"></i>
                     </div>
                     <div class="contact-box-desc">
-                        <p>
+                        <p style="margin: 0;">
                             <?php 
                                 $stopPoint = 0;
 
@@ -106,7 +78,7 @@
                 </article>
                 <article class="contact-box">
                     <div class="contact-box--icon">
-                        <i class="fas fa-map"></i>
+                        <i class="fas fa-map-marked-alt"></i>
                     </div>
                     <div class="contact-box--desc">
                         <?php 

@@ -7,6 +7,7 @@
     <title>ATS-Trang chủ</title>
     
     <link rel="stylesheet" href="/public/client/assets/css/style.css">
+    <link rel="stylesheet" href="/public/client/assets/css/override-convert-app.css">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -18,16 +19,12 @@
 
     <!-- JQuery -->
     <script src="/public/client/assets/lib/jquery-3.4.1.min.js"></script>
-    <style>
-        .map-box > iframe {
-            height: 100%;
-            width: 100%;
-        }
-    </style>
 </head>
 
 <body>
-    
+            
+    <?php includeFile('pages/client/components/theme-loader.view.php');?>
+
     <main class="main-wrapper">
         <header class="main-header--outter">
 
@@ -35,53 +32,24 @@
             <?php includeFile('pages/client/components/navbar_header.view.php');?>
 
             <section class="container main-header__desc">
-                <article class="main-header__logo">
-                    <img src="/public/client/assets/images/ats-logo-2.png" alt="">
-                    <p class="logo-text">Trường Trung cấp
-                        <br> Kỹ thuật Nông nghiệp</p>
-                </article>
-                <h1 class="desc__title">
-                    Trường Trung cấp Kỹ thuật Nông nghiệp
-                    <br> Thành phố Hồ Chí Minh
-                </h1>
-                <p class="desc__detail">
-                    <?= $siteInfo['site_info_short_description']; ?>
-                </p>
-                <div class="desc__research--btn">
-                    <a class="btn" href="/about-us">Tìm hiểu</a>
+                <div class="header-wrapper_desc">
+                    <h1 class="desc__title">
+                        Trường Trung cấp Kỹ thuật Nông nghiệp Thành phố Hồ Chí Minh
+                    </h1>
+                    <p class="desc__detail">
+                        <?= $siteInfo['site_info_short_description']; ?>
+                    </p>
+                    <div class="desc__research--btn">
+                        <a class="btn" href="/about-us">Tìm hiểu</a>
+                    </div>
                 </div>
             </section>
+            
         </header>
-        <!-- #region News -->
-        <nav class="navbar__mobile">
-            <label for="nav-mobile-input" class="nav__bars-btn">
-                <i class="fas fa-bars"></i>
-            </label>
-            <input type="checkbox" name="" class="nav__input" id="nav-mobile-input" hidden>
-            <label for="nav-mobile-input" class="nav-overlay"></label>
-            <ul class="menubar__list nav__mobile">
-                <label for="nav-mobile-input"  class="nav__mobile-close"><i class="fas fa-times"></i></label>
-                <li class="menubar__mobile-list-item"><img src="/public/client/assets/images/ats-logo-2.png" alt=""></li>
-                <li class="menubar__mobile-list-item" id="visited"><a href="#">Trang chủ</a></li>
-                <li class="menubar__mobile-list-item"><a href="#">Giới thiệu</a></li>
-                <li class="menubar__mobile-list-item"><a href="#">Phòng ban</a></li>
-                <li class="menubar__mobile-list-item"><a href="#">Tin tức</a></li>
-                <li class="menubar__mobile-list-item"><a href="#">Liên hệ</a></li>
-                <li class="menubar__mobile-list-item"><a href="#">Tuyển dụng</a></li>
-                <li class="menubar__list-item">
-                    <input type="text" style="
-                    padding: 1em;
-                    margin: 1.5em 0;
-                    border-radius: .5em;
-                    border: none;
-                    width: 90%;
-                    font-size: 0.95em;" placeholder="Tìm kiếm">
-                    <button name="header-search--btn" class="btn" style="color: white">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </li>
-            </ul>
-        </nav>
+
+        <!--Navbar Header-->
+        <?php includeFile('pages/client/components/navbar_header-mobile.view.php');?>
+
         <!-- #endregion News -->
         <section class="body-container container">
             <section class="event-box content-box">
@@ -158,10 +126,10 @@
                                 }
                             ?>
                         </div>
-                        <div class="img-box">
+                        <!-- <div class="img-box">
                             <img src="/public/client/assets/images/image-4.jpeg" alt="" class="majors-box_thumbnail-1">
                             <img src="/public/client/assets/images/image-5.jpeg" alt="" class="majors-box_thumbnail-2">
-                        </div>
+                        </div> -->
                     </ol>
                     <ol class="majors-box__list" start="<?= $startRightIndex['value']; ?>">
                         <div>

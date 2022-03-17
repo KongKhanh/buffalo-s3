@@ -2,6 +2,11 @@
 
 class VideoIFramePage {
 
+    public function __construct() {
+
+    
+    }
+
     public function __getVideoPage() {
 
         try {

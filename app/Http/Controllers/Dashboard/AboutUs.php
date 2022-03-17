@@ -2,6 +2,11 @@
 
 class AboutUs {
 
+    public function __construct() {
+
+        
+    }
+
     
     public function __getUpdateIntro() {
 
@@ -154,6 +159,24 @@ class AboutUs {
                 $dataToUpdate = array_merge($dataToUpdate, [
                     'site_info_short_description'        => trim(input('site_info_short_description')),
                 ]);
+            }
+
+            /**
+             * Logo area
+             */
+            if(input('site_info_main_logo')) {
+
+                $dataToUpdate = array_merge($dataToUpdate, [
+                    'site_info_main_logo'        => input('site_info_main_logo'),
+                ]);
+
+                $dataToUpdate["site_info_main_logo"] = array_merge($dataToUpdate["site_info_main_logo"], [
+                    'target_dir'        =>      'public/storage/images/default/'
+                ]);
+
+                $statusMove = SingleHelper::moveFile($dataToUpdate["site_info_main_logo"]);
+
+                $dataToUpdate["site_info_main_logo"] =  $statusMove == true ? "/" . $dataToUpdate["site_info_main_logo"]["target_dir"] . $dataToUpdate["site_info_main_logo"]["name"] : null;
             }
 
             $statusUpdate = DB::table("site_info")->where("site_info_id", (new SiteInfoAPI())->__getVersionInfo())->update($dataToUpdate);

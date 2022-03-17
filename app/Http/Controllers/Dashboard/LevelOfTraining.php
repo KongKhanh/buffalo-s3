@@ -2,6 +2,11 @@
 
 class LevelOfTraining {
 
+    public function __construct() {
+
+        
+    }
+
     public function __getLevelOfTrainingPage() {
 
         try {

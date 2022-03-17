@@ -60,6 +60,7 @@ return array(
     /**
      * ---------------------------Authentication
      */
+    "app\\Http\\Middleware\\AuthDashboardLogin"             => $baseDir . '/app/Http/Middleware/AuthDashboardLogin.php',
     "app\\Http\\Controllers\\Auth\\Login"                   => $baseDir . '/app/Http/Controllers/Auth/Login.php',
     "app\\Http\\Controllers\\Auth\\Register"                => $baseDir . '/app/Http/Controllers/Auth/Register.php',
 

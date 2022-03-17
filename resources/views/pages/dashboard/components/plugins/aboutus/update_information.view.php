@@ -38,7 +38,7 @@
 
                     <div class="tab-content">
                         <div class="tab-pane show active" id="form-row-preview">
-                            <form method="POST" action="">
+                            <form method="POST" action="" enctype="multipart/form-data">
                                 <div class="row g-2">
                                     <div class="mb-3 col-md-12">
                                         <label for="site_info_name" class="form-label">Tên trường học</label>
@@ -124,6 +124,50 @@
                                         </textarea>
                                     </div>
                                 </div>
+
+                                 <!--Logo area-->
+                                 
+                                 <div class="row g-2 mb-3 p-2">  
+                                    <label for="" class="form-label mt-0 p-0">Logo thương hiệu</label> 
+                                    <div class="row border p-2">
+                                        <div class="col-md-3">
+                                            <div>
+                                                <img src="<?= $siteInfo['site_info_main_logo']; ?>" width="100%" id="site_info_main_logo_img">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-9 d-flex align-item-end">
+                                            <div>
+                                                
+                                                <style>
+                                                    .btnChangeLogo {
+                                                        padding: 6px;
+                                                        border-radius: 4px;
+                                                        border: 1px solid #7f8c8d;
+                                                        cursor: pointer;
+                                                        position: absolute;
+                                                        bottom: 0;
+                                                        width: 84px;
+                                                        text-align: center;
+                                                    }
+                                                    .btnChangeLogo:hover {
+                                                        text-decoration: underline;
+                                                    }
+                                                    .btnChangeLogo ~ .cancel {
+
+                                                        margin-left: 100px;
+                                                    }
+                                                </style>
+
+                                                <div class="position-relative h-100 w-100 d-flex align-item-center">
+                                                    <label for="site_info_main_logo" class="btnChangeLogo">Thay đổi</label>
+                                                    <button type="button" id="btnCancelUpdateLogo" class="d-none btnChangeLogo cancel">Hủy</button>
+                                                </div>
+
+                                                <input id="site_info_main_logo" name="site_info_main_logo" type="file" style="display: none;" data-url-logo="<?= $siteInfo['site_info_main_logo']; ?>">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                
                                 <button type="submit" class="btn btn-warning">CẬP NHẬT</button>
                             </form>                      
@@ -144,5 +188,31 @@
 <!-- bundle -->
 <script src="/public/dashboard/assets/js/vendor.min.js"></script>
 <script src="/public/dashboard/assets/js/app.min.js"></script>
+
+<script>
+    
+    var urlLogoOrigin = '';
+
+    $('#site_info_main_logo') && $('#site_info_main_logo').change(function(event) {
+
+        const [file] = event.target.files;
+
+        urlLogoOrigin = $(this).attr('data-url-logo');
+
+       if($('#site_info_main_logo_img')) {
+
+            document.querySelector('#site_info_main_logo_img').src = URL.createObjectURL(file); 
+
+            $('#btnCancelUpdateLogo').removeClass('d-none');
+       }
+    });
+
+    $('#btnCancelUpdateLogo') && $('#btnCancelUpdateLogo').click(function() {
+
+        $('#site_info_main_logo_img').attr('src', urlLogoOrigin);
+
+        $('#btnCancelUpdateLogo').addClass('d-none');
+    });
+</script>
 
 <?php View::__template()->__endSection(); ?>

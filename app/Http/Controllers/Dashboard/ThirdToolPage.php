@@ -2,6 +2,11 @@
 
 class ThirdToolPage {
 
+    public function __construct() {
+
+        
+    }
+
     private $codeTool = [
 
         "googlemapaddress"              => "GMA001",
