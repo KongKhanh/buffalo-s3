@@ -161,10 +161,17 @@ class AboutUs {
                 ]);
             }
 
+            if(input('site_info_facebook_link')) {
+
+                $dataToUpdate = array_merge($dataToUpdate, [
+                    'site_info_facebook_link'        => trim(input('site_info_facebook_link')),
+                ]);
+            }
+
             /**
              * Logo area
              */
-            if(input('site_info_main_logo')) {
+            if(input('site_info_main_logo') && !empty(input('site_info_main_logo')['name'])) {
 
                 $dataToUpdate = array_merge($dataToUpdate, [
                     'site_info_main_logo'        => input('site_info_main_logo'),

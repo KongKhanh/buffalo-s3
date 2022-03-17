@@ -112,6 +112,17 @@
                                         }
                                     ?>
 
+                                    <div class="mb-3 col-md-6">
+                                        <label for="site_info_facebook_link" class="form-label">Địa chỉ facebook</label>
+                                        <input 
+                                            type="text" 
+                                            class="form-control" 
+                                            name="site_info_facebook_link" 
+                                            id="site_info_facebook_link" 
+                                            placeholder="Nhập địa chỉ facebook"
+                                            value="<?= $siteInfo['site_info_facebook_link']; ?>"
+                                        >
+                                    </div>
                                 </div>
 
                                 <div class="row g-2">
