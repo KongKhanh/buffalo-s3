@@ -158,7 +158,7 @@ strong {
 .main-header__menubar .menubar__list .menubar__list-item > a {
   position: relative;
 }
-.main-header__menubar .menubar__list .menubar__list-item:hover > * {
+.main-header__menubar .menubar__list .menubar__list-item:hover {
   color: var(--yellowColor);
   text-decoration: underline;
   text-underline-offset: 0.2em;

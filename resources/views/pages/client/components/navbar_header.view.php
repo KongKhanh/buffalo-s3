@@ -5,15 +5,12 @@
     $siteInfo = (new SiteInfoAPI())->__getSiteInfomation();
 ?>
 <style>
-    a {
-        text-decoration: none !important;
-    }
-    .main-header__menubar ul{
+    .main-header__menubar ul {
         position:relative;
         left:-30px; 
         top:30px;
     }
-    .main-header__menubar>ul>li{
+    .main-header__menubar > ul > li {
         display: inline-block;
         /* background-color:red; */
         height:50px;
@@ -25,10 +22,10 @@
     .main-header__menubar li {
         position: relative;
     }
-    .main-header__menubar li:hover .sub-menu{
+    .main-header__menubar li:hover .sub-menu {
         display: block;
     }
-    .main-header__menubar li .sub-menu{
+    .main-header__menubar li .sub-menu {
         position: absolute;
         top: 30px;
         background: #ffff;
@@ -38,32 +35,33 @@
     .main-header__menubar .sub-menu li {
         position:relative;
         border-bottom: 0.5px solid #C0C0C0;
-        padding: 5px 18px;
+        padding: 12px 22px;
         display: block;
         text-align:left;
         width:250px;
     }
-    .main-header__menubar .sub-menu li:hover{
+    .main-header__menubar .sub-menu li:hover {
         background-color:#FFFAFA;
         transition:0.5s;
     }
-    .main-header__menubar .sub-menu li:hover a{
+    .main-header__menubar .sub-menu li:hover a {
         color:#FF6347;
         transition:0.5s;
-        text-decoration: none;
     }
-    .main-header__menubar .sub-menu>li>a{
+    .main-header__menubar .sub-menu > li > a {
         color:black;
         width:250px;
         text-align:left;
         word-wrap: break-word;
         text-decoration: none;
     }
-    .main-header__menubar .sub-menu>li>a:hover {
-        text-decoration: none;
+    .main-header__menubar .sub-menu > li >a :hover {
+
+        text-decoration: underline;
     }
-    .menu_category:hover .menuParentList{ 
-        display:block;
+    .menu_category:hover .menuParentList { 
+
+        display: block;
     }  
 </style>
 <section class="main-header--inner">
@@ -83,7 +81,7 @@
                     foreach($menuCategories[$i]['subCate'] as $subCate) {
 
                         $subCateA .= <<<HTML
-                            <li><a href="{$subCate['link_url']}">{$subCate['mc_title']}</a></li>
+                            <li><a href="{$subCate['link_url']}" style="text-decoration: none;">{$subCate['mc_title']}</a></li>
                         HTML;
                     }
 
