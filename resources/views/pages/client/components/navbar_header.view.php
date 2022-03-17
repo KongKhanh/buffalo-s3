@@ -7,13 +7,14 @@
 <style>
     .main-header__menubar ul {
         position:relative;
-        left:-30px; 
-        top:30px;
+        /* left:-30px;  */
+        /* top:30px; */
     }
     .main-header__menubar > ul > li {
         display: inline-block;
         /* background-color:red; */
         height:50px;
+        /* line-height: 50px; */
     }
 
     .sub-menu {
@@ -65,9 +66,15 @@
     }  
 </style>
 <section class="main-header--inner">
-    <a class="main-header__logo" href="/">
-        <img src="<?= $siteInfo['site_info_main_logo']; ?>" alt="Logo">
-    </a>
+    <article class="main-header__content">
+        <a class="main-header__logo" href="/">
+            <img src="<?= $siteInfo['site_info_main_logo']; ?>" alt="Logo">
+        </a>
+        <div class="main-header__contact">
+            <p class="main-header__contact--email">tuyensinh@ats.edu.vn - tuyensinh@ats.edu.vn</p>
+            <p class="main-header__contact--phone">0359744542 - 0359744542</p>
+        </div>
+    </article> 
     <nav class="main-header__menubar">
         <ul class="menubar__list">
 
@@ -109,12 +116,12 @@
                 <a href="/about-us">Giới thiệu</a>
             </li>
 
-            <li class="menubar__list-item" style="animation: none;">
+            <!-- <li class="menubar__list-item" style="animation: none;">
                 <input type="text" name="headSearh" id="headSearch" placeholder="Tìm kiếm">
                 <button name="header-search--btn" class="btn" id="headSearchBtn">
                     <i class="fas fa-search"></i>
                 </button>
-            </li>
+            </li> -->
         </ul>
     </nav>
 </section>

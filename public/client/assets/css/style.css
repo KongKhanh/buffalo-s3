@@ -122,10 +122,22 @@ strong {
 }
 .main-header--inner {
   padding: 0 1.5em;
-  display: flex;
+  /* display: flex; */
   flex-wrap: nowrap;
   justify-content: space-between;
-  border-bottom: 0.2em solid var(--grayColor);
+}
+.main-header__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2em 2.2em;
+}
+.main-header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 8em;
+  margin: 4em 0;
 }
 .main-header__logo {
   padding: 0.5em 0;
@@ -142,9 +154,20 @@ strong {
   font-weight: 700;
   font-size: 0.9em;
 }
+.main-header__contact {
+  display: flex;
+}
+.main-header__contact p {
+  margin: 0 .8em;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  font-size: .8em;
+}
 .main-header__menubar {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 .main-header__menubar .menubar__list {
   display: inline-table;
@@ -251,7 +274,8 @@ strong {
 }
 /* #endregion News */
 .main-header__desc {
-  margin: 4em 0;
+  /* margin: 4em 0; */
+  width: 50%;
 }
 .main-header__desc .main-header__logo img {
   width: 15%;
@@ -276,6 +300,44 @@ strong {
   font-size: 1.2em;
   font-weight: 200;
   margin: 1em 0;
+}
+.desc-slider {
+  margin: 0 1.2em;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.desc-slide__btn {
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  padding: 0 .9em;
+  font-size: 1.2em;
+  cursor: pointer;
+  z-index: 10;
+}
+#desc-slide__btn-right {
+  right: 0;
+}
+.desc-slide__item {
+  position: relative;
+  width: 100%;
+  display: block;
+}
+.desc-slide__item-thumbnail {
+  /* position: relative; */
+  width: 100%;
+  display: block;
+}
+.desc-slide__item-title {
+  position: absolute;
+  background: rgba(0, 0, 0, .5);
+  width: 100%;
+  bottom: 0;
+  color: white;
+  padding: .25em 0;
+  padding-left: .9em;
+  display: block;
 }
 .desc__research--btn a {
   margin-left: 1em;
@@ -305,7 +367,7 @@ strong {
 /* #region Content box */
 .content-box {
   position: relative;
-  background-color: var(--grayColor);
+  background-color: var(--greenColor);
   padding: 1.5em 2em;
   border-radius: 1em;
   /* margin-bottom: 2em; */
