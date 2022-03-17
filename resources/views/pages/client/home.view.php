@@ -30,19 +30,44 @@
 
             <!--Navbar Header-->
             <?php includeFile('pages/client/components/navbar_header.view.php');?>
-
-            <section class="container main-header__desc">
-                <div class="header-wrapper_desc">
-                    <h1 class="desc__title">
-                        Trường Trung cấp Kỹ thuật Nông nghiệp Thành phố Hồ Chí Minh
-                    </h1>
-                    <p class="desc__detail">
-                        <?= $siteInfo['site_info_short_description']; ?>
-                    </p>
-                    <div class="desc__research--btn">
-                        <a class="btn" href="/about-us">Tìm hiểu</a>
+            <section class="main-header__container">
+                <section class="main-header__desc">
+                    <div class="header__desc-wrapper">
+                        <h1 class="desc__title">
+                            Trường Trung cấp Kỹ thuật Nông nghiệp Thành phố Hồ Chí Minh
+                        </h1>
+                        <p class="desc__detail">
+                            <?= $siteInfo['site_info_short_description']; ?>
+                        </p>
+                        <div class="desc__research--btn">
+                            <a class="btn" href="/about-us">Tìm hiểu</a>
+                        </div>
                     </div>
-                </div>
+                </section>
+                <section class="main-header__desc">
+                    <div class="header__desc-wrapper desc-slider">
+                        <button class="desc-slide__btn" id="desc-slide__btn-left">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="desc-slide__list" id="desc-slider">
+                            <a href="#" class="desc-slide__item">
+                                <img src="/public/client/assets/images/image-2.jpeg" class="desc-slide__item-thumbnail"/>     
+                                <p class="desc-slide__item-title">Các Sự kiện - Hoạt động của Trường </p>
+                            </a>
+                            <a href="#" class="desc-slide__item">
+                                <img src="/public/client/assets/images/image-1.jpeg" class="desc-slide__item-thumbnail"/>     
+                                <p class="desc-slide__item-title">Các Sự kiện - Hoạt động của Trường </p>
+                            </a>
+                            <a href="#" class="desc-slide__item">
+                                <img src="/public/client/assets/images/image-3.jpeg" class="desc-slide__item-thumbnail"/>     
+                                <p class="desc-slide__item-title">Các Sự kiện - Hoạt động của Trường </p>
+                            </a>
+                        </div>
+                        <button class="desc-slide__btn" id="desc-slide__btn-right">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </section>
             </section>
             
         </header>
@@ -215,5 +240,66 @@
 </body>
 
 <script src="/public/client/assets/js/app.js"></script>
+<script>
 
+    const slideBtnLeft = $('#desc-slide__btn-left');
+    const slideBtnRight = $('#desc-slide__btn-right');
+
+    const slides = $('#desc-slider').children('a');
+    
+    let slideIndex = 1;
+    
+    if (slides.length > 0)
+    showSlides();
+    function showSlides() {
+        $.each(slides, (index) => {
+            $(slides[index]).css({
+                display: 'none',
+            });
+        });
+        slideIndex++;
+        if (slideIndex > slides.length) {
+            slideIndex = 1;
+        }
+        $(slides[slideIndex - 1]).css({
+            // animation: 'slide 3s ease forward',
+            display: 'block',
+        });
+        setTimeout(showSlides, 3000);
+    }
+    function pushSlides(n) {
+        showSlide(slideIndex += n);
+    }
+    function currentSlide(n) {
+        showSlide(slideIndex = n);
+    }
+    function showSlide(n) {
+        if (n > slides.length) {
+            slideIndex = 1;
+        }
+        if (n < 1) {
+            slideIndex = slides.length;
+        }
+        $.each(slides, index => {
+            $(slides[index]).css({
+                display: 'none',
+            });
+            $(slides[index]).animate({
+            }); 
+        });
+
+        $(slides[slideIndex - 1]).css({
+            display: 'block',
+            // animation: 'slide 3s ease forward',
+        });
+    }
+    slideBtnLeft.click(() => {
+        console.log('left');
+        pushSlides(-1);
+    });
+    slideBtnRight.click(() => {
+        console.log('right');
+        pushSlides(1);
+    });
+</script>
 </html>
