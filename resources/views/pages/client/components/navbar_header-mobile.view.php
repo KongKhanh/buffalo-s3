@@ -1,3 +1,9 @@
+<?php 
+    $menuCategories = (new MenuCatePage())->__getMenuCateAPI();
+
+    $siteInfo = (new SiteInfoAPI())->__getSiteInfomation();
+?>
+
 <!-- #region News -->
 <nav class="navbar__mobile">
     <label for="nav-mobile-input" class="nav__bars-btn">
@@ -7,14 +13,33 @@
     <label for="nav-mobile-input" class="nav-overlay"></label>
     <ul class="menubar__list nav__mobile">
         <label for="nav-mobile-input"  class="nav__mobile-close"><i class="fas fa-times"></i></label>
-        <li class="menubar__mobile-list-item"><img src="/public/client/assets/images/ats-logo-2.png" alt=""></li>
-        <li class="menubar__mobile-list-item" id="visited"><a href="#">Trang chủ</a></li>
-        <li class="menubar__mobile-list-item"><a href="#">Giới thiệu</a></li>
-        <li class="menubar__mobile-list-item"><a href="#">Phòng ban</a></li>
-        <li class="menubar__mobile-list-item"><a href="#">Tin tức</a></li>
-        <li class="menubar__mobile-list-item"><a href="#">Liên hệ</a></li>
-        <li class="menubar__mobile-list-item"><a href="#">Tuyển dụng</a></li>
-        <li class="menubar__list-item">
+        <?php 
+            for($i = 0; $i < count($menuCategories); $i++){
+
+                $subCateA = "";
+                
+                // foreach($menuCategories[$i]['subCate'] as $subCate) {
+
+                //     $subCateA .= <<<HTML
+                //         <li><a href="{$subCate['link_url']}" style="text-decoration: none;">{$subCate['mc_title']}</a></li>
+                //     HTML;
+                // }
+
+                echo 
+                <<<HTML
+                    <li class="menubar__mobile-list-item">
+                        <a href="{$menuCategories[$i]['link_url']}">{$menuCategories[$i]['mc_title']}</a>
+                        <!-- <ul class="sub-menu">
+                                {$subCateA}
+                            </ul> -->
+                    </li>
+                HTML;
+            }
+        ?>
+        <li class="menubar__mobile-list-item">
+            <img src="<?= $siteInfo['site_info_main_logo']; ?>" alt="Logo">
+        </li>
+        <!-- <li class="menubar__list-item">
             <input 
                 type="text" 
                 style="
@@ -29,6 +54,6 @@
             <button name="header-search--btn" class="btn" style="color: white">
                 <i class="fas fa-search"></i>
             </button>
-        </li>
+        </li> -->
     </ul>
 </nav>

@@ -64,6 +64,7 @@
 
         display: block;
     }  
+
 </style>
 <section class="main-header--inner">
     <article class="main-header__content">

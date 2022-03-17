@@ -52,13 +52,33 @@ $navbar_LinkColor: #283054;
 @media screen and (min-width: 320px) and (max-width: 480px){ 
 
     .main-header--inner {
-
         display: none;
     }
+    .main-header--outter {
+        padding-bottom: 0;
+    }
+    .main-header__container {
+        padding: 16px;
+        display: flex;
+        flex-wrap: wrap;
+        .main-header__desc {
+            width: 100%;
+            margin: 12px;
+            padding: 0;
+            .header-wrapper_desc {
+                width: 100%;
+            }
+            .desc-slider {
+                margin: 0;
+            }
+        }
+    }
 
-    .header-wrapper_desc {
-
-        width: 100%;
+    #registerModal {
+        padding: 16px;
+        .register-modal--block {
+            width: 100% !important;
+        }
     }
 
     .open-register_area {

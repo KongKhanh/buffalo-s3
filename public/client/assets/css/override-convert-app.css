@@ -48,8 +48,32 @@
     display: none;
   }
 
-  .header-wrapper_desc {
+  .main-header--outter {
+    padding-bottom: 0;
+  }
+
+  .main-header__container {
+    padding: 16px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .main-header__container .main-header__desc {
     width: 100%;
+    margin: 12px;
+    padding: 0;
+  }
+  .main-header__container .main-header__desc .header-wrapper_desc {
+    width: 100%;
+  }
+  .main-header__container .main-header__desc .desc-slider {
+    margin: 0;
+  }
+
+  #registerModal {
+    padding: 16px;
+  }
+  #registerModal .register-modal--block {
+    width: 100% !important;
   }
 
   .open-register_area {
