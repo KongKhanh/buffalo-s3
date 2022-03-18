@@ -41,7 +41,7 @@
                         <h1 class="desc__title">
                             Trường Trung cấp Kỹ thuật Nông nghiệp Thành phố Hồ Chí Minh
                         </h1>
-                        <p class="desc__detail" style="color: #0A52A0">
+                        <p class="desc__detail">
                             <?= $siteInfo['site_info_short_description']; ?>
                         </p>
                         <div class="desc__research--btn">

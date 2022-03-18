@@ -121,7 +121,7 @@
         </article>
         <article class="main-footer__desc">
             <p><?= $siteInfo['site_info_name']; ?></p>
-            <p>Designed by &#169; ProQ - Email: proq@gmail.com</p>
+            <!-- <p>Designed by &#169; ProQ - Email: proq@gmail.com</p> -->
         </article>
     </section>
 </footer>
