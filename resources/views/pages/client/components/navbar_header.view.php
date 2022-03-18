@@ -71,8 +71,12 @@
         <a class="main-header__logo" href="/">
             <img src="<?= $siteInfo['site_info_main_logo']; ?>" alt="Logo">
         </a>
+        
+    </article> 
+    <nav class="main-header__menubar">
         <div class="main-header__contact">
             <p class="main-header__contact--email">
+                <span style="text-transform: capitalize; margin-right: 6px; color: #192a56;">EMAIL: </span>
                 <?php 
                     $stopPoint = 0;
 
@@ -94,7 +98,7 @@
                 ?>
             </p>
             <p class="main-header__contact--phone">
-               
+                <span style="text-transform: capitalize; margin-right: 6px; color: #192a56;">SỐ ĐIỆN THOẠI: </span>
                 <?php 
                     $stopPoint = 0;
 
@@ -117,8 +121,6 @@
 
             </p>
         </div>
-    </article> 
-    <nav class="main-header__menubar">
         <ul class="menubar__list">
 
             <!--Menu Cate-->

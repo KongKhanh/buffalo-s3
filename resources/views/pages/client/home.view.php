@@ -193,14 +193,14 @@
                         <div class="row clearfix">
                         <div class="">
                             <form>
-                                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-                                    <input type="email" name="email" placeholder="Họ và tên" required />
+                                <div class="input_field"> <span><i class="fas fa-info"></i></span>
+                                    <input type="email" name="text" placeholder="Họ và tên" required />
                                 </div>
-                                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-                                    <input type="password" name="password" placeholder="Password" required />
+                                <div class="input_field"> <span><i class="fas fa-phone-alt"></i></span>
+                                    <input type="password" name="number" placeholder="Số điện thoại" required />
                                 </div>
-                                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-                                    <input type="password" name="password" placeholder="Re-type Password" required />
+                                <div class="input_field"> <span><i class="far fa-envelope"></i></span>
+                                    <input type="password" name="email" placeholder="Email" required />
                                 </div>
                                 <div class="row clearfix">
                                     <div class="col_half">
@@ -214,28 +214,42 @@
                                     </div>
                                     </div>
                                 </div>
-                                        <div class="input_field radio_option">
+                                <!-- <div class="input_field radio_option">
                                     <input type="radio" name="radiogroup1" id="rd1">
                                     <label for="rd1">Male</label>
                                     <input type="radio" name="radiogroup1" id="rd2">
                                     <label for="rd2">Female</label>
-                                    </div>
-                                    <div class="input_field select_option">
-                                        <select>
-                                        <option>Select a country</option>
-                                        <option>Option 1</option>
-                                        <option>Option 2</option>
-                                        </select>
-                                        <div class="select_arrow"></div>
-                                    </div>
-                                    <div class="input_field checkbox_option">
+                                </div> -->
+                                <div class="input_field select_option">
+                                    <select>
+                                    <option>Chọn hệ đào tạo</option>
+                                    <option>Option 1</option>
+                                    <option>Option 2</option>
+                                    </select>
+                                    <div class="select_arrow"></div>
+                                </div>
+                                <div class="input_field select_option">
+                                    <select>
+                                    <option>Chọn ngành đào tạo</option>
+                                    <option>Option 1</option>
+                                    <option>Option 2</option>
+                                    </select>
+                                    <div class="select_arrow"></div>
+                                </div>
+                                    <!-- <div class="input_field checkbox_option">
                                         <input type="checkbox" id="cb1">
                                         <label for="cb1">I agree with terms and conditions</label>
                                     </div>
                                     <div class="input_field checkbox_option">
                                         <input type="checkbox" id="cb2">
                                         <label for="cb2">I want to receive the newsletter</label>
+                                    </div> -->
+
+                                <div class="row clearfix">
+                                    <div class="input_field">
+                                        <textarea name="note" id="note" placeholder="Ghi chú" rows="6"></textarea>
                                     </div>
+                                </div>
                                 <input class="button" type="submit" value="ĐĂNG KÝ" />
                             </form>
                         </div>

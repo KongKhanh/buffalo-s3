@@ -122,7 +122,7 @@ strong {
 }
 .main-header--inner {
   padding: 0 1.5em;
-  /* display: flex; */
+  display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
 }
@@ -156,6 +156,7 @@ strong {
 }
 .main-header__contact {
   display: flex;
+  margin-bottom: 12px;
 }
 .main-header__contact p {
   margin: 0 .8em;
@@ -163,10 +164,12 @@ strong {
   color: white;
   text-transform: uppercase;
   font-size: .8em;
+  color: #FFFA65;
 }
 .main-header__menubar {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-end;
   justify-content: center;
 }
 .main-header__menubar .menubar__list {
@@ -991,6 +994,7 @@ strong {
   }
   .main-header--inner{
     padding: 0 2em;
+    display: flex;
   }
   .nav__bars-btn{
     display: block;

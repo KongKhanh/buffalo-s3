@@ -53,19 +53,11 @@ $(document).ready(function(){
                 url: `/api/majors-by-id/${idLot}`,
                 headers: {
                     'Content-Type':'application/json'
-<<<<<<< HEAD
                 },
-                }).done(function( res ) {
-                    res = JSON.parse(res);
-                    console.log(res);
-                    var getMajor = disabledOption;
-=======
-                }
             })
             .done(function(res) {
 
                 var getMajor = disabledOption;
->>>>>>> 77a237584e11c18dd3986ded1dfe94ecbf1a361c
 
                 for (let i = 0; i < res.majorsById.length; i++) { 
 
