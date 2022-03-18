@@ -5,6 +5,8 @@
     if(Session::has("res_subscriber")) {
 
         $res_subscriber = Session::get("res_subscriber");
+
+        $popupStatusForm = isset($res_subscriber['errors']) ? "display: block;" : "display: none;";
     }
 ?>
 
@@ -27,7 +29,7 @@
     }
 </style>
 
- <section class="register-modal" id="registerModal">
+ <section class="register-modal" id="registerModal" style="<?= $popupStatusForm;?>">
     <section class="register-block register-modal--block">
         <i 
             class="fas fa-times-circle" 

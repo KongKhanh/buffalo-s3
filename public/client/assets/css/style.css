@@ -407,10 +407,21 @@ strong {
 /* #region Major */
 .majors-box {
   position: relative;
+  display: flex;
+}
+.majors-box__content-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.majors-box__list {
+    width: 50%;
 }
 .majors-box__content {
   display: flex;
-  gap: 3em;
+  width: 100%;
+  /* gap: 3em; */
+  /* width: 50%; */
 }
 .majors-box__list--item {
   color: var(--grayColor);
@@ -418,12 +429,13 @@ strong {
   line-height: 1.5em;
   font-weight: 200;
   letter-spacing: 0.1em;
+  margin: 12px;
 }
 .majors-box__title {
   text-transform: uppercase;
   text-align: center;
   width: 50%;
-  margin-top: 2em;
+  margin-top: 1em;
   font-size: 2em;
   text-shadow: rgba(75, 75, 75, 0.5) -0.5em 0.25em 0.25em;
   color: var(--grayColor);

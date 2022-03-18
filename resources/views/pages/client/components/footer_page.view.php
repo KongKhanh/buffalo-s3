@@ -26,6 +26,7 @@
                     </div>
                     <div class="contact-box-desc">
                         <p style="margin: 0;">
+
                             <?php 
                                 $stopPoint = 0;
 
@@ -45,6 +46,7 @@
                                     HTML;
                                 }
                             ?>
+                            
                         </p>
                     </div>
                 </article>

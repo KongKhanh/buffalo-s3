@@ -30,6 +30,7 @@
 
             <!--Navbar Header-->
             <?php includeFile('pages/client/components/navbar_header.view.php');?>
+
             <section class="main-header__container">
                 <section class="main-header__desc">
                     <div class="header__desc-wrapper">
@@ -44,6 +45,7 @@
                         </div>
                     </div>
                 </section>
+
                 <section class="main-header__desc">
                     <div class="header__desc-wrapper desc-slider">
                         <button class="desc-slide__btn" id="desc-slide__btn-left">
@@ -68,6 +70,7 @@
                         </button>
                     </div>
                 </section>
+
             </section>
             
         </header>
@@ -77,8 +80,8 @@
 
         <!-- #endregion News -->
         <section class="body-container container">
-            <section class="event-box content-box">
-                <!-- #region News  -->
+
+            <!-- <section class="event-box content-box">
                 <article class="content-box__body event-box__body pc">
                     <div>
                         <h2 class="content-box__title">
@@ -91,7 +94,7 @@
                         </p>
                     </div>
                     <video controls poster="/public/client/assets/images/image-2.jpeg">
-                        <!-- Sources -->
+
                     </video>
                 </article>
                 <article class="content-box__body event-box__body tablet">
@@ -104,79 +107,152 @@
                         giáo dục nghề nghiệp năm 2019. Chủ đề: "Chọn đúng ngành - Thành công sớm".
                     </p>
                     <video controls poster="/public/client/assets/images/image-2.jpeg" class="content-box__video">
-                        <!-- Sources -->
+
                     </video>
                 </article>
-                <!-- #endregion News -->
-            </section>
+            </section> -->
+            
             <section class="majors-box content">
                 <!-- #region News -->
-                <section class="majors-box__content">
-                    <ol class="majors-box__list">
-                        <div>
-                            <?php 
+                <section class="majors-box__content-wrapper">
+                    <div class="majors-box__content">
+                        <ol class="majors-box__list">
+                            <div>
+                                <?php 
 
-                                $majorsLeft = [];
-                                $majorsRight = [];
-                                $startRightIndex = [
-                                    "status"    => true,
-                                    "value"     => 1,
-                                ];
+                                    $majorsLeft = [];
+                                    $majorsRight = [];
+                                    $startRightIndex = [
+                                        "status"    => true,
+                                        "value"     => 1,
+                                    ];
 
-                                for($i = 0; $i < count($allMajors); $i++) {
+                                    for($i = 0; $i < count($allMajors); $i++) {
 
-                                    if($i < ceil(count($allMajors) / 2)) {
+                                        if($i < ceil(count($allMajors) / 2)) {
 
-                                        array_push($majorsLeft, $allMajors[$i]);
-                                    }
-                                    else {
-
-                                        if($startRightIndex['status']) {
-
-                                            $startRightIndex['status'] = false;
-                                            $startRightIndex['value'] = $i + 1;
+                                            array_push($majorsLeft, $allMajors[$i]);
                                         }
+                                        else {
 
-                                        array_push($majorsRight, $allMajors[$i]);
+                                            if($startRightIndex['status']) {
+
+                                                $startRightIndex['status'] = false;
+                                                $startRightIndex['value'] = $i + 1;
+                                            }
+
+                                            array_push($majorsRight, $allMajors[$i]);
+                                        }
                                     }
-                                }
 
-                                foreach($majorsLeft as $majorsItem) {
-                                    
-                                    $majorsItemNameSlug = Str::slug($majorsItem['mjr_name']);
+                                    foreach($majorsLeft as $majorsItem) {
+                                        
+                                        $majorsItemNameSlug = Str::slug($majorsItem['mjr_name']);
 
-                                    echo <<<HTML
-                                        <li class="majors-box__list--item"><a href="/majors/review/{$majorsItemNameSlug}-{$majorsItem['mjr_id']}">{$majorsItem['mjr_name']}</a></li>
-                                    HTML;
-                                }
+                                        echo <<<HTML
+                                            <li class="majors-box__list--item"><a href="/majors/review/{$majorsItemNameSlug}-{$majorsItem['mjr_id']}">{$majorsItem['mjr_name']}</a></li>
+                                        HTML;
+                                    }
+                                ?>
+                            </div>
+                            <!-- <div class="img-box">
+                                <img src="/public/client/assets/images/image-4.jpeg" alt="" class="majors-box_thumbnail-1">
+                                <img src="/public/client/assets/images/image-5.jpeg" alt="" class="majors-box_thumbnail-2">
+                            </div> -->
+                        </ol>
+                        <ol class="majors-box__list" start="<?= $startRightIndex['value']; ?>">
+                            <div>
+                                <?php 
+                                    foreach($majorsRight as $majorsItem) {
+                                        
+                                        $majorsItemNameSlug = Str::slug($majorsItem['mjr_name']);
+
+                                        echo <<<HTML
+                                            <li class="majors-box__list--item"><a href="/majors/review/{$majorsItemNameSlug}-{$majorsItem['mjr_id']}">{$majorsItem['mjr_name']}</a></li>
+                                        HTML;
+                                    }
+                                ?>
+                            </div>
+                        </ol>
+                    </div>
+                     <h2 class="majors-box__title">
+                        các ngành đào tạo <br>
+                        <span>
+                            <?= 
+                                date("Y");
                             ?>
-                        </div>
-                        <!-- <div class="img-box">
-                            <img src="/public/client/assets/images/image-4.jpeg" alt="" class="majors-box_thumbnail-1">
-                            <img src="/public/client/assets/images/image-5.jpeg" alt="" class="majors-box_thumbnail-2">
-                        </div> -->
-                    </ol>
-                    <ol class="majors-box__list" start="<?= $startRightIndex['value']; ?>">
-                        <div>
-                            <?php 
-                                foreach($majorsRight as $majorsItem) {
-                                    
-                                    $majorsItemNameSlug = Str::slug($majorsItem['mjr_name']);
-
-                                    echo <<<HTML
-                                        <li class="majors-box__list--item"><a href="/majors/review/{$majorsItemNameSlug}-{$majorsItem['mjr_id']}">{$majorsItem['mjr_name']}</a></li>
-                                    HTML;
-                                }
-                            ?>
-                        </div>
-                    </ol>
+                        </span>
+                    </h2>
                 </section>
-                <h2 class="majors-box__title">
-                    các ngành đào tạo <br>
-                    <span>
-                        <?= date("Y");?>
-                    </span>
-                </h2>
+
+                <div class="form_wrapper">
+                    <div class="form_container">
+                        <div class="title_container">
+                        <h2>ĐĂNG KÝ ONLINE</h2>
+                        </div>
+                        <div class="row clearfix">
+                        <div class="">
+                            <form>
+                                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+                                    <input type="email" name="email" placeholder="Họ và tên" required />
+                                </div>
+                                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+                                    <input type="password" name="password" placeholder="Password" required />
+                                </div>
+                                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+                                    <input type="password" name="password" placeholder="Re-type Password" required />
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col_half">
+                                    <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                                        <input type="text" name="name" placeholder="First Name" />
+                                    </div>
+                                    </div>
+                                    <div class="col_half">
+                                    <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                                        <input type="text" name="name" placeholder="Last Name" required />
+                                    </div>
+                                    </div>
+                                </div>
+                                        <div class="input_field radio_option">
+                                    <input type="radio" name="radiogroup1" id="rd1">
+                                    <label for="rd1">Male</label>
+                                    <input type="radio" name="radiogroup1" id="rd2">
+                                    <label for="rd2">Female</label>
+                                    </div>
+                                    <div class="input_field select_option">
+                                        <select>
+                                        <option>Select a country</option>
+                                        <option>Option 1</option>
+                                        <option>Option 2</option>
+                                        </select>
+                                        <div class="select_arrow"></div>
+                                    </div>
+                                    <div class="input_field checkbox_option">
+                                        <input type="checkbox" id="cb1">
+                                        <label for="cb1">I agree with terms and conditions</label>
+                                    </div>
+                                    <div class="input_field checkbox_option">
+                                        <input type="checkbox" id="cb2">
+                                        <label for="cb2">I want to receive the newsletter</label>
+                                    </div>
+                                <input class="button" type="submit" value="ĐĂNG KÝ" />
+                            </form>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <h2 class="majors-box__title"> -->
+                    <!-- các ngành đào tạo <br> -->
+                    <!-- <span> -->
+                        <?= 
+                            // date("Y");
+                            ""
+                        ?>
+                    <!-- </span> -->
+                <!-- </h2> -->
+
             </section>
             <section class="courses-box content">
                 <h2 class="courses-box__title">
@@ -195,7 +271,7 @@
 
                                 $majorsHTML .= <<<HTML
                                     <a href="{$majorsURL}">
-                                        <p style="margin: 4px 0;">{$majorsItem["mjr_name"]}</p>
+                                        <p style="margin: 8px 0;">{$majorsItem["mjr_name"]}</p>
                                     <a>
                                 HTML;
                             }
@@ -225,7 +301,6 @@
 
         <section class="map-box">
             <?= $GoogleMapAddressEmbed['tt_code']; ?>
-            <!-- <img src="/public/client/assets/images/map.png" alt=""> -->
         </section>
 
         <!--------------Footer page-------------->

@@ -72,8 +72,50 @@
             <img src="<?= $siteInfo['site_info_main_logo']; ?>" alt="Logo">
         </a>
         <div class="main-header__contact">
-            <p class="main-header__contact--email">tuyensinh@ats.edu.vn - tuyensinh@ats.edu.vn</p>
-            <p class="main-header__contact--phone">0359744542 - 0359744542</p>
+            <p class="main-header__contact--email">
+                <?php 
+                    $stopPoint = 0;
+
+                    $breakLine = "-";
+
+                    foreach ($siteInfo["siteEmail"] as $email) {
+
+                        $stopPoint++;
+
+                        if($stopPoint >= (count($siteInfo["siteEmail"]))){
+
+                            $breakLine = "";
+                        };
+
+                        echo <<<HTML
+                            {$email['sie_email']} {$breakLine}
+                        HTML;
+                    }
+                ?>
+            </p>
+            <p class="main-header__contact--phone">
+               
+                <?php 
+                    $stopPoint = 0;
+
+                    $breakLine = "-";
+
+                    foreach ($siteInfo["sitePhone"] as $phone) {
+
+                        $stopPoint++;
+
+                        if($stopPoint >= (count($siteInfo["sitePhone"]))){
+
+                            $breakLine = "";
+                        };
+
+                        echo <<<HTML
+                            {$phone['sip_phone']} {$breakLine}
+                        HTML;
+                    }
+                ?>
+
+            </p>
         </div>
     </article> 
     <nav class="main-header__menubar">
