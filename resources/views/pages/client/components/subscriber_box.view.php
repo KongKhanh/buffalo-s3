@@ -9,7 +9,6 @@
         $popupStatusForm = isset($res_subscriber['errors']) ? "display: block;" : "display: none;";
     }
 ?>
-
 <style>
 
     #registerSubmit {
@@ -131,7 +130,7 @@
                 <article class="input-block">
                     <label for="trainingSystem">Hệ đào tạo</label>
                     <div class="input-box">
-                        <select name="subscriber_lot_id" id="level_of_training">
+                        <select name="subscriber_lot_id" id="level_of_training_lot">
                         <option value="" disabled selected >Chọn hệ đào tạo</option>
                             <?php 
                                 if($trainingTypeList){
@@ -158,22 +157,23 @@
                 <article class="input-block">
                     <label for="course">Ngành đào tạo</label>
                     <div class="input-box">
-                        <select name="subscriber_mjr_id" id="course">
+                        <select name="subscriber_mjr_id" id="course_mjr">
                         </select>
-                        <?php 
-                            if(isset($res_subscriber['errors']['error_admin_lot'])){
-                                echo <<<HTML
-                                    <span class="text-danger" style="color: red;">{$res_subscriber['errors']['error_admin_lot']}</span>
-                                HTML;
-                            }
-                        ?>
+                                <?php 
+                                    if(isset($errors['error_admin_lot'])){
+                                        echo <<<HTML
+                                            <i class="fas fa-exclamation-circle" style="color: red;"></i>
+                                            <span class="text-danger" style="color: red;">{$errors['error_admin_lot']}</span>
+                                        HTML;
+                                    }
+                                ?>
                         <!-- <i class="fas fa-exclamation-circle" style="color: red;"></i> -->
                     </div>
                     <p class="input-error">Vui lòng chọn lại ngành đào tạo</p>
                 </article>
                 <article class="input-block">
                     <div class="input-box">
-                        <textarea name="note" id="note" placeholder="Ghi chú" rows="6"></textarea>
+                        <textarea name="subscriber_note" id="note" placeholder="Ghi chú" rows="6"></textarea>
                     </div>
                 </article>
             </article>
@@ -187,3 +187,4 @@
         </form>
     </section>
 </section>
+

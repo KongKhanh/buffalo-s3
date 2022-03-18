@@ -58,7 +58,8 @@ class SubscriberPage {
             "subscriber_phone"      => input("subscriber_phone"),
             "subscriber_email"      => input("subscriber_email"),
             "subscriber_address"    => input("subscriber_address"),
-            "subscriber_dob"        => $substrDOB
+            "subscriber_dob"        => $substrDOB,
+            "subscriber_note"       => input("subscriber_note")
         ];
 
         if(!isset($input['subscriber_mjr_id'])){
@@ -99,24 +100,35 @@ class SubscriberPage {
         if(!preg_match('/^[A-Za-z0-9\/\s\,ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]{10,100}$/',$input['subscriber_address'])){
 
             $errors = array_merge($errors, [
-                "error_admin_address" => "Address không đúng định dạng"
+                "error_admin_address" => "Địa chỉ không đúng định dạng"
             ]);
         }
 
         if(count($errors) == 0){
 
             DB::table('subscriber')->insert($input);
+
+            Session::flash("status_subscriber", [
+                "status" => 1997
+            ]);
         }
         else{
 
             $errors = array_merge($errors, [
                 "error_admin_subscriber" => "Đăng ký không thành công"
             ]);
+            if(input("errors_landing")){
 
-            Session::flash("res_subscriber", [
-                "errors" => $errors,
-            ]);
-    
+                Session::flash("res_errors_landing", [
+                    "errors" => $errors,
+                ]);
+            }
+            else{
+
+                Session::flash("res_subscriber", [
+                    "errors" => $errors,
+                ]);
+            }
         }
         
         return redirect('/'); 
