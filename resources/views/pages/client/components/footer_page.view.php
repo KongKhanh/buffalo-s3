@@ -8,7 +8,7 @@
             <section class="contacts-box__header">
                 <ul class="contacts-box__list">
                     <li class="contacts-box__list--item">
-                        <a href="#"><i class="fab fa-facebook-square"></i></a>
+                        <a href="<?= $siteInfo["site_info_facebook_link"];?>"><i class="fab fa-facebook-square"></i></a>
                     </li>
                     <li class="contacts-box__list--item"><a href="#"><i
                                 class="fab fa-facebook-messenger"></i></a></li>

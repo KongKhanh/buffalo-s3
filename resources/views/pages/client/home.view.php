@@ -1,3 +1,7 @@
+<?php 
+    $allAdsSlide = (new AdsSlide())->__getAllAdsSlideByStatus();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,7 +41,7 @@
                         <h1 class="desc__title">
                             Trường Trung cấp Kỹ thuật Nông nghiệp Thành phố Hồ Chí Minh
                         </h1>
-                        <p class="desc__detail">
+                        <p class="desc__detail" style="color: #0A52A0">
                             <?= $siteInfo['site_info_short_description']; ?>
                         </p>
                         <div class="desc__research--btn">
@@ -52,18 +56,18 @@
                             <i class="fas fa-chevron-left"></i>
                         </button>
                         <div class="desc-slide__list" id="desc-slider">
-                            <a href="#" class="desc-slide__item">
-                                <img src="/public/client/assets/images/image-2.jpeg" class="desc-slide__item-thumbnail"/>     
-                                <p class="desc-slide__item-title">Các Sự kiện - Hoạt động của Trường </p>
-                            </a>
-                            <a href="#" class="desc-slide__item">
-                                <img src="/public/client/assets/images/image-1.jpeg" class="desc-slide__item-thumbnail"/>     
-                                <p class="desc-slide__item-title">Các Sự kiện - Hoạt động của Trường </p>
-                            </a>
-                            <a href="#" class="desc-slide__item">
-                                <img src="/public/client/assets/images/image-3.jpeg" class="desc-slide__item-thumbnail"/>     
-                                <p class="desc-slide__item-title">Các Sự kiện - Hoạt động của Trường </p>
-                            </a>
+                            <?php 
+                                if(is_array($allAdsSlide)) {
+                                    foreach($allAdsSlide as $slide) {
+                                        echo <<<HTML
+                                            <a href="{$slide['ads_slide_link_to']}" class="desc-slide__item">
+                                                <img src="{$slide['ads_slide_img_link']}" class="desc-slide__item-thumbnail"/>     
+                                                <p class="desc-slide__item-title">{$slide['ads_slide_title']}</p>
+                                            </a>
+                                        HTML;
+                                    }
+                                }
+                            ?>
                         </div>
                         <button class="desc-slide__btn" id="desc-slide__btn-right">
                             <i class="fas fa-chevron-right"></i>
@@ -202,7 +206,7 @@
                                 <div class="input_field"> <span><i class="far fa-envelope"></i></span>
                                     <input type="password" name="email" placeholder="Email" required />
                                 </div>
-                                <div class="row clearfix">
+                                <!-- <div class="row clearfix">
                                     <div class="col_half">
                                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
                                         <input type="text" name="name" placeholder="First Name" />
@@ -213,7 +217,7 @@
                                         <input type="text" name="name" placeholder="Last Name" required />
                                     </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <!-- <div class="input_field radio_option">
                                     <input type="radio" name="radiogroup1" id="rd1">
                                     <label for="rd1">Male</label>
