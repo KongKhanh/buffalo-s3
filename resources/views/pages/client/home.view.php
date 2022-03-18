@@ -1,3 +1,7 @@
+<?php 
+    $allAdsSlide = (new AdsSlide())->__getAllAdsSlideByStatus();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,18 +56,18 @@
                             <i class="fas fa-chevron-left"></i>
                         </button>
                         <div class="desc-slide__list" id="desc-slider">
-                            <a href="#" class="desc-slide__item">
-                                <img src="/public/client/assets/images/image-2.jpeg" class="desc-slide__item-thumbnail"/>     
-                                <p class="desc-slide__item-title">Các Sự kiện - Hoạt động của Trường </p>
-                            </a>
-                            <a href="#" class="desc-slide__item">
-                                <img src="/public/client/assets/images/image-1.jpeg" class="desc-slide__item-thumbnail"/>     
-                                <p class="desc-slide__item-title">Các Sự kiện - Hoạt động của Trường </p>
-                            </a>
-                            <a href="#" class="desc-slide__item">
-                                <img src="/public/client/assets/images/image-3.jpeg" class="desc-slide__item-thumbnail"/>     
-                                <p class="desc-slide__item-title">Các Sự kiện - Hoạt động của Trường </p>
-                            </a>
+                            <?php 
+                                if(is_array($allAdsSlide)) {
+                                    foreach($allAdsSlide as $slide) {
+                                        echo <<<HTML
+                                            <a href="{$slide['ads_slide_link_to']}" class="desc-slide__item">
+                                                <img src="{$slide['ads_slide_img_link']}" class="desc-slide__item-thumbnail"/>     
+                                                <p class="desc-slide__item-title">{$slide['ads_slide_title']}</p>
+                                            </a>
+                                        HTML;
+                                    }
+                                }
+                            ?>
                         </div>
                         <button class="desc-slide__btn" id="desc-slide__btn-right">
                             <i class="fas fa-chevron-right"></i>
@@ -255,6 +259,7 @@
                                     }
                                 ?>
                                 </div>
+<<<<<<< HEAD
                                 <div class="input_field"> <span><i class="fas fa-map-marker-alt"></i></span>
                                 <input type="text" name="subscriber_address" id="address" placeholder="Địa chỉ liên hệ...">
                                 <?php 
@@ -267,6 +272,8 @@
                                     }
                                 ?>
                                 </div>
+=======
+>>>>>>> 35c2e45c2cf6ce422546dade086bab9385dfdf8e
                                 <!-- <div class="row clearfix">
                                     <div class="col_half">
                                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>

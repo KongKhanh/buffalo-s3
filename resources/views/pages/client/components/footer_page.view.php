@@ -8,7 +8,7 @@
             <section class="contacts-box__header">
                 <ul class="contacts-box__list">
                     <li class="contacts-box__list--item">
-                        <a href="#"><i class="fab fa-facebook-square"></i></a>
+                        <a href="<?= $siteInfo["site_info_facebook_link"];?>"><i class="fab fa-facebook-square"></i></a>
                     </li>
                     <li class="contacts-box__list--item"><a href="#"><i
                                 class="fab fa-facebook-messenger"></i></a></li>
@@ -121,7 +121,7 @@
         </article>
         <article class="main-footer__desc">
             <p><?= $siteInfo['site_info_name']; ?></p>
-            <p>Designed by &#169; ProQ - Email: proq@gmail.com</p>
+            <!-- <p>Designed by &#169; ProQ - Email: proq@gmail.com</p> -->
         </article>
     </section>
 </footer>

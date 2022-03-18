@@ -56,6 +56,7 @@ return array(
     "app\\Http\\Controllers\\Client\\NewsPageClient"            => $baseDir . '/app/Http/Controllers/Client/NewsPageClient.php',
     "app\\Http\\Controllers\\Client\\SiteInfoAPI"               => $baseDir . '/app/Http/Controllers/Client/SiteInfoAPI.php',
     "app\\Http\\Controllers\\Client\\MajorsPageClient"          => $baseDir . '/app/Http/Controllers/Client/MajorsPageClient.php',
+    "app\\Http\\Controllers\\Client\\AdsSlide"                  => $baseDir . '/app/Http/Controllers/Client/AdsSlide.php',
 
     /**
      * ---------------------------Authentication

@@ -1,3 +1,7 @@
+<?php 
+    $siteInfo = (new SiteInfoAPI())->__getSiteInfomation();
+?>
+
 <div class="open-register_area">
     <div class="support-wrapper">
         <button type="button" id="register-btn" class="btn_regis_schedule btn_get_support">
@@ -10,7 +14,26 @@
         </button>
         <button type="button" class="btn_regis_schedule btn_get_support">
             <i class="fas fa-phone-volume"></i>
-            Hotline: 0359744542
+            Hotline: 
+            <?php 
+                    $stopPoint = 0;
+
+                    $breakLine = "-";
+
+                    foreach ($siteInfo["sitePhone"] as $phone) {
+
+                        $stopPoint++;
+
+                        if($stopPoint >= (count($siteInfo["sitePhone"]))){
+
+                            $breakLine = "";
+                        };
+
+                        echo <<<HTML
+                            {$phone['sip_phone']} {$breakLine}
+                        HTML;
+                    }
+                ?>
         </button>
     </div>
 </div>

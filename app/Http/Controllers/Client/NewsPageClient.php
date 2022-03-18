@@ -93,10 +93,10 @@ class NewsPageClient {
      */
     public function __getLatestNewsList($quantity) {
 
-        return DB::table("news")
+        return array_reverse(DB::table("news")
         ->where('news_status', 'published')
         ->join("links", "news_link_id", "=", "link_id")
-        ->get();
+        ->get());
     }
 
     public function __getNewsByCate($ID) {
