@@ -12,7 +12,6 @@
 <!-- third party css end -->
 
 
-
 <!-- Start Content-->
 <div class="container-fluid">
     

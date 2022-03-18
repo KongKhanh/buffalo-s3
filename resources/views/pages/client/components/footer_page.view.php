@@ -2,7 +2,6 @@
 
     $siteInfo = (new SiteInfoAPI())->__getSiteInfomation();
 ?>
-
 <footer class="main-footer--outter">
     <section class="container">
         <section class="contacts-box content-box">
