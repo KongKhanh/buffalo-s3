@@ -31,10 +31,8 @@
 
     <main class="main-wrapper">
         <header class="main-header--outter">
-
             <!--Navbar Header-->
             <?php includeFile('pages/client/components/navbar_header.view.php');?>
-
             <section class="main-header__container">
                 <section class="main-header__desc">
                     <div class="header__desc-wrapper">
