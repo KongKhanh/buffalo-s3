@@ -259,7 +259,6 @@
                                     }
                                 ?>
                                 </div>
-<<<<<<< HEAD
                                 <div class="input_field"> <span><i class="fas fa-map-marker-alt"></i></span>
                                 <input type="text" name="subscriber_address" id="address" placeholder="Địa chỉ liên hệ...">
                                 <?php 
@@ -272,8 +271,6 @@
                                     }
                                 ?>
                                 </div>
-=======
->>>>>>> 35c2e45c2cf6ce422546dade086bab9385dfdf8e
                                 <!-- <div class="row clearfix">
                                     <div class="col_half">
                                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
@@ -405,7 +402,72 @@
                     ?>
                 </section>
             </section>
-            <!-- #endregion News -->
+            <section class="news-container" style="justify-content: space-between;">
+                <section class="news-box" style="margin:0 1.2em;">
+                    <h3 class="news-box__title" style="font-size: 1.5em; font-weight: bold; text-transform: uppercase;">
+                        GƯƠNG MẶT POLY
+                    </h3>
+                    <article class="news-item">
+                        <a href="#" class="news-item__thumbail">
+                            <img src="/public/client/assets/images/image-5.jpeg"/>
+                        </a>
+                        <a href="#" class="news-item__title">
+                            “Mọi sự nỗ lực đều sẽ gặt được trái ngọt” – câu chuyện của chàng trai FPoly Hà Nội
+                        </a>
+                        <h3 class="news-item__date">17, March - 2022</h3>
+                    </article>
+                    <article class="news-item news-item__child">
+                        <a href="#" class="news-item__thumbail">
+                            <img src="/public/client/assets/images/image-5.jpeg"/>
+                        </a>
+                        <a href="#" class="news-item__title">
+                            “Mọi sự nỗ lực đều sẽ gặt được trái ngọt” – câu chuyện của chàng trai FPoly Hà Nội
+                        </a>
+                        <h3 class="news-item__date">17, March - 2022</h3>
+                    </article>
+                    <article class="news-item news-item__child">
+                        <a href="#" class="news-item__thumbail">
+                            <img src="/public/client/assets/images/image-5.jpeg"/>
+                        </a>
+                        <a href="#" class="news-item__title">
+                            “Mọi sự nỗ lực đều sẽ gặt được trái ngọt” – câu chuyện của chàng trai FPoly Hà Nội
+                        </a>
+                        <h3 class="news-item__date">17, March - 2022</h3>
+                    </article>
+                </section>
+                <section class="news-box" style="margin:0 1.2em;">
+                    <h3 class="news-box__title" style="font-size: 1.5em; font-weight: bold; text-transform: uppercase;">
+                        GƯƠNG MẶT POLY
+                    </h3>
+                    <article class="news-item">
+                        <a href="#" class="news-item__thumbail">
+                            <img src="/public/client/assets/images/image-5.jpeg"/>
+                        </a>
+                        <a href="#" class="news-item__title">
+                            “Mọi sự nỗ lực đều sẽ gặt được trái ngọt” – câu chuyện của chàng trai FPoly Hà Nội
+                        </a>
+                        <h3 class="news-item__date">17, March - 2022</h3>
+                    </article>
+                    <article class="news-item news-item__child">
+                        <a href="#" class="news-item__thumbail">
+                            <img src="/public/client/assets/images/image-5.jpeg"/>
+                        </a>
+                        <a href="#" class="news-item__title">
+                            “Mọi sự nỗ lực đều sẽ gặt được trái ngọt” – câu chuyện của chàng trai FPoly Hà Nội
+                        </a>
+                        <h3 class="news-item__date">17, March - 2022</h3>
+                    </article>
+                    <article class="news-item news-item__child">
+                        <a href="#" class="news-item__thumbail">
+                            <img src="/public/client/assets/images/image-5.jpeg"/>
+                        </a>
+                        <a href="#" class="news-item__title">
+                            “Mọi sự nỗ lực đều sẽ gặt được trái ngọt” – câu chuyện của chàng trai FPoly Hà Nội
+                        </a>
+                        <h3 class="news-item__date">17, March - 2022</h3>
+                    </article>
+                </section>
+            </section>
         </section>
 
         <section class="map-box">
