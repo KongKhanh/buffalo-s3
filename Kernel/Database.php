@@ -176,9 +176,8 @@
                         $sql .= $BlockItem;
                     }
                  }
-    
                 $sql .= $whereData;
-    
+
                 // Prepare statement
                 $stmt = self::$conn->prepare($sql);
     

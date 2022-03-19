@@ -259,11 +259,10 @@
                                     }
                                 ?>
                                 </div>
-<<<<<<< HEAD
                                 <div class="input_field"> <span><i class="fas fa-map-marker-alt"></i></span>
                                 <input type="text" name="subscriber_address" id="address" placeholder="Địa chỉ liên hệ...">
                                 <?php 
-                                    if(isset($res_subscriber['errors']['error_admin_address'])){
+                                    if(isset($res_errors_landing['errors']['error_admin_address'])){
                                         echo <<<HTML
                                             <i class="fas fa-exclamation-circle" style="color: red;">
                                             <span class="text-danger" style="color: red; width:100%;font-size:12px;">{$res_errors_landing['errors']['error_admin_address']}</span>
@@ -272,8 +271,6 @@
                                     }
                                 ?>
                                 </div>
-=======
->>>>>>> 35c2e45c2cf6ce422546dade086bab9385dfdf8e
                                 <!-- <div class="row clearfix">
                                     <div class="col_half">
                                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>

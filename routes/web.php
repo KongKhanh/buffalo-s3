@@ -72,6 +72,18 @@ $router->post('/dashboard/register', [Register::class, '__postAdminRegister']);
 $router->get('/dashboard/analytics', [AnalyticsPage::class, '__getAnalyticsPage']);
 
 /**
+ * -------------------Ads-Slide Plugin-------------------
+ */
+$router->get('/dashboard/ads-slide/create',[AdsSlide::class, '__getAdsSlideAddForm']);
+$router->get('/dashboard/ads-slide',[AdsSlide::class, '__getAdsSlideDashboar']);
+$router->get('/dashboard/ads-slide/update/{id}',[AdsSlide::class, '__getUpdateForm']);
+
+$router->post('/dashboard/ads-slide/create',[AdsSlide::class, '__postAdsSlideAddForm']);
+$router->post('/dashboard/ads-slide/update/{id}',[AdsSlide::class, '__postUpdateForm']);
+$router->post('/dashboard/ads-slide/delete',[AdsSlide::class, '__postDelete']);
+
+
+/**
  * -------------------Subscribers Plugin-------------------
  */
 $router->get('/dashboard/subscribers', [SubscriberPage::class, '__getSubscriberPage']);
