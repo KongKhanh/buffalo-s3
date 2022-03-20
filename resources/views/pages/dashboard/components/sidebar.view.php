@@ -64,6 +64,9 @@
                                     <li>
                                         <a href="/dashboard/video-iframe">Danh sách video</a>
                                     </li>
+                                    <li>
+                                        <a href="/dashboard/ads-slide">Danh sách trình chiếu</a>
+                                    </li>
                                 </ul>
                             </div>
                         </li>

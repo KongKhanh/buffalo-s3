@@ -624,6 +624,19 @@ strong {
 .news-box {
   margin-bottom: 1em;
 }
+.news-item__title {
+  font-size: 1.2em;
+  color: var(--blackColor);
+}
+.news-item__child {
+  display: grid;
+  grid-template-columns: .5fr 1fr;
+  grid-gap: 1em;
+  margin-top: 1em;
+}
+.news-item__child > .news-item__thumbail {
+  width: 100%;
+}
 .news-box__thumbnail img {
   width: 100%;
   margin-bottom: .5em;

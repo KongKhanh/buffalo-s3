@@ -26,13 +26,15 @@ class HomePage {
              * Task: update number of access to page
              */
             (new SiteInfoAPI())->__updateNumberOfAccessToSite();
-                
+            $trainingTypeList = DB::table('level_of_training')->get();
+
             return view('pages/client/home.view.php', [
                 'allMajors'                 => (new MajorPageClient())->__getAllMajors(),
                 'siteInfo'                  => $this->siteInfo,
                 'menuCategories'            => $menuCategories,
                 "LevelOfTraining"           => (new LevelOfTraining())->__getAllLevelOfTraining(),
                 "GoogleMapAddressEmbed"     => (new ThirdToolPage())->__getCodeByType("GMA001"),
+                'trainingTypeList' => $trainingTypeList
             ]); 
         
         }
@@ -79,21 +81,4 @@ class HomePage {
             return redirect('error-status/404-error');
         }
     }
-
-    public function __getSubscriberForm() {
-
-        try {
-
-            $trainingTypeList = DB::table('level_of_training')->get();
-
-            return view('pages/client/components/subscriber_form.view.php', [
-                'trainingTypeList' => $trainingTypeList
-            ]); 
-        }
-        catch (Exception $error) {
-
-            return redirect('error-status/404-error');
-        }
-    }
 }
-

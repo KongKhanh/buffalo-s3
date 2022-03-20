@@ -52,7 +52,6 @@ $router->get('/contact-us', [HomePage::class, '__getContactPage']);
 /**
  * Subscriber Plugins
  */
-// $router->get('/subscriber-form', [HomePage::class, '__getSubscriberForm']);
 $router->post('/subscriber-form', [SubscriberPage::class, '__postSubscriberPage']);
 
 /**
@@ -71,6 +70,18 @@ $router->post('/dashboard/register', [Register::class, '__postAdminRegister']);
  * -------------------Analytics Plugin-------------------
  */
 $router->get('/dashboard/analytics', [AnalyticsPage::class, '__getAnalyticsPage']);
+
+/**
+ * -------------------Ads-Slide Plugin-------------------
+ */
+$router->get('/dashboard/ads-slide/create',[AdsSlide::class, '__getAdsSlideAddForm']);
+$router->get('/dashboard/ads-slide',[AdsSlide::class, '__getAdsSlideDashboar']);
+$router->get('/dashboard/ads-slide/update/{id}',[AdsSlide::class, '__getUpdateForm']);
+
+$router->post('/dashboard/ads-slide/create',[AdsSlide::class, '__postAdsSlideAddForm']);
+$router->post('/dashboard/ads-slide/update/{id}',[AdsSlide::class, '__postUpdateForm']);
+$router->post('/dashboard/ads-slide/delete',[AdsSlide::class, '__postDelete']);
+
 
 /**
  * -------------------Subscribers Plugin-------------------

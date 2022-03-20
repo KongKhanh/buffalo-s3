@@ -31,10 +31,8 @@
 
     <main class="main-wrapper">
         <header class="main-header--outter">
-
             <!--Navbar Header-->
             <?php includeFile('pages/client/components/navbar_header.view.php');?>
-
             <section class="main-header__container">
                 <section class="main-header__desc">
                     <div class="header__desc-wrapper">
@@ -123,7 +121,21 @@
                         <ol class="majors-box__list">
                             <div>
                                 <?php 
+                                    if(Session::has("res_errors_landing")) {
 
+                                        $res_errors_landing = Session::get("res_errors_landing");
+                                    }
+                                    if(Session::has("status_subscriber")) {
+
+                                        $status_scb = Session::get("status_subscriber");
+
+                                    }
+                                    
+                                    $statusActive = $status_scb['status'] ? $status_scb['status'] : 0;
+                                    echo <<<HTML
+                                    <input type="hidden" class="status_scb" value="$statusActive">
+                                    HTML;
+                                    
                                     $majorsLeft = [];
                                     $majorsRight = [];
                                     $startRightIndex = [
@@ -196,15 +208,66 @@
                         </div>
                         <div class="row clearfix">
                         <div class="">
-                            <form>
+                            <form action="/subscriber-form" id="registerForm" method="POST">
+                                <input type="hidden" name="errors_landing" value="landing">
                                 <div class="input_field"> <span><i class="fas fa-info"></i></span>
-                                    <input type="email" name="text" placeholder="Họ và tên" required />
+                                <input type="text" name="subscriber_name" id="fullName" placeholder="Họ và tên...">
+                                <?php 
+                                    if(isset($res_errors_landing["errors"]['error_admin_name'])){
+                                        echo <<<HTML
+                                            <i class="fas fa-exclamation-circle" style="color: red;">
+                                            <span class="text-danger" style="color: red; width:100%;font-size:12px;">{$res_errors_landing["errors"]['error_admin_name']}</span>
+                                            </i>
+                                        HTML;
+                                    }
+                                ?>
+                                </div>
+                                <div class="input_field"> <span><i class="fas fa-birthday-cake"></i></span>
+                                <input  type="date" style="width: 100%; padding: 8px 10px 9px 35px; height: 35px; border: 1px solid #cccccc; box-sizing: border-box; outline: none; -webkit-transition: all 0.3s ease-in-out; -moz-transition: all 0.3s ease-in-out; -ms-transition: all 0.3s ease-in-out;" name="subscriber_dob" id="dateOfBirth" placeholder="Nhập ngày tháng năm sinh">
+                                <?php 
+                                    if(isset($res_errors_landing["errors"]['error_admin_dob'])){
+                                        echo <<<HTML
+                                            <i class="fas fa-exclamation-circle" style="color: red;">
+                                            <span class="text-danger" style="color: red; width:100%;font-size:12px;">{$res_errors_landing["errors"]['error_admin_dob']}</span></i>
+                                        HTML;
+                                    }
+                                ?>
                                 </div>
                                 <div class="input_field"> <span><i class="fas fa-phone-alt"></i></span>
-                                    <input type="password" name="number" placeholder="Số điện thoại" required />
+                                <input type="text" name="subscriber_phone" id="phoneNumber" placeholder="Số điện thoại...">
+                                <?php 
+                                    if(isset($res_errors_landing["errors"]['error_admin_phone'])){
+                                        echo <<<HTML
+                                            <i class="fas fa-exclamation-circle" style="color: red;">
+                                            <span class="text-danger" style="color: red; width:100%;font-size:12px;">{$res_errors_landing["errors"]['error_admin_phone']}</span>
+                                            </i>
+                                        HTML;
+                                    }
+                                ?>
                                 </div>
                                 <div class="input_field"> <span><i class="far fa-envelope"></i></span>
-                                    <input type="password" name="email" placeholder="Email" required />
+                                <input type="text" name="subscriber_email" id="email" placeholder="Email...">
+                                <?php 
+                                    if(isset($res_errors_landing["errors"]['error_admin_email'])){
+                                        echo <<<HTML
+                                            <i class="fas fa-exclamation-circle" style="color: red;">
+                                            <span class="text-danger" style="color: red; width:100%;font-size:12px;">{$res_errors_landing["errors"]['error_admin_email']}</span>
+                                            </i>
+                                        HTML;
+                                    }
+                                ?>
+                                </div>
+                                <div class="input_field"> <span><i class="fas fa-map-marker-alt"></i></span>
+                                <input type="text" name="subscriber_address" id="address" placeholder="Địa chỉ liên hệ...">
+                                <?php 
+                                    if(isset($res_errors_landing['errors']['error_admin_address'])){
+                                        echo <<<HTML
+                                            <i class="fas fa-exclamation-circle" style="color: red;">
+                                            <span class="text-danger" style="color: red; width:100%;font-size:12px;">{$res_errors_landing['errors']['error_admin_address']}</span>
+                                            </i>
+                                        HTML;
+                                    }
+                                ?>
                                 </div>
                                 <!-- <div class="row clearfix">
                                     <div class="col_half">
@@ -225,19 +288,42 @@
                                     <label for="rd2">Female</label>
                                 </div> -->
                                 <div class="input_field select_option">
-                                    <select>
-                                    <option>Chọn hệ đào tạo</option>
-                                    <option>Option 1</option>
-                                    <option>Option 2</option>
-                                    </select>
+                                <select name="subscriber_lot_id" id="level_of_training">
+                                <option value="" disabled selected >Chọn hệ đào tạo</option>
+                                    <?php 
+                                        if($trainingTypeList){
+                                            foreach($trainingTypeList as $typeTraining){
+                                                echo
+                                                <<< HTML
+                                                    <option value="{$typeTraining['lot_id']}">{$typeTraining['lot_name']}</option>
+                                                HTML;
+                                            }
+                                        }
+                                    ?>
+                                </select>
+                                <?php 
+                                    if(isset($res_errors_landing["errors"]['error_admin_mjr'])){
+                                        echo <<<HTML
+                                            <i class="fas fa-exclamation-circle" style="color: red;">
+                                            <span class="text-danger" style="color: red; width:100%;font-size:12px;">{$res_errors_landing["errors"]['error_admin_mjr']}</span>
+                                            </i>
+                                        HTML;
+                                    }
+                                ?>
                                     <div class="select_arrow"></div>
                                 </div>
                                 <div class="input_field select_option">
-                                    <select>
-                                    <option>Chọn ngành đào tạo</option>
-                                    <option>Option 1</option>
-                                    <option>Option 2</option>
-                                    </select>
+                                <select name="subscriber_mjr_id" id="course">
+                                </select>
+                                <?php 
+                                    if(isset($res_errors_landing["errors"]['error_admin_lot'])){
+                                        echo <<<HTML
+                                            <i class="fas fa-exclamation-circle" style="color: red;">
+                                            <span class="text-danger" style="color: red; width:100%;font-size:12px;">{$res_errors_landing["errors"]['error_admin_lot']}</span>
+                                            </i>
+                                        HTML;
+                                    }
+                                ?>
                                     <div class="select_arrow"></div>
                                 </div>
                                     <!-- <div class="input_field checkbox_option">
@@ -251,10 +337,10 @@
 
                                 <div class="row clearfix">
                                     <div class="input_field">
-                                        <textarea name="note" id="note" placeholder="Ghi chú" rows="6"></textarea>
+                                        <textarea name="subscriber_note" id="note" placeholder="Ghi chú" rows="6"></textarea>
                                     </div>
                                 </div>
-                                <input class="button" type="submit" value="ĐĂNG KÝ" />
+                                <input class="button register" type="submit" value="ĐĂNG KÝ" />
                             </form>
                         </div>
                         </div>
@@ -314,7 +400,72 @@
                     ?>
                 </section>
             </section>
-            <!-- #endregion News -->
+            <section class="news-container" style="justify-content: space-between;">
+                <section class="news-box" style="margin:0 1.2em;">
+                    <h3 class="news-box__title" style="font-size: 1.5em; font-weight: bold; text-transform: uppercase;">
+                        GƯƠNG MẶT POLY
+                    </h3>
+                    <article class="news-item">
+                        <a href="#" class="news-item__thumbail">
+                            <img src="/public/client/assets/images/image-5.jpeg"/>
+                        </a>
+                        <a href="#" class="news-item__title">
+                            “Mọi sự nỗ lực đều sẽ gặt được trái ngọt” – câu chuyện của chàng trai FPoly Hà Nội
+                        </a>
+                        <h3 class="news-item__date">17, March - 2022</h3>
+                    </article>
+                    <article class="news-item news-item__child">
+                        <a href="#" class="news-item__thumbail">
+                            <img src="/public/client/assets/images/image-5.jpeg"/>
+                        </a>
+                        <a href="#" class="news-item__title">
+                            “Mọi sự nỗ lực đều sẽ gặt được trái ngọt” – câu chuyện của chàng trai FPoly Hà Nội
+                        </a>
+                        <h3 class="news-item__date">17, March - 2022</h3>
+                    </article>
+                    <article class="news-item news-item__child">
+                        <a href="#" class="news-item__thumbail">
+                            <img src="/public/client/assets/images/image-5.jpeg"/>
+                        </a>
+                        <a href="#" class="news-item__title">
+                            “Mọi sự nỗ lực đều sẽ gặt được trái ngọt” – câu chuyện của chàng trai FPoly Hà Nội
+                        </a>
+                        <h3 class="news-item__date">17, March - 2022</h3>
+                    </article>
+                </section>
+                <section class="news-box" style="margin:0 1.2em;">
+                    <h3 class="news-box__title" style="font-size: 1.5em; font-weight: bold; text-transform: uppercase;">
+                        GƯƠNG MẶT POLY
+                    </h3>
+                    <article class="news-item">
+                        <a href="#" class="news-item__thumbail">
+                            <img src="/public/client/assets/images/image-5.jpeg"/>
+                        </a>
+                        <a href="#" class="news-item__title">
+                            “Mọi sự nỗ lực đều sẽ gặt được trái ngọt” – câu chuyện của chàng trai FPoly Hà Nội
+                        </a>
+                        <h3 class="news-item__date">17, March - 2022</h3>
+                    </article>
+                    <article class="news-item news-item__child">
+                        <a href="#" class="news-item__thumbail">
+                            <img src="/public/client/assets/images/image-5.jpeg"/>
+                        </a>
+                        <a href="#" class="news-item__title">
+                            “Mọi sự nỗ lực đều sẽ gặt được trái ngọt” – câu chuyện của chàng trai FPoly Hà Nội
+                        </a>
+                        <h3 class="news-item__date">17, March - 2022</h3>
+                    </article>
+                    <article class="news-item news-item__child">
+                        <a href="#" class="news-item__thumbail">
+                            <img src="/public/client/assets/images/image-5.jpeg"/>
+                        </a>
+                        <a href="#" class="news-item__title">
+                            “Mọi sự nỗ lực đều sẽ gặt được trái ngọt” – câu chuyện của chàng trai FPoly Hà Nội
+                        </a>
+                        <h3 class="news-item__date">17, March - 2022</h3>
+                    </article>
+                </section>
+            </section>
         </section>
 
         <section class="map-box">
@@ -334,6 +485,12 @@
 
 <script src="/public/client/assets/js/app.js"></script>
 <script>
+
+    console.log($('.status_scb').val());
+
+    if(($('.status_scb').val()) == 1997)  {
+        window.alert("Đăng ký thành công!");
+    }
 
     const slideBtnLeft = $('#desc-slide__btn-left');
     const slideBtnRight = $('#desc-slide__btn-right');
