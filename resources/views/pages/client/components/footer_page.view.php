@@ -89,7 +89,7 @@
                                 HTML;
                             }
                         ?>
-                        <p class="contact-box--detail">
+                        <!-- <p class="contact-box--detail">
                             Liên kết tại Bình Chánh: Trung tâm Giáo dục nghề nghiệp - Giáo dục thường xuyên
                             (GDNN-GDTX) huyện Bình Chánh (Số 4 Đường số 6 Khu hành chính huyện, Thị trấn Tân
                             Túc, Huyện Bình Chánh).
@@ -97,7 +97,7 @@
                         <p class="contact-box--detail">
                             Liên kết tại Q.12: Trường Trung Cấp Kinh Tế Kỹ Thuật Quận 12 (592 Nguyễn Ảnh Thủ,
                             Phường Trung Mỹ Tây, Quận 12).
-                        </p>
+                        </p> -->
                     </div>
                 </article>
             </section>
