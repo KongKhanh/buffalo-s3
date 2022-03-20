@@ -107,14 +107,10 @@
     CKEDITOR.replace('contenteditor');
 </script>
 <script>
-    
-    var urlLogoOrigin = '';
 
     $('#ads_slide_img_link_form') && $('#ads_slide_img_link_form').change(function(event) {
 
         const [file] = event.target.files;
-
-        urlLogoOrigin = $(this).attr('data-url-logo');
 
        if($('#ads_slide_img_link_add_form')) {
 
@@ -126,8 +122,9 @@
 
     $('#btnCancelUpdateImg') && $('#btnCancelUpdateImg').click(function() {
 
-        $('#ads_slide_img_link_add_form').attr('src', urlLogoOrigin);
-        
+
+        $('#ads_slide_img_link_add_form').attr('src', "/public/storage/images/default/g-dragon.webp");
+
         $('#btnCancelUpdateImg').addClass('d-none');
     });
 </script>

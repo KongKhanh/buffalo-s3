@@ -93,7 +93,7 @@ View::__template()->__startSection("content");
                                 foreach ($subscribers as $subscriber) {
 
                                     $subscriber_address     = Str::limit($subscriber["subscriber_address"], 15, "...");
-                                    $subscriber_status = $subscriber["subscriber_status"] == "new" ? "checked" : "";
+                                    $subscriber_status = $subscriber["subscriber_status"] == "approved" ? "checked" : "";
                                     echo <<<HTML
                                             <tr>
                                                 <td>
@@ -196,10 +196,10 @@ View::__template()->__startSection("content");
 
         if (this.checked) {
 
-            __requestUpdate("new");
+            __requestUpdate("approved");
         } else {
 
-            __requestUpdate("approved");
+            __requestUpdate("new");
         }
     });
     $('.btnDeleteSubscriber').click(function() {

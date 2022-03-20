@@ -58,7 +58,6 @@
                         if(Session::has("ads_slide_infor")) {
 
                             $ads_slide_infor = Session::get("ads_slide_infor");
-
                             echo <<<HTML
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                                     {$ads_slide_infor["message"]}
@@ -102,6 +101,7 @@
                                             $statusActive = $AdsSlide["ads_slide_status"] == "published" ? "checked" : "";
 
                                             $AdsSlide["ads_slide_created_at"] = date_format(date_create($AdsSlide["ads_slide_created_at"]), "d-m-Y");
+                                            var_dump($AdsSlide['ads_slide_link_to']);
 
                                             echo <<<HTML
                                                 <tr>
