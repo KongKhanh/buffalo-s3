@@ -26,24 +26,25 @@
                             <form method="POST" action="/dashboard/menu-cate/update/<?php echo $menuCateItem['mc_id'];?>">
                                 <div class="row g-2">
                                     <div class="mb-3 col-md-6">
-                                        <label for="mc_title" class="form-label">Tên danh mục</label>
+                                        <label for="mc_title_update" class="form-label">Tên danh mục</label>
                                         <input 
                                             type="text" 
                                             class="form-control" 
                                             name="mc_title" 
-                                            id="mc_title" 
+                                            id="mc_title_update" 
                                             placeholder="Nhập tên tiêu đề"
+                                            data-last-mc-id="<?= $lastNewsID; ?>"
                                             value="<?php echo $menuCateItem['mc_title'];?>"
                                         >
                                     </div>
                                 </div>
                                 <div class="mb-3 col-md-6">
-                                    <label for="link_url" class="form-label">Link danh mục (tùy chọn)</label>
+                                    <label for="link_url_update" class="form-label">Link danh mục (tùy chọn)</label>
                                     <input 
                                         type="text" 
                                         name="link_url" 
                                         class="form-control" 
-                                        id="link_url" 
+                                        id="link_url_update" 
                                         placeholder="Nhập link bài viết"
                                         value="<?php echo $menuCateItem['link_url'];?>"
                                     >

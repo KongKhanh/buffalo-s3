@@ -39,7 +39,7 @@ class NewsPage {
             return view("pages/dashboard/components/plugins/news/add_form.view.php", [
 
                 "newsCate"          => $this->newsCate,
-                "lastNewsID"         => $this->__getLastRecordID()
+                "lastNewsID"        => $this->__getLastRecordID()
             ]);
         }
         catch(Exception $error) {
