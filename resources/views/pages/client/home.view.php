@@ -129,12 +129,12 @@
 
                                         $status_scb = Session::get("status_subscriber");
 
+                                        $statusActive = $status_scb['status'] ? $status_scb['status'] : 0;
+
+                                        echo <<<HTML
+                                            <input type="hidden" class="status_scb" value="$statusActive">
+                                        HTML;
                                     }
-                                    
-                                    $statusActive = $status_scb['status'] ? $status_scb['status'] : 0;
-                                    echo <<<HTML
-                                    <input type="hidden" class="status_scb" value="$statusActive">
-                                    HTML;
                                     
                                     $majorsLeft = [];
                                     $majorsRight = [];
@@ -401,69 +401,58 @@
                 </section>
             </section>
             <section class="news-container" style="justify-content: space-between;">
-                <section class="news-box" style="margin:0 1.2em;">
-                    <h3 class="news-box__title" style="font-size: 1.5em; font-weight: bold; text-transform: uppercase;">
-                        GƯƠNG MẶT POLY
-                    </h3>
-                    <article class="news-item">
-                        <a href="#" class="news-item__thumbail">
-                            <img src="/public/client/assets/images/image-5.jpeg"/>
-                        </a>
-                        <a href="#" class="news-item__title">
-                            “Mọi sự nỗ lực đều sẽ gặt được trái ngọt” – câu chuyện của chàng trai FPoly Hà Nội
-                        </a>
-                        <h3 class="news-item__date">17, March - 2022</h3>
-                    </article>
-                    <article class="news-item news-item__child">
-                        <a href="#" class="news-item__thumbail">
-                            <img src="/public/client/assets/images/image-5.jpeg"/>
-                        </a>
-                        <a href="#" class="news-item__title">
-                            “Mọi sự nỗ lực đều sẽ gặt được trái ngọt” – câu chuyện của chàng trai FPoly Hà Nội
-                        </a>
-                        <h3 class="news-item__date">17, March - 2022</h3>
-                    </article>
-                    <article class="news-item news-item__child">
-                        <a href="#" class="news-item__thumbail">
-                            <img src="/public/client/assets/images/image-5.jpeg"/>
-                        </a>
-                        <a href="#" class="news-item__title">
-                            “Mọi sự nỗ lực đều sẽ gặt được trái ngọt” – câu chuyện của chàng trai FPoly Hà Nội
-                        </a>
-                        <h3 class="news-item__date">17, March - 2022</h3>
-                    </article>
+
+                <?php 
+                    $newsLeft = [];
+                    $newsRight = [];
+
+                    for($i = 0; $i < count($news); $i++) {
+
+                        if($i < ceil(count($news) / 2)) {
+
+                            array_push($newsLeft, $news[$i]);
+                        }
+                        else {
+
+                            array_push($newsRight, $news[$i]);
+                        }
+                    }
+                ?>
+                <section class="news-box news-home-box news-home-box-l">
+                    <?php 
+                        foreach($newsLeft as $newsItem) {
+
+                            echo <<<HTML
+                                <article class="news-item news-home-item">
+                                    <a href="#" class="news-item__thumbail">
+                                        <img src="{$newsItem['news_representative_image']}" width="128" class="news-home-image"/>
+                                    </a>
+                                    <a href="#" class="news-item__title">
+                                        {$newsItem['news_title']}
+                                    </a>
+                                    <!-- <h3 class="news-item__date">17, March - 2022</h3> -->
+                                </article>
+                            HTML;
+                        }
+                    ?>
+                    
                 </section>
-                <section class="news-box" style="margin:0 1.2em;">
-                    <h3 class="news-box__title" style="font-size: 1.5em; font-weight: bold; text-transform: uppercase;">
-                        GƯƠNG MẶT POLY
-                    </h3>
-                    <article class="news-item">
-                        <a href="#" class="news-item__thumbail">
-                            <img src="/public/client/assets/images/image-5.jpeg"/>
-                        </a>
-                        <a href="#" class="news-item__title">
-                            “Mọi sự nỗ lực đều sẽ gặt được trái ngọt” – câu chuyện của chàng trai FPoly Hà Nội
-                        </a>
-                        <h3 class="news-item__date">17, March - 2022</h3>
-                    </article>
-                    <article class="news-item news-item__child">
-                        <a href="#" class="news-item__thumbail">
-                            <img src="/public/client/assets/images/image-5.jpeg"/>
-                        </a>
-                        <a href="#" class="news-item__title">
-                            “Mọi sự nỗ lực đều sẽ gặt được trái ngọt” – câu chuyện của chàng trai FPoly Hà Nội
-                        </a>
-                        <h3 class="news-item__date">17, March - 2022</h3>
-                    </article>
-                    <article class="news-item news-item__child">
-                        <a href="#" class="news-item__thumbail">
-                            <img src="/public/client/assets/images/image-5.jpeg"/>
-                        </a>
-                        <a href="#" class="news-item__title">
-                            “Mọi sự nỗ lực đều sẽ gặt được trái ngọt” – câu chuyện của chàng trai FPoly Hà Nội
-                        </a>
-                        <h3 class="news-item__date">17, March - 2022</h3>
-                    </article>
+                <section class="news-box news-home-box news-home-box-r">
+                    <?php 
+                        foreach($newsRight as $newsItem) {
+                            echo <<<HTML
+                                <article class="news-item news-home-item">
+                                    <a href="#" class="news-item__thumbail">
+                                        <img src="{$newsItem['news_representative_image']}" class="news-home-image"/>
+                                    </a>
+                                    <a href="#" class="news-item__title">
+                                        {$newsItem['news_title']}
+                                    </a>
+                                    <!-- <h3 class="news-item__date">17, March - 2022</h3> -->
+                                </article>
+                            HTML;
+                        }
+                    ?>
                 </section>
             </section>
         </section>

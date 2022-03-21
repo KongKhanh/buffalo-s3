@@ -43,6 +43,23 @@
   outline: none;
 }
 
+.news-home-box.news-home-box-l {
+  margin: 0 1.2em 0 0;
+}
+.news-home-box.news-home-box-r {
+  margin: 0 0 0 1.2em;
+}
+.news-home-box .news-home-item {
+  display: flex;
+}
+.news-home-box .news-home-item .news-item__thumbail {
+  margin-right: 16px;
+}
+.news-home-box .news-home-item .news-home-image {
+  height: 75px;
+  width: 128px !important;
+}
+
 @media screen and (min-width: 320px) and (max-width: 480px) {
   .main-header--inner {
     display: none;

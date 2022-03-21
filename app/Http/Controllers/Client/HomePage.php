@@ -22,6 +22,8 @@ class HomePage {
                 $menuCategories[$i]["childrenList"] = $childrenCategories;
             }
 
+            $news = array_reverse(DB::table("news")->get());
+
             /**
              * Task: update number of access to page
              */
@@ -34,9 +36,9 @@ class HomePage {
                 'menuCategories'            => $menuCategories,
                 "LevelOfTraining"           => (new LevelOfTraining())->__getAllLevelOfTraining(),
                 "GoogleMapAddressEmbed"     => (new ThirdToolPage())->__getCodeByType("GMA001"),
-                'trainingTypeList' => $trainingTypeList
+                'trainingTypeList'          => $trainingTypeList,
+                'news'                      => $news,
             ]); 
-        
         }
         catch (Exception $error){
 

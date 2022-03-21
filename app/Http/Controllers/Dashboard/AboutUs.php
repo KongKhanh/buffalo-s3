@@ -239,6 +239,13 @@ class AboutUs {
                 ]);
             }
 
+            if(input('sia_address_3')) {
+
+                DB::table("site_info_address")->where("sia_id", 3)->update([
+                    'sia_address'         => trim(input('sia_address_3')),
+                ]);
+            }
+
             Session::flash("res_status", [
                 "status"        => "200",
                 "message"       => "Cập nhật dữ liệu thành công"

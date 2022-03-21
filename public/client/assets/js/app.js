@@ -86,11 +86,11 @@ $(document).ready(function(){
         if(idLot){
 
             $.ajax({
-                method: "GET",
                 url: `/api/majors-by-id/${idLot}`,
                 headers: {
-                    'Content-Type':'application/json'
+                    // 'Content-Type':'application/json'
                 },
+                method: "GET",
             })
             .done(function(res) {
 

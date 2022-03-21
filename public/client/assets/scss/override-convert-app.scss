@@ -49,6 +49,28 @@ $navbar_LinkColor: #283054;
     }
 }
 
+.news-home-box {
+  &.news-home-box-l {
+
+    margin: 0 1.2em 0 0;
+  }
+  &.news-home-box-r {
+
+    margin: 0 0 0 1.2em;
+  }
+  .news-home-item {
+    display: flex;
+    .news-item__thumbail {
+        margin-right: 16px;
+    }
+    .news-home-image {
+        height: 75px;
+        width: 128px !important;
+        // object-fit: cover;
+    }
+  }
+}
+
 @media screen and (min-width: 320px) and (max-width: 480px){ 
 
     .main-header--inner {
