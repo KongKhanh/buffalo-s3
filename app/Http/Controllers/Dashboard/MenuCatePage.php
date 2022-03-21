@@ -48,7 +48,8 @@ class MenuCatePage {
                     case "A001":
                         return view("pages/dashboard/components/plugins/menu_cate/add_form.view.php", [
                             "type_cate_menu"        => "A001",
-                            "parentID"              => $parentID
+                            "parentID"              => $parentID,
+                            "lastNewsID"        => $this->__getLastRecordID()
                         ]);
                         break;
 
@@ -56,7 +57,8 @@ class MenuCatePage {
 
                         return view("pages/dashboard/components/plugins/menu_cate/add_form.view.php", [
                             "type_cate_menu"        => "A002",
-                            "parentID"              => $parentID
+                            "parentID"              => $parentID,
+                            "lastNewsID"        => $this->__getLastRecordID()
                         ]);
                         break;
 
@@ -74,7 +76,7 @@ class MenuCatePage {
 
     
     public function __postAdd() {
-
+       
         try {
 
             $input = [
@@ -84,8 +86,10 @@ class MenuCatePage {
             ];
 
             $existTCM = array_search($input["type_cate_menu"], $this->type_cate_menu, true);
-
-            if(!$input["type_cate_menu"] || !$existTCM)  return redirect('error-status/404-error');
+            
+            if(!$input["type_cate_menu"] || $existTCM){
+                return redirect('error-status/404-error');
+            };
 
             $rootTCM = 0;
 
@@ -149,7 +153,8 @@ class MenuCatePage {
 
                     return view("pages/dashboard/components/plugins/menu_cate/update_form.view.php", [
 
-                        "menuCateItem"       => $menuCateItem
+                        "menuCateItem"       => $menuCateItem,
+                        "lastNewsID"        => $this->__getLastRecordID()
                     ]);
                 }
 
@@ -188,6 +193,17 @@ class MenuCatePage {
                 ]);
             }
 
+            $mcItem = DB::table("menu_cate")->where("mc_id",$id)->first();
+
+            if(input("link_url")){
+
+                $input = [
+                    
+                        "link_url"  => !is_null(input("link_url")) ? input("link_url") : false, 
+                ];
+
+                DB::table("links")->where("link_id", $mcItem['mc_link_id'])->update($input);
+            }
             if(isset($id) && count($dataToUpDate) > 0) {
 
                 $statusUpdate = DB::table("menu_cate")->where("mc_id", $id)->update($dataToUpDate);
@@ -225,8 +241,12 @@ class MenuCatePage {
 
             if($input["mc_id"]) {
 
-                $status = DB::table("menu_cate")->where("mc_id", $input["mc_id"])->delete();
+                $mcItem = DB::table("menu_cate")->where("mc_id", $input["mc_id"])->first();
 
+                DB::table("links")->where("link_id", $mcItem['mc_link_id'])->delete();
+
+                DB::table("menu_cate")->where("mc_id", $input["mc_id"])->delete();
+                
                 Session::flash("res_menu_cate_info", [
                     "status"        => "200",
                     "message"       => "Xóa dữ liệu thành công"
@@ -270,5 +290,13 @@ class MenuCatePage {
 
             return array();
         }
+    }
+    public function __getLastRecordID() {
+
+        $ID = DB::table("menu_cate")->max('mc_id');
+
+        if($ID) return $ID;
+
+        return 0;
     }
 }

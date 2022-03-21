@@ -208,7 +208,7 @@ class AdsSlide {
                 ]);
 
                 $dataToUpdate["ads_slide_img_link"] = array_merge($dataToUpdate["ads_slide_img_link"], [
-                    'target_dir'        =>      'public/storage/images/ads_slide/'
+                    'target_dir'        =>      'public/storage/images/'
                 ]);
 
                 $statusMove = SingleHelper::moveFile($dataToUpdate["ads_slide_img_link"]);

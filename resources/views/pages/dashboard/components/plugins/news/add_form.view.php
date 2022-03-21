@@ -103,7 +103,6 @@
                     middle = this.value.trim(), 
                     end = ('-' + (parseInt(this.getAttribute('data-last-news-id')) + 1)), 
                     seperate = '-';
-
                 document.querySelector('#link_url').value = generateURL(start, middle, end, seperate);
             }
         }

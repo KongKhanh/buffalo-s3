@@ -97,6 +97,8 @@
                                         HTML;
                                 }
 
+                                $statusActive001 = $menu_cate_item["mc_status"] == "published" ? "checked" : "";
+                            
                                 echo <<<HTML
                                     <div class="card mb-0">
                                         <div class="card-header" id="heading_{$menu_cate_item['mc_id']}">
@@ -109,6 +111,9 @@
                                                     <a href="/dashboard/menu-cate/update/{$menu_cate_item['mc_id']}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
                                                     <a href="javascript:void(0);" class="action-icon btnDeleteMenuCate" data-id="{$menu_cate_item['mc_id']}"> <i class="mdi mdi-delete"></i></a>
                                                 </a>
+                                                <span class="form-check form-switch" style="position:absolute; top:18px; right:50px">
+                                                        <input type="checkbox" class="form-check-input mc_status" data-id="{$menu_cate_item['mc_id']}" id="customSwitch_{$menu_cate_item['mc_id']}" {$statusActive001}>
+                                                </span>
                                             </h5>
                                         </div>
                                         <div id="collapse_{$menu_cate_item['mc_id']}" class="collapse" aria-labelledby="heading{$menu_cate_item['mc_id']}" data-bs-parent="#custom-accordion-one">

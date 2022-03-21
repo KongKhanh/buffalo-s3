@@ -26,7 +26,8 @@
                                 <div class="row g-2">
                                     <div class="mb-3 col-md-6">
                                         <label for="mc_title" class="form-label">Tên danh mục</label>
-                                        <input type="text" class="form-control" name="mc_title" id="mc_title" placeholder="Nhập tên danh mục">
+                                        <input type="text" class="form-control" name="mc_title" id="mc_title" placeholder="Nhập tên danh mục"
+                                        data-last-mc-id="<?= $lastNewsID; ?>">
                                     </div>
                                     <div class="mb-3 col-md-6">
                                         <label for="link_url" class="form-label">Link URL (tùy chọn)</label>
@@ -55,5 +56,6 @@
 <script>
     CKEDITOR.replace('contenteditor');
 </script>
+
 
 <?php View::__template()->__endSection(); ?>

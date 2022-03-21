@@ -39,7 +39,7 @@ class NewsPage {
             return view("pages/dashboard/components/plugins/news/add_form.view.php", [
 
                 "newsCate"          => $this->newsCate,
-                "lastNewsID"         => $this->__getLastRecordID()
+                "lastNewsID"        => $this->__getLastRecordID()
             ]);
         }
         catch(Exception $error) {
@@ -220,7 +220,11 @@ class NewsPage {
 
             if($input["news_id"]) {
 
-                $status = DB::table("news")->where("news_id", $input["news_id"])->delete();
+                $newsItem = DB::table("news")->where("news_id", $input["news_id"])->first();
+
+                DB::table("links")->where("link_id",$newsItem["news_link_id"])->delete();
+
+                DB::table("news")->where("news_id", $input["news_id"])->delete();
 
                 Session::flash("res_news_info", [
                     "status"        => "200",
