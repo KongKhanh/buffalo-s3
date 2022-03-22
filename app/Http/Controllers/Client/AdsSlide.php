@@ -26,7 +26,7 @@ class AdsSlide {
         }
     }
 
-    public function __getAdsSlideDashboar() {
+    public function __getAdsSlideDashboard() {
 
         try{
 
@@ -102,6 +102,7 @@ class AdsSlide {
                     'ads_slide_status'        => trim(input('ads_slide_status')),
                 ]);
             }
+
             if(input('ads_slide_img_link') && !empty(input('ads_slide_img_link')['name'])) {
 
                 $dataToUpdate = array_merge($dataToUpdate, [
@@ -109,18 +110,17 @@ class AdsSlide {
                 ]);
 
                 $dataToUpdate["ads_slide_img_link"] = array_merge($dataToUpdate["ads_slide_img_link"], [
-                    'target_dir'        =>      'public/storage/images/ads_slide/'
+                    'target_dir'        =>      'public/storage/images/'
                 ]);
 
                 $statusMove = SingleHelper::moveFile($dataToUpdate["ads_slide_img_link"]);
 
                 $dataToUpdate["ads_slide_img_link"] =  $statusMove == true ? "/" . $dataToUpdate["ads_slide_img_link"]["target_dir"] . $dataToUpdate["ads_slide_img_link"]["name"] : null;
-
             }
 
             if($id){
                 
-             $statusUpdate = DB::table("ads_slide")->where("ads_slide_id", $id)->update($dataToUpdate);
+                $statusUpdate = DB::table("ads_slide")->where("ads_slide_id", $id)->update($dataToUpdate);
 
                 Session::flash("ads_slide_infor", [
                     "status"        => "200",

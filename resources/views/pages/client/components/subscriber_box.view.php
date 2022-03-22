@@ -2,8 +2,8 @@
 
     $trainingTypeList = DB::table('level_of_training')->get(); 
 
-    $popupStatusForm = "";
-    $popupStatusCCForm = "";
+    $popupStatusForm    = "";
+    $popupStatusCCForm  = "";
 
     if(Session::has("res_subscriber")) {
 
@@ -17,7 +17,6 @@
         $res_contact_consult = Session::get("status_contact_consult");
 
         $popupStatusCCForm = isset($res_contact_consult['errors']) ? "display: block;" : "display: none;";
-
     }
 ?>
 <style>
@@ -199,7 +198,7 @@
 <!------------------------Consult Form------------------------------------->
 
 <section class="register-modal" id="consultModal" style="<?= $popupStatusCCForm;?>">
-    <input type="hidden" id="status-cc-form" value="<?= $res_contact_consult['status'];?>">
+    <input type="hidden" id="status-cc-form" value="<?php if(isset($res_contact_consult['status'])) {echo($res_contact_consult['status']);}?>">
     <section class="register-block register-modal--block">
         <i 
             class="fas fa-times-circle" 

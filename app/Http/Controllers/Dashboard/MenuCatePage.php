@@ -201,17 +201,12 @@ class MenuCatePage {
 
                 $statusUpdate = DB::table("menu_cate")->where("mc_id", $id)->update($dataToUpDate);
 
-                if($statusUpdate && $statusUpdate != 0) {
+                Session::flash("res_menu_cate_info", [
+                    "status"        => "200",
+                    "message"       => "Cập nhật dữ liệu thành công"
+                ]);
 
-                    Session::flash("res_menu_cate_info", [
-                        "status"        => "200",
-                        "message"       => "Cập nhật dữ liệu thành công"
-                    ]);
-
-                    redirect('/dashboard/menu-cate');
-                }
-
-                return redirect('error-status/500-error'); 
+                return redirect('/dashboard/menu-cate');
             }
             else {
 

@@ -160,6 +160,20 @@
                     </ul>
                 </div>
             </li> -->
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#uPvP4jwufkjzmBQ" aria-expanded="false" aria-controls="sidebarPages" class="side-nav-link">
+                    <i class="uil-copy-alt"></i>
+                    <span> Quản lý giao diện </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="uPvP4jwufkjzmBQ">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="/dashboard/activity-logs/users">Giao diện trang chủ</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
         </ul>
 
         <!-- Help Box -->

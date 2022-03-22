@@ -83,7 +83,7 @@
             ?>
         </section>
     </section>
-    <section class="relate-tags">
+    <!-- <section class="relate-tags">
         <h4 class="sidebar__title">
             Tag liên kết
         </h4>
@@ -105,5 +105,5 @@
         <article class="tags">
             Điểm thi
         </article>
-    </section>
+    </section> -->
 </aside>
