@@ -146,4 +146,73 @@ class HomePage {
             return false;
         }
     }
+
+    public function __getContactConsult(){
+
+        try{
+
+            $ContactconsultLists = DB::table('contact_consult')->get();
+
+            return view("pages/dashboard/contact_consult.view.php", [
+
+                "ContactconsultLists"       => $ContactconsultLists
+            ]);
+
+        }
+        catch (Exception $error){
+
+            return false;
+        }
+    }
+
+    public function __postUpdateStatusContactConsult($id){
+        
+        try{
+
+            if(input("cc_status")) {
+
+                $dataToUpDate = [
+
+                    "cc_status"      => trim(input("cc_status"))
+                ];
+
+                $statusCC = DB::table('contact_consult')->where("cc_id",$id)->update($dataToUpDate);
+            }
+
+            if(!$statusCC){
+
+                Session::flash("res_contact_consult_info", [
+                    "status"        => "200",
+                    "message"       => "Cập nhật dữ liệu thất bại"
+                ]);
+            }
+
+            return redirect('/dashboard/contact-consult');
+
+        }
+        catch(Exception $error){
+
+            return false;
+        }
+    }
+    
+    public function __getContentContactConsult($id){
+
+        header("Content-Type: application/json");
+
+        try{
+
+            $ccItem = DB::table('contact_consult')->where('cc_id',$id)->first();
+
+            echo json_encode([
+                
+                "CcbyID" => $ccItem
+            ]);
+
+        }
+        catch(Exception $error){
+
+            return false;
+        }
+    }
 }

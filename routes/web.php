@@ -105,6 +105,13 @@ $router->post('/dashboard/subscriber/delete', [SubscriberPage::class, '__deleteS
 
 
 /**
+ * -------------------Contact Consult Plugin-------------------
+ */
+$router->get('/dashboard/contact-consult', [HomePage::class, '__getContactConsult']);
+$router->get('/dashboard/contact-consult/content/{id}', [HomePage::class, '__getContentContactConsult']);
+$router->post('/dashboard/contact-consult/update/{id}', [HomePage::class, '__postUpdateStatusContactConsult']);
+
+/**
  * -------------------News Plugin-------------------
  */
 $router->get('/dashboard/news', [NewsPage::class, '__getNewsPage'])->middleware('auth');
