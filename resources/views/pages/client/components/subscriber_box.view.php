@@ -2,6 +2,8 @@
 
     $trainingTypeList = DB::table('level_of_training')->get(); 
 
+    $popupStatusForm = "";
+
     if(Session::has("res_subscriber")) {
 
         $res_subscriber = Session::get("res_subscriber");

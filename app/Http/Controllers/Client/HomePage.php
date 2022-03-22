@@ -22,7 +22,7 @@ class HomePage {
                 $menuCategories[$i]["childrenList"] = $childrenCategories;
             }
 
-            $news = array_reverse(DB::table("news")->get());
+            $news = array_slice(array_reverse(DB::table("news")->get()), 0, 8);
 
             /**
              * Task: update number of access to page

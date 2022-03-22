@@ -93,8 +93,6 @@ $(document).ready(function(){
                 method: "GET",
             })
             .done(function(res) {
-
-                console.log(res);
                 
                 var getMajor = disabledOption;
 
