@@ -168,8 +168,19 @@
                 </a>
                 <div class="collapse" id="uPvP4jwufkjzmBQ">
                     <ul class="side-nav-second-level">
-                        <li>
-                            <a href="/dashboard/activity-logs/users">Giao diện trang chủ</a>
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#uPvP4jwufkjzmBBQ" aria-expanded="false">
+                                <span>Giao diện trang chủ</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <!-- href="/dashboard/activity-logs/users" -->
+                            <div class="collapse" id="uPvP4jwufkjzmBBQ">
+                                <ul class="side-nav-third-level">
+                                    <li>
+                                        <a href="/dashboard/ui-background">Giao Diện Background</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                     </ul>
                 </div>

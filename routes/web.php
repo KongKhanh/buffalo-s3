@@ -206,4 +206,10 @@ $router->get('/dashboard/tool-third/facebook-chat-messenger', [ThirdToolPage::cl
 
 $router->post('/dashboard/tool-third/update/by-switch-case', [ThirdToolPage::class, '__postUpdateThirdToolPlugins'])->middleware('auth');
 
+/**
+ * Ui Background
+ */
+$router->get('/dashboard/ui-background', [UiBackground::class, '__getInsertBackgroundForm'])->middleware('auth');
+
+$router->post('/dashboard/ui-background/create', [UiBackground::class, '__addBackgroundform'])->middleware('auth');
 
