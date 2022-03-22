@@ -205,6 +205,13 @@ class AboutUs {
                 ]);
             }
 
+            if(input('sip_phone_3')) {
+
+                DB::table("site_info_phone")->where("sip_id", 3)->update([
+                    'sip_phone'         => trim(input('sip_phone_3')),
+                ]);
+            }
+
             /**
              * Email area
              */

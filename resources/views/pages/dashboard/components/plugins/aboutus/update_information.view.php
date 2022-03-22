@@ -56,9 +56,11 @@
                                     <?php 
                                         foreach($siteInfo['sitePhone'] as $sitePhone) {
 
+                                            $title = $sitePhone['sip_id'] != 3 ? "Số điện thoại liên hệ" : "Số điện thoại liên hệ (Hotline)";
+
                                             echo <<<HTML
                                                 <div class="mb-3 col-md-6">
-                                                    <label for="sip_phone_{$sitePhone['sip_id']}" class="form-label">Số điện thoại liên hệ</label>
+                                                    <label for="sip_phone_{$sitePhone['sip_id']}" class="form-label">{$title}</label>
                                                     <input 
                                                         type="text" 
                                                         class="form-control" 

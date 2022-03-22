@@ -32,6 +32,7 @@
         background: #ffff;
         text-decoration: none;
         left: 0;
+        z-index: 99;
     }
     .main-header__menubar .sub-menu li {
         position:relative;
@@ -149,7 +150,7 @@
                 }
             ?>
 
-            <li class="menubar__list-item menu_category">
+            <!-- <li class="menubar__list-item menu_category">
                 <a href="/news">Tin tức</a>
             </li>
 
@@ -159,7 +160,7 @@
 
             <li class="menubar__list-item menu_category">
                 <a href="/about-us">Giới thiệu</a>
-            </li>
+            </li> -->
 
             <!-- <li class="menubar__list-item" style="animation: none;">
                 <input type="text" name="headSearh" id="headSearch" placeholder="Tìm kiếm">

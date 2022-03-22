@@ -31,9 +31,13 @@
 
     <main class="main-wrapper">
         <header class="main-header--outter">
+
             <!--Navbar Header-->
+
             <?php includeFile('pages/client/components/navbar_header.view.php');?>
+
             <section class="main-header__container">
+
                 <section class="main-header__desc">
                     <div class="header__desc-wrapper">
                         <h1 class="desc__title">
@@ -43,7 +47,7 @@
                             <?= $siteInfo['site_info_short_description']; ?>
                         </p>
                         <div class="desc__research--btn">
-                            <a class="btn" href="/about-us">Tìm hiểu</a>
+                            <a class="btn" href="/about-us" style="margin-left: 0;">Tìm hiểu</a>
                         </div>
                     </div>
                 </section>
@@ -82,39 +86,7 @@
         <!--Navbar Header-->
         <?php includeFile('pages/client/components/navbar_header-mobile.view.php');?>
 
-        <!-- #endregion News -->
         <section class="body-container container">
-
-            <!-- <section class="event-box content-box">
-                <article class="content-box__body event-box__body pc">
-                    <div>
-                        <h2 class="content-box__title">
-                            Các Sự kiện - Hoạt động của Trường
-                            <i class="fas fa-volleyball-ball"></i>
-                        </h2>
-                        <p class="event-box__body__desc">
-                            Trường Trung Cấp Kỹ Thuật Nông Nghiệp đã tham gia Ngày hội tuyển sinh, tư vấn hướng nghiệp
-                            giáo dục nghề nghiệp năm 2019. Chủ đề: "Chọn đúng ngành - Thành công sớm".
-                        </p>
-                    </div>
-                    <video controls poster="/public/client/assets/images/image-2.jpeg">
-
-                    </video>
-                </article>
-                <article class="content-box__body event-box__body tablet">
-                    <h2 class="content-box__title">
-                        Các Sự kiện - Hoạt động của Trường
-                        <i class="fas fa-volleyball-ball"></i>
-                    </h2>
-                    <p class="event-box__body__desc">
-                        Trường Trung Cấp Kỹ Thuật Nông Nghiệp đã tham gia Ngày hội tuyển sinh, tư vấn hướng nghiệp
-                        giáo dục nghề nghiệp năm 2019. Chủ đề: "Chọn đúng ngành - Thành công sớm".
-                    </p>
-                    <video controls poster="/public/client/assets/images/image-2.jpeg" class="content-box__video">
-
-                    </video>
-                </article>
-            </section> -->
             
             <section class="majors-box content">
                 <!-- #region News -->
@@ -349,16 +321,6 @@
                     </div>
                 </div>
 
-                <!-- <h2 class="majors-box__title"> -->
-                    <!-- các ngành đào tạo <br> -->
-                    <!-- <span> -->
-                        <?= 
-                            // date("Y");
-                            ""
-                        ?>
-                    <!-- </span> -->
-                <!-- </h2> -->
-
             </section>
             <section class="courses-box content">
                 <h2 class="courses-box__title">
@@ -385,7 +347,7 @@
                             echo <<<HTML
                                 <article class="course-box course-box-item">
                                     <div class="course-box__thumbnal">
-                                        <img src="{$levelOfTrainingItem['lot_main_profile']}" alt="...">
+                                        <img src="{$levelOfTrainingItem['lot_main_profile']}" alt="..." style="height: 100%;">
                                     </div>
                                     <div>
                                         <h4 class="course-box__title">
@@ -402,64 +364,68 @@
                     ?>
                 </section>
             </section>
-            <section class="news-container" style="justify-content: space-between;">
 
-                <?php 
-                    $newsLeft = [];
-                    $newsRight = [];
-
-                    for($i = 0; $i < count($news); $i++) {
-
-                        if(isset($news[$i])) {
-
-                            if($i < ceil(count($news) / 2)) {
-
-                                array_push($newsLeft, $news[$i]);
-                            }
-                            else {
-    
-                                array_push($newsRight, $news[$i]);
-                            }
-                        }
-                    }
-                ?>
-                <section class="news-box news-home-box news-home-box-l">
+            <div>
+                <h2 class="courses-box__title">
+                    Tin tức & sự kiện
+                </h2>
+                <section class="news-container" style="justify-content: space-between;">
                     <?php 
-                        foreach($newsLeft as $newsItem) {
+                        $newsLeft = [];
+                        $newsRight = [];
 
-                            echo <<<HTML
-                                <article class="news-item news-home-item">
-                                    <a href="#" class="news-item__thumbail">
-                                        <img src="{$newsItem['news_representative_image']}" width="128" class="news-home-image"/>
-                                    </a>
-                                    <a href="#" class="news-item__title">
-                                        {$newsItem['news_title']}
-                                    </a>
-                                    <!-- <h3 class="news-item__date">17, March - 2022</h3> -->
-                                </article>
-                            HTML;
+                        for($i = 0; $i < count($news); $i++) {
+
+                            if(isset($news[$i])) {
+
+                                if($i < ceil(count($news) / 2)) {
+
+                                    array_push($newsLeft, $news[$i]);
+                                }
+                                else {
+        
+                                    array_push($newsRight, $news[$i]);
+                                }
+                            }
                         }
                     ?>
-                    
+                    <section class="news-box news-home-box news-home-box-l">
+                        <?php 
+                            foreach($newsLeft as $newsItem) {
+
+                                echo <<<HTML
+                                    <article class="news-item news-home-item">
+                                        <a href="#" class="news-item__thumbail">
+                                            <img src="{$newsItem['news_representative_image']}" width="128" class="news-home-image"/>
+                                        </a>
+                                        <a href="#" class="news-item__title">
+                                            {$newsItem['news_title']}
+                                        </a>
+                                        <!-- <h3 class="news-item__date">17, March - 2022</h3> -->
+                                    </article>
+                                HTML;
+                            }
+                        ?>
+                        
+                    </section>
+                    <section class="news-box news-home-box news-home-box-r">
+                        <?php 
+                            foreach($newsRight as $newsItem) {
+                                echo <<<HTML
+                                    <article class="news-item news-home-item">
+                                        <a href="#" class="news-item__thumbail">
+                                            <img src="{$newsItem['news_representative_image']}" class="news-home-image"/>
+                                        </a>
+                                        <a href="#" class="news-item__title">
+                                            {$newsItem['news_title']}
+                                        </a>
+                                    </article>
+                                HTML;
+                            }
+                        ?>
+                    </section>
                 </section>
-                <section class="news-box news-home-box news-home-box-r">
-                    <?php 
-                        foreach($newsRight as $newsItem) {
-                            echo <<<HTML
-                                <article class="news-item news-home-item">
-                                    <a href="#" class="news-item__thumbail">
-                                        <img src="{$newsItem['news_representative_image']}" class="news-home-image"/>
-                                    </a>
-                                    <a href="#" class="news-item__title">
-                                        {$newsItem['news_title']}
-                                    </a>
-                                    <!-- <h3 class="news-item__date">17, March - 2022</h3> -->
-                                </article>
-                            HTML;
-                        }
-                    ?>
-                </section>
-            </section>
+            </div>
         </section>
 
         <section class="map-box">

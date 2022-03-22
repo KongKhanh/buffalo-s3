@@ -87,7 +87,7 @@ $router->get('/dashboard/analytics', [AnalyticsPage::class, '__getAnalyticsPage'
  * -------------------Ads-Slide Plugin-------------------
  */
 $router->get('/dashboard/ads-slide/create',[AdsSlide::class, '__getAdsSlideAddForm'])->middleware('auth');
-$router->get('/dashboard/ads-slide',[AdsSlide::class, '__getAdsSlideDashboar'])->middleware('auth');
+$router->get('/dashboard/ads-slide',[AdsSlide::class, '__getAdsSlideDashboard'])->middleware('auth');
 $router->get('/dashboard/ads-slide/update/{id}',[AdsSlide::class, '__getUpdateForm'])->middleware('auth');
 
 $router->post('/dashboard/ads-slide/create',[AdsSlide::class, '__postAdsSlideAddForm'])->middleware('auth');

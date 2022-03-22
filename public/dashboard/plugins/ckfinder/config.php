@@ -25,8 +25,8 @@ $config = array();
 /*============================ Enable PHP Connector HERE ==============================*/
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_authentication
 
-$config['authentication'] = function () {
-    return isset($_COOKIE['permissionID']) && $_COOKIE['admin_ID'];
+$config['authentication'] = function() {
+    return true;
 };
 
 /*============================ License Key ============================================*/
@@ -66,7 +66,7 @@ $config['images'] = array(
 $config['backends'][] = array(
     'name'         => 'default',
     'adapter'      => 'local',
-    'baseUrl'      => '/upload/',
+    'baseUrl'      => '/public/storage/',
 //  'root'         => '', // Can be used to explicitly set the CKFinder user files directory.
     'chmodFiles'   => 0777,
     'chmodFolders' => 0755,

@@ -16,24 +16,12 @@
             <i class="fas fa-phone-volume"></i>
             Hotline: 
             <?php 
-                    $stopPoint = 0;
 
-                    $breakLine = "-";
+                if($siteInfo["sitePhone"][2]) {
 
-                    foreach ($siteInfo["sitePhone"] as $phone) {
-
-                        $stopPoint++;
-
-                        if($stopPoint >= (count($siteInfo["sitePhone"]))){
-
-                            $breakLine = "";
-                        };
-
-                        echo <<<HTML
-                            {$phone['sip_phone']} {$breakLine}
-                        HTML;
-                    }
-                ?>
+                    echo $siteInfo["sitePhone"][2]['sip_phone'];
+                }
+            ?>
         </button>
     </div>
 </div>

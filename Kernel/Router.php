@@ -92,11 +92,6 @@
                 
                 $flagContinue = true;
 
-                // var_dump($route["url"]);
-                // var_dump($route["middleware"]);
-
-                // echo "<br/><br/><br/>";
-
                 if(isset($route['middleware']) && !is_null($route['middleware'])) {
 
                     if($route['middleware'] == "auth") {

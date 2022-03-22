@@ -22,15 +22,15 @@
             <!--Navbar Header-->
             <?php includeFile('pages/client/components/navbar_header.view.php');?>
             
-            <section class="container main-header__desc">
+            <section class="container main-header__desc main-header__desc-no-home">
                 <h1 class="desc__title" style="text-align: center; text-transform: uppercase;" id="page-title">
                     Thông báo - tin tức chung
                 </h1>
-                <nav class="history-bar">
+                <!-- <nav class="history-bar">
                     <p><a href="#" class="previous-page">
                         Trang chủ
                     </a><a href="#" class="present-page">tin tức</a></p>
-                </nav>
+                </nav> -->
             </section>
         </header>
         
