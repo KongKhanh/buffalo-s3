@@ -55,6 +55,11 @@ $router->get('/contact-us', [HomePage::class, '__getContactPage']);
 $router->post('/subscriber-form', [SubscriberPage::class, '__postSubscriberPage']);
 
 /**
+ * ContactConsult Plugins
+ */
+$router->post('/contact-consult-form', [HomePage::class, '__postContactconsultForm']);
+
+/**
  * -----------------------------------------------------------Admin Dashboard-------------------------------------------------------------------------------------
  */
 /**
@@ -66,21 +71,6 @@ $router->get('/dashboard/register', [Register::class, '__getAdminRegister']);
 $router->post('/dashboard/login', [Login::class, '__postAdminLogin']);
 $router->post('/dashboard/register', [Register::class, '__postAdminRegister']);
 
-
-/**
- * -----------------------------------------------------------API-----------------------------------------------------------
- */
-$router->get('/api/majors-by-id/{id}', [MajorsPage::class, '__getMajorsById']);
- 
-/**
- * -------------------ERROR Plugin-------------------
- */
-$router->get('/error-status/404-error', [ERRORPage::class, '__get404Page']);
-$router->get('/error-status/500-error', [ERRORPage::class, '__get500Page']);
-
-/**
- * -------------------Analytics Plugin-------------------
- */
 $router->get('/dashboard/analytics', [AnalyticsPage::class, '__getAnalyticsPage'])->middleware('auth');
 
 /**
@@ -199,4 +189,13 @@ $router->get('/dashboard/tool-third/facebook-chat-messenger', [ThirdToolPage::cl
 
 $router->post('/dashboard/tool-third/update/by-switch-case', [ThirdToolPage::class, '__postUpdateThirdToolPlugins'])->middleware('auth');
 
+/**
+ * -----------------------------------------------------------API-----------------------------------------------------------
+ */
+$router->get('/api/majors-by-id/{id}', [MajorsPage::class, '__getMajorsById']);
+/**
+ * -------------------ERROR Plugin-------------------
+ */
+$router->get('/error-status/404-error', [ERRORPage::class, '__get404Page']);
+$router->get('/error-status/500-error', [ERRORPage::class, '__get500Page']);
 

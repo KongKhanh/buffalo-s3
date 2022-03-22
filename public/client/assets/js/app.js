@@ -57,8 +57,6 @@ $(document).ready(function(){
             })
             .done(function(res) {
 
-                console.log(res);
-
                 var getMajor = disabledOption;
 
                 for (let i = 0; i < res.majorsById.length; i++) { 
@@ -73,6 +71,8 @@ $(document).ready(function(){
         }
     });
 });
+
+
 $(document).ready(function(){
 
     var disabledOption = '<option value="" disabled selected>Chọn ngành đào tạo</option>';
@@ -88,7 +88,7 @@ $(document).ready(function(){
             $.ajax({
                 url: `/api/majors-by-id/${idLot}`,
                 headers: {
-                    // 'Content-Type':'application/json'
+                    'Content-Type':'application/json'
                 },
                 method: "GET",
             })
