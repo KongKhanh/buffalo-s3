@@ -489,12 +489,6 @@
 
         window.alert("Đăng ký thành công!");
     }
-    
-    if(($('#status-cc-form').val()) == false){
-
-        window.alert("Đăng ký không thành công!");
-    }
-
 
     const slideBtnLeft = $('#desc-slide__btn-left');
 

@@ -3,6 +3,7 @@
     $trainingTypeList = DB::table('level_of_training')->get(); 
 
     $popupStatusForm = "";
+    $popupStatusCCForm = "";
 
     if(Session::has("res_subscriber")) {
 
