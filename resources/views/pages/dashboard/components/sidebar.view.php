@@ -38,6 +38,13 @@
                         </li>
                     </ul>
                 </div>
+                <div class="collapse" id="KQVdHqELu2pzboq">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="/dashboard/contact-consult">Đăng ký tư vấn</a>
+                        </li>
+                    </ul>
+                </div>
             </li>
 
             <li class="side-nav-item">
