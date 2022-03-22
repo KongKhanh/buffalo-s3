@@ -60,6 +60,16 @@ $router->post('/subscriber-form', [SubscriberPage::class, '__postSubscriberPage'
 $router->post('/contact-consult-form', [HomePage::class, '__postContactconsultForm']);
 
 /**
+ * -----------------------------------------------------------API-----------------------------------------------------------
+ */
+$router->get('/api/majors-by-id/{id}', [MajorsPage::class, '__getMajorsById']);
+/**
+ * -------------------ERROR Plugin-------------------
+ */
+$router->get('/error-status/404-error', [ERRORPage::class, '__get404Page']);
+$router->get('/error-status/500-error', [ERRORPage::class, '__get500Page']);
+
+/**
  * -----------------------------------------------------------Admin Dashboard-------------------------------------------------------------------------------------
  */
 /**
@@ -189,13 +199,4 @@ $router->get('/dashboard/tool-third/facebook-chat-messenger', [ThirdToolPage::cl
 
 $router->post('/dashboard/tool-third/update/by-switch-case', [ThirdToolPage::class, '__postUpdateThirdToolPlugins'])->middleware('auth');
 
-/**
- * -----------------------------------------------------------API-----------------------------------------------------------
- */
-$router->get('/api/majors-by-id/{id}', [MajorsPage::class, '__getMajorsById']);
-/**
- * -------------------ERROR Plugin-------------------
- */
-$router->get('/error-status/404-error', [ERRORPage::class, '__get404Page']);
-$router->get('/error-status/500-error', [ERRORPage::class, '__get500Page']);
 
