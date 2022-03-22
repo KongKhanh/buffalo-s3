@@ -125,3 +125,7 @@
         </article>
     </section>
 </footer>
+<script>
+document.getElementById("online").innerHTML =
+Math.floor(Math.random() * 100);
+</script>
