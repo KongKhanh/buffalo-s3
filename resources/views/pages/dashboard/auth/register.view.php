@@ -29,7 +29,7 @@
                                 
                                 <div class="text-center w-75 m-auto">
                                     <h4 class="text-dark-50 text-center pb-0 fw-bold text-uppercase">Trang Đăng KÝ</h4>
-                                    <p class="text-muted mb-4">VMS helps managers manage all activities on the your platform.</p>
+                                    <!-- <p class="text-muted mb-4">VMS helps managers manage all activities on the your platform.</p> -->
                                 </div>
 
                                 <form action="/dashboard/register" method="post">

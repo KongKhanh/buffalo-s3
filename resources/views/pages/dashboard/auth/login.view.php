@@ -39,7 +39,7 @@
                                     else{
                                         echo
                                         <<<HTML
-                                            <p class="text-muted mb-4">VMS helps managers manage all activities on the your platform.</p>
+                                            <!-- <p class="text-muted mb-4">VMS helps managers manage all activities on the your platform.</p> -->
                                         HTML;
                                     }
                                     ?>

@@ -61,7 +61,7 @@
   
                                         echo <<<HTML
                                             <a href="{$slide['ads_slide_link_to']}" class="desc-slide__item">
-                                                <img src="{$slide['ads_slide_img_link']}" class="desc-slide__item-thumbnail"/>     
+                                                <img src="{$slide['ads_slide_img_link']}" class="desc-slide__item-thumbnail" style="height: 100%;"/>     
                                                 <p class="desc-slide__item-title">{$slide['ads_slide_title']}</p>
                                             </a>
                                         HTML;
