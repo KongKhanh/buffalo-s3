@@ -8,6 +8,14 @@
 
         $popupStatusForm = isset($res_subscriber['errors']) ? "display: block;" : "display: none;";
     }
+
+    if(Session::has("status_contact_consult")) {
+
+        $res_contact_consult = Session::get("status_contact_consult");
+
+        $popupStatusCCForm = isset($res_contact_consult['errors']) ? "display: block;" : "display: none;";
+
+    }
 ?>
 <style>
 
@@ -187,7 +195,8 @@
 
 <!------------------------Consult Form------------------------------------->
 
-<section class="register-modal" id="consultModal">
+<section class="register-modal" id="consultModal" style="<?= $popupStatusCCForm;?>">
+    <input type="hidden" id="status-cc-form" value="<?= $res_contact_consult['status'];?>">
     <section class="register-block register-modal--block">
         <i 
             class="fas fa-times-circle" 
@@ -195,7 +204,7 @@
             id="consultModalHidden"
         >
         </i>
-        <form id="consultForm" method="POST">
+        <form id="consultForm" action="/contact-consult-form" method="POST">
             <article class="base-info">
                 <h4 class="register-title">
                     Thông Tin Liên Hệ Tư Vấn
@@ -204,23 +213,42 @@
                     <article class="input-block">
                         <label for="">Họ và tên</label>
                         <div class="input-box">
-                            <input type="text" name="" id="" placeholder="Họ và tên...">
+                            <input type="text" name="cc_name" id="" placeholder="Họ và tên...">
                         </div>
-                        <p class="input-error">Vui lòng nhập họ tên</p>
+                        <?php 
+                            if(isset($res_contact_consult['errors']['error_cc_name'])){
+                                echo <<<HTML
+                                    <p class="text-danger" style="color: red;">{$res_contact_consult['errors']['error_cc_name']}</p>
+                                HTML;
+                            }
+                        ?>
                     </article>
                     <article class="input-block">
                         <label for="">Số điện thoại</label>
                         <div class="input-box">
-                            <input type="number" name="" id="" placeholder="Số điện thoại...">
+                            <input type="number" name="cc_phone" id="" placeholder="Số điện thoại...">
                         </div>
-                        <p class="input-error">Vui lòng nhập lại số điện thoại</p>
+                        <?php 
+                            if(isset($res_contact_consult['errors']['error_cc_phone'])){
+                                echo <<<HTML
+                                    <p class="text-danger" style="color: red;">{$res_contact_consult['errors']['error_cc_phone']}</p>
+                                HTML;
+                            }
+                        ?>
                     </article>
                 </section>
             </article>
             <article class="input-block">
                 <div class="input-box">
-                    <textarea name="" id="" placeholder="Ghi chú" rows="6"></textarea>
+                    <textarea name="cc_note" id="cc_note" placeholder="Ghi chú" rows="6"></textarea>
                 </div>
+                        <?php 
+                            if(isset($res_contact_consult['errors']['error_cc_note'])){
+                                echo <<<HTML
+                                    <p class="text-danger" style="color: red;">{$res_contact_consult['errors']['error_cc_note']}</p>
+                                HTML;
+                            }
+                        ?>
             </article>
             <article class="register--btn">
                 <article class="input-block">

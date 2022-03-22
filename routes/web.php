@@ -53,6 +53,7 @@ $router->get('/contact-us', [HomePage::class, '__getContactPage']);
  * Subscriber Plugins
  */
 $router->post('/subscriber-form', [SubscriberPage::class, '__postSubscriberPage']);
+$router->post('/contact-consult-form', [HomePage::class, '__postContactconsultForm']);
 
 /**
  * -----------------------------------------------------------Admin Dashboard-------------------------------------------------------------------------------------
@@ -191,7 +192,6 @@ $router->post('/dashboard/tool-third/update/by-switch-case', [ThirdToolPage::cla
  * -----------------------------------------------------------API-----------------------------------------------------------
  */
 $router->get('/api/majors-by-id/{id}', [MajorsPage::class, '__getMajorsById']);
- 
 /**
  * -------------------ERROR Plugin-------------------
  */

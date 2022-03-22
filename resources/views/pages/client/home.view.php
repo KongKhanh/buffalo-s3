@@ -480,6 +480,17 @@
         window.alert("Đăng ký thành công!");
     }
 
+    if(($('#status-cc-form').val()) == true) {
+
+        window.alert("Đăng ký thành công!");
+    }
+    
+    if(($('#status-cc-form').val()) == false){
+
+        window.alert("Đăng ký không thành công!");
+    }
+
+
     const slideBtnLeft = $('#desc-slide__btn-left');
 
     const slideBtnRight = $('#desc-slide__btn-right');

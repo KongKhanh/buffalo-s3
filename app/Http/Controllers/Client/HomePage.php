@@ -83,4 +83,67 @@ class HomePage {
             return redirect('error-status/404-error');
         }
     }
+
+    public function __postContactconsultForm(){
+
+        try {
+
+            $errors = [];
+
+            $input = [
+                
+                "cc_name"           =>  input("cc_name"),
+                "cc_phone"          =>  input("cc_phone"),
+                "cc_note"           =>  input("cc_note")
+            ];
+
+            if(!preg_match('/^[a-zA-Z ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]{4,32}$/',$input['cc_name'])){
+
+                $errors = array_merge($errors, [
+                    "error_cc_name" => "Họ và tên đúng định dạng"
+                ]);
+            }
+
+            if(!preg_match('/^(0)(1|3|5|7|8|9)+([0-9]{8})$/', $input['cc_phone'])){
+
+                $errors = array_merge($errors, [
+                    "error_cc_phone" => "Số điện thoại không hợp lệ"
+                ]);
+            }
+
+            if(!($input['cc_note'])){
+
+                $errors = array_merge($errors, [
+                    "error_cc_note" => "Vui lòng nhập nội dung"
+                ]);
+
+            }
+
+            if(count($errors) == 0){
+
+                DB::table('contact_consult')->insert($input);
+    
+                Session::flash("status_contact_consult", [
+                    "status"        => true,
+                    "masseger"      => "Gửi thông tin liên hệ thành công"
+                ]);
+                
+            }
+            else{
+
+                Session::flash("status_contact_consult", [
+                    "status"        => false,
+                    "errors"        => $errors,
+                    "masseger"      => "Gửi thông tin liên hệ không thành công"
+                ]);
+
+            }
+            
+            return redirect('/'); 
+        }
+        catch (Exception $error) {
+
+            return false;
+        }
+    }
 }
