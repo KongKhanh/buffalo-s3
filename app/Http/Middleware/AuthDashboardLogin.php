@@ -2,9 +2,13 @@
 
 class AuthDashboardLogin {
 
+    /**
+     * @return boolean
+     */
     public function auth() {
 
         try {
+
             if(Session::has('access_token')) {
 
                 $access_token = Crypt::decryptString(Session::get('access_token'));
@@ -13,17 +17,19 @@ class AuthDashboardLogin {
 
                 if(!$auth) {
 
-                    return redirect('dashboard/login');
+                    return false;
                 }
+
+                return true;
             }
             else {
 
-                return redirect('dashboard/login');
+                return false;
             }
         }
         catch(Exception $error) {
 
-            return redirect('dashboard/login');
+            return false;
         }
     }
 }

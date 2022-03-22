@@ -2,6 +2,10 @@
 
     class Router {
 
+        protected $routerMiddleware = [
+
+        ];
+
         /**
          * The route collection instance.
          */
@@ -53,7 +57,7 @@
         }
 
         public function __request(string $url, string $method, $action) {
-            
+
             if(preg_match_all('/({([a-zA-Z0-9_]+)})/', $url, $params)) { 
 
                 $url = preg_replace('/({([a-zA-Z0-9_]+)})/', '(.+)', $url); 
@@ -74,21 +78,47 @@
             array_push($this->routes, $route);
         }
 
+        public function middleware($name = null) {
+
+            if(count($this->routes) > 0 && !is_null($name)) {
+
+                $this->routes[count($this->routes) - 1]['middleware'] = $name;
+            }
+        }
+
         public function mapRoute(string $url, string $method) {
 
-            foreach( $this->routes as $route) {
+            foreach($this->routes as $route) {
+                
+                $flagContinue = true;
 
-                if($route['method'] == $method) {
+                if(isset($route['middleware'])) {
 
-                    $reg = '/^' . $route['url'] . '$/';
+                    if($route['middleware'] == "auth") {
 
-                    if(preg_match($reg, $url, $params)) {
+                        $flagContinue = $statusAuth = (new AuthDashboardLogin())->auth();
 
-                        array_shift($params);
+                        if(!$statusAuth) {
 
-                        $this->__call_action_route($route['action'], $params);
+                            return redirect('/dashboard/login');
+                        }
+                    }
+                }
 
-                        return;
+                if($flagContinue == true) {
+
+                    if($route['method'] == $method) {
+
+                        $reg = '/^' . $route['url'] . '$/';
+    
+                        if(preg_match($reg, $url, $params)) {
+    
+                            array_shift($params);
+    
+                            $this->__call_action_route($route['action'], $params);
+    
+                            return;
+                        }
                     }
                 }
             }

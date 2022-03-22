@@ -15,48 +15,46 @@ class Login {
 
         $errors = [];
 
-        if(!preg_match('/^(0)(1|3|5|7|8|9)+([0-9]{8})$/', $phoneAdmin)){ 
+        if(!preg_match('/^(0)(1|3|5|7|8|9)+([0-9]{8})$/', $phoneAdmin)) { 
 
             $errors = array_merge($errors, [
                 "error_admin_phone" => "Số điện thoại không đúng định dạng"
             ]);
         }
 
-        if(!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/',$passwordAdmin)){ 
+        if(!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/',$passwordAdmin)) { 
 
             $errors = array_merge($errors, [
                 "error_admin_password" => "Mật khẩu không đúng định dạng"
             ]);
         }
-        if(count($errors) == 0){
+        if(count($errors) == 0) {
 
             $admin =  DB::table('administrator')
-            ->where('admin_phone', $phoneAdmin)
-            ->where('admin_password', Crypt::encryptString($passwordAdmin))
-            ->first();
+                ->where('admin_phone', $phoneAdmin)
+                ->where('admin_password', Crypt::encryptString($passwordAdmin))
+                ->first();
 
-            if($admin){
+            if($admin) {
 
                 Session::set('access_token', Crypt::encryptString($admin['admin_phone']));
                 
-                redirect('/dashboard/analytics');
+                return redirect('/dashboard/analytics');
             }
-            else{
+            else {
 
                 $errors = array_merge($errors, [
                     "error_admin_login" => "Đăng nhập không thành công"
                 ]);
 
-                return view('pages/dashboard/auth/login.view.php',
-                [
+                return view('pages/dashboard/auth/login.view.php', [
                     'errors' => $errors
                 ]);
             }
         }
-        else{
+        else {
 
-            return view('pages/dashboard/auth/login.view.php',
-            [
+            return view('pages/dashboard/auth/login.view.php', [
                 'errors' => $errors
             ]);
         }

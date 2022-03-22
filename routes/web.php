@@ -69,123 +69,123 @@ $router->post('/dashboard/register', [Register::class, '__postAdminRegister']);
 /**
  * -------------------Analytics Plugin-------------------
  */
-$router->get('/dashboard/analytics', [AnalyticsPage::class, '__getAnalyticsPage']);
+$router->get('/dashboard/analytics', [AnalyticsPage::class, '__getAnalyticsPage'])->middleware('auth');
 
 /**
  * -------------------Ads-Slide Plugin-------------------
  */
-$router->get('/dashboard/ads-slide/create',[AdsSlide::class, '__getAdsSlideAddForm']);
-$router->get('/dashboard/ads-slide',[AdsSlide::class, '__getAdsSlideDashboar']);
-$router->get('/dashboard/ads-slide/update/{id}',[AdsSlide::class, '__getUpdateForm']);
+$router->get('/dashboard/ads-slide/create',[AdsSlide::class, '__getAdsSlideAddForm'])->middleware('auth');
+$router->get('/dashboard/ads-slide',[AdsSlide::class, '__getAdsSlideDashboar'])->middleware('auth');
+$router->get('/dashboard/ads-slide/update/{id}',[AdsSlide::class, '__getUpdateForm'])->middleware('auth');
 
-$router->post('/dashboard/ads-slide/create',[AdsSlide::class, '__postAdsSlideAddForm']);
-$router->post('/dashboard/ads-slide/update/{id}',[AdsSlide::class, '__postUpdateForm']);
-$router->post('/dashboard/ads-slide/delete',[AdsSlide::class, '__postDelete']);
+$router->post('/dashboard/ads-slide/create',[AdsSlide::class, '__postAdsSlideAddForm'])->middleware('auth');
+$router->post('/dashboard/ads-slide/update/{id}',[AdsSlide::class, '__postUpdateForm'])->middleware('auth');
+$router->post('/dashboard/ads-slide/delete',[AdsSlide::class, '__postDelete'])->middleware('auth');
 
 
 /**
  * -------------------Subscribers Plugin-------------------
  */
-$router->get('/dashboard/subscribers', [SubscriberPage::class, '__getSubscriberPage']);
-$router->post('/dashboard/subscriber/update/{id}', [SubscriberPage::class, '__postUpdate']);
-$router->get('/dashboard/subscriber/update/{id}', [SubscriberPage::class, '__getUpdateForm']);
-$router->post('/dashboard/subscriber/delete', [SubscriberPage::class, '__deleteSubscriber']);
+$router->get('/dashboard/subscribers', [SubscriberPage::class, '__getSubscriberPage'])->middleware('auth');
+$router->post('/dashboard/subscriber/update/{id}', [SubscriberPage::class, '__postUpdate'])->middleware('auth');
+$router->get('/dashboard/subscriber/update/{id}', [SubscriberPage::class, '__getUpdateForm'])->middleware('auth');
+$router->post('/dashboard/subscriber/delete', [SubscriberPage::class, '__deleteSubscriber'])->middleware('auth');
 
 
 /**
  * -------------------News Plugin-------------------
  */
-$router->get('/dashboard/news', [NewsPage::class, '__getNewsPage']);
-$router->get('/dashboard/news/create',[NewsPage::class, '__getAddForm']);
-$router->get('/dashboard/news/update/{id}',[NewsPage::class, '__getUpdateForm']);
+$router->get('/dashboard/news', [NewsPage::class, '__getNewsPage'])->middleware('auth');
+$router->get('/dashboard/news/create',[NewsPage::class, '__getAddForm'])->middleware('auth');
+$router->get('/dashboard/news/update/{id}',[NewsPage::class, '__getUpdateForm'])->middleware('auth');
 
-$router->get('/dashboard/news/categories', [NewsPage::class, '__getNewsCategoryPage']);
-$router->get('/dashboard/news/categories/update/{id}', [NewsPage::class, '__getNewsCategoryForm']);
-$router->get('/dashboard/news/categories/create',[NewsPage::class, '__getAddMenuCateForm']);
+$router->get('/dashboard/news/categories', [NewsPage::class, '__getNewsCategoryPage'])->middleware('auth');
+$router->get('/dashboard/news/categories/update/{id}', [NewsPage::class, '__getNewsCategoryForm'])->middleware('auth');
+$router->get('/dashboard/news/categories/create',[NewsPage::class, '__getAddMenuCateForm'])->middleware('auth');
 
 
-$router->post('/dashboard/news/update/{id}',[NewsPage::class, '__postUpdate']);
-$router->post('/dashboard/news/delete',[NewsPage::class, '__postDelete']);
-$router->post('/dashboard/news/create',[NewsPage::class, '__postAddForm']);
+$router->post('/dashboard/news/update/{id}',[NewsPage::class, '__postUpdate'])->middleware('auth');
+$router->post('/dashboard/news/delete',[NewsPage::class, '__postDelete'])->middleware('auth');
+$router->post('/dashboard/news/create',[NewsPage::class, '__postAddForm'])->middleware('auth');
 
-$router->post('/dashboard/news/categories/update/{id}', [NewsPage::class, '__postNewsCategoryForm']);
-$router->post('/dashboard/news/categories/delete', [NewsPage::class, '__postNewsCategoryDelete']);
-$router->post('/dashboard/news/categories/create',[NewsPage::class, '__postAddNewsCateForm']);
+$router->post('/dashboard/news/categories/update/{id}', [NewsPage::class, '__postNewsCategoryForm'])->middleware('auth');
+$router->post('/dashboard/news/categories/delete', [NewsPage::class, '__postNewsCategoryDelete'])->middleware('auth');
+$router->post('/dashboard/news/categories/create',[NewsPage::class, '__postAddNewsCateForm'])->middleware('auth');
 
 
 /**
  * -------------------Logs Plugin-------------------
  */
-$router->get('/dashboard/activity-logs/{target}', [ActivityLogsPage::class, '__getActivityLogsPage']);
+$router->get('/dashboard/activity-logs/{target}', [ActivityLogsPage::class, '__getActivityLogsPage'])->middleware('auth');
 
 /**
  * -------------------Major Plugin-------------------
  */
-$router->get('/dashboard/majors', [MajorsPage::class, '__majorsPage']);
-$router->get('/dashboard/majors/create', [MajorsPage::class, '__getAddForm']);
-$router->get('/dashboard/majors/update/{id}', [MajorsPage::class, '__getUpdateForm']);
+$router->get('/dashboard/majors', [MajorsPage::class, '__majorsPage'])->middleware('auth');
+$router->get('/dashboard/majors/create', [MajorsPage::class, '__getAddForm'])->middleware('auth');
+$router->get('/dashboard/majors/update/{id}', [MajorsPage::class, '__getUpdateForm'])->middleware('auth');
 
-$router->post('/dashboard/majors/create', [MajorsPage::class, '__postAdd']);
-$router->post('/dashboard/majors/update/{id}', [MajorsPage::class, '__postUpdate']);
-$router->post('/dashboard/majors/delete', [MajorsPage::class, '__postDelete']);
+$router->post('/dashboard/majors/create', [MajorsPage::class, '__postAdd'])->middleware('auth');
+$router->post('/dashboard/majors/update/{id}', [MajorsPage::class, '__postUpdate'])->middleware('auth');
+$router->post('/dashboard/majors/delete', [MajorsPage::class, '__postDelete'])->middleware('auth');
 
 /**
  * -------------------VideoIframe Plugin-------------------
  */
-$router->get('/dashboard/video-iframe', [VideoIFramePage::class, '__getVideoPage']);
-$router->get('/dashboard/video-iframe/create', [VideoIFramePage::class, '__getAddForm']);
-$router->get('/dashboard/video-iframe/update/{id}', [VideoIFramePage::class, '__getUpdateForm']);
+$router->get('/dashboard/video-iframe', [VideoIFramePage::class, '__getVideoPage'])->middleware('auth');
+$router->get('/dashboard/video-iframe/create', [VideoIFramePage::class, '__getAddForm'])->middleware('auth');
+$router->get('/dashboard/video-iframe/update/{id}', [VideoIFramePage::class, '__getUpdateForm'])->middleware('auth');
 
-$router->post('/dashboard/video-iframe/create', [VideoIFramePage::class, '__postAdd']);
-$router->post('/dashboard/video-iframe/update/{id}', [VideoIFramePage::class, '__postUpdate']);
-$router->post('/dashboard/video-iframe/delete', [VideoIFramePage::class, '__postDelete']);
+$router->post('/dashboard/video-iframe/create', [VideoIFramePage::class, '__postAdd'])->middleware('auth');
+$router->post('/dashboard/video-iframe/update/{id}', [VideoIFramePage::class, '__postUpdate'])->middleware('auth');
+$router->post('/dashboard/video-iframe/delete', [VideoIFramePage::class, '__postDelete'])->middleware('auth');
 
 /**
  * -------------------Level Of Training Plugin-------------------
  */
-$router->get('/dashboard/level-of-training', [LevelOfTraining::class, '__getLevelOfTrainingPage']);
-$router->get('/dashboard/level-of-training/update/{id}', [LevelOfTraining::class, '__getUpdateForm']);
-$router->get('/dashboard/level-of-training/create', [LevelOfTraining::class, '__getAddForm']);
+$router->get('/dashboard/level-of-training', [LevelOfTraining::class, '__getLevelOfTrainingPage'])->middleware('auth');
+$router->get('/dashboard/level-of-training/update/{id}', [LevelOfTraining::class, '__getUpdateForm'])->middleware('auth');
+$router->get('/dashboard/level-of-training/create', [LevelOfTraining::class, '__getAddForm'])->middleware('auth');
 
-$router->post('/dashboard/level-of-training/update/{id}', [LevelOfTraining::class, '__postUpdateForm']);
-$router->post('/dashboard/level-of-training/delete', [LevelOfTraining::class, '__postDelete']);
-$router->post('/dashboard/level-of-training/create', [LevelOfTraining::class, '__postAdd']);
+$router->post('/dashboard/level-of-training/update/{id}', [LevelOfTraining::class, '__postUpdateForm'])->middleware('auth');
+$router->post('/dashboard/level-of-training/delete', [LevelOfTraining::class, '__postDelete'])->middleware('auth');
+$router->post('/dashboard/level-of-training/create', [LevelOfTraining::class, '__postAdd'])->middleware('auth');
 
 
 /**
  * -------------------Menu Categories Plugin-------------------
  */
-$router->get('/dashboard/menu-cate', [MenuCatePage::class, '__getMenuCatePage']);
-$router->get('/dashboard/menu-cate/create/type/{type}', [MenuCatePage::class, '__getAddForm']);
-$router->get('/dashboard/menu-cate/update/{id}', [MenuCatePage::class, '__getUpdateForm']);
+$router->get('/dashboard/menu-cate', [MenuCatePage::class, '__getMenuCatePage'])->middleware('auth');
+$router->get('/dashboard/menu-cate/create/type/{type}', [MenuCatePage::class, '__getAddForm'])->middleware('auth');
+$router->get('/dashboard/menu-cate/update/{id}', [MenuCatePage::class, '__getUpdateForm'])->middleware('auth');
 
-$router->post('/dashboard/menu-cate/create', [MenuCatePage::class, '__postAdd']);
-$router->post('/dashboard/menu-cate/update/{id}', [MenuCatePage::class, '__postUpdate']);
-$router->post('/dashboard/menu-cate/delete', [MenuCatePage::class, '__postDelete']);
+$router->post('/dashboard/menu-cate/create', [MenuCatePage::class, '__postAdd'])->middleware('auth');
+$router->post('/dashboard/menu-cate/update/{id}', [MenuCatePage::class, '__postUpdate'])->middleware('auth');
+$router->post('/dashboard/menu-cate/delete', [MenuCatePage::class, '__postDelete'])->middleware('auth');
 
 /**
  * -------------------Intro Page Plugin-------------------
  */
-$router->get('/dashboard/about-us/introduce/edit', [AboutUs::class, '__getUpdateIntro']);
+$router->get('/dashboard/about-us/introduce/edit', [AboutUs::class, '__getUpdateIntro'])->middleware('auth');
 
-$router->post('/dashboard/about-us/introduce/edit', [AboutUs::class, '__postUpdateIntro']);
+$router->post('/dashboard/about-us/introduce/edit', [AboutUs::class, '__postUpdateIntro'])->middleware('auth');
 
-$router->get('/dashboard/about-us/contact/edit', [AboutUs::class, '__getUpdateContact']);
+$router->get('/dashboard/about-us/contact/edit', [AboutUs::class, '__getUpdateContact'])->middleware('auth');
 
-$router->post('/dashboard/about-us/contact/edit', [AboutUs::class, '__postUpdateContact']);
+$router->post('/dashboard/about-us/contact/edit', [AboutUs::class, '__postUpdateContact'])->middleware('auth');
 
-$router->get('/dashboard/about-us/information-getting/edit', [AboutUs::class, '__getUpdateInformation']);
+$router->get('/dashboard/about-us/information-getting/edit', [AboutUs::class, '__getUpdateInformation'])->middleware('auth');
 
-$router->post('/dashboard/about-us/information-getting/edit', [AboutUs::class, '__postUpdateInformation']);
+$router->post('/dashboard/about-us/information-getting/edit', [AboutUs::class, '__postUpdateInformation'])->middleware('auth');
 
 /**
  * Tool Third Plugins
  */
-$router->get('/dashboard/tool-third/google-map', [ThirdToolPage::class, '__getGoogleMapAddress']);
+$router->get('/dashboard/tool-third/google-map', [ThirdToolPage::class, '__getGoogleMapAddress'])->middleware('auth');
 
-$router->get('/dashboard/tool-third/facebook-chat-messenger', [ThirdToolPage::class, '__getFacebookChatMessenger']);
+$router->get('/dashboard/tool-third/facebook-chat-messenger', [ThirdToolPage::class, '__getFacebookChatMessenger'])->middleware('auth');
 
-$router->post('/dashboard/tool-third/update/by-switch-case', [ThirdToolPage::class, '__postUpdateThirdToolPlugins']);
+$router->post('/dashboard/tool-third/update/by-switch-case', [ThirdToolPage::class, '__postUpdateThirdToolPlugins'])->middleware('auth');
 
 /**
  * -----------------------------------------------------------API-----------------------------------------------------------

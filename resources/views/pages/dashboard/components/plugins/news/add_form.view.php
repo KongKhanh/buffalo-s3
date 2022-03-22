@@ -33,10 +33,11 @@
                                             <option selected hidden value="0">Chọn thể loại</option>
                                             <?php 
                                                 foreach($newsCate as $newsCateItem) {
-
-                                                    echo <<<HTML
-                                                        <option value="{$newsCateItem['news_cate_id']}">{$newsCateItem["news_cate_title"]}</option>
-                                                    HTML;
+                                                    if($newsCateItem['news_cate_status'] == 'published') {
+                                                        echo <<<HTML
+                                                            <option value="{$newsCateItem['news_cate_id']}">{$newsCateItem["news_cate_title"]}</option>
+                                                        HTML;
+                                                    }
                                                 }
                                             ?>
                                         </select>

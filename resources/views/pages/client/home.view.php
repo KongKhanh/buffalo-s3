@@ -475,56 +475,73 @@
 <script src="/public/client/assets/js/app.js"></script>
 <script>
 
-    console.log($('.status_scb').val());
+    if(($('.status_scb').val()) == 1997) {
 
-    if(($('.status_scb').val()) == 1997)  {
         window.alert("Đăng ký thành công!");
     }
 
     const slideBtnLeft = $('#desc-slide__btn-left');
+
     const slideBtnRight = $('#desc-slide__btn-right');
 
     const slides = $('#desc-slider').children('a');
     
     let slideIndex = 1;
     
-    if (slides.length > 0)
-    showSlides();
+    if (slides.length > 0) showSlides();
+
     function showSlides() {
+
         $.each(slides, (index) => {
+
             $(slides[index]).css({
+
                 display: 'none',
             });
         });
+
         slideIndex++;
+
         if (slideIndex > slides.length) {
+
             slideIndex = 1;
         }
         $(slides[slideIndex - 1]).css({
             // animation: 'slide 3s ease forward',
             display: 'block',
         });
+
         setTimeout(showSlides, 3000);
     }
+
     function pushSlides(n) {
+
         showSlide(slideIndex += n);
     }
+
     function currentSlide(n) {
+
         showSlide(slideIndex = n);
     }
+
     function showSlide(n) {
+
         if (n > slides.length) {
+
             slideIndex = 1;
         }
         if (n < 1) {
+
             slideIndex = slides.length;
         }
         $.each(slides, index => {
+
             $(slides[index]).css({
+
                 display: 'none',
             });
-            $(slides[index]).animate({
-            }); 
+
+            $(slides[index]).animate({}); 
         });
 
         $(slides[slideIndex - 1]).css({
@@ -532,12 +549,14 @@
             // animation: 'slide 3s ease forward',
         });
     }
+
     slideBtnLeft.click(() => {
-        console.log('left');
+
         pushSlides(-1);
     });
+
     slideBtnRight.click(() => {
-        console.log('right');
+
         pushSlides(1);
     });
 </script>

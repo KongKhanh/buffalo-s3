@@ -31,7 +31,7 @@
                                     </div>
                                     <div class="mb-3 col-md-6">
                                         <label for="link_url" class="form-label">Link URL (tùy chọn)</label>
-                                        <input type="text" class="form-control" name="link_url" id="link_url" placeholder="Nhập đường dẫn">
+                                        <input type="text" class="form-control" name="link_url" id="link_url" placeholder="Nhập đường dẫn" value="#">
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">THÊM</button>

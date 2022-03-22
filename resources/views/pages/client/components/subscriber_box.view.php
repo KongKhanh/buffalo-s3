@@ -28,22 +28,18 @@
     }
 </style>
 
- <section class="register-modal" id="registerModal" style="<?= $popupStatusForm;?>">
+<section class="register-modal" id="registerModal" style="<?= $popupStatusForm;?>">
     <section class="register-block register-modal--block">
         <i 
             class="fas fa-times-circle" 
-            style="font-size: 1.5em;
-            color: red;
-            position: absolute;
-            right: .5em;
-            top: .5em;" 
+            style="font-size: 1.5em; color: red; position: absolute; right: .5em; top: .5em;" 
             id="registerModalHidden"
         >
         </i>
         <form action="/subscriber-form" id="registerForm" method="POST">
             <article class="base-info">
                 <h4 class="register-title">
-                    Thông tin cá nhân
+                    Thông Tin Cá Nhân
                 </h4>
                 <section class="base-value">
                     <article class="input-block">
@@ -125,7 +121,7 @@
             </article>
             <article class="other-info">
                 <h4 class="register-title">
-                    Thông tin đăng ký xét tuyển
+                    Thông Tin Đăng Ký Xét Tuyển
                 </h4>
                 <article class="input-block">
                     <label for="trainingSystem">Hệ đào tạo</label>
@@ -187,4 +183,54 @@
         </form>
     </section>
 </section>
+
+
+<!------------------------Consult Form------------------------------------->
+
+<section class="register-modal" id="consultModal">
+    <section class="register-block register-modal--block">
+        <i 
+            class="fas fa-times-circle" 
+            style="font-size: 1.5em; color: red; position: absolute; right: .5em; top: .5em;" 
+            id="consultModalHidden"
+        >
+        </i>
+        <form id="consultForm" method="POST">
+            <article class="base-info">
+                <h4 class="register-title">
+                    Thông Tin Liên Hệ Tư Vấn
+                </h4>
+                <section class="base-value">
+                    <article class="input-block">
+                        <label for="">Họ và tên</label>
+                        <div class="input-box">
+                            <input type="text" name="" id="" placeholder="Họ và tên...">
+                        </div>
+                        <p class="input-error">Vui lòng nhập họ tên</p>
+                    </article>
+                    <article class="input-block">
+                        <label for="">Số điện thoại</label>
+                        <div class="input-box">
+                            <input type="number" name="" id="" placeholder="Số điện thoại...">
+                        </div>
+                        <p class="input-error">Vui lòng nhập lại số điện thoại</p>
+                    </article>
+                </section>
+            </article>
+            <article class="input-block">
+                <div class="input-box">
+                    <textarea name="" id="" placeholder="Ghi chú" rows="6"></textarea>
+                </div>
+            </article>
+            <article class="register--btn">
+                <article class="input-block">
+                    <div class="input-box">
+                        <input id="registerSubmit" name="registerSubmit" value="TẠO LIÊN HỆ" type="submit">
+                    </div>
+                </article>
+            </article>
+        </form>
+    </section>
+</section>
+
 

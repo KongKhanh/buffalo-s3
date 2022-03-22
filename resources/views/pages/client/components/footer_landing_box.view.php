@@ -8,7 +8,7 @@
             <i class="fas fa-paper-plane mr-2"></i>
             Đăng Ký Trực Tuyến
         </button>
-        <button type="button" id="btn_openform_consultant_cour" class="btn_get_support">
+        <button type="button" id="btn_openform_consult" class="btn_get_support">
             <i class="fas fa-headset"></i>
             Đăng Ký Tư Vấn
         </button>

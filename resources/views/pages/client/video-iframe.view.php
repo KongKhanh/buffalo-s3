@@ -96,9 +96,7 @@
         <!-- #endregion News -->
         <section class="news-container container">
             <section class="news-block">
-                <h4 class="news-box__title">
-                    <!-- <?= $siteInfo['site_info_name']; ?>  -->
-                </h4>
+
                 <div class="news-box__desc" style="width: 100%;">
                     <div class="wrapper-majors-box">
                         <?php 

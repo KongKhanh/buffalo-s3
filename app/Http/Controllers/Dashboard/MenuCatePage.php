@@ -87,9 +87,10 @@ class MenuCatePage {
 
             $existTCM = array_search($input["type_cate_menu"], $this->type_cate_menu, true);
             
-            if(!$input["type_cate_menu"] || $existTCM){
-                return redirect('error-status/404-error');
-            };
+            // if(!$input["type_cate_menu"] || $existTCM){
+
+            //     return redirect('error-status/500-error');
+            // };
 
             $rootTCM = 0;
 
@@ -121,15 +122,12 @@ class MenuCatePage {
                 "mc_friend_id"          => $rootTCM,
             ]) : false;
 
-            if($insert_status) {
+            Session::flash("res_menu_cate_info", [
+                "status"        => "200",
+                "message"       => "Thêm dữ liệu thành công"
+            ]);
 
-                Session::flash("res_menu_cate_info", [
-                    "status"        => "200",
-                    "message"       => "Thêm dữ liệu thành công"
-                ]);
-
-                redirect('/dashboard/menu-cate');
-            }
+            return redirect('/dashboard/menu-cate');
         }
 
         catch(Exception $error) {
@@ -145,20 +143,15 @@ class MenuCatePage {
             if(isset($id)) {
 
                 $menuCateItem = DB::table("menu_cate")
-                ->where("mc_id", $id)
-                ->join("links", "mc_link_id", "=", "link_id")
-                ->first();
+                    ->where("mc_id", $id)
+                    ->join("links", "mc_link_id", "=", "link_id")
+                    ->first();
 
-                if($menuCateItem) {
+                return view("pages/dashboard/components/plugins/menu_cate/update_form.view.php", [
 
-                    return view("pages/dashboard/components/plugins/menu_cate/update_form.view.php", [
-
-                        "menuCateItem"       => $menuCateItem,
-                        "lastNewsID"        => $this->__getLastRecordID()
-                    ]);
-                }
-
-                return redirect('error-status/404-error'); 
+                    "menuCateItem"       => $menuCateItem,
+                    "lastNewsID"        => $this->__getLastRecordID()
+                ]);
             }
             else {
 

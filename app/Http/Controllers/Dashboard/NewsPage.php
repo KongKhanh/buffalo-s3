@@ -197,7 +197,7 @@ class NewsPage {
                     ]);
                 }
 
-                redirect('dashboard/news');
+                return redirect('dashboard/news');
             }
             else {
 
@@ -231,7 +231,7 @@ class NewsPage {
                     "message"       => "Xóa dữ liệu thành công"
                 ]);
 
-                redirect('/dashboard/news');
+                return redirect('/dashboard/news');
             }
 
             return redirect('error-status/500-error');
@@ -352,12 +352,19 @@ class NewsPage {
 
                 $status = DB::table("news_category")->where("news_cate_id", $input["news_cate_id"])->delete();
 
+                if($status) {
+
+                    DB::table("news")->where("news_news_cate_id", $input["news_cate_id"])->update([
+                        'news_news_cate_id'     => 0
+                    ]);
+                }
+
                 Session::flash("res_news_info", [
                     "status"        => "200",
                     "message"       => "Xóa dữ liệu thành công"
                 ]);
 
-                redirect('/dashboard/news/categories');
+                return redirect('/dashboard/news/categories');
             }
 
             return redirect('error-status/500-error');
@@ -387,7 +394,7 @@ class NewsPage {
                     "message"       => "Thêm dữ liệu thành công"
                 ]);
 
-                redirect('/dashboard/news/categories');
+                return redirect('/dashboard/news/categories');
             }
         }
 

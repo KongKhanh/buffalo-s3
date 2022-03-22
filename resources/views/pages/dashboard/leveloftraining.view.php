@@ -43,7 +43,6 @@
                     </form>
 
                     <?php 
-    
                         if(Session::has("res_level_of_training_infor")) {
 
                             $res_level_of_training_infor = Session::get("res_level_of_training_infor");
