@@ -56,7 +56,9 @@
                         <div class="desc-slide__list" id="desc-slider">
                             <?php 
                                 if(is_array($allAdsSlide)) {
+
                                     foreach($allAdsSlide as $slide) {
+  
                                         echo <<<HTML
                                             <a href="{$slide['ads_slide_link_to']}" class="desc-slide__item">
                                                 <img src="{$slide['ads_slide_img_link']}" class="desc-slide__item-thumbnail"/>     
@@ -117,6 +119,14 @@
             <section class="majors-box content">
                 <!-- #region News -->
                 <section class="majors-box__content-wrapper">
+                    <h2 class="majors-box__title">
+                        các ngành đào tạo <br>
+                        <span>
+                            <?= 
+                                date("Y");
+                            ?>
+                        </span>
+                    </h2>
                     <div class="majors-box__content">
                         <ol class="majors-box__list">
                             <div>
@@ -191,14 +201,6 @@
                             </div>
                         </ol>
                     </div>
-                     <h2 class="majors-box__title">
-                        các ngành đào tạo <br>
-                        <span>
-                            <?= 
-                                date("Y");
-                            ?>
-                        </span>
-                    </h2>
                 </section>
 
                 <div class="form_wrapper">
@@ -381,7 +383,7 @@
                             }
 
                             echo <<<HTML
-                                <article class="course-box">
+                                <article class="course-box course-box-item">
                                     <div class="course-box__thumbnal">
                                         <img src="{$levelOfTrainingItem['lot_main_profile']}" alt="...">
                                     </div>
@@ -408,13 +410,16 @@
 
                     for($i = 0; $i < count($news); $i++) {
 
-                        if($i < ceil(count($news) / 2)) {
+                        if(isset($news[$i])) {
 
-                            array_push($newsLeft, $news[$i]);
-                        }
-                        else {
+                            if($i < ceil(count($news) / 2)) {
 
-                            array_push($newsRight, $news[$i]);
+                                array_push($newsLeft, $news[$i]);
+                            }
+                            else {
+    
+                                array_push($newsRight, $news[$i]);
+                            }
                         }
                     }
                 ?>

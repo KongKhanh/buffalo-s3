@@ -53,6 +53,10 @@ $router->get('/contact-us', [HomePage::class, '__getContactPage']);
  * Subscriber Plugins
  */
 $router->post('/subscriber-form', [SubscriberPage::class, '__postSubscriberPage']);
+
+/**
+ * ContactConsult Plugins
+ */
 $router->post('/contact-consult-form', [HomePage::class, '__postContactconsultForm']);
 
 /**
@@ -67,9 +71,6 @@ $router->get('/dashboard/register', [Register::class, '__getAdminRegister']);
 $router->post('/dashboard/login', [Login::class, '__postAdminLogin']);
 $router->post('/dashboard/register', [Register::class, '__postAdminRegister']);
 
-/**
- * -------------------Analytics Plugin-------------------
- */
 $router->get('/dashboard/analytics', [AnalyticsPage::class, '__getAnalyticsPage'])->middleware('auth');
 
 /**
