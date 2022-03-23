@@ -39,7 +39,7 @@ class Login {
 
                 Session::set('access_token', Crypt::encryptString($admin['admin_phone']));
                 
-                return redirect('/dashboard/analytics');
+                return redirect('/dashboard/news');
             }
             else {
 

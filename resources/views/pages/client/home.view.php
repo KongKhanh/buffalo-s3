@@ -25,6 +25,12 @@
     <script src="/public/client/assets/lib/jquery-3.4.1.min.js"></script>
 </head>
 
+<style>
+.main-header--outter {
+    background-image: linear-gradient(rgba(121, 134, 150, 0.7), rgba(121, 134, 150, 0.7)), url("<?= $bgUI['headerBG']['suib_img']; ?>");
+}
+</style>
+
 <body>
             
     <?php includeFile('pages/client/components/theme-loader.view.php');?>

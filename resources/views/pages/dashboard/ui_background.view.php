@@ -33,14 +33,14 @@
 
                     <div class="tab-content">
                         <div class="tab-pane show active" id="form-row-preview">
-                            <form method="POST" action="/dashboard/ui-background/create" enctype="multipart/form-data">
+                            <form method="POST" action="/dashboard/ui-background/update" enctype="multipart/form-data">
                                 <div class="row g-2">
                                     <div class="col-sm-12 mb-3">
                                     <div class="row border p-2" style="--bs-gutter-x:0px;">
                                     <h4>Ảnh nền</h4>
                                         <div class="col-md-4 px-2">
                                             <div>
-                                                <img src="/public/storage/images/default/g-dragon.webp" class="" style="width:100%;" id="background_img_add">
+                                                <img src="<?= $bgUI['suib_img'] ?>" class="" style="width:100%;" id="background_img_add">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -72,7 +72,7 @@
                                     </div>
                                 </div>
                                 </div>
-                                <button type="submit" class="btn btn-warning">Thêm mới</button>
+                                <button type="submit" class="btn btn-warning">Cập nhật</button>
                             </form>                      
                         </div>
                     </div> <!-- end tab-content-->

@@ -209,7 +209,7 @@ $router->post('/dashboard/tool-third/update/by-switch-case', [ThirdToolPage::cla
 /**
  * Ui Background
  */
-$router->get('/dashboard/ui-background', [UiBackground::class, '__getInsertBackgroundForm'])->middleware('auth');
+$router->get('/dashboard/ui-background', [UiBackground::class, '__getBackgroundForm'])->middleware('auth');
 
-$router->post('/dashboard/ui-background/create', [UiBackground::class, '__addBackgroundform'])->middleware('auth');
+$router->post('/dashboard/ui-background/update', [UiBackground::class, '__updateBackground'])->middleware('auth');
 

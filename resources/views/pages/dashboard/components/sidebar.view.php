@@ -173,11 +173,10 @@
                                 <span>Giao diện trang chủ</span>
                                 <span class="menu-arrow"></span>
                             </a>
-                            <!-- href="/dashboard/activity-logs/users" -->
                             <div class="collapse" id="uPvP4jwufkjzmBBQ">
                                 <ul class="side-nav-third-level">
                                     <li>
-                                        <a href="/dashboard/ui-background">Giao Diện Background</a>
+                                        <a href="/dashboard/ui-background">Background Header</a>
                                     </li>
                                 </ul>
                             </div>

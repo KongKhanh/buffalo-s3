@@ -2,11 +2,14 @@
 
     class UiBackground{
 
-        public function __getInsertBackgroundForm(){
-            try{
+        public function __getBackgroundForm(){
+
+            try {
+
+                $bgUI = DB::table('site_ui_bg')->where('suib_code', 'A0001')->first();
 
                 return view("pages/dashboard/ui_background.view.php", [
-
+                    'bgUI'      =>      $bgUI
                 ]);
             }
             catch(Exception $error){
@@ -14,9 +17,10 @@
                 return redirect('error-status/500-error');
             }
         }
-        public function __addBackgroundform(){
 
-            try{
+        public function __updateBackground(){
+
+            try {
 
                 $dataToUpdate = [];
 
@@ -33,20 +37,16 @@
                     $statusMove = SingleHelper::moveFile($dataToUpdate["suib_img"]);
     
                     $dataToUpdate["suib_img"] =  $statusMove == true ? "/" . $dataToUpdate["suib_img"]["target_dir"] . $dataToUpdate["suib_img"]["name"] : null;
-    
                 }
 
-                if($dataToUpdate){
+                $status = DB::table("site_ui_bg")->where('suib_code', 'A0001')->update($dataToUpdate);
 
-                    $status = DB::table("site_ui_bg")->insert($dataToUpdate);
+                Session::flash("ui_bg_infor", [
+                    "status"        => "200",
+                    "message"       => "Cập nhật dữ liệu thành công"
+                ]);
 
-                    Session::flash("ui_bg_infor", [
-                        "status"        => "200",
-                        "message"       => "Thêm mới dữ liệu thành công"
-                    ]);
-    
-                    return redirect('/dashboard/ui-background');
-                }
+                return redirect('/dashboard/ui-background');
             }
             catch(Exception $error){
 

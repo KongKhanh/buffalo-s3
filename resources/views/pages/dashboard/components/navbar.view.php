@@ -1,5 +1,5 @@
 <div class="navbar-custom">
-    <ul class="list-unstyled topbar-menu float-end mb-0">
+    <!-- <ul class="list-unstyled topbar-menu float-end mb-0">
         <li class="dropdown notification-list d-lg-none">
             <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                 <i class="dripicons-search noti-icon"></i>
@@ -10,6 +10,7 @@
                 </form>
             </div>
         </li>
+
         <li class="dropdown notification-list topbar-dropdown">
             <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                 <img src="/public/dashboard/assets/images/flags/us.jpg" alt="user-image" class="me-0 me-sm-1" height="12"> 
@@ -17,22 +18,22 @@
             </a>
             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu">
 
-                <!-- item-->
+            
                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                     <img src="/public/dashboard/assets/images/flags/germany.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">German</span>
                 </a>
 
-                <!-- item-->
+               
                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                     <img src="/public/dashboard/assets/images/flags/italy.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Italian</span>
                 </a>
 
-                <!-- item-->
+               
                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                     <img src="/public/dashboard/assets/images/flags/spain.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Spanish</span>
                 </a>
 
-                <!-- item-->
+               
                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                     <img src="/public/dashboard/assets/images/flags/russia.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle">Russian</span>
                 </a>
@@ -47,7 +48,7 @@
             </a>
             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated dropdown-lg">
 
-                <!-- item-->
+                
                 <div class="dropdown-item noti-title">
                     <h5 class="m-0">
                         <span class="float-end">
@@ -59,7 +60,7 @@
                 </div>
 
                 <div style="max-height: 230px;" data-simplebar="">
-                    <!-- item-->
+                   
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <div class="notify-icon bg-primary">
                             <i class="mdi mdi-comment-account-outline"></i>
@@ -69,7 +70,7 @@
                         </p>
                     </a>
 
-                    <!-- item-->
+                    
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <div class="notify-icon bg-info">
                             <i class="mdi mdi-account-plus"></i>
@@ -79,7 +80,7 @@
                         </p>
                     </a>
 
-                    <!-- item-->
+                    
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <div class="notify-icon">
                             <img src="/public/dashboard/assets/images/users/avatar-2.jpg" class="img-fluid rounded-circle" alt=""> </div>
@@ -89,7 +90,7 @@
                         </p>
                     </a>
 
-                    <!-- item-->
+                    
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <div class="notify-icon bg-primary">
                             <i class="mdi mdi-comment-account-outline"></i>
@@ -99,7 +100,7 @@
                         </p>
                     </a>
 
-                    <!-- item-->
+                   
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <div class="notify-icon">
                             <img src="/public/dashboard/assets/images/users/avatar-4.jpg" class="img-fluid rounded-circle" alt=""> </div>
@@ -109,7 +110,7 @@
                         </p>
                     </a>
 
-                    <!-- item-->
+                    
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                         <div class="notify-icon bg-info">
                             <i class="mdi mdi-heart"></i>
@@ -121,7 +122,7 @@
                     </a>
                 </div>
 
-                <!-- All-->
+               
                 <a href="javascript:void(0);" class="dropdown-item text-center text-primary notify-item notify-all">
                     View All
                 </a>
@@ -176,7 +177,7 @@
                                 <span>G Suite</span>
                             </a>
                         </div>
-                    </div> <!-- end row-->
+                    </div> 
                 </div>
 
             </div>
@@ -199,48 +200,47 @@
                 </span>
             </a>
             <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
-                <!-- item-->
+         
                 <div class=" dropdown-header noti-title">
                     <h6 class="text-overflow m-0">Welcome !</h6>
                 </div>
 
-                <!-- item-->
+                
                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                     <i class="mdi mdi-account-circle me-1"></i>
                     <span>My Account</span>
                 </a>
 
-                <!-- item-->
+                
                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                     <i class="mdi mdi-account-edit me-1"></i>
                     <span>Settings</span>
                 </a>
 
-                <!-- item-->
+               
                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                     <i class="mdi mdi-lifebuoy me-1"></i>
                     <span>Support</span>
                 </a>
 
-                <!-- item-->
+               
                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                     <i class="mdi mdi-lock-outline me-1"></i>
                     <span>Lock Screen</span>
                 </a>
 
-                <!-- item-->
+                
                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                     <i class="mdi mdi-logout me-1"></i>
                     <span>Logout</span>
                 </a>
             </div>
         </li>
-
-    </ul>
+    </ul> -->
     <button class="button-menu-mobile open-left">
         <i class="mdi mdi-menu"></i>
     </button>
-    <div class="app-search dropdown d-none d-lg-block">
+    <!-- <div class="app-search dropdown d-none d-lg-block">
         <form>
             <div class="input-group">
                 <input type="text" class="form-control dropdown-toggle" placeholder="Search..." id="top-search">
@@ -250,36 +250,36 @@
         </form>
 
         <div class="dropdown-menu dropdown-menu-animated dropdown-lg" id="search-dropdown">
-            <!-- item-->
+            
             <div class="dropdown-header noti-title">
                 <h5 class="text-overflow mb-2">Found <span class="text-danger">17</span> results</h5>
             </div>
 
-            <!-- item-->
+            
             <a href="javascript:void(0);" class="dropdown-item notify-item">
                 <i class="uil-notes font-16 me-1"></i>
                 <span>Analytics Report</span>
             </a>
 
-            <!-- item-->
+           
             <a href="javascript:void(0);" class="dropdown-item notify-item">
                 <i class="uil-life-ring font-16 me-1"></i>
                 <span>How can I help you?</span>
             </a>
 
-            <!-- item-->
+           
             <a href="javascript:void(0);" class="dropdown-item notify-item">
                 <i class="uil-cog font-16 me-1"></i>
                 <span>User profile settings</span>
             </a>
 
-            <!-- item-->
+            
             <div class="dropdown-header noti-title">
                 <h6 class="text-overflow mb-2 text-uppercase">Users</h6>
             </div>
 
             <div class="notification-list">
-                <!-- item-->
+              
                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                     <div class="d-flex">
                         <img class="d-flex me-2 rounded-circle" src="/public/dashboard/assets/images/users/avatar-2.jpg" alt="Generic placeholder image" height="32">
@@ -290,7 +290,7 @@
                     </div>
                 </a>
 
-                <!-- item-->
+                
                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                     <div class="d-flex">
                         <img class="d-flex me-2 rounded-circle" src="/public/dashboard/assets/images/users/avatar-5.jpg" alt="Generic placeholder image" height="32">
@@ -302,5 +302,5 @@
                 </a>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>

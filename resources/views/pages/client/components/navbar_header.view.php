@@ -129,24 +129,27 @@
             <?php 
                 for($i = 0; $i < count($menuCategories); $i++){
 
-                    $subCateA = "";
-                    
-                    foreach($menuCategories[$i]['subCate'] as $subCate) {
+                    if($menuCategories[$i]['mc_status'] == 'published') {
 
-                        $subCateA .= <<<HTML
-                            <li><a href="{$subCate['link_url']}" style="text-decoration: none;">{$subCate['mc_title']}</a></li>
+                        $subCateA = "";
+                    
+                        foreach($menuCategories[$i]['subCate'] as $subCate) {
+    
+                            $subCateA .= <<<HTML
+                                <li><a href="{$subCate['link_url']}" style="text-decoration: none;">{$subCate['mc_title']}</a></li>
+                            HTML;
+                        }
+    
+                        echo 
+                        <<<HTML
+                            <li class="menubar__list-item menu_category" value="{$menuCategories[$i]['mc_id']}">
+                                <a href="{$menuCategories[$i]['link_url']}">{$menuCategories[$i]['mc_title']}</a>
+                                <ul class="sub-menu">
+                                    {$subCateA}
+                                </ul>
+                            </li>   
                         HTML;
                     }
-
-                    echo 
-                    <<<HTML
-                        <li class="menubar__list-item menu_category" value="{$menuCategories[$i]['mc_id']}">
-                            <a href="{$menuCategories[$i]['link_url']}">{$menuCategories[$i]['mc_title']}</a>
-                            <ul class="sub-menu">
-                                {$subCateA}
-                            </ul>
-                        </li>   
-                    HTML;
                 }
             ?>
 
