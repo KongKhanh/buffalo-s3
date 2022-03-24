@@ -33,31 +33,19 @@
                 foreach($menuCategories[$i]['subCate'] as $subCate) {
 
                     $subCateA .= <<<HTML
+
                         <li><a href="{$subCate['link_url']}" style="text-decoration: none;">- {$subCate['mc_title']}</a></li>
+
                     HTML;
                 }
 
                 echo 
                 <<<HTML
+
                     <li class="menubar__mobile-list-item">
                         <a href="{$menuCategories[$i]['link_url']}">{$menuCategories[$i]['mc_title']}<i class="fas fa-caret-right" style="margin-left: 6px;"></i></a>
-                        <!-- <ul class="sub-menu">
-                                {$subCateA}
-                            </ul> -->
                             <ul class="sub-menu-a">
                                 {$subCateA}
-                                <!-- <li>
-                                    <a>- AAAAAAAAAAAAAAAAAAA</a>
-                                </li>
-                                <li>
-                                    <a>- AAAAAAAAAAAAAAAAAAA</a>
-                                </li>
-                                <li>
-                                    <a>- AAAAAAAAAAAAAAAAAAA</a>
-                                </li>
-                                <li>
-                                    <a>- AAAAAAAAAAAAAAAAAAA</a>
-                                </li> -->
                             </ul>
                     </li>
                 HTML;
