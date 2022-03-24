@@ -176,7 +176,7 @@
                             <div class="collapse" id="uPvP4jwufkjzmBBQ">
                                 <ul class="side-nav-third-level">
                                     <li>
-                                        <a href="/dashboard/ui-background">Background Header</a>
+                                        <a href="/dashboard/ui-background/A0001">Background Header</a>
                                     </li>
                                 </ul>
                             </div>

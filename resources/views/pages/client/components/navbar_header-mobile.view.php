@@ -4,6 +4,18 @@
     $siteInfo = (new SiteInfoAPI())->__getSiteInfomation();
 ?>
 
+<style>
+    .sub-menu-a {
+
+    }
+    .sub-menu-a > li {
+
+    }
+    .sub-menu-a > li > a{
+        font-size: 12px;
+    }
+</style>
+
 <!-- #region News -->
 <nav class="navbar__mobile">
     <label for="nav-mobile-input" class="nav__bars-btn">
@@ -18,20 +30,35 @@
 
                 $subCateA = "";
                 
-                // foreach($menuCategories[$i]['subCate'] as $subCate) {
+                foreach($menuCategories[$i]['subCate'] as $subCate) {
 
-                //     $subCateA .= <<<HTML
-                //         <li><a href="{$subCate['link_url']}" style="text-decoration: none;">{$subCate['mc_title']}</a></li>
-                //     HTML;
-                // }
+                    $subCateA .= <<<HTML
+                        <li><a href="{$subCate['link_url']}" style="text-decoration: none;">- {$subCate['mc_title']}</a></li>
+                    HTML;
+                }
 
                 echo 
                 <<<HTML
                     <li class="menubar__mobile-list-item">
-                        <a href="{$menuCategories[$i]['link_url']}">{$menuCategories[$i]['mc_title']}</a>
+                        <a href="{$menuCategories[$i]['link_url']}">{$menuCategories[$i]['mc_title']}<i class="fas fa-caret-right" style="margin-left: 6px;"></i></a>
                         <!-- <ul class="sub-menu">
                                 {$subCateA}
                             </ul> -->
+                            <ul class="sub-menu-a">
+                                {$subCateA}
+                                <!-- <li>
+                                    <a>- AAAAAAAAAAAAAAAAAAA</a>
+                                </li>
+                                <li>
+                                    <a>- AAAAAAAAAAAAAAAAAAA</a>
+                                </li>
+                                <li>
+                                    <a>- AAAAAAAAAAAAAAAAAAA</a>
+                                </li>
+                                <li>
+                                    <a>- AAAAAAAAAAAAAAAAAAA</a>
+                                </li> -->
+                            </ul>
                     </li>
                 HTML;
             }

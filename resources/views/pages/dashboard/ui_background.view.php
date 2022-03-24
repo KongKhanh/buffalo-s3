@@ -33,7 +33,7 @@
 
                     <div class="tab-content">
                         <div class="tab-pane show active" id="form-row-preview">
-                            <form method="POST" action="/dashboard/ui-background/update" enctype="multipart/form-data">
+                            <form method="POST" action="/dashboard/ui-background/update/<?= $bgUI['suib_code']?>" enctype="multipart/form-data">
                                 <div class="row g-2">
                                     <div class="col-sm-12 mb-3">
                                     <div class="row border p-2" style="--bs-gutter-x:0px;">

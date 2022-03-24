@@ -2,11 +2,11 @@
 
     class UiBackground{
 
-        public function __getBackgroundForm(){
+        public function __getBackgroundForm($ID){
 
             try {
 
-                $bgUI = DB::table('site_ui_bg')->where('suib_code', 'A0001')->first();
+                $bgUI = DB::table('site_ui_bg')->where('suib_code', $ID)->first();
 
                 return view("pages/dashboard/ui_background.view.php", [
                     'bgUI'      =>      $bgUI
@@ -18,7 +18,7 @@
             }
         }
 
-        public function __updateBackground(){
+        public function __updateBackground($ID){
 
             try {
 
@@ -39,14 +39,14 @@
                     $dataToUpdate["suib_img"] =  $statusMove == true ? "/" . $dataToUpdate["suib_img"]["target_dir"] . $dataToUpdate["suib_img"]["name"] : null;
                 }
 
-                $status = DB::table("site_ui_bg")->where('suib_code', 'A0001')->update($dataToUpdate);
+                $status = DB::table("site_ui_bg")->where('suib_code', $ID)->update($dataToUpdate);
 
                 Session::flash("ui_bg_infor", [
                     "status"        => "200",
                     "message"       => "Cập nhật dữ liệu thành công"
                 ]);
 
-                return redirect('/dashboard/ui-background');
+                return redirect('/dashboard/ui-background/' . $ID);
             }
             catch(Exception $error){
 
