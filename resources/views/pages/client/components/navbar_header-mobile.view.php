@@ -18,20 +18,20 @@
 
                 $subCateA = "";
                 
-                // foreach($menuCategories[$i]['subCate'] as $subCate) {
+                foreach($menuCategories[$i]['subCate'] as $subCate) {
 
-                //     $subCateA .= <<<HTML
-                //         <li><a href="{$subCate['link_url']}" style="text-decoration: none;">{$subCate['mc_title']}</a></li>
-                //     HTML;
-                // }
+                    $subCateA .= <<<HTML
+                        <li><a href="{$subCate['link_url']}" style="text-decoration: none;">{$subCate['mc_title']}</a></li>
+                    HTML;
+                }
 
                 echo 
                 <<<HTML
-                    <li class="menubar__mobile-list-item">
+                    <li class="menubar__mobile-list-item" value="{$menuCategories[$i]['mc_id']}">
                         <a href="{$menuCategories[$i]['link_url']}">{$menuCategories[$i]['mc_title']}</a>
-                        <!-- <ul class="sub-menu">
+                        <ul class="sub-menu">
                                 {$subCateA}
-                            </ul> -->
+                            </ul>
                     </li>
                 HTML;
             }
