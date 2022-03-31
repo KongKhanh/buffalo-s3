@@ -34,9 +34,7 @@
                 foreach($menuCategories[$i]['subCate'] as $subCate) {
 
                     $subCateA .= <<<HTML
-
                         <li><a class="get-menu-id" data-id="{$subCate['mc_parent_id']}" href="{$subCate['link_url']}" style="text-decoration: none;">- {$subCate['mc_title']}</a></li>
-
                     HTML;
                 }
 

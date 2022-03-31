@@ -4,9 +4,13 @@ class NewsPageClient {
 
     protected $newsCate = [];
 
+    protected $bgUI = [];
+
     function __construct() {
 
         $this->newsCate = DB::table("news_category")->get();
+
+        $this->bgUI = (new HomePage())->__getBgUI();
     }
 
     /**
@@ -28,7 +32,8 @@ class NewsPageClient {
                     return view('pages/client/news.view.php', [
                         "newsList"                  => $newsList,
                         "newsCate"                  => $this->newsCate,
-                        "latestNews"                => $this->__getLatestNewsList(3)
+                        "latestNews"                => $this->__getLatestNewsList(3),
+                        'bgUI'                      => $this->bgUI,
                     ]);
                 }
 
@@ -71,7 +76,8 @@ class NewsPageClient {
                     return view('pages/client/news_detail.view.php', [
                         "newsItem"                  => $newsItem,
                         "newsCate"                  => $this->newsCate,
-                        "latestNews"                => $this->__getLatestNewsList(3)
+                        "latestNews"                => $this->__getLatestNewsList(3),
+                        'bgUI'                      => $this->bgUI,
                     ]);
                 }
 
@@ -122,7 +128,8 @@ class NewsPageClient {
                     return view('pages/client/news_by_cate.view.php', [
                         "newsByCate"                    => $newsByCate,
                         "newsCate"                      => $this->newsCate,
-                        "latestNews"                    => $this->__getLatestNewsList(3)
+                        "latestNews"                    => $this->__getLatestNewsList(3),
+                        'bgUI'                          => $this->bgUI,
                     ]);
                 }
 
