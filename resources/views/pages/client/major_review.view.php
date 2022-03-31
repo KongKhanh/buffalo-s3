@@ -18,6 +18,15 @@
 
     <!-- JQuery -->
     <script src="/public/client/assets/lib/jquery-3.4.1.min.js"></script>
+
+    <style>
+        .main-header--outter {
+            background-image: linear-gradient(rgba(121, 134, 150, 0.7), rgba(121, 134, 150, 0.7)), url("<?= $bgUI['headerBG']['suib_img']; ?>");
+        }
+        .main-footer--outter {
+            background-image: linear-gradient(rgba(75, 75, 75, 0.5), rgba(75, 75, 75, 0.5)), url("<?= $bgUI['footerBG']['suib_img']; ?>");
+        }
+    </style>
     
 </head>
 <body>

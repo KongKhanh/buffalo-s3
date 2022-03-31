@@ -147,6 +147,11 @@ class SubscriberPage {
                 $mjrItems = DB::table("majors")->get();
                 $lotItems = DB::table("level_of_training")->get();
 
+                if($subscriberItem['subscriber_note'] == "" || $subscriberItem['subscriber_note'] == null){
+
+                    $subscriberItem['subscriber_note'] = "(Người dùng không ghi chú)";
+
+                }
 
                 if($subscriberItem) {
 

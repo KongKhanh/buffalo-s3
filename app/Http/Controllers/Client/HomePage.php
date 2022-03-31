@@ -24,9 +24,7 @@ class HomePage {
 
             $news = array_slice(array_reverse(DB::table("news")->get()), 0, 8);
 
-            $bgUI = [
-                'headerBG'      =>     DB::table('site_ui_bg')->where('suib_code', 'A0001')->first(),
-            ];
+            $bgUI = $this->__getBgUI();
 
             /**
              * Task: update number of access to page
@@ -219,5 +217,13 @@ class HomePage {
 
             return false;
         }
+    }
+
+    public function __getBgUI() {
+
+        return $bgUI = [
+            'headerBG'      =>     DB::table('site_ui_bg')->where('suib_code', 'A0001')->first(),
+            'footerBG'      =>     DB::table('site_ui_bg')->where('suib_code', 'A0002')->first(),
+        ];
     }
 }

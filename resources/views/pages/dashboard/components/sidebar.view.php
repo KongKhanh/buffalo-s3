@@ -177,6 +177,7 @@
                                 <ul class="side-nav-third-level">
                                     <li>
                                         <a href="/dashboard/ui-background/A0001">Background Header</a>
+                                        <a href="/dashboard/ui-background/A0002">Background Footer</a>
                                     </li>
                                 </ul>
                             </div>

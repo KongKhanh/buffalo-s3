@@ -4,6 +4,7 @@
 
     $siteInfo = (new SiteInfoAPI())->__getSiteInfomation();
 ?>
+
 <style>
     .main-header__menubar ul {
         position:relative;
@@ -67,6 +68,7 @@
     }  
 
 </style>
+
 <section class="main-header--inner">
     <article class="main-header__content">
         <a class="main-header__logo" href="/">

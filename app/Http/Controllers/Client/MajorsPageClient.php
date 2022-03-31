@@ -4,9 +4,13 @@ class MajorPageClient {
 
     private $siteInfo;
 
+    protected $bgUI = [];
+
     function __construct() {
 
         $this->siteInfo = (new SiteInfoAPI())->__getSiteInfomation();
+
+        $this->bgUI = (new HomePage())->__getBgUI();
     }
 
     public function __getAllMajorsPage() {
@@ -15,6 +19,7 @@ class MajorPageClient {
 
             'majors'                    => $this->__getAllMajors(),
             'siteInfo'                  => $this->siteInfo,
+            'bgUI'                      => $this->bgUI,
         ]);
     }
 
@@ -40,6 +45,7 @@ class MajorPageClient {
 
                 'majors'                    => $majorsByLOT,
                 'siteInfo'                  => $this->siteInfo,
+                'bgUI'                      => $this->bgUI,
             ]);
         }
 
@@ -65,7 +71,8 @@ class MajorPageClient {
             if(!$MajorItem) return redirect('error-status/404-error');
 
             return view("pages/client/major_review.view.php", [
-                "MajorItem"             => $MajorItem
+                "MajorItem"                 => $MajorItem,
+                'bgUI'                      => $this->bgUI,
             ]);
         }
 
