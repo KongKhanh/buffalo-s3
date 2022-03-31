@@ -1145,7 +1145,7 @@ strong {
     margin: 1rem auto;
   }
   .majors-box__content{
-    justify-content:space-between;
+    flex-direction: column;
     gap: 0;
     padding: 1em 0.5em 0 2.5em;
   }
@@ -1165,8 +1165,7 @@ strong {
     
   }
   .majors-box__list:last-child div:first-child{
-    
-    margin-left: 2.5em;
+  
   }
 
   .form_wrapper{
