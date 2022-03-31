@@ -26,9 +26,12 @@
 </head>
 
 <style>
-.main-header--outter {
-    background-image: linear-gradient(rgba(121, 134, 150, 0.7), rgba(121, 134, 150, 0.7)), url("<?= $bgUI['headerBG']['suib_img']; ?>");
-}
+    .main-header--outter {
+        background-image: linear-gradient(rgba(121, 134, 150, 0.7), rgba(121, 134, 150, 0.7)), url("<?= $bgUI['headerBG']['suib_img']; ?>");
+    }
+    .main-footer--outter {
+        background-image: linear-gradient(rgba(75, 75, 75, 0.5), rgba(75, 75, 75, 0.5)), url("<?= $bgUI['footerBG']['suib_img']; ?>");
+    }
 </style>
 
 <body>
@@ -399,12 +402,14 @@
                         <?php 
                             foreach($newsLeft as $newsItem) {
 
+                                $newsItem['link_url'] = '/news-detail/' . trim(Str::slug($newsItem["news_title"])) . "-" . $newsItem["news_id"];
+
                                 echo <<<HTML
                                     <article class="news-item news-home-item">
-                                        <a href="#" class="news-item__thumbail">
+                                        <a href="{$newsItem['link_url']}" class="news-item__thumbail">
                                             <img src="{$newsItem['news_representative_image']}" width="128" class="news-home-image"/>
                                         </a>
-                                        <a href="#" class="news-item__title">
+                                        <a href="{$newsItem['link_url']}" class="news-item__title">
                                             {$newsItem['news_title']}
                                         </a>
                                         <!-- <h3 class="news-item__date">17, March - 2022</h3> -->
@@ -417,12 +422,15 @@
                     <section class="news-box news-home-box news-home-box-r">
                         <?php 
                             foreach($newsRight as $newsItem) {
+
+                                $newsItem['link_url'] = '/news-detail/' . trim(Str::slug($newsItem["news_title"])) . "-" . $newsItem["news_id"];
+
                                 echo <<<HTML
                                     <article class="news-item news-home-item">
-                                        <a href="#" class="news-item__thumbail">
+                                        <a href="{$newsItem['link_url']}" class="news-item__thumbail">
                                             <img src="{$newsItem['news_representative_image']}" class="news-home-image"/>
                                         </a>
-                                        <a href="#" class="news-item__title">
+                                        <a href="{$newsItem['link_url']}" class="news-item__title">
                                             {$newsItem['news_title']}
                                         </a>
                                     </article>
@@ -449,97 +457,97 @@
     
 </body>
 
-<script src="/public/client/assets/js/app.js"></script>
-<script>
+    <script src="/public/client/assets/js/app.js"></script>
+    <script>
 
-    if(($('.status_scb').val()) == 1997) {
+        if(($('.status_scb').val()) == 1997) {
 
-        window.alert("Đăng ký thành công!");
-    }
-
-    if(($('#status-cc-form').val()) == true) {
-
-        window.alert("Đăng ký thành công!");
-    }
-
-    const slideBtnLeft = $('#desc-slide__btn-left');
-
-    const slideBtnRight = $('#desc-slide__btn-right');
-
-    const slides = $('#desc-slider').children('a');
-    
-    let slideIndex = 1;
-    
-    if (slides.length > 0) showSlides();
-
-    function showSlides() {
-
-        $.each(slides, (index) => {
-
-            $(slides[index]).css({
-
-                display: 'none',
-            });
-        });
-
-        slideIndex++;
-
-        if (slideIndex > slides.length) {
-
-            slideIndex = 1;
+            window.alert("Đăng ký thành công!");
         }
-        $(slides[slideIndex - 1]).css({
-            // animation: 'slide 3s ease forward',
-            display: 'block',
-        });
 
-        setTimeout(showSlides, 3000);
-    }
+        if(($('#status-cc-form').val()) == true) {
 
-    function pushSlides(n) {
-
-        showSlide(slideIndex += n);
-    }
-
-    function currentSlide(n) {
-
-        showSlide(slideIndex = n);
-    }
-
-    function showSlide(n) {
-
-        if (n > slides.length) {
-
-            slideIndex = 1;
+            window.alert("Đăng ký thành công!");
         }
-        if (n < 1) {
 
-            slideIndex = slides.length;
-        }
-        $.each(slides, index => {
+        const slideBtnLeft = $('#desc-slide__btn-left');
 
-            $(slides[index]).css({
+        const slideBtnRight = $('#desc-slide__btn-right');
 
-                display: 'none',
+        const slides = $('#desc-slider').children('a');
+        
+        let slideIndex = 1;
+        
+        if (slides.length > 0) showSlides();
+
+        function showSlides() {
+
+            $.each(slides, (index) => {
+
+                $(slides[index]).css({
+
+                    display: 'none',
+                });
             });
 
-            $(slides[index]).animate({}); 
+            slideIndex++;
+
+            if (slideIndex > slides.length) {
+
+                slideIndex = 1;
+            }
+            $(slides[slideIndex - 1]).css({
+                // animation: 'slide 3s ease forward',
+                display: 'block',
+            });
+
+            setTimeout(showSlides, 3000);
+        }
+
+        function pushSlides(n) {
+
+            showSlide(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+
+            showSlide(slideIndex = n);
+        }
+
+        function showSlide(n) {
+
+            if (n > slides.length) {
+
+                slideIndex = 1;
+            }
+            if (n < 1) {
+
+                slideIndex = slides.length;
+            }
+            $.each(slides, index => {
+
+                $(slides[index]).css({
+
+                    display: 'none',
+                });
+
+                $(slides[index]).animate({}); 
+            });
+
+            $(slides[slideIndex - 1]).css({
+                display: 'block',
+                // animation: 'slide 3s ease forward',
+            });
+        }
+
+        slideBtnLeft.click(() => {
+
+            pushSlides(-1);
         });
 
-        $(slides[slideIndex - 1]).css({
-            display: 'block',
-            // animation: 'slide 3s ease forward',
+        slideBtnRight.click(() => {
+
+            pushSlides(1);
         });
-    }
-
-    slideBtnLeft.click(() => {
-
-        pushSlides(-1);
-    });
-
-    slideBtnRight.click(() => {
-
-        pushSlides(1);
-    });
-</script>
+    </script>
 </html>

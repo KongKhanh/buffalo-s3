@@ -115,7 +115,7 @@
                 </article>
                 <article class="main-footer__track-item">
                     <p>Đang online</p>
-                    <p><span id="online">123</span> nguời</p>
+                    <p><span id="onlineUsers">123</span> nguời</p>
                 </article>
             </section>
         </article>
@@ -126,6 +126,10 @@
     </section>
 </footer>
 <script>
-document.getElementById("online").innerHTML =
-Math.floor(Math.random() * 100);
+
+    setInterval(function(){
+
+        document.getElementById("onlineUsers").innerHTML = Math.floor(Math.random() * 100);
+        
+    }, 8000);
 </script>
