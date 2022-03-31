@@ -124,7 +124,7 @@ strong {
   padding-bottom: 5em;
 }
 .main-header--inner {
-  background: rgba(252, 207, 84, 0.918);
+  /* background: rgba(252, 207, 84, 0.918); */
   padding: 0 1.5em;
   display: flex;
   flex-wrap: nowrap;
