@@ -26,6 +26,7 @@ class HomePage {
 
             $bgUI = [
                 'headerBG'      =>     DB::table('site_ui_bg')->where('suib_code', 'A0001')->first(),
+                'footerBG'      =>     DB::table('site_ui_bg')->where('suib_code', 'A0002')->first(),
             ];
 
             /**

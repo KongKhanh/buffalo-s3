@@ -42,7 +42,6 @@
 
                 echo 
                 <<<HTML
-
                     <li class="menubar__mobile-list-item">
                         <a class="onclick-submenu" data-id="{$menuCategories[$i]['mc_id']}">{$menuCategories[$i]['mc_title']}<i class="fas fa-caret-right" style="margin-left: 6px;"></i></a>
                             <ul class="sub-menu-a">
