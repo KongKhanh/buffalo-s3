@@ -29,6 +29,10 @@
 .main-header--outter {
     background-image: linear-gradient(rgba(121, 134, 150, 0.7), rgba(121, 134, 150, 0.7)), url("<?= $bgUI['headerBG']['suib_img']; ?>");
 }
+
+
+
+
 </style>
 
 <body>
