@@ -124,7 +124,7 @@ strong {
   padding-bottom: 5em;
 }
 .main-header--inner {
-  background: rgba(252, 207, 84, 0.918);
+  /* background: rgba(252, 207, 84, 0.918); */
   padding: 0 1.5em;
   display: flex;
   flex-wrap: nowrap;
@@ -168,7 +168,7 @@ strong {
   color: white;
   text-transform: uppercase;
   font-size: .8em;
-  color: #FFFA65;
+  color: var(--yellowColor);
 }
 .main-header__menubar {
   display: flex;

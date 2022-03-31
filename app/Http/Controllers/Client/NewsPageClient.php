@@ -156,7 +156,8 @@ class NewsPageClient {
 
             return view("pages/client/video-iframe.view.php", [
 
-                'videoiframe'                    => $videoiframe,
+                'videoiframe'                       => $videoiframe,
+                'bgUI'                              => $this->bgUI,
             ]);
         }
 

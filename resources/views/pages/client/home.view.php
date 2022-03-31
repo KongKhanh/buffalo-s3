@@ -26,8 +26,20 @@
 </head>
 
 <style>
+    .home-news-created-at {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        font-size: 12px;
+    }
+</style>
+
+<style>
     .main-header--outter {
         background-image: linear-gradient(rgba(121, 134, 150, 0.7), rgba(121, 134, 150, 0.7)), url("<?= $bgUI['headerBG']['suib_img']; ?>");
+    }
+    .main-footer--outter {
+        background-image: linear-gradient(rgba(75, 75, 75, 0.5), rgba(75, 75, 75, 0.5)), url("<?= $bgUI['footerBG']['suib_img']; ?>");
     }
 </style>
 
@@ -406,10 +418,10 @@
                                         <a href="{$newsItem['link_url']}" class="news-item__thumbail">
                                             <img src="{$newsItem['news_representative_image']}" width="128" class="news-home-image"/>
                                         </a>
-                                        <a href="{$newsItem['link_url']}" class="news-item__title">
+                                        <a href="{$newsItem['link_url']}" class="news-item__title" style="position: relative;">
                                             {$newsItem['news_title']}
+                                            <span class="home-news-created-at">20/20/2023</span>
                                         </a>
-                                        <!-- <h3 class="news-item__date">17, March - 2022</h3> -->
                                     </article>
                                 HTML;
                             }
