@@ -99,6 +99,11 @@
                                             ?>
                                         </select>
                                     </div>
+                                    <div class="mb-3 col-md-12">
+                                        <label for="news_main_content" class="form-label">Nội dung ghi chú</label>
+                                        <textarea type="text" name="subscriber_note" class="form-control" readonly rows="8"
+                                        id="contenteditor"><?= $subscriberItem['subscriber_note'] ?></textarea>
+                                    </div>
                                 </div>
                                 <button type="submit" style="margin-top:20px;" class="btn btn-warning">CẬP NHẬT</button>
                             </form>                      
