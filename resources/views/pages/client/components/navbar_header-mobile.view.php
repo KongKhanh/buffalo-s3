@@ -34,7 +34,7 @@
                 foreach($menuCategories[$i]['subCate'] as $subCate) {
 
                     $subCateA .= <<<HTML
-                        <li><a class="get-menu-id" data-id="{$subCate['mc_parent_id']}" href="{$subCate['link_url']}" style="text-decoration: none;">- {$subCate['mc_title']}</a></li>
+                        <li style="margin: 12px 0;"><a class="get-menu-id" data-id="{$subCate['mc_parent_id']}" href="{$subCate['link_url']}" style="text-decoration: none;">- {$subCate['mc_title']}</a></li>
                     HTML;
                 }
 
@@ -71,19 +71,11 @@
     </ul>
 </nav>
 <script>
+
     $('.sub-menu-a').css('display', 'none');
 
-    var subMenuId = ($('.get-menu-id').attr('data-id'));
-
-
-    $('.onclick-submenu').click(function(){
-      
-        var MenuId = ($(this).attr('data-id'));
-        if(MenuId == subMenuId){
-            $('.sub-menu-a').css('display', 'block');
-    }
-    else{
-        $('.sub-menu-a').css('display', 'none');
-    }
-    })  
+    $('.menubar__mobile-list-item').click(function(){
+    
+        $(this).find('ul').toggle();
+  });  
 </script>

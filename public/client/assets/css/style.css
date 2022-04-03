@@ -1,7 +1,7 @@
 :root {
   --grayColor: #798696;
   --blackColor: #4b4b4b;
-  --yellowColor: #fffa65;
+  --yellowColor: #FFC001;
   --redColor: #ff4d4d;
   --greenColor: #059c39;
   --orangeColor: #ff9100;
@@ -1027,9 +1027,9 @@ strong {
   }
   .navbar__mobile{
     position: absolute;
-    top: 5em;
+    top: 1.8em;
     right: 1.8em;
-    display: block ;
+    display: block;
   }
   .main-header__menubar{
     width: 100%;
@@ -1082,6 +1082,7 @@ strong {
   .desc__research--btn a,
   .content{
     margin: 0;
+    padding: 25px;
   }
   .main-header__desc{
     padding: 0 5% !important;
