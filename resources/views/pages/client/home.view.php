@@ -26,11 +26,16 @@
 </head>
 
 <style>
-    .home-news-created-at {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        font-size: 12px;
+    .home-wrapper-news-content {
+        display: flex;
+        flex-direction: column;
+    }
+    .home-wrapper-news-content > .home-news-created-at {
+        font-size: 11px;
+        margin-top: 6px;
+    }
+    .home-wrapper-news-content > .home-news-created-at > .home-news-view-number {
+        margin-left: 6px;
     }
 </style>
 
@@ -59,7 +64,7 @@
                 <section class="main-header__desc">
                     <div class="header__desc-wrapper">
                         <h1 class="desc__title">
-                            Trường Trung cấp Kỹ thuật Nông nghiệp Thành phố Hồ Chí Minh
+                            Trung cấp Kỹ thuật Nông nghiệp Thành phố Hồ Chí Minh
                         </h1>
                         <p class="desc__detail">
                             <?= $siteInfo['site_info_short_description']; ?>
@@ -394,6 +399,8 @@
 
                         for($i = 0; $i < count($news); $i++) {
 
+                            $news[$i]['news_created_at_format'] = date_format(date_create($news[$i]['news_created_at']), "d/m/Y");
+
                             if(isset($news[$i])) {
 
                                 if($i < ceil(count($news) / 2)) {
@@ -418,9 +425,14 @@
                                         <a href="{$newsItem['link_url']}" class="news-item__thumbail">
                                             <img src="{$newsItem['news_representative_image']}" width="128" class="news-home-image"/>
                                         </a>
-                                        <a href="{$newsItem['link_url']}" class="news-item__title" style="position: relative;">
-                                            {$newsItem['news_title']}
-                                            <span class="home-news-created-at">20/20/2023</span>
+                                        <a href="{$newsItem['link_url']}" class="news-item__title">
+                                            <div class="home-wrapper-news-content">
+                                                {$newsItem['news_title']}
+                                                <span class="home-news-created-at">
+                                                    <i class="far fa-clock"></i> {$newsItem['news_created_at_format']} 
+                                                    <span class="home-news-view-number"><i class="far fa-eye"></i> {$newsItem['news_num_of_view']}</span>
+                                                </span>
+                                            </div>
                                         </a>
                                     </article>
                                 HTML;
@@ -440,7 +452,13 @@
                                             <img src="{$newsItem['news_representative_image']}" class="news-home-image"/>
                                         </a>
                                         <a href="{$newsItem['link_url']}" class="news-item__title">
-                                            {$newsItem['news_title']}
+                                            <div class="home-wrapper-news-content">
+                                                {$newsItem['news_title']}
+                                                <span class="home-news-created-at">
+                                                    <i class="far fa-clock"></i> {$newsItem['news_created_at_format']} 
+                                                    <span class="home-news-view-number"><i class="far fa-eye"></i> {$newsItem['news_num_of_view']}</span>
+                                                </span>
+                                            </div>
                                         </a>
                                     </article>
                                 HTML;

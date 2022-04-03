@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2022 at 09:21 AM
+-- Generation Time: Apr 02, 2022 at 05:49 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.8
 
@@ -380,7 +380,7 @@ CREATE TABLE `site_info` (
 --
 
 INSERT INTO `site_info` (`site_info_id`, `site_info_name`, `site_info_noa`, `site_info_short_description`, `site_info_facebook_link`, `site_info_main_logo`) VALUES
-(1, 'Trường Trung cấp Kỹ thuật Nông nghiệp Hồ Chí Minh', 16675, 'Trung cấp Kỹ thuật Nông nghiệp thuộc Sở Nông nghiệp và Phát triển Nông thôn Thành phố Hồ Chí Minh được thành lập trên cơ sở sáp nhập hai trường là Trường Trung học Nông nghiệp và Trường Công nhân Kỹ thuật Thuỷ sản.', 'https://laravel.com/docs/9.x/responses', '/public/storage/images/default/ats-header-retina.png');
+(1, 'Trường Trung cấp Kỹ thuật Nông nghiệp Hồ Chí Minh', 16717, 'Trung cấp Kỹ thuật Nông nghiệp thuộc Sở Nông nghiệp và Phát triển Nông thôn Thành phố Hồ Chí Minh được thành lập trên cơ sở sáp nhập hai trường là Trường Trung học Nông nghiệp và Trường Công nhân Kỹ thuật Thuỷ sản.', 'https://laravel.com/docs/9.x/responses', '/public/storage/images/default/ats-header-retina.png');
 
 -- --------------------------------------------------------
 
@@ -506,7 +506,7 @@ CREATE TABLE `site_ui_bg` (
 
 INSERT INTO `site_ui_bg` (`suib_id`, `suib_img`, `suib_session`, `suib_code`) VALUES
 (1, '/public/storage/images/Lam-giau-tu-nong-nghiep-6-dieu-giup-nha-nong-cat-canh-thanh-cong-bytuong-com.jpg', 'Header-HomePage', 'A0001'),
-(3, '/public/storage/images/A-desert-tree-in-Morocco-Sahara_Image-Courtesy-Sergey-Pesterev-Unsplash.jpg', 'Footer-HomePage', 'A0002');
+(3, '/public/storage/images/footer.jpeg', 'Footer-HomePage', 'A0002');
 
 -- --------------------------------------------------------
 
