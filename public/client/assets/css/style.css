@@ -1018,7 +1018,6 @@ strong {
 }
 /* #endregion Register Form */
 @media only screen and (max-width:992px){
- 
   .main-header--inner{
     flex-direction: column-reverse;
   }
@@ -1056,6 +1055,8 @@ strong {
   }
   
 }
+
+/*max-width: 768px*/
 @media only screen and (max-width : 48em){
   /* home */
   .container.main-header__desc .main-header__logo,
@@ -1318,7 +1319,9 @@ strong {
   .register-block{
     margin-bottom: 2em;
   }
-}
+} 
+
+/*max-width: 480px*/
 @media only screen and (max-width: 30em){
 
   .event-box__body__desc{
