@@ -32,6 +32,8 @@
         left: 0;
         font-size: 12px;
     }
+
+    
 </style>
 
 <style>
@@ -365,7 +367,7 @@
                             echo <<<HTML
                                 <article class="course-box course-box-item">
                                     <div class="course-box__thumbnal">
-                                        <img src="{$levelOfTrainingItem['lot_main_profile']}" alt="..." style="height: 100%;">
+                                        <img src="{$levelOfTrainingItem['lot_main_profile']}" alt="..." style="">
                                     </div>
                                     <div>
                                         <h4 class="course-box__title">
