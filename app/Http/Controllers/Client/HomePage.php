@@ -57,6 +57,7 @@ class HomePage {
 
                 return view('pages/client/about_us.view.php', [
                     'siteInfo'                  => $this->siteInfo,
+                    'bgUI'                      => $this->__getBgUI(),
                 ]);
             }
 
@@ -76,6 +77,7 @@ class HomePage {
 
                 return view('pages/client/contact_us.view.php', [
                     'siteInfo'                  => $this->siteInfo,
+                    'bgUI'                      => $this->__getBgUI(),
                 ]);
             }
 

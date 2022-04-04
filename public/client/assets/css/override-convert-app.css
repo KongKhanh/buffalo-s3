@@ -7,8 +7,9 @@
 }
 
 .form_wrapper {
+  margin: 1rem auto;
   background: #fff;
-  width: 50%;
+  width: 80%;
   max-width: 100%;
   box-sizing: border-box;
   padding: 25px;
@@ -447,11 +448,11 @@
   margin: 0 1.2em 0 0;
 }
 .news-home-box.news-home-box-r {
-  margin: 0 0 0 1.2em;
+  margin: 0 0 0 0;
 }
 .news-home-box .news-home-item {
   display: flex;
-  margin-bottom: 8px;
+  margin-bottom: 18px;
 }
 .news-home-box .news-home-item .news-item__thumbail {
   margin-right: 16px;
@@ -565,6 +566,9 @@
     margin: 0 0 36px 0;
     padding: 8px 0;
   }
+  .courses-box .course-box-item:last-child {
+    margin-bottom: 0;
+  }
   .courses-box .course-box-item .course-box__footer {
     margin-bottom: 6px;
   }
@@ -620,6 +624,10 @@
   }
   .open-register_area .support-wrapper .btn_get_support:focus {
     outline: none;
+  }
+
+  .body-container .courses-box__title {
+    margin-top: 24px;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 1024px) {
