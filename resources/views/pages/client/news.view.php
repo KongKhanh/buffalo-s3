@@ -25,21 +25,62 @@
             background-image: linear-gradient(rgba(75, 75, 75, 0.5), rgba(75, 75, 75, 0.5)), url("<?= $bgUI['footerBG']['suib_img']; ?>");
         }
 
-        @media only screen and (max-width:992px) {
-            .desc__title {
-                margin-top: 2rem;
+        /*max-width: 992px*/
+        @media only screen and (max-width:992px){
+            .news-container{
+                padding: 1rem 0;
+                margin: 0 auto;
+                flex-wrap: wrap;
+            }
+         }
+
+        /*max-width: 768px*/
+        @media only screen and (max-width : 768px){
+            .relate-posts__container{
+                flex-wrap: wrap;
+            }
+            .news-box__thumbnail {
+                display: block;
             }
 
-            .news-container.container {
-                padding: 1rem;
+
+            .relate-post{
+                width: 100%;
+            }
+            .relate-post__thumbnail img{
+                max-width: 670px;
+                max-height: 450px;
+                object-fit: cover;
+            }
+            .main-footer--inner{
+                margin-top: 2rem;
             }
         }
 
-        @media only screen and (max-width : 48em) {
-            .desc__title {
-                margin-top: 2rem;
-                display: block;
+        /* max-width: 480px */
+        @media only screen and (max-width: 480px) {
+            .news-container{
+                margin-top:2rem ;
+
             }
+            .relate-post{
+                width: 100%;
+            }
+            .relate-post__thumbnail img{
+
+                object-fit: cover;
+            }
+
+            .contacts-box {
+                margin-bottom: 4rem;
+            }
+            .main-footer__desc{
+                font-size: .9em;
+            }
+            .main-footer--inner p:last-child{
+                padding: 1rem 0;
+            }
+
         }
     </style>
 </head>
