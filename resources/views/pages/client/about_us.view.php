@@ -31,18 +31,54 @@
     </style>
     
     <style>
+        .news-box:hover{
+            box-shadow: none;
+
+        }
         /*max-width: 992px*/
          @media only screen and (max-width:992px){
-
+            .news-container {
+                margin: 1rem auto;
+                padding: 1rem;
+            }
          }
 
         /*max-width: 768px*/
         @media only screen and (max-width : 768px){
+            .relate-posts__container{
+                flex-wrap: wrap;
+            }
+
+            .relate-post{
+                width: 100%;
+            }
+            .relate-post__thumbnail img{
+                max-width: 670px;
+                max-height: 450px;
+                object-fit: cover;
+            }
 
         }
 
         /* max-width: 480px */
         @media only screen and (max-width: 480px) {
+            .relate-post{
+                width: 100%;
+            }
+            .relate-post__thumbnail img{
+
+                object-fit: cover;
+            }
+
+            .contacts-box {
+                margin-bottom: 4rem;
+            }
+            .main-footer__desc{
+                font-size: .9em;
+            }
+            .main-footer--inner p:last-child{
+                padding: 1rem 0;
+            }
 
         }
     </style>
