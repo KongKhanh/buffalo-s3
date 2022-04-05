@@ -7,6 +7,9 @@ class HomePage {
     function __construct() {
 
         $this->siteInfo = (new SiteInfoAPI())->__getSiteInfomation();
+
+        $this->newsCate = DB::table("menu_cate")->where("mc_infor", 1)->get();
+
     }
 
     public function __getHomePage() {
@@ -20,6 +23,7 @@ class HomePage {
                 $childrenCategories = DB::table('menu_cate')->where('mc_parent_id',$menuCategories[$i]['mc_id'])->get();
 
                 $menuCategories[$i]["childrenList"] = $childrenCategories;
+
             }
 
             $news = array_slice(array_reverse(DB::table("news")->get()), 0, 8);
@@ -228,4 +232,44 @@ class HomePage {
             'footerBG'      =>     DB::table('site_ui_bg')->where('suib_code', 'A0002')->first(),
         ];
     }
+
+
+    public function __getMenuCateDetailPageClient($target) {
+
+        try {
+
+            if(isset($target) && is_array($this->newsCate)) {
+
+                $ID_parsing = (explode("-", $target));
+
+                $target = trim($ID_parsing[(count($ID_parsing) - 1)]);
+
+                DB::table("post")->update([
+                    "post_num_of_view" => DB::table("post")->where("post_id", $target)->value("post_num_of_view") + 1,
+                ]);
+
+                $postItem = DB::table("post")->where("post_id", $target)->first();
+
+                if($postItem) {
+
+                    return view('pages/client/infor_detail.view.php', [
+                        "postItem"                  => $postItem,
+                        "newsCate"                  => $this->newsCate,
+                        'bgUI'                      => $this->__getBgUI(),
+                    ]);
+                }
+
+                return redirect('error-status/404-error'); 
+            }
+            else {
+
+                return redirect('error-status/404-error'); 
+            }
+        }
+        catch(Exception $error) {
+
+            return redirect('error-status/500-error'); 
+        }
+    }
+
 }

@@ -66,6 +66,9 @@
                                         <a href="/dashboard/news">Danh sách tin tức</a>
                                     </li>
                                     <li>
+                                        <a href="/dashboard/infor">Danh sách thông tin</a>
+                                    </li>
+                                    <li>
                                         <a href="/dashboard/news/categories">Danh sách thể loại</a>
                                     </li>
                                     <li>

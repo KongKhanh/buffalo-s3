@@ -301,14 +301,14 @@ strong {
 .main-header__desc-right{
   flex:2;
 }
-.main-header__desc-left .main-header__logo .logo-text {
+.main-header__desc .main-header__logo .logo-text {
   font-size: 1.5em;
   text-align: center;
   color: var(--greenColor);
   text-shadow: 0.5px 2.5px 5px #fffa65;
   text-transform: uppercase;
 }
-.main-header__desc-left .desc__title {
+.main-header__desc .desc__title {
   font-size: 2em;
   font-weight: bolder;
   word-spacing: 0.1em;

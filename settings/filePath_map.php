@@ -80,4 +80,5 @@ return array(
     "app\\Http\\Controllers\\Dashboard\\VideoIFramePage"                => $baseDir . '/app/Http/Controllers/Dashboard/VideoIFramePage.php',
     "app\\Http\\Controllers\\Dashboard\\UiBackground"                   => $baseDir . '/app/Http/Controllers/Dashboard/UiBackground.php',
     "app\\Http\\Controllers\\Base\\ERRORPage"                           => $baseDir . '/app/Http/Controllers/Base/ERRORPage.php',
+    "app\\Http\\Controllers\\Dashboard\\InforPage"                       => $baseDir . '/app/Http/Controllers/Dashboard/InforPage.php',
 );
