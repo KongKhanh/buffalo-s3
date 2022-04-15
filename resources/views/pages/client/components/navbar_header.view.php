@@ -135,11 +135,20 @@
 
                         $subCateA = "";
                     
-                        foreach($menuCategories[$i]['subCate'] as $subCate) {
+                        if($menuCategories[$i]['subCate']){
+                            foreach($menuCategories[$i]['subCate'] as $subCate) {
     
-                            $subCateA .= <<<HTML
-                                <li><a href="{$subCate['link_url']}" style="text-decoration: none;">{$subCate['mc_title']}</a></li>
-                            HTML;
+                                $subCateA .= <<<HTML
+                                    <li><a href="{$subCate['link_url']}" style="text-decoration: none;">{$subCate['mc_title']}</a></li>
+                                HTML;
+                            }
+                        }
+                        if($menuCategories[$i]['suba_cate_infor']){
+                            foreach($menuCategories[$i]['suba_cate_infor'] as $subCate_infor) {
+                                $subCateA .= <<<HTML
+                                    <li><a href="{$subCate_infor['link_url']}" style="text-decoration: none;">{$subCate_infor['post_title']}</a></li>
+                                HTML;
+                            }
                         }
     
                         echo 

@@ -17,12 +17,16 @@ class MenuCatePage {
                     $menu_cate[$i]["suba_cate"] = DB::table("menu_cate")->where("mc_parent_id",  $menu_cate[$i]["mc_id"])
                     ->join("links", "mc_link_id", "=", "link_id")
                     ->get();
-                }
 
-                return view("pages/dashboard/menucate.view.php", [
-                    "menu_cate"         => $menu_cate
-                ]);
+                    $menu_cate[$i]["suba_cate_infor"] =
+                    DB::table("post")->where("post_menu_id",$menu_cate[$i]["mc_id"])
+                    ->join("links", "post_link_id", "=", "link_id")
+                    ->get();
+                }
             }
+            return view("pages/dashboard/menucate.view.php", [
+                "menu_cate"         => $menu_cate,
+            ]);
 
             return redirect('error-status/500-error');
         }
@@ -269,6 +273,10 @@ class MenuCatePage {
                     $menu_cate[$i]["subCate"] = DB::table("menu_cate")->where("mc_parent_id",  $menu_cate[$i]["mc_id"])
                     ->join("links", "mc_link_id", "=", "link_id")
                     ->get();
+                    $menu_cate[$i]["suba_cate_infor"] = DB::table("post")->where("post_menu_id",$menu_cate[$i]["mc_id"])
+                    ->join("links", "post_link_id", "=", "link_id")
+                    ->get();
+
                 }
             }
 

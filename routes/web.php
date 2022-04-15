@@ -94,7 +94,6 @@ $router->post('/dashboard/ads-slide/create',[AdsSlide::class, '__postAdsSlideAdd
 $router->post('/dashboard/ads-slide/update/{id}',[AdsSlide::class, '__postUpdateForm'])->middleware('auth');
 $router->post('/dashboard/ads-slide/delete',[AdsSlide::class, '__postDelete'])->middleware('auth');
 
-
 /**
  * -------------------Subscribers Plugin-------------------
  */
@@ -130,6 +129,21 @@ $router->post('/dashboard/news/create',[NewsPage::class, '__postAddForm'])->midd
 $router->post('/dashboard/news/categories/update/{id}', [NewsPage::class, '__postNewsCategoryForm'])->middleware('auth');
 $router->post('/dashboard/news/categories/delete', [NewsPage::class, '__postNewsCategoryDelete'])->middleware('auth');
 $router->post('/dashboard/news/categories/create',[NewsPage::class, '__postAddNewsCateForm'])->middleware('auth');
+
+/**
+ * -------------------Infor Plugin-------------------
+ */
+$router->get('/dashboard/infor',[InforPage::class, '__getInforPage'])->middleware('auth');
+$router->get('/dashboard/infor/create',[InforPage::class, '__getAddForm'])->middleware('auth');
+$router->get('/dashboard/infor/update/{id}', [InforPage::class, '__getUpdateForm'])->middleware('auth');
+$router->get('/post/{target}',[HomePage::class, '__getMenuCateDetailPageClient']);
+
+
+
+$router->post('/dashboard/infor/create',[InforPage::class, '__postAddForm'])->middleware('auth');
+$router->post('/dashboard/infor/update/{id}', [InforPage::class, '__postUpdate'])->middleware('auth');
+$router->post('/dashboard/infor/delete', [InforPage::class, '__postDelete'])->middleware('auth');
+
 
 
 /**

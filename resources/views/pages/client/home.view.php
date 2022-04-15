@@ -37,6 +37,8 @@
     .home-wrapper-news-content > .home-news-created-at > .home-news-view-number {
         margin-left: 6px;
     }
+
+    
 </style>
 
 <style>
@@ -61,11 +63,8 @@
 
             <section class="main-header__container">
 
-                <section class="main-header__desc">
+                <section class="main-header__desc-left">
                     <div class="header__desc-wrapper">
-                        <h1 class="desc__title">
-                            Trung cấp Kỹ thuật Nông nghiệp Thành phố Hồ Chí Minh
-                        </h1>
                         <p class="desc__detail">
                             <?= $siteInfo['site_info_short_description']; ?>
                         </p>
@@ -75,7 +74,7 @@
                     </div>
                 </section>
 
-                <section class="main-header__desc">
+                <section class="main-header__desc-right">
                     <div class="header__desc-wrapper desc-slider">
                         <button class="desc-slide__btn" id="desc-slide__btn-left">
                             <i class="fas fa-chevron-left"></i>
@@ -370,7 +369,7 @@
                             echo <<<HTML
                                 <article class="course-box course-box-item">
                                     <div class="course-box__thumbnal">
-                                        <img src="{$levelOfTrainingItem['lot_main_profile']}" alt="..." style="height: 100%;">
+                                        <img src="{$levelOfTrainingItem['lot_main_profile']}" alt="..." style="">
                                     </div>
                                     <div>
                                         <h4 class="course-box__title">

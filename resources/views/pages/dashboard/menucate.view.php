@@ -64,39 +64,74 @@
                     ?>
 
                     <div class="accordion custom-accordion" id="custom-accordion-one">
-                        <?php 
+                       
+                       <?php 
+                            if($menu_cate){
+
                             foreach($menu_cate as $menu_cate_item) {
 
                                 $renderSubACate  = "";
 
-                                foreach($menu_cate_item['suba_cate'] as $suba_cate_item) {
+                                if($menu_cate_item['suba_cate']){
+                                    foreach($menu_cate_item['suba_cate'] as $suba_cate_item) {
 
-                                    $statusActive = $suba_cate_item["mc_status"] == "published" ? "checked" : "";
-
-                                    $renderSubACate .= 
-                                        <<<HTML
-                                            <tr>
-                                                <td class="table-user">
-                                                    <a href="javascript:void(0);" class="text-body fw-semibold">
-                                                        {$suba_cate_item["mc_title"]}
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    {$suba_cate_item["link_url"]}
-                                                </td>
-                                                <td>
-                                                    <div class="form-check form-switch">
-                                                        <input type="checkbox" class="form-check-input mc_status" data-id="{$suba_cate_item['mc_id']}" id="customSwitch_{$suba_cate_item['mc_id']}" {$statusActive}>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <a href="/dashboard/menu-cate/update/{$suba_cate_item['mc_id']}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                                                    <a href="javascript:void(0);" class="action-icon btnDeleteMenuCate" data-id="{$suba_cate_item['mc_id']}"> <i class="mdi mdi-delete"></i></a>
-                                                </td>
-                                            </tr>
-                                        HTML;
+                                        $statusActive = $suba_cate_item["mc_status"] == "published" ? "checked" : "";
+    
+                                        $renderSubACate .= 
+                                            <<<HTML
+                                                <tr>
+                                                    <td class="table-user">
+                                                        <a href="javascript:void(0);" class="text-body fw-semibold">
+                                                            {$suba_cate_item["mc_title"]}
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        {$suba_cate_item["link_url"]}
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-check form-switch">
+                                                            <input type="checkbox" class="form-check-input mc_status" data-id="{$suba_cate_item['mc_id']}" id="customSwitch_{$suba_cate_item['mc_id']}" {$statusActive}>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <a href="/dashboard/menu-cate/update/{$suba_cate_item['mc_id']}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                                        <a href="javascript:void(0);" class="action-icon btnDeleteMenuCate" data-id="{$suba_cate_item['mc_id']}"> <i class="mdi mdi-delete"></i></a>
+                                                    </td>
+                                                </tr>
+                                            HTML;
+                                    }
                                 }
 
+                                if($menu_cate_item["suba_cate_infor"]){
+
+                                    foreach($menu_cate_item["suba_cate_infor"] as $suba_cate_infor_item) {
+
+                                        $statusActive = $suba_cate_infor_item["post_status"] == "published" ? "checked" : "";
+    
+                                        $renderSubACate .= 
+                                            <<<HTML
+                                                <tr>
+                                                    <td class="table-user">
+                                                        <a href="javascript:void(0);" class="text-body fw-semibold">
+                                                            {$suba_cate_infor_item["post_title"]}
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        {$suba_cate_infor_item["link_url"]}
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-check form-switch">
+                                                            <input type="checkbox" class="form-check-input post_status" data-id="{$suba_cate_infor_item['post_id']}" id="customSwitch_{$suba_cate_infor_item['post_id']}" {$statusActive}>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <a href="/dashboard/infor/update/{$suba_cate_infor_item['post_id']}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                                        <a href="javascript:void(0);" class="action-icon btnDeleteMenuCateInfo" data-id="{$suba_cate_infor_item['post_id']}"> <i class="mdi mdi-delete"></i></a>
+                                                    </td>
+                                                </tr>
+                                            HTML;
+                                    }
+                                }
                                 $statusActive001 = $menu_cate_item["mc_status"] == "published" ? "checked" : "";
                             
                                 echo <<<HTML
@@ -134,7 +169,7 @@
                                                     </table>
                                                     <div class="mb-2">
                                                         <div class="col-sm-4">
-                                                            <a href="/dashboard/menu-cate/create/type/A002-{$menu_cate_item['mc_id']}" class="btn btn-danger mb-3"><i class="mdi mdi-plus"></i>THÊM MỚI</a>
+                                                            <a href="/dashboard/infor/create" class="btn btn-danger mb-3"><i class="mdi mdi-plus"></i>THÊM MỚI</a>
                                                         </div>
                                                     </div> 
                                                 </div>
@@ -142,6 +177,7 @@
                                         </div>
                                     </div>
                                 HTML;
+                            }
                             }
                         ?>
                     </div>
@@ -236,6 +272,77 @@
 
                 $('#mc_id').attr('value', $(this).attr('data-id'));
                 $('#formDelete').attr('action', '/dashboard/menu-cate/delete');
+                
+                $('#formDelete').submit();
+            }
+        });
+    });
+
+</script>
+
+<script>
+
+    /**
+     * Task: update status of menu categories
+     */
+    $('.mc_status').change(function() {
+
+        var endPoint = `/dashboard/menu-cate/update/${$(this).attr("data-id")}`;
+
+        function __requestUpdate(mc_status) { 
+
+            $.ajax({
+                method: 'POST',
+                url: endPoint,
+                data: {
+                    "mc_status": mc_status
+                }
+            })
+            .done(function(res) {
+
+                if(res) {
+
+                    cuteAlert({
+                        type: "success",
+                        title: "Thông báo",
+                        message: "Cập nhật dữ liệu thành công",
+                        buttonText: "Okay"
+                    });
+                }
+            })
+            .fail(function(res) {
+
+                console.log(res);
+            });
+        }
+
+        if(this.checked) {
+
+            __requestUpdate("published");
+        }
+        else {
+
+            __requestUpdate("hidden");
+        }
+    });
+
+    /**
+     * Task: delete menu categories by ID
+     */
+    $('.btnDeleteMenuCateInfo').click(function() {
+        cuteAlert({
+            type: "question",
+            title: "Bạn có muốn xóa không",
+            message: "",
+            confirmText: "Đồng ý",
+            cancelText: "Hủy"
+        })
+        .then((e) => {
+
+            if(e) {
+
+                $('#mc_id').attr('value', $(this).attr('data-id'));
+                $('#formDelete').attr('action', '/dashboard/infor/delete');
                 
                 $('#formDelete').submit();
             }

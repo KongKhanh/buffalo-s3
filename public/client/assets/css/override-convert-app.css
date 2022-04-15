@@ -7,8 +7,9 @@
 }
 
 .form_wrapper {
+  margin: 1rem auto;
   background: #fff;
-  width: 50%;
+  width: 80%;
   max-width: 100%;
   box-sizing: border-box;
   padding: 25px;
@@ -447,7 +448,7 @@
   margin: 0 1.2em 0 0;
 }
 .news-home-box.news-home-box-r {
-  margin: 0 0 0 1.2em;
+  margin: 0 0 0 0;
 }
 .news-home-box .news-home-item {
   display: flex;
