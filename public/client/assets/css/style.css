@@ -1396,6 +1396,11 @@ strong {
   .register-block{
     margin-bottom: 2em;
   }
+
+  .register-modal--block {
+
+      width: 90% !important;
+  }
 }
 
 /* max-width: 480px */
